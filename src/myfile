@@ -1,0 +1,66 @@
+import "./App.css";
+import { useSelector } from "react-redux";
+import SignUp from "./container/auth/SignUp";
+import Login from "./container/auth/Login";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { hasRole } from "../src/config/auth";
+import LandingPage from "./container/home/LandingPage";
+import OrganizationDashboard from "./container/home/OrganizationDashboard";
+import UserDashboard from "./container/home/UserDashboard";
+import LearningProviderDashboard from "./container/home/LearningProviderDashboard";
+import NotFoundPage from "./container/other/NotFoundPage";
+function App() {
+  const myState = useSelector((state) => state.authReducer);
+  const user = {
+    name: "Jackator",
+    last: "Mark",
+    roles: ["user"],
+    rights: ["can_view_articles"],
+  };
+
+  return (
+    <Router>
+      {Object.keys(user).length && hasRole(user, ["organizer"]) && (
+        <Routes>        
+          <Route
+            path="/organization"
+            caseSensitive={false}
+            element={<OrganizationDashboard />}
+          />
+        </Routes>
+      )}
+
+      {Object.keys(user).length && hasRole(user, ["user"]) && (
+        <Routes>
+      <Route element={NotFoundPage} />     
+        <Route
+            path="/users"
+            caseSensitive={false}
+            element={<UserDashboard />}
+          />
+        </Routes>
+      )}
+
+      {Object.keys(user).length && hasRole(user, ["provider"]) && (
+         <Route
+            path="/provider"
+            caseSensitive={false}
+            element={<LearningProviderDashboard />}
+          />         
+      )}
+
+      {!Object.keys(user).length && (
+        <Routes>      
+          <Route path="/" caseSensitive={false} element={<LandingPage />} />
+          <Route path="/login" caseSensitive={false} element={<Login />} />
+          <Route path="/register" caseSensitive={false} element={<SignUp />} />
+        </Routes>
+      )}
+      <Routes>        
+    
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
