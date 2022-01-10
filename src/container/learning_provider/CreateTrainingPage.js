@@ -10,7 +10,6 @@ const CreateTrainingPage = () => {
     name: "",
     date: new Date(),
     description: "",
-    link: "",
   });
   const dispatch = useDispatch();
   const state = useSelector((state) => state.trainingReducer);
@@ -23,11 +22,10 @@ const CreateTrainingPage = () => {
     //   name: "",
     //   date: "",
     //   description: "",
-    //   link: "",
     // });
     return <Navigate to="/all-trainings" />;
   }
-  
+
   return (
     <AppBody
       loading={state.loading}
@@ -64,28 +62,6 @@ const CreateTrainingPage = () => {
                         </span>
                       </div>
                     </div>
-
-                    <div className="col-lg-6 mb-2">
-                      <div className="form-group">
-                        <label className="mont-font fw-600 font-xsss">
-                          Metting Link
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          value={traning.link}
-                          onChange={(e) =>
-                            setTraining({ ...traning, link: e.target.value })
-                          }
-                        />
-                        <span className="error-msg">
-                          {state.errors ? state.errors.link : ""}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="row">
                     <div className="col-lg-6 mb-2">
                       <div className="form-group">
                         <label className="mont-font fw-600 font-xsss">

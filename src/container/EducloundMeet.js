@@ -16,9 +16,8 @@ function EducloundMeet() {
   //  dispatch(getTrainingDetailsForMeeting({ slug: slug }));
     }, []);
  // const training = useSelector((state) => state.trainingUserReducer);
- 
 
- 
+
   const containerStyle = {
     width: "auto",
     height: "auto",
@@ -79,11 +78,11 @@ function EducloundMeet() {
      }else{
       alert("Jitsi Meet API script not loaded");
     }
-  };
+  }; 
 
   return (
     <AppBody
-      loading={false}
+      loading={loading}
       content={
         <div className="middle-sidebar-left">
           <div className="">
@@ -93,7 +92,7 @@ function EducloundMeet() {
                   <i className="ti-arrow-left font-sm text-white"></i>
                 </a>
                 <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                  Meetings
+                  Training
                 </h4>
               </div>
               <div className="card-body p-lg-5 p-4 w-100 border-0 ">

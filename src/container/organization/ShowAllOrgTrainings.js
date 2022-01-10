@@ -18,6 +18,9 @@ const ShowAllOrgTrainings = () => {
   const handelUserClick = (slug) => {
     navigate("/org-training-users/" + slug);
   };
+  const handelStartMeetingClick =(slug)=>{         
+    navigate("/training/" + slug);
+   }
 
   return (
     <AppBody
@@ -65,6 +68,12 @@ const ShowAllOrgTrainings = () => {
                             className="btn approve_btn mg-l"
                             onClick={() => handelUserClick(li.slug)}
                           />
+                          <input
+                          type="button"
+                          value="Start"
+                          className="btn approve_btn mg-l"
+                          onClick={() => handelStartMeetingClick(li.slug)}
+                        />            
                         </td>
                       </tr>
                     ))}
