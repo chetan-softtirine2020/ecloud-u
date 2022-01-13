@@ -1,5 +1,5 @@
 import axios from "axios";
-import { APP_URL } from "../../config/api";
+import { APP_URL,getToken } from "../../config/api";
 const token = localStorage.getItem("token");
 
 export const errorMessage = (err) => {
@@ -32,7 +32,10 @@ export const addUserTraining = (training) => {
         url: `${APP_URL}/lp/add-training-user`,
         data: training,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
@@ -59,7 +62,10 @@ export const importUserTraining = (file) => {
         url: `${APP_URL}/lp/import-training-user`,
         data: file,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
@@ -86,7 +92,10 @@ export const getAllTrainingUsers = (parm) => {
         url: `${APP_URL}/lp/get-training-users`,
         data: parm,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })

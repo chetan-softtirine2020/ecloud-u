@@ -1,6 +1,7 @@
 import axios from "axios";
-import { APP_URL } from "../../config/api";
-const token = localStorage.getItem("token");
+import { APP_URL, getToken } from "../../config/api";
+let token = getToken();
+
 // Create New Training
 
 export const errorMessage = (err) => {
@@ -22,8 +23,6 @@ export const errorMessage = (err) => {
   }
 };
 
-
-
 export const getTrainingDetailsForMeeting = (training) => {
   return (dispatch) => {
     dispatch({
@@ -35,7 +34,10 @@ export const getTrainingDetailsForMeeting = (training) => {
         url: `${APP_URL}/lp-training-details`,
         data: training,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
@@ -62,18 +64,21 @@ export const createTraining = (training) => {
         url: `${APP_URL}/create-training`,
         data: training,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
-      .then((res) => {        
+      .then((res) => {
         dispatch({
           type: "CREATE_TRAINING",
           payload: res.data.message,
         });
       })
       .catch((error) => {
-          dispatch(errorMessage(error));
+        dispatch(errorMessage(error));
       });
   };
 };
@@ -90,7 +95,10 @@ export const updateTraining = (training) => {
         url: `${APP_URL}/update-training`,
         data: training,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
@@ -117,7 +125,10 @@ export const getTraining = (id) => {
         url: `${APP_URL}/get-training`,
         data: id,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
@@ -133,7 +144,7 @@ export const getTraining = (id) => {
   };
 };
 
-export const getAllTrainings = () => {
+export const getAllTrainings = () => { 
   return (dispatch) => {
     dispatch({
       type: "REQUEST",
@@ -143,7 +154,10 @@ export const getAllTrainings = () => {
         method: "post",
         url: `${APP_URL}/all-trainings`,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
@@ -169,7 +183,10 @@ export const deleteTraining = (id) => {
         method: "post",
         url: `${APP_URL}/delete-trainings`,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })

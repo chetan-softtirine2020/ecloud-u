@@ -1,9 +1,9 @@
-import React, { useState, Fragment} from "react";
+import React, { useState, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { signUp, getAllOrganizationRegister } from "../../actions/auth_action";
 import { Navigate } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
-
+import NavBar from "../components/NavBar";
 const SignUp = () => {
   const auth = useSelector((state) => state.authReducer);
   const [user, setUser] = useState({
@@ -15,8 +15,8 @@ const SignUp = () => {
     user_type: 2,
     org_id: "",
   });
-  const dispatch = useDispatch(); 
-    const handleSubmit = (e) => {
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signUp(user));
     setUser({
@@ -29,13 +29,12 @@ const SignUp = () => {
       org_id: "",
     });
   };
-  const handleOnChange =(e)=>{ 
-    console.log(auth.list.length)
-    if(e.target.value==6 && auth.list.length==0){
+  const handleOnChange = (e) => {
+    if (e.target.value == 6 && auth.list.length == 0) {
       dispatch(getAllOrganizationRegister());
     }
-    setUser({ ...user, user_type: e.target.value })  
-  }
+    setUser({ ...user, user_type: e.target.value });
+  };
 
   if (localStorage.getItem("token")) {
     const userData = JSON.parse(localStorage.getItem("data"));
@@ -47,7 +46,7 @@ const SignUp = () => {
     }
     if (userData.roles.includes("organization")) {
       return <Navigate to="/organization" />;
-    }  
+    }
     if (userData.roles.includes("admin")) {
       return <Navigate to="/admin/home" />;
     }
@@ -58,26 +57,30 @@ const SignUp = () => {
       return <Navigate to="/ou/home" />;
     }
   }
-   
+
   return (
     <LoadingOverlay active={auth.loading} spinner text="Loading...">
       <div className="main-wrap">
-        {/* <NavBar /> */}
+        <NavBar />
         <div className="container top-margin">
           <div className="row">
-            <div className="col-xl-12 align-items-center d-flex bg-white rounded-lg ">
+            <div className="col-xl-12 align-items-center d-flex  rounded-lg ">
               <div className="card shadow-none border-0 ml-auto mr-auto login-card">
                 <div className="card-body rounded-0 text-left login_border">
                   <h2 className="fw-700 font-xl display2-md-size login_heading">
                     Register Account <br />
                   </h2>
+                  <span className="error-msg">
+                    {auth.errors && auth.errors.other_error
+                      ? auth.errors.other_error
+                      : ""}{" "}
+                  </span>
                   <form onSubmit={handleSubmit}>
                     <div className="form-group icon-input mb-1">
                       <select
                         name="user_type"
-                        className="style2-input pl-5 form-control text-grey-900 font-xss ls-3"
-                        onChange={(e) =>handleOnChange(e)                        
-                        }
+                        className="style2-input pl-5 form-control font-xss ls-3"
+                        onChange={(e) => handleOnChange(e)}
                       >
                         <option value="">Select Account</option>
                         <option value={2} selected={true}>
@@ -96,16 +99,20 @@ const SignUp = () => {
                       <div className="form-group icon-input mb-1">
                         <select
                           name="org_id"
-                          className="style2-input pl-5 form-control text-grey-900 font-xss ls-3"
+                          className="style2-input pl-5 form-control  font-xss ls-3"
                           onChange={(e) =>
                             setUser({ ...user, org_id: e.target.value })
                           }
                         >
-                          <option value="" key={0}>Select Organization</option>
+                          <option value="" key={0}>
+                            Select Organization
+                          </option>
                           {auth.list &&
                             auth.list.map((li, i) => (
                               <Fragment>
-                                <option value={li.id} key={li.id+1}>{li.name}</option>
+                                <option value={li.id} key={li.id + 1}>
+                                  {li.name}
+                                </option>
                               </Fragment>
                             ))}
                         </select>
@@ -116,7 +123,7 @@ const SignUp = () => {
                       <i className="font-sm ti-email text-grey-500 pr-0"></i>
                       <input
                         type="text"
-                        className="style2-input pl-5 form-control text-grey-900 font-xsss fw-600"
+                        className="style2-input pl-5 form-control font-xsss fw-600"
                         placeholder="First Name"
                         value={user.first_name}
                         onChange={(e) =>
@@ -132,7 +139,7 @@ const SignUp = () => {
                       <i className="font-sm ti-email text-grey-500 pr-0"></i>
                       <input
                         type="text"
-                        className="style2-input pl-5 form-control text-grey-900 font-xsss fw-600"
+                        className="style2-input pl-5 form-control font-xsss fw-600"
                         placeholder="Last Name"
                         value={user.last_name}
                         onChange={(e) =>
@@ -147,7 +154,7 @@ const SignUp = () => {
                       <i className="font-sm ti-email text-grey-500 pr-0"></i>
                       <input
                         type="text"
-                        className="style2-input pl-5 form-control text-grey-900 font-xsss fw-600"
+                        className="style2-input pl-5 form-control  font-xsss fw-600"
                         placeholder="Email Address"
                         value={user.email}
                         onChange={(e) =>
@@ -163,7 +170,7 @@ const SignUp = () => {
                       <i className="font-sm ti-email text-grey-500 pr-0"></i>
                       <input
                         type="text"
-                        className="style2-input pl-5 form-control text-grey-900 font-xsss fw-600"
+                        className="style2-input pl-5 form-control  font-xsss fw-600"
                         placeholder="Mobile Number"
                         value={user.mobile_no}
                         onChange={(e) =>
@@ -178,7 +185,7 @@ const SignUp = () => {
                     <div className="form-group icon-input mb-1">
                       <input
                         type="Password"
-                        className="style2-input pl-5 form-control text-grey-900 font-xss ls-3"
+                        className="style2-input pl-5 form-control  font-xss ls-3"
                         placeholder="Password"
                         value={user.password}
                         onChange={(e) =>
@@ -204,7 +211,7 @@ const SignUp = () => {
                       </label>
                       <a
                         href="forgot.html"
-                        className="forget-pwd fw-600 font-xsss text-grey-700 mt-1 float-right"
+                        className="forget-pwd fw-600 font-xsss  mt-1 float-right"
                       >
                         Forgot your Password?
                       </a>

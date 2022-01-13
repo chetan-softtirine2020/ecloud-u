@@ -55,11 +55,7 @@ const LandingPage = () => {
                       href="default-course-details.html"
                       class="video-bttn position-relative d-block"
                     >
-                      <img
-                        src="https://via.placeholder.com/400x300.png"
-                        alt="image"
-                        class="w-100"
-                      />
+                    <img src={v6} alt="v1" />
                     </a>
                   </div>
                   <div class="card-body pt-0">
@@ -107,11 +103,7 @@ const LandingPage = () => {
                       href="default-course-details.html"
                       class="video-bttn position-relative d-block"
                     >
-                      <img
-                        src="https://via.placeholder.com/400x300.png"
-                        alt="image"
-                        class="w-100"
-                      />
+                    <img src={v4} alt="v1" />
                     </a>
                   </div>
                   <div class="card-body pt-0">
@@ -159,11 +151,7 @@ const LandingPage = () => {
                       href="default-course-details.html"
                       class="video-bttn position-relative d-block"
                     >
-                      <img
-                        src="https://via.placeholder.com/400x300.png"
-                        alt="image"
-                        class="w-100"
-                      />
+                    <img src={v1} alt="v1" />
                     </a>
                   </div>
                   <div class="card-body pt-0">
@@ -195,162 +183,6 @@ const LandingPage = () => {
                         aria-valuenow="75"
                         aria-valuemin="0"
                         aria-valuemax="75"
-                      ></div>
-                    </div>
-                    <p class="review-link mt-0 font-xssss float-right mb-2 fw-500 text-grey-500 lh-3">
-                      {" "}
-                      2 customer review
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 mb-4">
-                <div class="card w-100 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-1">
-                  <div class="card-image w-100 mb-3">
-                    <a
-                      href="default-course-details.html"
-                      class="video-bttn position-relative d-block"
-                    >
-                      <img
-                        src="https://via.placeholder.com/400x300.png"
-                        alt="image"
-                        class="w-100"
-                      />
-                    </a>
-                  </div>
-                  <div class="card-body pt-0">
-                    <span class="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 alert-warning d-inline-block text-warning mr-1">
-                      Python
-                    </span>
-                    <span class="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
-                      <span class="font-xsssss">$</span> 240
-                    </span>
-                    <h4 class="fw-700 font-xss mt-3 lh-28 mt-0">
-                      <a
-                        href="default-course-details.html"
-                        class="text-dark text-grey-900"
-                      >
-                        Complete Python Bootcamp From Zero to Hero in Python{" "}
-                      </a>
-                    </h4>
-                    <h6 class="font-xssss text-grey-500 fw-600 ml-0 mt-2">
-                      {" "}
-                      32 Lesson{" "}
-                      <span class="float-right mt-1 font-xssss text-grey-500">
-                        96%
-                      </span>
-                    </h6>
-                    <div class="progress mt-4 h5 w-100 mb-3">
-                      <div
-                        class="progress-bar bg-primary"
-                        role="progressbar"
-                        aria-valuenow="65"
-                        aria-valuemin="0"
-                        aria-valuemax="65"
-                      ></div>
-                    </div>
-                    <p class="review-link mt-0 font-xssss float-right mb-2 fw-500 text-grey-500 lh-3">
-                      {" "}
-                      2 customer review
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 mb-4">
-                <div class="card w-100 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-1">
-                  <div class="card-image w-100 mb-3">
-                    <a
-                      href="default-course-details.html"
-                      class="video-bttn position-relative d-block"
-                    >
-                      <img
-                        src="https://via.placeholder.com/400x300.png"
-                        alt="image"
-                        class="w-100"
-                      />
-                    </a>
-                  </div>
-                  <div class="card-body pt-0">
-                    <span class="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 alert-danger d-inline-block text-danger mr-1">
-                      Desinger
-                    </span>
-                    <span class="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
-                      <span class="font-xsssss">$</span> 40
-                    </span>
-                    <h4 class="fw-700 font-xss mt-3 lh-28 mt-0">
-                      <a
-                        href="default-course-details.html"
-                        class="text-dark text-grey-900"
-                      >
-                        Complete Python Bootcamp From Zero to Hero in Python{" "}
-                      </a>
-                    </h4>
-                    <h6 class="font-xssss text-grey-500 fw-600 ml-0 mt-2">
-                      {" "}
-                      24 Lesson{" "}
-                      <span class="float-right mt-1 font-xssss text-grey-500">
-                        73%
-                      </span>
-                    </h6>
-                    <div class="progress mt-4 h5 w-100 mb-3">
-                      <div
-                        class="progress-bar bg-warning"
-                        role="progressbar"
-                        aria-valuenow="87"
-                        aria-valuemin="0"
-                        aria-valuemax="87"
-                      ></div>
-                    </div>
-                    <p class="review-link mt-0 font-xssss float-right mb-2 fw-500 text-grey-500 lh-3">
-                      {" "}
-                      2 customer review
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 mb-4">
-                <div class="card w-100 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-1">
-                  <div class="card-image w-100 mb-3">
-                    <a
-                      href="default-course-details.html"
-                      class="video-bttn position-relative d-block"
-                    >
-                      <img
-                        src="https://via.placeholder.com/400x300.png"
-                        alt="image"
-                        class="w-100"
-                      />
-                    </a>
-                  </div>
-                  <div class="card-body pt-0">
-                    <span class="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 alert-success d-inline-block text-success mr-1">
-                      Bootstrap
-                    </span>
-                    <span class="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
-                      <span class="font-xsssss">$</span> 60
-                    </span>
-                    <h4 class="fw-700 font-xss mt-3 lh-28 mt-0">
-                      <a
-                        href="default-course-details.html"
-                        class="text-dark text-grey-900"
-                      >
-                        Java Programming Masterclass for Developers
-                      </a>
-                    </h4>
-                    <h6 class="font-xssss text-grey-500 fw-600 ml-0 mt-2">
-                      {" "}
-                      24 Lesson{" "}
-                      <span class="float-right mt-1 font-xssss text-grey-500">
-                        73%
-                      </span>
-                    </h6>
-                    <div class="progress mt-4 h5 w-100 mb-3">
-                      <div
-                        class="progress-bar bg-success"
-                        role="progressbar"
-                        aria-valuenow="96"
-                        aria-valuemin="0"
-                        aria-valuemax="96"
                       ></div>
                     </div>
                     <p class="review-link mt-0 font-xssss float-right mb-2 fw-500 text-grey-500 lh-3">
@@ -443,8 +275,9 @@ const LandingPage = () => {
                 nostrud exercitation
               </p>
             </div>
+
             <div className="col-lg-3 mt-3">
-              <div className="card  bg-white shadow-lg rounded-lg ">
+              <div className="card bg-theme-color shadow-lg rounded-lg ">
                 <div className="card-image mb-3 rounded-lg">
                   <a href="#." className="video-bttn position-relative d-block">
                     <img src={v1} alt="v1" />
@@ -490,8 +323,9 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
+
             <div className="col-lg-3 mt-3">
-              <div className="card  bg-white shadow-lg rounded-lg ">
+              <div className="card bg-theme-color shadow-lg rounded-lg ">
                 <div className="card-image mb-3 rounded-lg">
                   <a href="#." className="video-bttn position-relative d-block">
                     <img src={v6} alt="v1" />
@@ -538,7 +372,7 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="col-lg-3 mt-3">
-              <div className="card  bg-white shadow-lg rounded-lg ">
+              <div className="card bg-theme-color shadow-lg rounded-lg ">
                 <div className="card-image mb-3 rounded-lg">
                   <a href="#." className="video-bttn position-relative d-block">
                     <img src={v4} alt="v1" />
@@ -584,8 +418,9 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
+            
             <div className="col-lg-3 mt-3">
-              <div className="card  bg-white shadow-lg rounded-lg ">
+              <div className="card bg-theme-color shadow-lg rounded-lg ">
                 <div className="card-image mb-3 rounded-lg">
                   <a href="#." className="video-bttn position-relative d-block">
                     <img src={v4} alt="v1" />

@@ -4,10 +4,12 @@ import AppNavBar from "../components/AppNavBar";
 import { Navigate } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 const AppBody = (props) => {
-if(!localStorage.getItem('token')){
+    console.log("call the app body page");  
+  
+ if(!localStorage.getItem('token')){
   return <Navigate to="/"/>   
- }
-       
+  }
+
   return (
     <LoadingOverlay active={props.loading} spinner text="Loading...">
     <div>

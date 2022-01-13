@@ -1,5 +1,5 @@
 import axios from "axios";
-import { APP_URL } from "../../config/api";
+import { APP_URL,getToken } from "../../config/api";
 const token = localStorage.getItem("token");
 // Create New Training
 
@@ -33,7 +33,10 @@ export const createOrgTraining = (training) => {
         url: `${APP_URL}/create-org-training`,
         data: training,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
@@ -61,7 +64,10 @@ export const updateOrgTraining = (training) => {
         url: `${APP_URL}/update-org-training`,
         data: training,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
@@ -88,7 +94,10 @@ export const getTraining = (id) => {
         url: `${APP_URL}/get-org-training`,
         data: id,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
@@ -114,7 +123,10 @@ export const getAllOrgTrainings = () => {
         method: "post",
         url: `${APP_URL}/get-org-training`,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
@@ -140,7 +152,10 @@ export const deleteTraining = (id) => {
         method: "post",
         url: `${APP_URL}/delete-org-trainings`,
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })

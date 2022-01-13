@@ -1,5 +1,5 @@
 import axios from "axios";
-import { APP_URL } from "../../config/api";
+import { APP_URL,getToken } from "../../config/api";
 const token=localStorage.getItem('token');
 
 export const errorMessage = (err) => {
@@ -31,7 +31,10 @@ export const getAllOrganization = () => {
         method: "post",
         url: `${APP_URL}/get-orgs`,      
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
@@ -59,7 +62,10 @@ export const getAllNewOrganization = () => {
         method: "post",
         url: `${APP_URL}/get-org-approve`,      
         headers: {
-          Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
           "Content-Type": "application/json",
         },
       })
@@ -86,7 +92,10 @@ export const updateApproveOrganization = (org) => {
           url: `${APP_URL}/org-approved`,      
           data: org,  
           headers: {
-            Authorization: `Bearer ${token.substring(1, token.length - 1)}`,
+            Authorization: `Bearer ${getToken().substring(
+              1,
+              getToken().length - 1
+            )}`,
             "Content-Type": "application/json",
           },
         })

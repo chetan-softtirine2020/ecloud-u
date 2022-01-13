@@ -25,7 +25,12 @@ const Login = () => {
     // });
   };
 
-  if (localStorage.getItem("token")) {
+  if (localStorage.getItem("redirectLink") && localStorage.getItem("token")) {
+    const redirectLink = localStorage.getItem("redirectLink");
+    return <Navigate to={redirectLink} />;
+  }
+
+  if (!localStorage.getItem("redirectLink") && localStorage.getItem("token")) {
     const userData = JSON.parse(localStorage.getItem("data"));
     if (userData.roles.includes("user")) {
       return <Navigate to="/users" />;
@@ -50,22 +55,26 @@ const Login = () => {
   return (
     <LoadingOverlay active={auth.loading} spinner text="Loading...">
       <div className="main-wrap">
-        {/* <NavBar /> */}
+        <NavBar />
         <div className="container top-margin">
           <div className="row">
-            <div className="col-xl-12 align-items-center d-flex bg-white rounded-lg ">
+            <div className="col-xl-12 align-items-center d-flex  rounded-lg ">
               <div className="card shadow-none border-0 ml-auto mr-auto login-card">
                 <div className="card-body rounded-0 text-left login_border">
                   <h2 className="fw-700 font-xl display2-md-size login_heading">
                     Login Account
                   </h2>
-
+                  <span className="error-msg">
+                    {auth.errors && auth.errors.other_error
+                      ? auth.errors.other_error
+                      : ""}{" "}
+                  </span>
                   <form onSubmit={handleSubmit}>
                     <div className="form-group icon-input mb-3">
                       <i className="font-sm ti-email text-grey-500 pr-0"></i>
                       <input
                         type="text"
-                        className="style2-input pl-5 form-control text-grey-900 font-xsss fw-600"
+                        className="style2-input pl-5 form-control  font-xsss fw-600"
                         placeholder="Your Email Address"
                         value={user.email}
                         onChange={(e) =>
@@ -81,7 +90,7 @@ const Login = () => {
                     <div className="form-group icon-input mb-1">
                       <input
                         type="Password"
-                        className="style2-input pl-5 form-control text-grey-900 font-xss ls-3"
+                        className="style2-input pl-5 form-control font-xss ls-3"
                         placeholder="Password"
                         value={user.password}
                         onChange={(e) =>
@@ -134,7 +143,7 @@ const Login = () => {
                   </form>
 
                   <div className="col-sm-12 p-0 text-center mt-2">
-                    <h6 className="mb-0 d-inline-block bg-white fw-500 font-xsss text-grey-500 mb-3">
+                    <h6 className="mb-0 d-inline-block fw-500 font-xsss text-grey-500 mb-3">
                       Or, Sign in with your social account{" "}
                     </h6>
                     <div className="form-group mb-1">

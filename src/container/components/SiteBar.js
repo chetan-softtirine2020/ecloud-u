@@ -18,8 +18,10 @@ const SiteBar = () => {
         <div class="container pl-0 pr-0">
           <div class="nav-content">
             <div class="nav-top">
-              <Link to={"/"}>
-                <img src={logo} className="site_logo" />
+              <Link to={"/"}>               
+                <span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xl logo-text mb-0">
+                  Educloudlabs{" "}
+                </span>
               </Link>
               <a href="/" class="close-nav d-inline-block d-lg-none">
                 <i class="ti-close bg-grey mb-4 btn-round-sm font-xssss fw-700 text-dark ml-auto mr-2 "></i>
@@ -132,7 +134,9 @@ const SiteBar = () => {
                   <Link
                     to={"/org/create-training"}
                     class={`nav-content-bttn open-font ${
-                      location.pathname === "/org/create-training" ? "active" : ""
+                      location.pathname === "/org/create-training"
+                        ? "active"
+                        : ""
                     }`}
                     data-tab="favorites"
                   >
@@ -174,7 +178,9 @@ const SiteBar = () => {
                   <Link
                     to={"/org/create-training"}
                     class={`nav-content-bttn open-font ${
-                      location.pathname === "/org/create-training" ? "active" : ""
+                      location.pathname === "/org/create-training"
+                        ? "active"
+                        : ""
                     }`}
                     data-tab="favorites"
                   >
@@ -196,7 +202,7 @@ const SiteBar = () => {
                   </Link>
                 </li>
               </ul>
-            )}            
+            )}
 
             {userData.roles.includes("admin") && (
               <ul>

@@ -4,7 +4,7 @@ import profleIco from "../../images/female-profile.png";
 const AppNavBar = () => {
   return (
     <div>
-      <div class="middle-sidebar-header bg-white">
+      <div class="middle-sidebar-header bg-navbar">
         <button class="header-menu"></button>
         <form action="#" class="float-left header-search">
           <div class="form-group mb-0 icon-input">
@@ -12,7 +12,7 @@ const AppNavBar = () => {
             <input
               type="text"
               placeholder="Start typing to search.."
-              class="bg-transparent border-0 lh-32 pt-2 pb-2 pl-5 pr-3 font-xsss fw-500 rounded-xl w350"
+              class="border-0 lh-32 pt-2 pb-2 pl-5 pr-3 font-xsss fw-500 rounded-xl w350"
             />
           </div>
         </form>
