@@ -14,7 +14,7 @@ const trainingReducer = (state = initState, { type, payload }) => {
         loading: false,
         errors: payload,
       };
-    case "REQUEST":
+    case "TRAINING_REQUEST":
       return {
         ...state,
         loading: true,
@@ -28,7 +28,13 @@ const trainingReducer = (state = initState, { type, payload }) => {
         errors: [],
         is_done: true,
       };
-
+      case "LP_MAKE_PUBLIC_TRAINING":
+        return {
+          ...state,
+          loading: false,
+          errors: [],
+          is_done: true,
+        };
     case "TRAINING_DETAILS":
       return {
         ...state,

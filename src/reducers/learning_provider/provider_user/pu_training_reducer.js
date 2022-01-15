@@ -13,7 +13,7 @@ export const initState = {
           loading: false,
           errors: payload,
         };
-      case "REQUEST":
+      case "PRVIDER_USER_REQUEST":
         return {
           ...state,
           loading: true,
@@ -26,7 +26,14 @@ export const initState = {
           errors: [],
           is_done: true,
         };
-        case "USER_WISE_TRAINING":
+        case "UPDATE_TRAINING_MIN":
+          return {
+            ...state,
+            loading: false,
+            errors: [],
+            is_done: true,
+          };
+         case "USER_WISE_TRAINING":
           return {
             ...state,
             loading: false,

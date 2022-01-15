@@ -3,10 +3,9 @@ import AppBody from "../components/AppBody";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
-  getAllTrainings,
-  addMakePublicTraining,
+  getAllTrainings,  
 } from "../../actions/learning_provider/training_action";
-const ShowAllTrainings = () => {
+const ShowAllTrainingsDetails = () => {
   const state = useSelector((state) => state.trainingReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,25 +17,10 @@ const ShowAllTrainings = () => {
     }   
   }, []);
 
-  const handelClick = (slug) => {
-    navigate("/add-training-user/" + slug);
-  };
-
   const handelUserClick = (slug) => {
-    navigate("/show-training-users/" + slug);
+    navigate("/joined-training-user/" + slug);
   };
-
-  const handelPublicClick = (id) => {
-    dispatch(addMakePublicTraining({ id: id }));
-  };
-
-  const handelStartMeetingClick = (slug) => {
-    navigate("/training/" + slug);
-  };
-  if (state.is_done) {
-    dispatch(getAllTrainings());
-  }
-
+ 
   return (
     <AppBody
       loading={state.loading}
@@ -48,7 +32,7 @@ const ShowAllTrainings = () => {
                 <i className="ti-arrow-left font-sm text-white"></i>
               </a>
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                All Training 
+                Joined Training 
               </h4>
             </div>
             <div className="card-body p-4 w-100 border-0 ">
@@ -58,7 +42,6 @@ const ShowAllTrainings = () => {
                     <th>Sr.No</th>
                     <th>Name</th>
                     <th>Date</th>
-                    <th>Availbale</th>
                     {/* <th>Description</th>*/}
                     <th>Action</th>
                   </tr>
@@ -72,33 +55,13 @@ const ShowAllTrainings = () => {
                         <td>{li.date}</td>
                         <td>{li.is_public == 0 ? "Not Public" : "Public"}</td>
                         {/* <td>{li.description}</td>*/}
-                        <td>
+                        <td>                         
                           <input
                             type="button"
-                            value="Add User"
-                            className="btn approve_btn"
-                            onClick={() => handelClick(li.slug)}
-                          />
-                          <input
-                            type="button"
-                            value="Users"
+                            value="View"
                             className="btn approve_btn mg-l"
                             onClick={() => handelUserClick(li.slug)}
-                          />
-                          <input
-                            type="button"
-                            value={
-                              li.is_public == 0 ? "Make Public" : "Stop Public"
-                            }
-                            className="btn approve_btn mg-l"
-                            onClick={() => handelPublicClick(li.id)}
-                          />
-                          <input
-                            type="button"
-                            value={"Start"}
-                            className="btn approve_btn mg-l"
-                            onClick={() => handelStartMeetingClick(li.slug)}
-                          />
+                          />                        
                         </td>
                       </tr>
                     ))}
@@ -112,4 +75,4 @@ const ShowAllTrainings = () => {
   );
 };
 
-export default ShowAllTrainings;
+export default ShowAllTrainingsDetails;

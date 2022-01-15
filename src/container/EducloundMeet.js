@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
 import AppBody from "./components/AppBody";
 import { useParams } from "react-router";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 function EducloundMeet() {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const [time, setTime] = useState({
+    seconds: 0,
+  });
   if (!localStorage.getItem("token") && !localStorage.getItem("token")) {
     localStorage.setItem("redirectLink", location.pathname);
   }
@@ -12,9 +19,27 @@ function EducloundMeet() {
   let { slug } = useParams();
   const userData = JSON.parse(localStorage.getItem("data"));
 
-  useEffect(() => {
-    if (window.JitsiMeetExternalAPI) startConference();
-    else alert("Wait Educloudlabs meeting  Not Loaded..");
+  useEffect(() => { 
+   
+    if (window.JitsiMeetExternalAPI && !localStorage.getItem("redirectLink")) {
+      startConference();
+    } else {
+      if (!localStorage.getItem("redirectLink")) {
+        alert("Wait Educloudlabs meeting  Not Loaded..");
+      }
+    }
+    const advanceTime = () => {
+      setTimeout(() => {
+        let nSeconds = time.seconds;
+        nSeconds++;
+        setTime({seconds:nSeconds})
+      }, 1000);
+    };
+    advanceTime();
+    return () => {
+      //final time:
+      console.log("time" + time.seconds);
+    };
     //  dispatch(getTrainingDetailsForMeeting({ slug: slug }));
   }, []);
 
@@ -55,9 +80,14 @@ function EducloundMeet() {
         );
       });
     } catch (error) {
-      console.error("Failed to load Jitsi API", error);
+      console.error("Failed to load Educloudlabs API", error);
     }
   }
+      
+    // const  handelEndMeeting=()=>{
+    //   dispatch();
+    // }
+
   return (
     <AppBody
       loading={loading}

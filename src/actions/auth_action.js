@@ -31,7 +31,7 @@ export const errorMessage = (err) => {
 export const signUp = (user) => {
   return (dispatch) => {
     dispatch({
-      type: "REQUEST",
+      type: "AUTH_REQUEST",
     });
     axios
       .request({
@@ -57,7 +57,7 @@ export const signUp = (user) => {
 export const logIn = (cred) => {
   return (dispatch) => {
     dispatch({
-      type: "REQUEST",
+      type: "AUTH_REQUEST",
     });
     axios
       .post(`${APP_URL}/login`, cred, authHeader())
@@ -79,7 +79,7 @@ export const logIn = (cred) => {
 export const getAllOrganizationRegister = () => {
   return (dispatch) => {
     dispatch({
-      type: "REQUEST",
+      type: "AUTH_REQUEST",
     });
     axios
       .request({
@@ -116,7 +116,7 @@ export const loadUser = () => {
 export const singOut = () => {
   return (dispatch) => {
     dispatch({
-      type: "REQUEST",
+      type: "AUTH_REQUEST",
     });
     dispatch({
       type: "SIGN_OUT",

@@ -4,7 +4,6 @@ import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logIn } from "../../actions/auth_action";
 import LoadingOverlay from "react-loading-overlay";
-import { redirectUser } from "../../config/redirect";
 import facebook from "../../images/icon-3.png";
 import google from "../../images/icon-1.png";
 import { Link } from "react-router-dom";
@@ -27,6 +26,7 @@ const Login = () => {
 
   if (localStorage.getItem("redirectLink") && localStorage.getItem("token")) {
     const redirectLink = localStorage.getItem("redirectLink");
+    localStorage.removeItem("redirectLink");
     return <Navigate to={redirectLink} />;
   }
 
@@ -182,5 +182,4 @@ const Login = () => {
     </LoadingOverlay>
   );
 };
-
 export default Login;

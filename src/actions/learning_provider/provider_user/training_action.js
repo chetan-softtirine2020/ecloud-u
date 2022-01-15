@@ -5,7 +5,7 @@ import { APP_URL,getToken } from "../../../config/api";
  export const getUserWiseTraining = () => {
     return (dispatch) => {
       dispatch({
-        type: "REQUEST",
+        type: "PRVIDER_USER_REQUEST",
       });
       axios
         .request({

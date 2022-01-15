@@ -18,7 +18,7 @@ const authReducer = (state = initState, { type, payload }) => {
         loading: false,
         errors: payload,
       };
-    case "REQUEST":
+    case "AUTH_REQUEST":
       return {
         ...state,
         loading: true,

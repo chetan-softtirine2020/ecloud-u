@@ -81,6 +81,37 @@ export const importUserTraining = (file) => {
   };
 };
 
+export const updateUserTrainingMin = (datas) => {
+  return (dispatch) => {
+    dispatch({
+      type: "REQUEST_TRAINING",
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/update-training-min`,
+        data: datas,
+        headers: {
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        dispatch({
+          type: "UPDATE_TRAINING_MIN",
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error));
+      });
+  };
+};
+
+
 export const getAllTrainingUsers = (parm) => {
   return (dispatch) => {
     dispatch({

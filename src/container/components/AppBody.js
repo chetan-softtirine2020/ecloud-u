@@ -4,21 +4,24 @@ import AppNavBar from "../components/AppNavBar";
 import { Navigate } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 const AppBody = (props) => {
-    console.log("call the app body page");  
   
- if(!localStorage.getItem('token')){
-  return <Navigate to="/"/>   
+  if (!localStorage.getItem("token") && localStorage.getItem("redirectLink")) {
+    return <Navigate to="/login" />;
+  }
+
+  if (!localStorage.getItem("token")) {
+    return <Navigate to="/" />;
   }
 
   return (
     <LoadingOverlay active={props.loading} spinner text="Loading...">
-    <div>
-      <SiteBar />
-      <div class="main-content">
-        <AppNavBar />
-        <div class="middle-sidebar-bottom bg-lightblue">{props.content}</div>
+      <div>
+        <SiteBar />
+        <div class="main-content">
+          <AppNavBar />
+          <div class="middle-sidebar-bottom bg-lightblue">{props.content}</div>
+        </div>
       </div>
-    </div>
     </LoadingOverlay>
   );
 };

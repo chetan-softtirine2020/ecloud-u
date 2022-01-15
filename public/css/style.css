@@ -29,6 +29,9 @@
 .error-msg{
   color: red;
 }
+.color-white{
+  color: white;
+}
 .bg-navbar{
   background-color: #212121
 }
@@ -225,7 +228,7 @@
 }
 
 .bg-lightblue {
-  background-color: #0c0c0d !important;
+  background-color: #000000 !important;
 }
 
 .bg-lightgreen {
@@ -3297,10 +3300,12 @@ pre code {
     margin-left: 91.6666666667%;
   }
 }
+/*Table Changes*/
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #515184;
+  color: #fff;
+  background-color: #212121;
   text-align: center !important;
 }
 .table th,

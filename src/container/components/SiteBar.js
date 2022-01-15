@@ -18,7 +18,7 @@ const SiteBar = () => {
         <div class="container pl-0 pr-0">
           <div class="nav-content">
             <div class="nav-top">
-              <Link to={"/"}>               
+              <Link to={"/"}>
                 <span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xl logo-text mb-0">
                   Educloudlabs{" "}
                 </span>
@@ -66,6 +66,18 @@ const SiteBar = () => {
                     <span>All Tranings</span>
                   </Link>
                 </li>
+                <li class="flex-lg-brackets">
+                  <Link
+                    to={"/joined-trainings"}
+                    data-tab="archived"
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/joined-trainings" ? "active" : ""
+                    }`}
+                   >
+                    <i class="feather-video mr-3"></i>
+                    <span>Joined Tranings</span>
+                  </Link>
+                </li>
               </ul>
             )}
 
@@ -81,19 +93,6 @@ const SiteBar = () => {
                   >
                     <i class="feather-play-circle mr-3"></i>
                     <span>Home</span>
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    to={"/my-trainings"}
-                    class={`nav-content-bttn open-font ${
-                      location.pathname === "/my-trainings" ? "active" : ""
-                    }`}
-                    data-tab="favorites"
-                  >
-                    <i class="feather-play-circle mr-3"></i>
-                    <span>My Trainigs</span>
                   </Link>
                 </li>
               </ul>
@@ -130,8 +129,9 @@ const SiteBar = () => {
                     <span> Home</span>
                   </Link>
                 </li>
-                <li>
-                  <Link
+                {/*  <li>
+
+                 <Link
                     to={"/org/create-training"}
                     class={`nav-content-bttn open-font ${
                       location.pathname === "/org/create-training"
@@ -155,6 +155,42 @@ const SiteBar = () => {
                   >
                     <i class="feather-globe mr-3"></i>
                     <span> All Trainings</span>
+                  </Link>
+                  </li>*/}
+                <li>
+                  <Link
+                    to={"/create-training"}
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/create-training" ? "active" : ""
+                    }`}
+                    data-tab="favorites"
+                  >
+                    <i class="feather-play-circle mr-3"></i>
+                    <span>Create Training</span>
+                  </Link>
+                </li>
+                <li class="flex-lg-brackets">
+                  <Link
+                    to={"/all-trainings"}
+                    data-tab="archived"
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/all-trainings" ? "active" : ""
+                    }`}
+                  >
+                    <i class="feather-video mr-3"></i>
+                    <span>All Tranings</span>
+                  </Link>
+                </li>
+                <li class="flex-lg-brackets">
+                  <Link
+                    to={"/joined-trainings"}
+                    data-tab="archived"
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/joined-trainings" ? "active" : ""
+                    }`}
+                  >
+                    <i class="feather-video mr-3"></i>
+                    <span>Joined Tranings</span>
                   </Link>
                 </li>
               </ul>
@@ -250,6 +286,18 @@ const SiteBar = () => {
             )}
 
             <ul>
+              <li>
+                <Link
+                  to={"/my-trainings"}
+                  class={`nav-content-bttn open-font ${
+                    location.pathname === "/my-trainings" ? "active" : ""
+                  }`}
+                  data-tab="favorites"
+                >
+                  <i class="feather-play-circle mr-3"></i>
+                  <span>My Trainigs</span>
+                </Link>
+              </li>
               <li class="logo d-none d-xl-block d-lg-block"></li>
               <li>
                 <a href="#" class="nav-content-bttn open-font h-auto pt-2 pb-2">

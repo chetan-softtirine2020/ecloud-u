@@ -26,7 +26,7 @@ export const errorMessage = (err) => {
 export const getTrainingDetailsForMeeting = (training) => {
   return (dispatch) => {
     dispatch({
-      type: "REQUEST",
+      type: "TRAINING_REQUEST",
     });
     axios
       .request({
@@ -56,7 +56,7 @@ export const getTrainingDetailsForMeeting = (training) => {
 export const createTraining = (training) => {
   return (dispatch) => {
     dispatch({
-      type: "REQUEST",
+      type: "TRAINING_REQUEST",
     });
     axios
       .request({
@@ -83,11 +83,45 @@ export const createTraining = (training) => {
   };
 };
 
+
+export const addMakePublicTraining = (training) => {
+  return (dispatch) => {
+    dispatch({
+      type: "TRAINING_REQUEST",
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/lp-public-training`,
+        data: training,
+        headers: {
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        dispatch({
+          type: "LP_MAKE_PUBLIC_TRAINING",
+          payload: res.data.message,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error));
+      });
+  };
+};
+
+
+
+
 //Update New Training
 export const updateTraining = (training) => {
   return (dispatch) => {
     dispatch({
-      type: "REQUEST",
+      type: "TRAINING_REQUEST",
     });
     axios
       .request({
@@ -117,7 +151,7 @@ export const updateTraining = (training) => {
 export const getTraining = (id) => {
   return (dispatch) => {
     dispatch({
-      type: "REQUEST",
+      type: "TRAINING_REQUEST",
     });
     axios
       .request({
@@ -147,7 +181,7 @@ export const getTraining = (id) => {
 export const getAllTrainings = () => { 
   return (dispatch) => {
     dispatch({
-      type: "REQUEST",
+      type: "TRAINING_REQUEST",
     });
     axios
       .request({
@@ -176,7 +210,7 @@ export const getAllTrainings = () => {
 export const deleteTraining = (id) => {
   return (dispatch) => {
     dispatch({
-      type: "REQUEST",
+      type: "TRAINING_REQUEST",
     });
     axios
       .request({

@@ -25,6 +25,8 @@ import CreateOrgTrainingPage from "./container/organization/CreateOrgTrainingPag
 import ShowAllOrgTrainings from "./container/organization/ShowAllOrgTrainings";
 import OrgUserDashboard from "./container/organization/org_user/OrgUserDashboard";
 import EducloundMeet from "./container/EducloundMeet";
+import ShowAllTrainingsDetails from "./container/learning_provider/ShowAllTrainingsDetails";
+import JoinedTrainingUserDetails from "./container/learning_provider/JoinedTrainingUserDetails";
 function App() {
   const auth = useSelector((state) => state.authReducer);
   return (
@@ -51,7 +53,6 @@ function App() {
             caseSensitive={false}
             element={<NewRegisterOrganizations />}
           />
-
           <Route
             path={"/lpu-home"}
             caseSensitive={false}
@@ -70,32 +71,28 @@ function App() {
           <Route
             path={"/org/create-training"}
             caseSensitive={false}
-            element={<CreateOrgTrainingPage />}
+            element={<CreateTrainingPage />}
           />
           <Route
             path={"/org/all-trainings"}
             caseSensitive={false}
-            element={<ShowAllOrgTrainings />}
+            element={<ShowAllTrainings />}
           />
-
           <Route
             path={"/get-organizations"}
             caseSensitive={false}
             element={<OrganizationRequest />}
           />
-
           <Route
             path={"/ou/home"}
             caseSensitive={false}
             element={<OrgUserDashboard />}
           />
-
           <Route
             path={"/learning-provider"}
             caseSensitive={false}
             element={<LearningProviderDashboard />}
           />
-
           <Route
             path={"/add-training-user/:slug"}
             caseSensitive={false}
@@ -106,7 +103,6 @@ function App() {
             caseSensitive={false}
             element={<ShowTrainingUser />}
           />
-
           <Route
             path={"/create-training"}
             caseSensitive={false}
@@ -118,10 +114,23 @@ function App() {
             element={<ShowAllTrainings />}
           />
           <Route
-            path={"/my-trainings"}
+            path={"/all-trainings"}
             caseSensitive={false}
-            element={<UserWiseTraining />}
+            element={<ShowAllTrainings />}
           />
+          
+          <Route
+            path={"/joined-trainings"}
+            caseSensitive={false}
+            element={<ShowAllTrainingsDetails />}
+          />
+          <Route
+          path={"/joined-training-user/:slug"}
+          caseSensitive={false}
+          element={<JoinedTrainingUserDetails/>}
+        />
+          
+
         </Fragment>
 
         {Object.keys(auth).length && hasRole(auth, ["organization"]) && (
