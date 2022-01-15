@@ -38,6 +38,12 @@ function App() {
             caseSensitive={false}
             element={<EducloundMeet />}
           />
+        <Route
+          path={"/my-trainings"}
+          caseSensitive={false}
+          element={<UserWiseTraining />}
+        />
+          
           <Route
             path={"/admin/home"}
             caseSensitive={false}
@@ -125,7 +131,7 @@ function App() {
             element={<ShowAllTrainingsDetails />}
           />
           <Route
-          path={"/joined-training-user/:slug"}
+          path={"/joined-training-users/:slug"}
           caseSensitive={false}
           element={<JoinedTrainingUserDetails/>}
         />
