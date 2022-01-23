@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState  } from "react";
 import NavBar from "../components/NavBar";
-import fogg from "../../images/slide1.jpg";
+import fogg from "../../images/landingPage/4.webp";
+import trainer from "../../images/fogg-clip.png";
 import { Navigate, useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllHomeTrainings } from "../../actions/home/home_action";
 import LoadingOverlay from "react-loading-overlay";
+import { Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 const LandingPage = () => {
   const state = useSelector((state) => state.homeReducer);
@@ -14,6 +17,11 @@ const LandingPage = () => {
   useEffect(() => {
     dispatch(getAllHomeTrainings());
   }, []);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   if (localStorage.getItem("token")) {
     const userData = JSON.parse(localStorage.getItem("data"));
@@ -36,23 +44,164 @@ const LandingPage = () => {
 
   return (
     <LoadingOverlay active={state.loading} spinner text="Loading...">
-      <div>
+      <div className="landing-container"> 
         <NavBar />
         <div className="container-fluid top-margin">
           <div className="row">
-            <div className="top-banner">
-              <img src={fogg} />
+            <div className="col-sm-12 col-lg-6">
+              <div className="top-hedtxt-section">
+                <p className="first-title">Take the first step 
+                <br></br>
+                  to learn with us
+                </p>
+                <p className="banner-des">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <a href="#." className="banner-btn">Get Started for Free</a>
+              </div>
+            </div>
+            <div className="col-sm-12 col-lg-6">
+              <div className="top-banner pt-4">
+                <img src={fogg} />
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-12">
+              <div className="titlepage">
+                <h2>Some <strong className="yellow">important facts</strong></h2>
+                <span>luptatum. Libero eligendi molestias iure error animi totam laudantium, aspernatur similique id eos a
+                  t consectetur illo culpa,</span>
+              </div>
+            </div>
+            <div className="col-12">
+              <div className="important_bg">
+                <div className="container">
+                  <div className="row">
+                    <div className="col col-xs-12">
+                      <div className="important_box">
+                        <h3>200+</h3>
+                        <span>Teachers</span>
+                      </div>
+                    </div>
+                    <div className="col col-xs-12">
+                      <div className="important_box">
+                        <h3>20+</h3>
+                        <span>Colleges</span>
+                      </div>
+                    </div>
+                    <div className="col col-xs-12">
+                      <div className="important_box">
+                        <h3>50+</h3>
+                        <span>Courses</span>
+                      </div>
+                    </div>
+                    <div className="col col-xs-12">
+                      <div className="important_box">
+                        <h3>200+</h3>
+                        <span>Members</span>
+                      </div>
+                    </div>
+                    <div className="col col-xs-12">
+                      <div className="important_box">
+                        <h3>10+</h3>
+                        <span>countries</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row cource-section">
+            <div className="col-12">
+              <div className="titlepage">
+                <h2>Our <strong className="yellow">Courses</strong></h2>
+              </div>
+            </div>  
+            <div className="col-md-6 col-lg-4">
+              <div className="box">
+                <div className="row">
+                  <div className="col-8">
+                      <h4 className="title">
+                          Course Name - <span className="course-nm">Python</span>
+                      </h4>
+                      <p className="course-count">10+ Courses</p>
+                      <div className="">
+                      <a href="#." onClick={handleShow} className="banner-btn posts-btn btn-common">Get Started</a>
+                      </div>
+                  </div>
+                  <div className="col-4">
+                    <i className="icon ti-desktop"></i>
+                  </div>    
+                </div>  
+              </div>  
+            </div> 
+            <div className="col-md-6 col-lg-4">
+              <div className="box">
+                <div className="row">
+                  <div className="col-8">
+                      <h4 className="title">
+                          Course Name - <span className="course-nm">HTML 5</span>
+                      </h4>
+                      <p className="course-count">10+ Courses</p>
+                      <div className="">
+                      <a href="#." onClick={handleShow} className="banner-btn posts-btn btn-common">Get Started</a>
+                      </div>
+                  </div>
+                  <div className="col-4">
+                    <i className="icon ti-html5"></i>
+                  </div>    
+                </div>  
+              </div>  
+            </div> 
+            <div className="col-md-6 col-lg-4">
+              <div className="box">
+                <div className="row">
+                  <div className="col-8">
+                      <h4 className="title">
+                          Course Name - <span className="course-nm">CSS 3</span>
+                      </h4>
+                      <p className="course-count">10+ Courses</p>
+                      <div className="">
+                      <a href="#." onClick={handleShow} className="banner-btn posts-btn btn-common">Get Started</a>
+                      </div>
+                  </div>
+                  <div className="col-4">
+                    <i className="icon ti-css3"></i>
+                  </div>    
+                </div>  
+              </div>  
+            </div>  
+          </div>
+          <div className="row trainer-secton">
+          <div className="col-sm-12 col-lg-6">
+              <div className="top-banner pt-4">
+                <img src={trainer} />
+              </div>
+            </div>
+            <div className="col-sm-12 col-lg-6">
+              <div className="top-hedtxt-section">
+                <p className="first-title">Watch Our Trainers
+                <br></br>
+                in Live Action
+                </p>
+                <p className="banner-des">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <a href="#." className="banner-btn">Click Here</a>
+              </div>
             </div>
           </div>
         </div>
         <div className="container-fluid">
-          <div class="how-to-work pb-lg--7 block-mt">
-            <div class="container">
+          <div className="how-to-work pb-lg--7 block-mt">
+            <div className="container">
               {state.list.length>0 &&
-             <div class="row justify-content-center">
-                <div class="page-title style1 col-xl-6 col-lg-8 col-md-10 text-center mb-5">
-                  <h2 class="block_heading">Trainings</h2>
-                  <p class="fw-300 font-xsss lh-28 text-grey-500">
+             <div className="row justify-content-center">
+                <div className="page-title style1 col-xl-6 col-lg-8 col-md-10 text-center mb-5">
+                  <h2 className="block_heading">Trainings</h2>
+                  <p className="fw-300 font-xsss lh-28 text-grey-500">
                     orem ipsum dolor sit amet, consectetur adipisicing elit, sed
                     do eiusmod tempor incididunt ut labore et dol ad minim
                     veniam, quis nostrud exercitation
@@ -60,7 +209,7 @@ const LandingPage = () => {
                 </div>
               </div>
               }
-              <div class="row">
+              <div className="row">
                 {state.list &&
                   state.list.map((li, i) => (
                     <div className="col-lg-4 mt-3">
@@ -280,7 +429,7 @@ const LandingPage = () => {
           </div>
         </div>
   </div>*/}
-        <div class="footer-wrapper mt-0 bg-dark pt--lg-5">
+        <div class="footer-wrapper mt-0 pt--lg-5">
           <div class="container">
             <div class="row">
               <div class="col-sm-12">
@@ -415,6 +564,64 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
+
+      <Modal className="course-modal" size="lg" onHide={handleClose} show={show} >
+        <Modal.Header>
+          <Modal.Title>
+            <h4 className="course-ttl">Angular</h4>
+            <div className="paths-list-details">
+              <ul>
+                <li>
+                  <span className="ti-video-camera paths-icon" alt="Number of Courses">
+                  </span>
+                  <span>18 courses</span></li>
+                <li>
+                  <span className="ti-time paths-icon" alt="Duration"></span>
+                  <span>65 hours</span></li>
+                <li className="has-projects tooltip-enabled" data-tooltip="Practice by applying it to real-world scenarios.">
+                <span className="ti-settings paths-icon" alt="Project"></span>
+                  <span>1 Project</span>
+                </li>
+              </ul>
+            </div>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <div class="paths-content-description">
+          <p>Angular is a complete JavaScript framework for creating dynamic and interactive applications in HTML. Aside from being one of the hottest frameworks on the web, Angular is easy to learn yet powerful enough to help you develop complex single-page web applications. This path includes content covering Angular 2 and beyond. For the original version, see our AngularJS path.</p>
+            <div class="paths-content-highlight paths-aside-box show-for-large-up">
+
+              <div class="paths-aside-scrollable">
+                <h3>What you will learn</h3>
+                <ul>
+                  <li>Angular core concepts</li>
+                  <li>Angular CLI</li>
+                  <li>Forms</li>
+                  <li>Components</li>
+                  <li>Routing</li>
+                  <li>Services</li>
+                  <li>Dependency injection</li>
+                  <li>Unit testing</li>
+                  <li>Advanced workflows</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        
+        </Modal.Body>
+        <Modal.Footer>
+          <div className="row">
+            <div className="col-6 text-left pl-0">
+              <a href="#." className="banner-btn posts-btn btn-common">Get Started</a>
+            </div>
+            <div className="col-6 text-right">
+              <Button variant="outline-info" onClick={handleClose}>
+                Close
+              </Button>
+            </div>
+          </div>
+        </Modal.Footer>
+      </Modal>
     </LoadingOverlay>
   );
 };

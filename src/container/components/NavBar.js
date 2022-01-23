@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../images/logo.jpg";
+import logo1 from "../../images/logo/logo.svg";
 import { Navigate, Link } from "react-router-dom";
 const NavBar = () => {
   // if(localStorage.getItem('token')){
@@ -17,7 +18,7 @@ const NavBar = () => {
                   Online Learning
                 </span>
               </h1> */}
-              <img src={logo} className="header_logo" />
+              <img src={logo1} className="header_logo" />
               <button
                 className="navbar-toggler"
                 type="button"
