@@ -194,7 +194,8 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
-        <div className="container-fluid">
+  
+    {/*      <div className="container-fluid">
           <div className="how-to-work pb-lg--7 block-mt">
             <div className="container">
               {state.list.length>0 &&
@@ -260,7 +261,7 @@ const LandingPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* <section className="row section-1">
         <div className="col-lg-6 mt-3 sideimg">
