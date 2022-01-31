@@ -7,6 +7,7 @@ import LoadingOverlay from "react-loading-overlay";
 import facebook from "../../images/icon-3.png";
 import google from "../../images/icon-1.png";
 import { Link } from "react-router-dom";
+import { redirectUser } from "../../config/redirect";
 const Login = () => {
   const auth = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
@@ -29,28 +30,9 @@ const Login = () => {
     localStorage.removeItem("redirectLink");
     return <Navigate to={redirectLink} />;
   }
-
   if (!localStorage.getItem("redirectLink") && localStorage.getItem("token")) {
-    const userData = JSON.parse(localStorage.getItem("data"));
-    if (userData.roles.includes("user")) {
-      return <Navigate to="/users" />;
+      redirectUser();     
     }
-    if (userData.roles.includes("provider")) {
-      return <Navigate to="/learning-provider" />;
-    }
-    if (userData.roles.includes("organization")) {
-      return <Navigate to="/organization" />;
-    }
-    if (userData.roles.includes("organization_user")) {
-      return <Navigate to="/ou/home" />;
-    }
-    if (userData.roles.includes("admin")) {
-      return <Navigate to="/admin/home" />;
-    }
-    if (userData.roles.includes("provider_user")) {
-      return <Navigate to="/lpu-home" />;
-    }
-  }
 
   return (
     <LoadingOverlay active={auth.loading} spinner text="Loading...">
@@ -76,6 +58,7 @@ const Login = () => {
                         type="text"
                         className="style2-input pl-5 form-control  font-xsss fw-600"
                         placeholder="Your Email Address"
+                        required
                         value={user.email}
                         onChange={(e) =>
                           setUser({ ...user, email: e.target.value })
@@ -92,6 +75,7 @@ const Login = () => {
                         type="Password"
                         className="style2-input pl-5 form-control font-xss ls-3"
                         placeholder="Password"
+                        required
                         value={user.password}
                         onChange={(e) =>
                           setUser({ ...user, password: e.target.value })

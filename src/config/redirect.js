@@ -1,19 +1,23 @@
 import { Navigate } from "react-router-dom";
-export const redirectUser = () => {
-  const data = localStorage.getItem("data");
-  if (data.roles.includes("user")) {
-       console.log("call")
+
+export function redirectUser() {
+  const userData = JSON.parse(localStorage.getItem("data"));
+  if (userData.roles.includes("user")) {
     return <Navigate to="/users" />;
   }
-
-  if (data.roles.includes("provider")) {
-    return <Navigate to="/learning-provider/home" />;
+  if (userData.roles.includes("provider")) {
+    return <Navigate to="/learning-provider" />;
   }
-
-  if (data.roles.includes("organization")) {
-    return <Navigate to="/organization/home" />;
+  if (userData.roles.includes("organization")) {
+    return <Navigate to="/organization" />;
   }
-  if (data.roles.includes("admin")) {
+  if (userData.roles.includes("organization_user")) {
+    return <Navigate to="/ou/home" />;
+  }
+  if (userData.roles.includes("admin")) {
     return <Navigate to="/admin/home" />;
+  }
+  if (userData.roles.includes("provider_user")) {
+    return <Navigate to="/lpu-home" />;
   }
 }

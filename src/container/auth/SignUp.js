@@ -1,9 +1,10 @@
 import React, { useState, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { signUp, getAllOrganizationRegister } from "../../actions/auth_action";
-import { Navigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 import NavBar from "../components/NavBar";
+import { redirectUser } from "../../config/redirect";
 const SignUp = () => {
   const auth = useSelector((state) => state.authReducer);
   const [user, setUser] = useState({
@@ -37,25 +38,7 @@ const SignUp = () => {
   };
 
   if (localStorage.getItem("token")) {
-    const userData = JSON.parse(localStorage.getItem("data"));
-    if (userData.roles.includes("user")) {
-      return <Navigate to="/users" />;
-    }
-    if (userData.roles.includes("provider")) {
-      return <Navigate to="/learning-provider" />;
-    }
-    if (userData.roles.includes("organization")) {
-      return <Navigate to="/organization" />;
-    }
-    if (userData.roles.includes("admin")) {
-      return <Navigate to="/admin/home" />;
-    }
-    if (userData.roles.includes("provider_user")) {
-      return <Navigate to="/lpu-home" />;
-    }
-    if (userData.roles.includes("organization_user")) {
-      return <Navigate to="/ou/home" />;
-    }
+    redirectUser();
   }
 
   return (
@@ -126,6 +109,7 @@ const SignUp = () => {
                         className="style2-input pl-5 form-control font-xsss fw-600"
                         placeholder="First Name"
                         value={user.first_name}
+                        required
                         onChange={(e) =>
                           setUser({ ...user, first_name: e.target.value })
                         }
@@ -140,6 +124,7 @@ const SignUp = () => {
                       <input
                         type="text"
                         className="style2-input pl-5 form-control font-xsss fw-600"
+                        required
                         placeholder="Last Name"
                         value={user.last_name}
                         onChange={(e) =>
@@ -155,6 +140,7 @@ const SignUp = () => {
                       <input
                         type="text"
                         className="style2-input pl-5 form-control  font-xsss fw-600"
+                        required
                         placeholder="Email Address"
                         value={user.email}
                         onChange={(e) =>
@@ -173,6 +159,7 @@ const SignUp = () => {
                         className="style2-input pl-5 form-control  font-xsss fw-600"
                         placeholder="Mobile Number"
                         value={user.mobile_no}
+                        required
                         onChange={(e) =>
                           setUser({ ...user, mobile_no: e.target.value })
                         }
@@ -187,6 +174,7 @@ const SignUp = () => {
                         type="Password"
                         className="style2-input pl-5 form-control  font-xss ls-3"
                         placeholder="Password"
+                        required
                         value={user.password}
                         onChange={(e) =>
                           setUser({ ...user, password: e.target.value })
@@ -198,7 +186,7 @@ const SignUp = () => {
                       <i className="font-sm ti-lock text-grey-500 pr-0"></i>
                     </div>
                     <div className="form-check text-left mb-3">
-                      <input
+                      {/* <input
                         type="checkbox"
                         className="form-check-input mt-2"
                         id="exampleCheck1"
@@ -208,13 +196,13 @@ const SignUp = () => {
                         htmlFor="exampleCheck1"
                       >
                         Remember me
-                      </label>
-                      <a
-                        href="forgot.html"
+                     </label>*/}
+                      <Link
+                        to="/forgot-password"
                         className="forget-pwd fw-600 font-xsss  mt-1 float-right"
                       >
                         Forgot your Password?
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-sm-12 p-0 text-left">
                       <div className="form-group mb-1">
