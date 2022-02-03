@@ -3,7 +3,7 @@ import { APP_URL,getToken } from "../../config/api";
 import { authHeader } from "../../config/auth_header";
 
 export const errorMessage = (err) => {
-  switch (err.response.status) {
+  switch (err.response) {
     case 422:  
       return { type: "ERROR", payload: err.response.data };
     case 405:

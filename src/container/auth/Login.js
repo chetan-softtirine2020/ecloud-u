@@ -6,6 +6,8 @@ import { logIn } from "../../actions/auth_action";
 import LoadingOverlay from "react-loading-overlay";
 import facebook from "../../images/icon-3.png";
 import google from "../../images/icon-1.png";
+import lognbg from "../../images/login/login-bg.jpg";
+
 import { Link } from "react-router-dom";
 const Login = () => {
   const auth = useSelector((state) => state.authReducer);
@@ -56,10 +58,13 @@ const Login = () => {
     <LoadingOverlay active={auth.loading} spinner text="Loading...">
       <div className="main-wrap">
         <NavBar />
-        <div className="container top-margin">
+        <div className="container login top-margin">
           <div className="row">
-            <div className="col-xl-12 align-items-center d-flex  rounded-lg ">
-              <div className="card shadow-none border-0 ml-auto mr-auto login-card">
+            <div className="col-6 text-right pr-0">
+              <img className="loginbg pr-0" src={lognbg} />
+            </div>
+            <div className="col-6 align-items-left my-4 rounded-lg pl-0">
+              <div className="card shadow-none border-0 login-card">
                 <div className="card-body rounded-0 text-left login_border">
                   <h2 className="fw-700 font-xl display2-md-size login_heading">
                     Login Account
@@ -129,7 +134,7 @@ const Login = () => {
                           type="submit"
                           name="submit"
                           value="Login"
-                          className="form-control text-center style2-input text-white fw-600 login_btn border-0 p-0 "
+                          className="form-control text-center style2-input text-white fw-600 btn-common border-0 p-0 "
                         />
                       </div>
 
@@ -146,32 +151,40 @@ const Login = () => {
                     <h6 className="mb-0 d-inline-block fw-500 font-xsss text-grey-500 mb-3">
                       Or, Sign in with your social account{" "}
                     </h6>
-                    <div className="form-group mb-1">
-                      <a
-                        href="#"
-                        className="form-control text-left style2-input text-white fw-600 bg-facebook border-0 p-0 mb-2"
-                      >
-                        <img
-                          src={google}
-                          alt="icon"
-                          className="ml-2 w40 mb-1 mr-5"
-                        />{" "}
-                        Sign in with Google
-                      </a>
+                    <div className="row">
+                      <div className="col-6">
+                        <div className="form-group mb-1">
+                          <a
+                            href="#"
+                            className="form-control text-left style2-input text-white fw-600 bg-facebook border-0 p-0 mb-2"
+                          >
+                            <img
+                              src={google}
+                              alt="icon"
+                              className="ml-2 w40 mb-1 mr-1"
+                            />{" "}
+                            Sign in with Google
+                          </a>
+                        </div>
+                      </div>
+                      <div className="col-6 pl-0">
+                        <div className="form-group mb-1">
+                          <a
+                            href="#"
+                            className="form-control text-left style2-input text-white fw-600 bg-twiiter border-0 p-0 "
+                          >
+                            <img
+                              src={facebook}
+                              alt="icon"
+                              className="ml-2 w40 mb-1 mr-1"
+                            />{" "}
+                            Sign in with Facebook
+                          </a>
+                        </div>
+                      </div>
                     </div>
-                    <div className="form-group mb-1">
-                      <a
-                        href="#"
-                        className="form-control text-left style2-input text-white fw-600 bg-twiiter border-0 p-0 "
-                      >
-                        <img
-                          src={facebook}
-                          alt="icon"
-                          className="ml-2 w40 mb-1 mr-5"
-                        />{" "}
-                        Sign in with Facebook
-                      </a>
-                    </div>
+
+
                   </div>
                 </div>
               </div>

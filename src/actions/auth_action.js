@@ -4,7 +4,7 @@ import { authHeader } from "../config/auth_header";
 const tokenn = localStorage.getItem("token");
 
 export const errorMessage = (err) => {
-  switch (err.response.status) {
+  switch (err.response) {
     case 422:
       return { type: "ERROR", payload: err.response.data };
     case 405:

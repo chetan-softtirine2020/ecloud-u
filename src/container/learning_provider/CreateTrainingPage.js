@@ -32,8 +32,8 @@ const CreateTrainingPage = () => {
       content={
         <div className="middle-sidebar-left">
           <div className="">
-            <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
-              <div className="card-body p-3 w-100 bg-current border-0 d-flex rounded-lg">
+            <div className="card">
+              <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
                 <a href="default-settings.html" className="d-inline-block mt-2">
                   <i className="ti-arrow-left font-sm text-white"></i>
                 </a>
@@ -41,15 +41,15 @@ const CreateTrainingPage = () => {
                   Create Training
                 </h4>
               </div>
-              <div className="card-body p-4 w-100 border-0 ">
+              <div className="card-body w-100 border-0 ">
                 <form onSubmit={handleSubmit}>
                   <div className="row">
-                    <div className="col-lg-6 mb-2">
+                    <div className="col-lg-8 mb-2">
                       <div className="form-group">
                         <label className="mont-font fw-600 font-xsss">
                           Training Name
                         </label>
-                        <input
+                        <input placeholder="Enter Training Name..."
                           type="text"
                           className="form-control"
                           value={traning.name}
@@ -62,12 +62,12 @@ const CreateTrainingPage = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="col-lg-6 mb-2">
+                    <div className="col-lg-4 mb-2">
                       <div className="form-group">
                         <label className="mont-font fw-600 font-xsss">
-                          Date&Time
+                          Date & Time
                         </label>
-                        <DatePicker
+                        <DatePicker className="form-control"
                           selected={traning.date}
                           onChange={(date) =>
                             setTraining({ ...traning, date: date })
@@ -87,7 +87,7 @@ const CreateTrainingPage = () => {
                         Description
                       </label>
                       <textarea
-                        className="form-control mb-0 p-3 h100 bg-greylight lh-16"
+                        className="form-control mb-0 p-3 h100 lh-16"
                         rows="5"
                         placeholder="Write your message..."
                         spellCheck="true"
@@ -104,12 +104,12 @@ const CreateTrainingPage = () => {
                       </span>
                     </div>
 
-                    <div className="col-lg-12">
+                    <div className="col-lg-12 my-3">
                       <input
                         type="submit"
                         name="submit"
                         value="Submit"
-                        className="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-lg d-inline-block"
+                        className="btn-common px-5"
                       />
                     </div>
                   </div>

@@ -31,9 +31,10 @@ const RegisterOrganization = () => {
     <div>
       <LoadingOverlay active={data.loading} spinner text="Loading...">
         <NavBar />
-        <div className="container top-margin">
-          <div className="col-sm-12 pt-4">
-            <div className="card-body p-lg-5 p-4 w-100 border-0 bg-white shadow-lg">
+        <div className="container org-reg top-margin pb-4">
+          <div className="col-sm-12 pt-4 mb-5">
+          <div className="card bg-theme-color shadow-lg rounded-lg ">
+            <div className="card-body p-lg-5 p-4 w-100 border-0 shadow-lg">
               {data.is_done && (
                 <div class="alert alert-success">
                   <strong>
@@ -98,7 +99,7 @@ const RegisterOrganization = () => {
                       Description
                     </label>
                     <textarea
-                      className="form-control mb-0 p-3 h100 bg-greylight lh-16"
+                      className="form-control mb-0 p-3 h100 lh-16"
                       rows="5"
                       placeholder="Write your message..."
                       spellCheck="false"
@@ -114,12 +115,13 @@ const RegisterOrganization = () => {
                         type="submit"
                         name="submit"
                         value="Submit"
-                        className="rounded-lg style1-input bg-current text-white text-center font-xss fw-500 border-2 border-0 p-0 w150"
+                        className="rounded-lg style1-input btn-common text-white text-center font-xss fw-500 border-2 border-0 p-0 w150"
                       />
                     </div>
                   </div>
                 </div>
               </form>
+            </div>
             </div>
           </div>
         </div>

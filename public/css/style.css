@@ -1910,7 +1910,26 @@ pre code {
   margin-left: auto;
 }
 .top-margin{
-  margin-top: 75px;
+  margin-top: 125px;
+}
+
+.login  .form-control, .login-reg .form-control,
+.login  .form-control:hover, .login-reg .form-control:hover,
+.login  .form-control:focus, .login-reg .form-control:focus {
+  background-color: #212121;
+  color:#fff;
+  border-color: #fff;
+  font-weight: 400;
+}
+.login .loginbg{
+  width: 500px;
+  height: 515px;
+  padding: 25px;
+}
+.login-reg .loginbg{
+  width: 500px;
+  height: 648px;
+  padding: 25px;
 }
 
 /* css for landng page  */
@@ -2158,6 +2177,103 @@ pre code {
   padding: 3px 10px;
     border: 2px solid #eee;
     border-radius: 4px;
+}
+
+.middle-sidebar-left .card {
+  color:#fff;
+}
+.middle-sidebar-left .card .card-header{
+  background-color: #1a1a1a;
+}
+.middle-sidebar-left .card .card-header h4 {
+  display: inline-block;
+}
+
+.middle-sidebar-left .card .form-control{
+  color: #fff;
+  background-color: #212121;
+}
+.middle-sidebar-left .card .form-control:hover,
+.middle-sidebar-left .card .form-control:focus{
+  color: #fff;
+  background-color: #212121;
+  border-color: #fff;
+}
+
+.middle-sidebar-left .card .react-datepicker__navigation-icon {
+  position: relative;
+  top: 10px;
+  font-size: 20px;
+  width: 0;
+}
+
+
+.lrn-provider .card{
+  border-radius: 4px;
+  font-size: 14px;
+  color:#fff;
+}
+.lrn-provider .card .card-header{
+  padding: 10px;
+}
+.lrn-provider .paths-list-details ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.lrn-provider .paths-list-details ul li {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #222222;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-right: 10px;
+}
+.lrn-provider .paths-list-details .paths-icon {
+  padding-right: 6px;
+  font-size: 18px;
+}
+.lrn-provider .card .card-header h4{
+  color:#fff;
+}
+.lrn-provider .card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+}
+.dash-heading {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.org-reg .card{
+  background-color: #0c0c0c;
+  color: #fff;
+}
+.org-reg .card .form-control,
+.org-reg .card .form-control{
+  background-color: #0c0c0c;
+  color: #fff;
+  border-color: #fff;
+}
+
+.btn-common{
+  padding: 0.6em 1em;
+  font-size: 0.9em;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 0.3em;
+  text-transform: uppercase;
+  background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28);
+  background-size: 300% 100%;
+  transition: all .6s ease-in-out;
+}
+.btn-common:hover, .btn-common:focus{
+color:#fff;
 }
 
 @media (min-width: 576px) {
@@ -15706,8 +15822,8 @@ select.sort {
 }
 
 .animation-spin {
-  -webkit-animation: fa-spin 2s infinite linear;
-  animation: fa-spin 2s infinite linear;
+  /* -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear; */
 }
 
 @-webkit-keyframes fa-spin {
@@ -16638,8 +16754,12 @@ select.sort {
   margin-top: 1em !important;
 }
 .approve_btn{
-  color: #46ac19;
-  font-weight: 600;
+  color: #fff;
+  font-weight: 400;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.approve_btn:hover,.approve_btn:focus{
+  color: #fff;
 }
