@@ -1,11 +1,10 @@
 import React from "react";
-import logo from "../../images/logo.jpg";
 import logo1 from "../../images/logo/logo.svg";
 import { Navigate, Link } from "react-router-dom";
 const NavBar = () => {
-  // if(localStorage.getItem('token')){
-  //   return <Navigate to="/users"/>
-  //  }
+  if (localStorage.getItem("token")) {
+    return <Navigate to="/users" />;
+  }
   return (
     <div>
       <div className="header-wrapper shadow-xss pos-fixed p-2 pt-2">
@@ -18,7 +17,9 @@ const NavBar = () => {
                   Online Learning
                 </span>
               </h1> */}
-              <img src={logo1} className="header_logo" />
+              <Link to={"/"}>
+                <img src={logo1} className="header_logo" />
+              </Link>
               <button
                 className="navbar-toggler"
                 type="button"
@@ -38,7 +39,7 @@ const NavBar = () => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to={"register-organization"}>
+                    <Link className="nav-link" to={"/register-organization"}>
                       Organization Register
                     </Link>
                   </li>
@@ -47,7 +48,7 @@ const NavBar = () => {
                       Register Organization
                     </Link>
                   */}
-                  </li>                
+                  </li>
                 </ul>
               </div>
             </div>

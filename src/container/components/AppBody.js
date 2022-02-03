@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import SiteBar from "../components/SiteBar";
 import AppNavBar from "../components/AppNavBar";
 import { Navigate } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 const AppBody = (props) => {
-  
+ 
   if (!localStorage.getItem("token") && localStorage.getItem("redirectLink")) {
     return <Navigate to="/login" />;
   }

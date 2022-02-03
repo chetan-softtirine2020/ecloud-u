@@ -6,6 +6,7 @@ import {
   updateApproveOrganization,
 } from "../../actions/admin/admin_org_action";
 import {useNavigate} from "react-router-dom";
+import { redirectUser } from "../../config/redirect";
 const NewRegisterOrganizations = () => {
   const state = useSelector((state) => state.adminOrgReducer);
   const dispatch = useDispatch();
@@ -17,9 +18,11 @@ const NewRegisterOrganizations = () => {
   const handelClick = (id, status) => {
     dispatch(updateApproveOrganization({ org_id: id, is_approved: status }));
   };
-  
    if(state.is_done){
     navigate("/admin/organizations");
+   }
+   if (localStorage.getItem("token")) {
+     redirectUser();   
    }
   return (
     <AppBody
