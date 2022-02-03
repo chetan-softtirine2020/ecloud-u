@@ -3,21 +3,21 @@ import { Navigate } from "react-router-dom";
 export function redirectUser() {
   const userData = JSON.parse(localStorage.getItem("data"));
   if (userData.roles.includes("user")) {
-    return <Navigate to="/users" />;
+    return "/users";
   }
   if (userData.roles.includes("provider")) {
-    return <Navigate to="/learning-provider" />;
+    return "/learning-provider";
   }
   if (userData.roles.includes("organization")) {
-    return <Navigate to="/organization" />;
+    return "/organization";
   }
   if (userData.roles.includes("organization_user")) {
-    return <Navigate to="/ou/home" />;
+    return "/ou/home";
   }
   if (userData.roles.includes("admin")) {
-    return <Navigate to="/admin/home" />;
+    return "/admin/home";
   }
   if (userData.roles.includes("provider_user")) {
-    return <Navigate to="/lpu-home" />;
+    return "/lpu-home";
   }
 }

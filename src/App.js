@@ -27,6 +27,7 @@ import OrgUserDashboard from "./container/organization/org_user/OrgUserDashboard
 import EducloundMeet from "./container/EducloundMeet";
 import ShowAllTrainingsDetails from "./container/learning_provider/ShowAllTrainingsDetails";
 import JoinedTrainingUserDetails from "./container/learning_provider/JoinedTrainingUserDetails";
+import ChangePasswordPage from "./container/auth/ChangePasswordPage";
 function App() {
   const auth = useSelector((state) => state.authReducer);
   return (
@@ -38,12 +39,12 @@ function App() {
             caseSensitive={false}
             element={<EducloundMeet />}
           />
-        <Route
-          path={"/my-trainings"}
-          caseSensitive={false}
-          element={<UserWiseTraining />}
-        />
-          
+          <Route
+            path={"/my-trainings"}
+            caseSensitive={false}
+            element={<UserWiseTraining />}
+          />
+
           <Route
             path={"/admin/home"}
             caseSensitive={false}
@@ -124,19 +125,23 @@ function App() {
             caseSensitive={false}
             element={<ShowAllTrainings />}
           />
-          
+
           <Route
             path={"/joined-trainings"}
             caseSensitive={false}
             element={<ShowAllTrainingsDetails />}
           />
           <Route
-          path={"/joined-training-users/:slug"}
-          caseSensitive={false}
-          element={<JoinedTrainingUserDetails/>}
-        />
-          
-
+            path={"/joined-training-users/:slug"}
+            caseSensitive={false}
+            element={<JoinedTrainingUserDetails />}
+          />
+          <Route
+            path={"/change-password"}
+            caseSensitive={false}
+            element={<ChangePasswordPage/>}
+          />
+       
         </Fragment>
 
         {Object.keys(auth).length && hasRole(auth, ["organization"]) && (

@@ -65,6 +65,14 @@ const authReducer = (state = initState, { type, payload }) => {
         errors: [],
         list: payload,
       };     
+
+      case "CHANGE_PASSWORD":
+        return {
+          ...state,
+          loading: false,
+          errors: [],
+          is_done:true,
+        }; 
        
     default:
       return state;

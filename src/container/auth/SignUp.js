@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { signUp, getAllOrganizationRegister } from "../../actions/auth_action";
-import { Link} from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 import NavBar from "../components/NavBar";
 import { redirectUser } from "../../config/redirect";
@@ -38,7 +38,7 @@ const SignUp = () => {
   };
 
   if (localStorage.getItem("token")) {
-    redirectUser();
+    return <Navigate to={redirectUser()} />;
   }
 
   return (

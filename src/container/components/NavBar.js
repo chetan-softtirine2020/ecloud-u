@@ -1,10 +1,11 @@
 import React from "react";
 import logo1 from "../../images/logo/logo.svg";
-import { Navigate, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
+//import {redirectUser} from "../../config/redirect"; 
 const NavBar = () => {
-  if (localStorage.getItem("token")) {
-    return <Navigate to="/users" />;
-  }
+  // if (localStorage.getItem("token")) {
+  //   redirectUser();
+  // }
   return (
     <div>
       <div className="header-wrapper shadow-xss pos-fixed p-2 pt-2">

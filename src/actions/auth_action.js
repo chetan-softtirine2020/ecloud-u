@@ -1,5 +1,5 @@
 import axios from "axios";
-import { APP_URL } from "../config/api";
+import { APP_URL,getToken } from "../config/api";
 import { authHeader } from "../config/auth_header";
 const tokenn = localStorage.getItem("token");
 
@@ -17,7 +17,7 @@ export const errorMessage = (err) => {
     case 403:
       return {
         type: "ERROR",
-        payload: { other_error: "Username and Password Incorrect." },
+        payload: { other_error: "Please Enrter Correct Password." },
       };
     default:
       return {
@@ -180,15 +180,28 @@ export const resetPassword = (cred) => {
       });
   };
 };
-
 export const changePassword = (cred) => {
   return (dispatch) => {
+    dispatch({
+      type: "AUTH_REQUEST",
+    });
     axios
-      .post(`${APP_URL}/change-password`, cred)
-      .then((response) => {
+      .request({
+        method: "post",
+        url: `${APP_URL}/change-password`,
+        data: cred,
+        headers: {
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
         dispatch({
           type: "CHANGE_PASSWORD",
-          token: response.data,
+          payload: res.data,
         });
       })
       .catch((error) => {

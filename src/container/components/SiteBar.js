@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { singOut } from "../../actions/auth_action";
 import { useNavigate, Link, useLocation } from "react-router-dom";
-import logo from "../../images/logo.jpg";
 const SiteBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -54,6 +53,7 @@ const SiteBar = () => {
                     <span>Create Training</span>
                   </Link>
                 </li>
+
                 <li class="flex-lg-brackets">
                   <Link
                     to={"/all-trainings"}
@@ -73,7 +73,7 @@ const SiteBar = () => {
                     class={`nav-content-bttn open-font ${
                       location.pathname === "/joined-trainings" ? "active" : ""
                     }`}
-                   >
+                  >
                     <i class="feather-video mr-3"></i>
                     <span>Joined Tranings</span>
                   </Link>
@@ -300,10 +300,13 @@ const SiteBar = () => {
               </li>
               <li class="logo d-none d-xl-block d-lg-block"></li>
               <li>
-                <a href="#" class="nav-content-bttn open-font h-auto pt-2 pb-2">
+                <Link
+                  to={"/change-password"}
+                  class="nav-content-bttn open-font h-auto pt-2 pb-2"
+                >
                   <i class="font-sm feather-pie-chart mr-3 "></i>
                   <span>Change Password</span>
-                </a>
+                </Link>
               </li>
               <li>
                 <a

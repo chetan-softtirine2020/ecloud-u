@@ -31,8 +31,8 @@ const Login = () => {
     return <Navigate to={redirectLink} />;
   }
   if (!localStorage.getItem("redirectLink") && localStorage.getItem("token")) {
-      redirectUser();     
-    }
+    return <Navigate to={ redirectUser()}/>;
+  }
 
   return (
     <LoadingOverlay active={auth.loading} spinner text="Loading...">
