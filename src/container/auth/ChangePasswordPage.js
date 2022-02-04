@@ -33,21 +33,21 @@ const ChangePasswordPage = () => {
       loading={state.loading}
       content={
         <div className="middle-sidebar-left">
-          <div className="">
-            <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
-              <div className="card-body p-3 w-100 bg-current border-0 d-flex rounded-lg">
-                <a href="default-settings.html" className="d-inline-block mt-2">
-                  <i className="ti-arrow-left font-sm text-white"></i>
-                </a>
-                <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
+        <div className="">
+          <div className="card">
+            <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
+              <a href="default-settings.html" className="d-inline-block mt-2">
+                <i className="ti-arrow-left font-sm text-white"></i>
+              </a>
+              <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
                   Change Password
                 </h4>
               </div>
-            
+               {state.is_done&& 
               <div className="alert alert-success" role="alert">
                    Password change successfully!
               </div>
-            
+               }
               <div className="card-body p-4 w-100 border-0 ">
                 <form onSubmit={handleSubmit}>
                   <div className="row">
@@ -116,14 +116,14 @@ const ChangePasswordPage = () => {
                       </span>
                     </div>
 
-                    <div className="col-lg-12">
-                      <input
-                        type="submit"
-                        name="submit"
-                        value="Submit"
-                        className="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-lg d-inline-block"
-                      />
-                    </div>
+                    <div className="col-lg-12 my-3">
+                    <input
+                      type="submit"
+                      name="submit"
+                      value="Submit"
+                      className="btn-common px-5"
+                    />
+                  </div>
                   </div>
                 </form>
               </div>

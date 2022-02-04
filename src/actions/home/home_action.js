@@ -1,8 +1,10 @@
 import axios from "axios";
 import { APP_URL } from "../../config/api";
 
+
+
 export const errorMessage = (err) => {
-  switch (err.response.status) {
+  switch (err.response) {
     case 422:
       return { type: "HOME_ERROR", payload: err.response.data };
     case 405:

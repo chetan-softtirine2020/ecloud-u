@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { singOut } from "../../actions/auth_action";
 import { useNavigate, Link, useLocation } from "react-router-dom";
+import logo from "../../images/logo.jpg";
+import logo1 from "../../images/logo/logo.svg";
 const SiteBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ const SiteBar = () => {
           <div class="nav-content">
             <div class="nav-top">
               <Link to={"/"}>
+              {/* <img src={logo1} /> */}
                 <span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xl logo-text mb-0">
                   Educloudlabs{" "}
                 </span>

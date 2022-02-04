@@ -17,47 +17,64 @@ const LearningProviderDashboard = () => {
     <AppBody
       loading={state.loading}
       content={
-        <div className="middle-sidebar-left">
+        <div className="middle-sidebar-left lrn-provider">
           <div className="row">
-            <div className="col-lg-12 mt-3">
+            <div className="col-lg-12">
               <h1 className="dash-heading">Upcomming Trainings</h1>
             </div>
             {state.list &&
               state.list.map((li, i) => (
                 <div className="col-lg-4 mt-3" key={i+1}>
-                  <div className="card bg-theme-color shadow-lg rounded-lg ">
-                    <div className="card-body p-2">
-                      <span className="font-xsss fw-700  pr-3 lh-32 text-uppercase rounded-lg ls-2 d-inline-block text-success mr-1">
-                        Date
-                      </span>
-                      <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
-                        <span className="font-xsssss" />
-                        {li.date}
-                      </span>
-                      <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
-                        <Link
-                          to={"/training/" + li.slug}
-                          className="text-dark text-grey-900"
-                        >
-                          {li.name}{" "}
-                        </Link>
-                      </h4>
+                  <div className="card bg-theme-color shadow-lg">
+                    <div className="card-header">
                       <div className="row">
-                        <div className="col-xs-6 col-sm-6">
-                          <a
-                            href="#."
-                            className="p-2 w100 d-inline-block rounded-lg font-xsss fw-700 ls-lg block_btn"
-                          ></a>
-                        </div>
-                        <div className="col-xs-6 col-sm-6 text-right">
+                      <div className="col-7">
+                        <h4 className="fw-700 font-xss my-1">
                           <Link
                             to={"/training/" + li.slug}
-                            className="p-2 w100 d-inline-block rounded-lg font-xsss fw-700 ls-lg block_btn"
+                            className="text-grey-900"
+                          >
+                            {li.name}{" "}
+                          </Link>
+                        </h4>
+                        </div>  
+                        <div className="col-5 pl-0">
+                        <Link
+                            to={"/training/" + li.slug}
+                            className="btn-common"
                           >
                            Join Training
                           </Link>
+                        </div> 
+
+                      </div> 
+                      </div>
+                    <div className="card-body p-2">
+                    <div className="row">
+                        <div className="col-12">
+                          <span><strong>Date :</strong></span>
+                          <span> {li.date}</span>
                         </div>
                       </div>
+                      <div className="row my-1">
+                          <div className="col-12">
+                          <div className="paths-list-details">
+                              <ul>
+                                <li>
+                                  <span className="ti-video-camera paths-icon" alt="Number of Courses">
+                                  </span>
+                                  <span>18 courses</span></li>
+                                <li>
+                                  <span className="ti-time paths-icon" alt="Duration"></span>
+                                  <span>65 hours</span></li>
+                                <li className="has-projects tooltip-enabled" data-tooltip="Practice by applying it to real-world scenarios.">
+                                <span className="ti-settings paths-icon" alt="Project"></span>
+                                  <span>1 Project</span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>  
+                      </div>  
                     </div>
                   </div>
                 </div>
@@ -67,25 +84,53 @@ const LearningProviderDashboard = () => {
               <h1 className="dash-heading">Dashboard</h1>
             </div>
             {statCard.map((number) => (
-              <div className="col-lg-3 mt-3" key={number}>
-                <div className="card bg-theme-color shadow-lg rounded-lg ">
-                  <div className="card-body p-2">
-                    <span className="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 alert-warning d-inline-block text-warning mr-1">
-                      Python
-                    </span>
-                    <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
-                      <span className="font-xsssss">$</span> 240
-                    </span>
-                    <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
-                      <a
-                        href="default-course-details.html"
-                        className="text-dark text-grey-900"
-                      >
-                        Total User{" "}
-                      </a>
-                    </h4>
+              <div className="col-lg-4 mt-3" key={number}>
+                <div className="card bg-theme-color shadow-lg">
+                    <div className="card-header">
+                      <div className="row">
+                      <div className="col-7">
+                        <h4 className="fw-700 font-xss my-1">
+                            Angular
+                        </h4>
+                        </div>  
+                        <div className="col-5 pl-0">
+                        <Link
+                            to={"/training/"}
+                            className="btn-common"
+                          >
+                          Join Training
+                          </Link>
+                        </div> 
+
+                      </div> 
+                      </div>
+                    <div className="card-body p-2">
+                      <div className="row">
+                        <div className="col-12">
+                            Total User : {" "}
+                        </div>
+                      </div>
+                      <div className="row my-1">
+                          <div className="col-12">
+                          <div className="paths-list-details">
+                              <ul>
+                                <li>
+                                  <span className="ti-video-camera paths-icon" alt="Number of Courses">
+                                  </span>
+                                  <span>18 courses</span></li>
+                                <li>
+                                  <span className="ti-time paths-icon" alt="Duration"></span>
+                                  <span>65 hours</span></li>
+                                <li className="has-projects tooltip-enabled" data-tooltip="Practice by applying it to real-world scenarios.">
+                                <span className="ti-settings paths-icon" alt="Project"></span>
+                                  <span>1 Project</span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>  
+                      </div>  
+                    </div>
                   </div>
-                </div>
               </div>
             ))}
           </div>

@@ -4,6 +4,7 @@ import { signUp, getAllOrganizationRegister } from "../../actions/auth_action";
 import { Navigate, Link } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 import NavBar from "../components/NavBar";
+import lognbg from "../../images/login/login-bg.jpg";
 import { redirectUser } from "../../config/redirect";
 const SignUp = () => {
   const auth = useSelector((state) => state.authReducer);
@@ -45,10 +46,13 @@ const SignUp = () => {
     <LoadingOverlay active={auth.loading} spinner text="Loading...">
       <div className="main-wrap">
         <NavBar />
-        <div className="container top-margin">
+        <div className="container login-reg top-margin">
           <div className="row">
-            <div className="col-xl-12 align-items-center d-flex  rounded-lg ">
-              <div className="card shadow-none border-0 ml-auto mr-auto login-card">
+          <div className="col-6 text-right pr-0">
+              <img className="loginbg pr-0" src={lognbg} />
+            </div>
+            <div className="col-6 align-items-left my-4 rounded-lg pl-0">
+              <div className="card shadow-none border-0">
                 <div className="card-body rounded-0 text-left login_border">
                   <h2 className="fw-700 font-xl display2-md-size login_heading">
                     Register Account <br />
@@ -59,7 +63,7 @@ const SignUp = () => {
                       : ""}{" "}
                   </span>
                   <form onSubmit={handleSubmit}>
-                    <div className="form-group icon-input mb-1">
+                    <div className="form-group icon-input mb-3">
                       <select
                         name="user_type"
                         className="style2-input pl-5 form-control font-xss ls-3"
@@ -72,7 +76,7 @@ const SignUp = () => {
                         <option value={3}>Learning Provider</option>
                         <option value={6}>Organization</option>
                       </select>
-                      <i className="font-sm ti-lock text-grey-500 pr-0"></i>
+                      <i className="font-sm ti-user text-grey-500 pr-0"></i>
                       <span className="error-msg">
                         {auth.errors.user_type ? auth.errors.user_type : ""}
                       </span>
@@ -103,7 +107,7 @@ const SignUp = () => {
                       </div>
                     )}
                     <div className="form-group icon-input mb-3">
-                      <i className="font-sm ti-email text-grey-500 pr-0"></i>
+                      <i className="font-sm ti-user text-grey-500 pr-0"></i>
                       <input
                         type="text"
                         className="style2-input pl-5 form-control font-xsss fw-600"
@@ -120,7 +124,7 @@ const SignUp = () => {
                     </div>
 
                     <div className="form-group icon-input mb-3">
-                      <i className="font-sm ti-email text-grey-500 pr-0"></i>
+                      <i className="font-sm ti-user text-grey-500 pr-0"></i>
                       <input
                         type="text"
                         className="style2-input pl-5 form-control font-xsss fw-600"
@@ -153,7 +157,7 @@ const SignUp = () => {
                     </div>
 
                     <div className="form-group icon-input mb-3">
-                      <i className="font-sm ti-email text-grey-500 pr-0"></i>
+                      <i className="font-sm ti-headphone-alt text-grey-500 pr-0"></i>
                       <input
                         type="text"
                         className="style2-input pl-5 form-control  font-xsss fw-600"
@@ -210,7 +214,7 @@ const SignUp = () => {
                           type="submit"
                           name="submit"
                           value="Register"
-                          className="form-control text-center style2-input text-white fw-600 login_btn border-0 p-0 "
+                          className="form-control text-center style2-input text-white fw-600 btn-common border-0 p-0 "
                         />
                       </div>
                     </div>
