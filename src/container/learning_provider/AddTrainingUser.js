@@ -55,13 +55,13 @@ const AddTrainingUser = () => {
       loading={state.loading}
       content={
         <div className="middle-sidebar-left">
-          <div className="">
-            <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
-              <div className="card-body p-4 w-100 bg-current border-0 d-flex rounded-lg">
-                <a href="default-settings.html" className="d-inline-block mt-2">
-                  <i className="ti-arrow-left font-sm text-white"></i>
-                </a>
-                <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
+        <div className="">
+          <div className="card">
+            <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
+              <a href="default-settings.html" className="d-inline-block mt-2">
+                <i className="ti-arrow-left font-sm text-white"></i>
+              </a>
+              <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
                   Add Training User
                 </h4>
               </div>
@@ -78,7 +78,7 @@ const AddTrainingUser = () => {
                     (column name must be
                       first_name,last_name,mobile_no,email)
                   </div>
-                  <h1>Import Excel </h1>
+                  <h1 className="text-white">Import Excel </h1>
                   <div className={"row"}>
                     <div className="col-lg-6 mb-2">
                       <label className="mont-font fw-600 font-xsss">
@@ -100,18 +100,18 @@ const AddTrainingUser = () => {
                       </span>
                       </div>
                     </div>
-                    <div className="col-lg-3 mb-2">
+                    <div className="col-lg-3">
                       <input
                         type="submit"
                         name="submit"
                         value="Upload"
-                        className="bg-current text-center text-white font-xsss fw-500 p-1 w100 rounded-lg d-inline-block mr-t35"
+                        className="btn-common px-5 mt-30"
                       />
                     </div>
                   </div>
                 </form>
 
-                <h1>Add Single </h1>
+                <h1 className="text-white">Add Single </h1>
                 <form onSubmit={handleFormSubmit}>
                   <div className="row">
                     <div className="col-lg-6 mb-3">
@@ -201,7 +201,7 @@ const AddTrainingUser = () => {
                         type="submit"
                         name="submit"
                         value="Submit"
-                        className="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-lg d-inline-block"
+                        className="btn-common px-5"
                       />
                     </div>
                   </div>

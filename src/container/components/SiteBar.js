@@ -20,7 +20,7 @@ const SiteBar = () => {
           <div class="nav-content">
             <div class="nav-top">
               <Link to={"/"}>
-              {/* <img src={logo1} /> */}
+                {/* <img src={logo1} /> */}
                 <span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xl logo-text mb-0">
                   Educloudlabs{" "}
                 </span>
@@ -289,18 +289,20 @@ const SiteBar = () => {
             )}
 
             <ul>
-              <li>
-                <Link
-                  to={"/my-trainings"}
-                  class={`nav-content-bttn open-font ${
-                    location.pathname === "/my-trainings" ? "active" : ""
-                  }`}
-                  data-tab="favorites"
-                >
-                  <i class="feather-play-circle mr-3"></i>
-                  <span>My Trainigs</span>
-                </Link>
-              </li>
+              {!userData.roles.includes("admin") && (
+                <li>
+                  <Link
+                    to={"/my-trainings"}
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/my-trainings" ? "active" : ""
+                    }`}
+                    data-tab="favorites"
+                  >
+                    <i class="feather-play-circle mr-3"></i>
+                    <span>My Trainigs</span>
+                  </Link>
+                </li>
+              )}
               <li class="logo d-none d-xl-block d-lg-block"></li>
               <li>
                 <Link

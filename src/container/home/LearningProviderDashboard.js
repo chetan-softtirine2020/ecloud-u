@@ -11,7 +11,7 @@ const LearningProviderDashboard = () => {
     dispatch(getDashboardData());
   }, []);
 
-  const statCard = [1, 2, 3, 4];
+  const statCard = [1];
 
   return (
     <AppBody
