@@ -42,10 +42,10 @@ const Login = () => {
         <NavBar />
         <div className="container login top-margin">
           <div className="row">
-            <div className="col-6 text-right pr-0">
+            <div className="d-none d-lg-block col-lg-6 text-right pr-0">
               <img className="loginbg pr-0" src={lognbg} />
             </div>
-            <div className="col-6 align-items-left my-4 rounded-lg pl-0">
+            <div className="col-sm-12 col-lg-6 align-items-left my-4 rounded-lg pl-0">
               <div className="card shadow-none border-0 login-card">
                 <div className="card-body rounded-0 text-left login_border">
                   <h2 className="fw-700 font-xl display2-md-size login_heading">
@@ -136,7 +136,7 @@ const Login = () => {
                       Or, Sign in with your social account{" "}
                     </h6>
                     <div className="row">
-                      <div className="col-6">
+                      <div className="col-sm-12 col-md-6">
                         <div className="form-group mb-1">
                           <a
                             href="#"
@@ -151,7 +151,7 @@ const Login = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="col-6 pl-0">
+                      <div className="col-sm-12 col-md-6">
                         <div className="form-group mb-1">
                           <a
                             href="#"
