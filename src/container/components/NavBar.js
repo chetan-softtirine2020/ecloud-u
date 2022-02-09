@@ -44,6 +44,17 @@ const NavBar = () => {
                       Organization Register
                     </Link>
                   </li>
+                  <li className="d-block d-sm-none nav-item">
+                  <Link to={"/login"} className="header-btn">
+                    Login
+                  </Link>
+              
+                  </li>
+                  <li className="d-block d-sm-none nav-item">
+                  <Link to={"/register"} className="header-btn">
+                    Register
+                  </Link>
+                  </li>
                   <li className="nav-item">
                     {/* <Link className="nav-link" to={"/register-organization"}>
                       Register Organization
@@ -53,7 +64,7 @@ const NavBar = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-lg-3 text-right header-btn ">
+            <div className="col-lg-3 d-none d-lg-block text-right header-btn ">
               <Link to={"/login"} className="header-btn">
                 Login
               </Link>

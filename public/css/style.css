@@ -13645,12 +13645,13 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
 }
 @media only screen and (max-width: 768px) {
   .header-wrapper.pos-fixed .navbar-collapse {
-    background-color: #fff;
+    background-color: #212121;
     padding: 0 10px;
     border-radius: 6px;
     margin-top: 10px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08) !important;
   }
+
   .font-xxl {
     font-size: 28px !important;
   }
@@ -13676,6 +13677,9 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
 
 
 @media only screen and (max-width: 992px) {
+  .login-card {
+    margin: 0 auto;
+  }
   .header-wrapper .nav-menu {
     margin-left: 0;
     width: 100%;
@@ -13804,7 +13808,7 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
 @media only screen and (max-width: 992px) {
   .header-wrapper .nav-menu li a {
     padding: 0;
-    color: #777 !important;
+    color: #fff !important;
   }
 }
 .header-wrapper .nav-menu.bg-dark li .nav-link {
@@ -16494,6 +16498,13 @@ select.sort {
   }
 }
 @media (max-width: 768px) {
+
+  .pl-0{
+    padding-left: 15px !important;
+  }
+  .my-4{
+    margin-top: 15px !important;
+  }
   .col-xs-6 {
     flex: 0 0 50%;
     max-width: 50%;
