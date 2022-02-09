@@ -121,7 +121,7 @@ const AddTrainingUser = () => {
                         </label>
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control" 
                           value={user.first_name}
                           onChange={(e) =>
                             setUser({ ...user, first_name: e.target.value })
