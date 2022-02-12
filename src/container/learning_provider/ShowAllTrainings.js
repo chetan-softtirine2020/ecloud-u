@@ -76,13 +76,13 @@ const ShowAllTrainings = () => {
                           <input
                             type="button"
                             value="Add User"
-                            className="btn approve_btn"
+                            className="btn approve_btn btn-common"
                             onClick={() => handelClick(li.slug)}
                           />
                           <input
                             type="button"
                             value="Users"
-                            className="btn approve_btn mg-l"
+                            className="btn approve_btn mg-l  btn-common"
                             onClick={() => handelUserClick(li.slug)}
                           />
                           <input
@@ -90,13 +90,13 @@ const ShowAllTrainings = () => {
                             value={
                               li.is_public == 0 ? "Make Public" : "Stop Public"
                             }
-                            className="btn approve_btn mg-l"
+                            className="btn approve_btn mg-l btn-common"
                             onClick={() => handelPublicClick(li.id)}
                           />
                           <input
                             type="button"
                             value={"Start"}
-                            className="btn approve_btn mg-l"
+                            className="btn approve_btn mg-l btn-common"
                             onClick={() => handelStartMeetingClick(li.slug)}
                           />
                         </td>

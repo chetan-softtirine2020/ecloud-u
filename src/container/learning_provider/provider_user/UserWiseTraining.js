@@ -54,7 +54,7 @@ const UserWiseTraining = () => {
                           <input
                             type="button"
                             value="Start"
-                            className="btn approve_btn mg-l"
+                            className="btn approve_btn btn-common mg-l"
                             onClick={() => handelStartMeetingClick(li.slug)}
                           />
                         </td>
