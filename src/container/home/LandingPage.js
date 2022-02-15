@@ -9,6 +9,9 @@ import LoadingOverlay from "react-loading-overlay";
 import { Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import { redirectUser } from "../../config/redirect";
+import Carousel from 'react-elastic-carousel';
+import {useRef } from "react";
+
 const LandingPage = () => {
   const state = useSelector((state) => state.homeReducer);
   const dispatch = useDispatch();
@@ -28,9 +31,25 @@ const LandingPage = () => {
     console.log(li);
     setShow({ show: true, data: li });
   };
+
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 }
+  ];
+
+
+  const itemsPerPage = 3
+  const items = [];
+  const carouselRef = useRef(null);
+  const totalPages = Math.ceil(items.length / itemsPerPage)
+  let resetTimeout;
+
   if (localStorage.getItem("token")) {
     redirectUser();
   }
+  
 
   return (
     <LoadingOverlay active={state.loading} spinner text="Loading...">
@@ -149,6 +168,155 @@ const LandingPage = () => {
                 </div>
               ))}
           </div>
+
+          <div className="row cource-section">
+            <div className="col-12">
+              <div className="titlepage">
+                <h2>
+                  Recent <strong className="yellow">Courses</strong>
+                </h2>
+              </div>
+            </div>
+            <div className="col-12 carousel-section">
+              <Carousel breakPoints={breakPoints} 
+              enableAutoPlay
+              autoPlaySpeed={1500} // same time
+              onNextEnd={({ index }) => {
+                clearTimeout(resetTimeout)
+                if (index + 1 === totalPages) {
+                   resetTimeout = setTimeout(() => {
+                      carouselRef.current.goTo(0)
+                  }, 1500) // same time
+                }
+           }}
+
+              >
+                <div>
+                  <div className="box">
+                    <div className="row">
+                      <div className="col-xs-12 col-8">
+                        <h4 className="title">
+                          Training Name -{" "}
+                          <span className="course-nm">Angular</span>
+                        </h4>
+                        <p className="course-count">10+ Courses</p>
+                        <div className="">
+                          <a
+                            href="#."
+                            className="banner-btn posts-btn btn-common"
+                          >
+                            Get Started
+                          </a>
+                        </div>
+                      </div>
+                      <div className="col-xs-12 col-4">
+                        <i className="icon ti-desktop"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="box">
+                    <div className="row">
+                      <div className="col-xs-12 col-8">
+                        <h4 className="title">
+                          Training Name -{" "}
+                          <span className="course-nm">JAVA</span>
+                        </h4>
+                        <p className="course-count">10+ Courses</p>
+                        <div className="">
+                          <a
+                            href="#."
+                            className="banner-btn posts-btn btn-common"
+                          >
+                            Get Started
+                          </a>
+                        </div>
+                      </div>
+                      <div className="col-xs-12 col-4">
+                        <i className="icon ti-desktop"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="box">
+                    <div className="row">
+                      <div className="col-xs-12 col-8">
+                        <h4 className="title">
+                          Training Name -{" "}
+                          <span className="course-nm">C#</span>
+                        </h4>
+                        <p className="course-count">10+ Courses</p>
+                        <div className="">
+                          <a
+                            href="#."
+                            className="banner-btn posts-btn btn-common"
+                          >
+                            Get Started
+                          </a>
+                        </div>
+                      </div>
+                      <div className="col-xs-12 col-4">
+                        <i className="icon ti-desktop"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="box">
+                    <div className="row">
+                      <div className="col-xs-12 col-8">
+                        <h4 className="title">
+                          Training Name -{" "}
+                          <span className="course-nm">CSS</span>
+                        </h4>
+                        <p className="course-count">10+ Courses</p>
+                        <div className="">
+                          <a
+                            href="#."
+                            className="banner-btn posts-btn btn-common"
+                          >
+                            Get Started
+                          </a>
+                        </div>
+                      </div>
+                      <div className="col-xs-12 col-4">
+                        <i className="icon ti-desktop"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="box">
+                    <div className="row">
+                      <div className="col-xs-12 col-8">
+                        <h4 className="title">
+                          Training Name -{" "}
+                          <span className="course-nm">HTML</span>
+                        </h4>
+                        <p className="course-count">10+ Courses</p>
+                        <div className="">
+                          <a
+                            href="#."
+                            className="banner-btn posts-btn btn-common"
+                          >
+                            Get Started
+                          </a>
+                        </div>
+                      </div>
+                      <div className="col-xs-12   col-4">
+                        <i className="icon ti-desktop"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </Carousel>
+            </div>
+          </div>
+
+
           <div className="row trainer-secton">
             <div className="col-sm-12 col-lg-6">
               <div className="top-banner pt-4">
@@ -179,7 +347,7 @@ const LandingPage = () => {
             <div class="row">
               <div class="col-sm-12">
                 <div class="row">
-                  <div class="col-md-12 col-lg-4 col-sm-9 col-xs-12 sm-mb-4">
+                  <div class="col-md-6 col-sm-4 col-xs-12 sm-mb-4">
                     <a href="index.html">
                       <h1 class="fredoka-font ls-3 fw-700 text-white font-xxl">
                         Educloudlabs{" "}
@@ -207,59 +375,9 @@ const LandingPage = () => {
                           <i class="font-xs ti-linkedin text-white"></i>
                         </a>
                       </li>
-                      <li class="mr-2">
-                        <a href="#" class="btn-round-md bg-instagram">
-                          <i class="font-xs ti-instagram text-white"></i>
-                        </a>
-                      </li>
-                      <li class="mr-2">
-                        <a href="#" class="btn-round-md bg-pinterest">
-                          <i class="font-xs ti-pinterest text-white"></i>
-                        </a>
-                      </li>
                     </ul>
                   </div>
-                  <div class="col-md-3 col-lg-2 col-sm-3 col-xs-6 sm-mb-4">
-                    <h5>Language</h5>
-                    <ul>
-                      <li>
-                        <a href="#">English</a>
-                      </li>
-                      <li>
-                        <a href="#">Spanish</a>
-                      </li>
-                      <li>
-                        <a href="#">Arab</a>
-                      </li>
-                      <li>
-                        <a href="#">Urdu</a>
-                      </li>
-                      <li>
-                        <a href="#">Brazil</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-md-3 col-lg-2 col-sm-4 col-xs-6 sm-mb-4">
-                    <h5>Channel</h5>
-                    <ul>
-                      <li>
-                        <a href="#">Makeup</a>
-                      </li>
-                      <li>
-                        <a href="#">Dresses</a>
-                      </li>
-                      <li>
-                        <a href="#">Girls</a>
-                      </li>
-                      <li>
-                        <a href="#">Sandals</a>
-                      </li>
-                      <li>
-                        <a href="#">Headphones</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-md-3 col-lg-2 col-sm-4 col-xs-6 sm-mb-4">
+                  <div class="col-md-3 col-sm-4 col-xs-6 sm-mb-4">
                     <h5>About</h5>
                     <ul>
                       <li>
@@ -279,7 +397,7 @@ const LandingPage = () => {
                       </li>
                     </ul>
                   </div>
-                  <div class="col-md-3 col-lg-2 col-sm-4 col-xs-6">
+                  <div class="col-md-3 col-sm-4 col-xs-6">
                     <h5 class="mb-3">Office</h5>
                     <p class="w-100">
                       41 madison ave, floor 24 new work, NY 10010 1-877-932-7111

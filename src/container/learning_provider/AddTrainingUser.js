@@ -65,7 +65,7 @@ const AddTrainingUser = () => {
                   Add Training User
                 </h4>
               </div>
-              <div className="card-body p-lg-5 p-4 w-100 border-0 ">
+              <div className="card-body  p-4 w-100 border-0 ">
                 <form
                   onSubmit={handleSubmit(onSubmit)}
                   enctype="multipart/form-data"
@@ -111,7 +111,7 @@ const AddTrainingUser = () => {
                   </div>
                 </form>
 
-                <h1 className="text-white">Add Single </h1>
+                <h1 className="mt-2 text-white">Add Single </h1>
                 <form onSubmit={handleFormSubmit}>
                   <div className="row">
                     <div className="col-lg-6 mb-3">

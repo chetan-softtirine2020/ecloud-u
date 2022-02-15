@@ -1933,7 +1933,7 @@ pre code {
 }
 .login-reg .loginbg{
   width: 500px;
-  height: 648px;
+  height: 636px;
   padding: 25px;
 }
 
@@ -2036,7 +2036,7 @@ pre code {
   display: inline-block;
 }
 
-.cource-section .box{
+.carousel-section .box, .cource-section .box{
   padding: 20px 30px;
   background: #222222;
   color: #fff;
@@ -2046,11 +2046,25 @@ pre code {
   margin-top: 15px;
 }
 
+.eaptOe {
+  box-shadow: 0 0 1px 2px rgb(255 255 255 / 50%)!important;
+}
+.jRFJkP:hover:enabled, .jRFJkP:focus:enabled {
+  color: #fff;
+  background-color: rgb(254 68 79)!important;
+  box-shadow: 0 0 2px 0 #d7d2d2!important;
+}
+
+.cource-section .box{
+  margin-left: 20px;
+}
+
 .cource-section .box .title{
   font-size: 18px;
   line-height: 20px;
   color: #fff;
   font-weight: 400;
+  height: 40px;
 }
 .cource-section .box .title .course-nm{
   font-weight: 600;
@@ -2259,11 +2273,13 @@ pre code {
   background-color: #0c0c0c;
   color: #fff;
 }
-.org-reg .card .form-control,
+
 .org-reg .card .form-control{
-  background-color: #0c0c0c;
+  background-color: #1f1f1f;
   color: #fff;
   border-color: #fff;
+  border-radius: 25px;
+  border-width: 2px;
 }
 
 .btn-common{
@@ -16775,6 +16791,11 @@ select.sort {
   font-weight: 400;
   text-decoration: underline;
   cursor: pointer;
+  padding: 2px 10px;
+  font-size: 12px;
+  text-decoration: none;
+  margin: 4px;
+  text-transform: capitalize;
 }
 
 .approve_btn:hover,.approve_btn:focus{
