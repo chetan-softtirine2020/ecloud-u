@@ -33,7 +33,7 @@ const Login = () => {
     return <Navigate to={redirectLink} />;
   }
   if (!localStorage.getItem("redirectLink") && localStorage.getItem("token")) {
-    return <Navigate to={ redirectUser()}/>;
+    return <Navigate to={redirectUser()} />;
   }
 
   return (
@@ -105,12 +105,12 @@ const Login = () => {
                       >
                         Remember me
                       </label>
-                      <a
-                        href="forgot.html"
+                      <Link
+                        to={"/forgot-password"}
                         className="fw-600 font-xsss text-grey-700 mt-1 float-right"
                       >
                         Forgot your Password?
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-sm-12 p-0 text-left">
                       <div className="form-group mb-1">
@@ -167,8 +167,6 @@ const Login = () => {
                         </div>
                       </div>
                     </div>
-
-
                   </div>
                 </div>
               </div>

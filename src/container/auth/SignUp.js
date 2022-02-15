@@ -21,18 +21,18 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signUp(user));
-    setUser({
-      first_name: "",
-      last_name: "",
-      mobile_no: "",
-      password: "",
-      email: "",
-      user_type: 2,
-      org_id: "",
-    });
+    // setUser({
+    //   first_name: "",
+    //   last_name: "",
+    //   mobile_no: "",
+    //   password: "",
+    //   email: "",
+    //   user_type: 2,
+    //   org_id: "",
+    // });
   };
   const handleOnChange = (e) => {
-    if (e.target.value == 6 && auth.list.length == 0) {
+    if (e.target.value === 6 && auth.list.length == 0) {
       dispatch(getAllOrganizationRegister());
     }
     setUser({ ...user, user_type: e.target.value });
@@ -48,7 +48,7 @@ const SignUp = () => {
         <NavBar />
         <div className="container login-reg top-margin">
           <div className="row">
-          <div className="d-none d-lg-block col-lg-6 text-right pr-0">
+            <div className="d-none d-lg-block col-lg-6 text-right pr-0">
               <img className="loginbg pr-0" src={lognbg} />
             </div>
             <div className="col-sm-12 col-lg-6 align-items-left my-4 rounded-lg pl-0">
@@ -78,7 +78,9 @@ const SignUp = () => {
                       </select>
                       <i className="font-sm ti-user text-grey-500 pr-0"></i>
                       <span className="error-msg">
-                        {auth.errors.user_type ? auth.errors.user_type : ""}
+                        {auth.errors && auth.errors.user_type
+                          ? auth.errors.user_type
+                          : ""}
                       </span>
                     </div>
 
@@ -119,7 +121,9 @@ const SignUp = () => {
                         }
                       />
                       <span className="error-msg">
-                        {auth.errors.first_name ? auth.errors.first_name : ""}{" "}
+                        {auth.errors.first_name && auth.errors.first_name
+                          ? auth.errors.first_name
+                          : ""}{" "}
                       </span>
                     </div>
 
@@ -136,7 +140,9 @@ const SignUp = () => {
                         }
                       />
                       <span className="error-msg">
-                        {auth.errors.last_name ? auth.errors.last_name : ""}{" "}
+                        {auth.errors.last_name && auth.errors.last_name
+                          ? auth.errors.last_name
+                          : ""}{" "}
                       </span>
                     </div>
                     <div className="form-group icon-input mb-3">
@@ -152,7 +158,9 @@ const SignUp = () => {
                         }
                       />
                       <span className="error-msg">
-                        {auth.errors.email ? auth.errors.email : ""}{" "}
+                        {auth.errors.email && auth.errors.email
+                          ? auth.errors.email
+                          : ""}{" "}
                       </span>
                     </div>
 
@@ -169,7 +177,9 @@ const SignUp = () => {
                         }
                       />
                       <span className="error-msg">
-                        {auth.errors.mobile_no ? auth.errors.mobile_no : ""}{" "}
+                        {auth.errors.mobile_no && auth.errors.mobile_no
+                          ? auth.errors.mobile_no
+                          : ""}{" "}
                       </span>
                     </div>
 
@@ -185,7 +195,9 @@ const SignUp = () => {
                         }
                       />
                       <span className="error-msg">
-                        {auth.errors.password ? auth.errors.password : ""}{" "}
+                        {auth.errors.password && auth.errors.password
+                          ? auth.errors.password
+                          : ""}{" "}
                       </span>
                       <i className="font-sm ti-lock text-grey-500 pr-0"></i>
                     </div>

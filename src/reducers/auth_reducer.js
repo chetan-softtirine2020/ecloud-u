@@ -12,7 +12,7 @@ const initState = {
 
 const authReducer = (state = initState, { type, payload }) => {
   switch (type) {
-    case "ERROR":
+    case "AUTH_ERROR":
       return {
         ...state,
         loading: false,
@@ -42,11 +42,21 @@ const authReducer = (state = initState, { type, payload }) => {
         isLoggedIn: true,
       };
     case "FORGOT_PASSWORD":
-      // toast("Password rest link share on your email.", {
-      //   position: toast.POSITION.BOTTOM_RIGHT,
-      // });
-      break;
-      
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        is_done:true,
+      }; 
+
+      case "RESET_PASSWORD":
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        is_done:true,
+      }; 
+            
     case "SIGN_OUT":
       localStorage.removeItem("token");
       localStorage.removeItem("data");      

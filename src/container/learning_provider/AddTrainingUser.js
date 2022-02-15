@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AppBody from "../components/AppBody";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   addUserTraining,
   importUserTraining,
@@ -58,9 +58,9 @@ const AddTrainingUser = () => {
         <div className="">
           <div className="card">
             <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
-              <a href="default-settings.html" className="d-inline-block mt-2">
+              <Link to={"/all-trainings"} className="d-inline-block mt-2">
                 <i className="ti-arrow-left font-sm text-white"></i>
-              </a>
+              </Link>
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
                   Add Training User
                 </h4>

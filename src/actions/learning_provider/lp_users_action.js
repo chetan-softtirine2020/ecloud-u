@@ -4,8 +4,7 @@ const token = localStorage.getItem("token");
 
 export const errorMessage = (err) => {
   switch (err.response.status) {
-    case 422:
-      console.log("Error In Switch 422");
+    case 422:     
       return { type: "ERROR", payload: err.response.data };
     case 405:
       return { type: "ERROR", payload: { other_error: "Method Not Allowed" } };

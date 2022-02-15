@@ -12,7 +12,6 @@ const LearningProviderDashboard = () => {
   }, []);
 
   const statCard = [1];
-
   return (
     <AppBody
       loading={state.loading}
@@ -63,14 +62,10 @@ const LearningProviderDashboard = () => {
                                 <li>
                                   <span className="ti-video-camera paths-icon" alt="Number of Courses">
                                   </span>
-                                  <span>18 courses</span></li>
+                                  <span>18 Trainigs</span></li>
                                 <li>
                                   <span className="ti-time paths-icon" alt="Duration"></span>
-                                  <span>65 hours</span></li>
-                                <li className="has-projects tooltip-enabled" data-tooltip="Practice by applying it to real-world scenarios.">
-                                <span className="ti-settings paths-icon" alt="Project"></span>
-                                  <span>1 Project</span>
-                                </li>
+                                  <span>65 hours</span></li>                               
                               </ul>
                             </div>
                           </div>  

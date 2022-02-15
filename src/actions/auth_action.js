@@ -4,24 +4,25 @@ import { authHeader } from "../config/auth_header";
 const tokenn = localStorage.getItem("token");
 
 export const errorMessage = (err) => {
-  switch (err.response) {
-    case 422:
-      return { type: "ERROR", payload: err.response.data };
+    console.log("erreee"+err.response.status);
+  switch (err.response.status) {
+    case 422:      
+       return { type: "AUTH_ERROR", payload: err.response.data };
     case 405:
-      return { type: "ERROR", payload: { other_error: "Method Not Allowed" } };
+      return { type: "AUTH_ERROR", payload: { other_error: "Method Not Allowed" } };
     case 500:
       return {
-        type: "ERROR",
+        type: "AUTH_ERROR",
         payload: { other_error: "Internal Server Error." },
       };
     case 403:
       return {
-        type: "ERROR",
+        type: "AUTH_ERROR",
         payload: { other_error: "Please Enrter Correct Password." },
       };
     default:
       return {
-        type: "ERROR",
+        type: "AUTH_ERROR",
         payload: { other_error: "Something went worng." },
       };
   }
@@ -149,37 +150,52 @@ export const singOut = () => {
 };
 
 // Action for the forgot password
-export const forgotPassword = (cred) => {
+export const forgotPassword = (user) => {
   return (dispatch) => {
+    dispatch({
+      type: "AUTH_REQUEST",
+    });
     axios
-      .post(`${APP_URL}/forgot-password`, cred)
-      .then((response) => {
+      .request({
+        method: "post",
+        url: `${APP_URL}/forgot-password`,
+        data: user,
+       })
+      .then((token) => {   
         dispatch({
           type: "FORGOT_PASSWORD",
-          token: response.data,
+          payload: token.data.success,
         });
       })
       .catch((error) => {
         dispatch(errorMessage(error));
       });
-  };
-};
+  }
+}
 
-export const resetPassword = (cred) => {
+export const resetPassword = (user) => {
   return (dispatch) => {
+    dispatch({
+      type: "AUTH_REQUEST",
+    });
     axios
-      .post(`${APP_URL}/reset-password`, cred)
-      .then((response) => {
+      .request({
+        method: "post",
+        url: `${APP_URL}/reset-password`,
+        data: user,
+       })
+      .then((token) => {   
         dispatch({
           type: "RESET_PASSWORD",
-          token: response.data,
+          payload: token.data.success,
         });
       })
       .catch((error) => {
         dispatch(errorMessage(error));
       });
-  };
-};
+  }
+}
+
 export const changePassword = (cred) => {
   return (dispatch) => {
     dispatch({

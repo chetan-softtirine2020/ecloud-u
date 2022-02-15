@@ -28,6 +28,8 @@ import EducloundMeet from "./container/EducloundMeet";
 import ShowAllTrainingsDetails from "./container/learning_provider/ShowAllTrainingsDetails";
 import JoinedTrainingUserDetails from "./container/learning_provider/JoinedTrainingUserDetails";
 import ChangePasswordPage from "./container/auth/ChangePasswordPage";
+import ForgotPassword from "./container/auth/ForgotPassword";
+import ResetPassword from "./container/auth/ResetPassword";
 function App() {
   const auth = useSelector((state) => state.authReducer);
   return (
@@ -127,15 +129,16 @@ function App() {
           />
 
           <Route
-            path={"/joined-trainings"}
+            path={"/completed-trainings"}
             caseSensitive={false}
             element={<ShowAllTrainingsDetails />}
           />
           <Route
-            path={"/joined-training-users/:slug"}
+            path={"/completed-training-users/:slug"}
             caseSensitive={false}
             element={<JoinedTrainingUserDetails />}
           />
+
           <Route
             path={"/change-password"}
             caseSensitive={false}
@@ -151,6 +154,9 @@ function App() {
         <Route path="/" caseSensitive={false} element={<LandingPage />} />
         <Route path={"/login"} caseSensitive={false} element={<Login />} />
         <Route path={"/register"} caseSensitive={false} element={<SignUp />} />
+        <Route path={"/forgot-password"} caseSensitive={false} element={<ForgotPassword />} />
+        <Route path={"/reset-password/:i_t/:h_id"} caseSensitive={false} element={<ResetPassword />} />
+     
         <Route
           path={"/register-organization"}
           caseSensitive={false}

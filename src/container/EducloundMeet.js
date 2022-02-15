@@ -95,10 +95,7 @@ function EducloundMeet() {
         <div className="middle-sidebar-left">
           <div className="">
             <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
-              <div className="card-body p-4 w-100 bg-current border-0 d-flex rounded-lg">
-                <a href="default-settings.html" className="d-inline-block mt-2">
-                  <i className="ti-arrow-left font-sm text-white"></i>
-                </a>
+              <div className="card-body p-4 w-100 bg-current border-0 d-flex rounded-lg">               
                 <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
                   Training
                 </h4>

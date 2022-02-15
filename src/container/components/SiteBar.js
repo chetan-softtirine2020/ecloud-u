@@ -71,14 +71,14 @@ const SiteBar = () => {
                 </li>
                 <li class="flex-lg-brackets">
                   <Link
-                    to={"/joined-trainings"}
+                    to={"/completed-trainings"}
                     data-tab="archived"
                     class={`nav-content-bttn open-font ${
-                      location.pathname === "/joined-trainings" ? "active" : ""
+                      location.pathname === "/completed-trainings" ? "active" : ""
                     }`}
                   >
                     <i class="feather-video mr-3"></i>
-                    <span>Joined Tranings</span>
+                    <span>Completed Tainings</span>
                   </Link>
                 </li>
               </ul>
@@ -321,13 +321,7 @@ const SiteBar = () => {
                   <i class="font-sm feather-pie-chart mr-3"></i>
                   <span>Logout</span>
                 </a>
-              </li>
-              <li>
-                <a href="#" class="nav-content-bttn open-font h-auto pt-2 pb-2">
-                  <i class="font-sm feather-settings mr-3 "></i>
-                  <span>Settings</span>
-                </a>
-              </li>
+              </li>              
             </ul>
           </div>
         </div>

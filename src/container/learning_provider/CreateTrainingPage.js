@@ -4,7 +4,7 @@ import AppBody from "../components/AppBody";
 import DatePicker from "react-datepicker";
 import { createTraining } from "../../actions/learning_provider/training_action";
 import "react-datepicker/dist/react-datepicker.css";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 const CreateTrainingPage = () => {
   const [traning, setTraining] = useState({
     name: "",
@@ -34,9 +34,10 @@ const CreateTrainingPage = () => {
           <div className="">
             <div className="card">
               <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
-                <a href="default-settings.html" className="d-inline-block mt-2">
-                  <i className="ti-arrow-left font-sm text-white"></i>
-                </a>
+                <Link
+                  to={"/create-training"}
+                  className="d-inline-block mt-2"
+                ></Link>
                 <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
                   Create Training
                 </h4>
@@ -49,7 +50,8 @@ const CreateTrainingPage = () => {
                         <label className="mont-font fw-600 font-xsss">
                           Training Name
                         </label>
-                        <input placeholder="Enter Training Name..."
+                        <input
+                          placeholder="Enter Training Name..."
                           type="text"
                           className="form-control"
                           value={traning.name}
@@ -67,7 +69,8 @@ const CreateTrainingPage = () => {
                         <label className="mont-font fw-600 font-xsss">
                           Date & Time
                         </label>
-                        <DatePicker className="form-control"
+                        <DatePicker
+                          className="form-control"
                           selected={traning.date}
                           onChange={(date) =>
                             setTraining({ ...traning, date: date })

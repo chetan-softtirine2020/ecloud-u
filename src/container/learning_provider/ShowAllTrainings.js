@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AppBody from "../components/AppBody";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getAllTrainings,
   addMakePublicTraining,
@@ -44,9 +44,9 @@ const ShowAllTrainings = () => {
         <div className="middle-sidebar-left">       
         <div className="card w-100 border-0 shadow-xs p-0 mb-4">
             <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
-              <a href="default-settings.html" className="d-inline-block mt-2">
+              <Link to={"/create-training"} className="d-inline-block mt-2">
                 <i className="ti-arrow-left font-sm text-white"></i>
-              </a>
+              </Link>
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
                 All Training 
               </h4>
