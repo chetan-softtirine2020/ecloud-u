@@ -200,7 +200,11 @@ const LandingPage = () => {
                           <span className="course-nm">Angular</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
-                        <div className="">
+                      </div>
+                      <div className="col-xs-12 col-4">
+                        <i className="icon ti-desktop"></i>
+                      </div>
+                      <div className="col-12">
                           <a
                             href="#."
                             className="banner-btn posts-btn btn-common"
@@ -208,10 +212,6 @@ const LandingPage = () => {
                             Get Started
                           </a>
                         </div>
-                      </div>
-                      <div className="col-xs-12 col-4">
-                        <i className="icon ti-desktop"></i>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -224,7 +224,11 @@ const LandingPage = () => {
                           <span className="course-nm">JAVA</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
-                        <div className="">
+                      </div>
+                      <div className="col-xs-12 col-4">
+                        <i className="icon ti-desktop"></i>
+                      </div>
+                      <div className="col-12">
                           <a
                             href="#."
                             className="banner-btn posts-btn btn-common"
@@ -232,10 +236,6 @@ const LandingPage = () => {
                             Get Started
                           </a>
                         </div>
-                      </div>
-                      <div className="col-xs-12 col-4">
-                        <i className="icon ti-desktop"></i>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -248,7 +248,12 @@ const LandingPage = () => {
                           <span className="course-nm">C#</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
-                        <div className="">
+                        
+                      </div>
+                      <div className="col-xs-12 col-4">
+                        <i className="icon ti-desktop"></i>
+                      </div>
+                      <div className="col-12">
                           <a
                             href="#."
                             className="banner-btn posts-btn btn-common"
@@ -256,10 +261,6 @@ const LandingPage = () => {
                             Get Started
                           </a>
                         </div>
-                      </div>
-                      <div className="col-xs-12 col-4">
-                        <i className="icon ti-desktop"></i>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -272,7 +273,12 @@ const LandingPage = () => {
                           <span className="course-nm">CSS</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
-                        <div className="">
+                        
+                      </div>
+                      <div className="col-xs-12 col-4">
+                        <i className="icon ti-desktop"></i>
+                      </div>
+                      <div className="col-12">
                           <a
                             href="#."
                             className="banner-btn posts-btn btn-common"
@@ -280,10 +286,6 @@ const LandingPage = () => {
                             Get Started
                           </a>
                         </div>
-                      </div>
-                      <div className="col-xs-12 col-4">
-                        <i className="icon ti-desktop"></i>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -296,7 +298,12 @@ const LandingPage = () => {
                           <span className="course-nm">HTML</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
-                        <div className="">
+                        
+                      </div>
+                      <div className="col-xs-12   col-4">
+                        <i className="icon ti-desktop"></i>
+                      </div>
+                      <div className="col-12">
                           <a
                             href="#."
                             className="banner-btn posts-btn btn-common"
@@ -304,10 +311,6 @@ const LandingPage = () => {
                             Get Started
                           </a>
                         </div>
-                      </div>
-                      <div className="col-xs-12   col-4">
-                        <i className="icon ti-desktop"></i>
-                      </div>
                     </div>
                   </div>
                 </div>

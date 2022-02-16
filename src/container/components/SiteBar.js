@@ -40,7 +40,7 @@ const SiteBar = () => {
                     }`}
                     data-tab="favorites"
                   >
-                    <i class="feather-play-circle mr-3"></i>
+                    <i class="feather-home mr-3"></i>
                     <span>Home</span>
                   </Link>
                 </li>
@@ -94,7 +94,7 @@ const SiteBar = () => {
                     }`}
                     data-tab="favorites"
                   >
-                    <i class="feather-play-circle mr-3"></i>
+                    <i class="feather-home mr-3"></i>
                     <span>Home</span>
                   </Link>
                 </li>
@@ -128,7 +128,7 @@ const SiteBar = () => {
                     }`}
                     data-tab="favorites"
                   >
-                    <i class="feather-globe mr-3"></i>
+                    <i class="feather-home mr-3"></i>
                     <span> Home</span>
                   </Link>
                 </li>
@@ -209,7 +209,7 @@ const SiteBar = () => {
                     }`}
                     data-tab="favorites"
                   >
-                    <i class="feather-globe mr-3"></i>
+                    <i class="feather-home mr-3"></i>
                     <span> Home</span>
                   </Link>
                 </li>
@@ -253,7 +253,7 @@ const SiteBar = () => {
                     }`}
                     data-tab="favorites"
                   >
-                    <i class="feather-globe mr-3"></i>
+                    <i class="feather-home mr-3"></i>
                     <span>Home</span>
                   </Link>
                 </li>
@@ -298,7 +298,7 @@ const SiteBar = () => {
                     }`}
                     data-tab="favorites"
                   >
-                    <i class="feather-play-circle mr-3"></i>
+                    <i class="feather-monitor mr-3"></i>
                     <span>My Trainigs</span>
                   </Link>
                 </li>
@@ -309,7 +309,7 @@ const SiteBar = () => {
                   to={"/change-password"}
                   class="nav-content-bttn open-font h-auto pt-2 pb-2"
                 >
-                  <i class="font-sm feather-pie-chart mr-3 "></i>
+                  <i class="font-sm feather-lock mr-3 "></i>
                   <span>Change Password</span>
                 </Link>
               </li>
@@ -318,7 +318,7 @@ const SiteBar = () => {
                   onClick={() => handelClick()}
                   class="nav-content-bttn open-font h-auto pt-2 pb-2"
                 >
-                  <i class="font-sm feather-pie-chart mr-3"></i>
+                  <i class="font-sm feather-log-out mr-3"></i>
                   <span>Logout</span>
                 </a>
               </li>              

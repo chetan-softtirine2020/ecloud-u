@@ -20,7 +20,7 @@ const ShowOrgTrainingUser = () => {
      loading={state.loading}
       content={
         <div className="middle-sidebar-left">
-          <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
+          <div className="card w-100 border-0  shadow-xs p-0 mb-4">
             <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
               <a href="default-settings.html" className="d-inline-block mt-2">
                 <i className="ti-arrow-left font-sm text-white"></i>
@@ -30,7 +30,7 @@ const ShowOrgTrainingUser = () => {
               </h4>
             </div>
             <div className="card-body  p-4 w-100 border-0 ">
-              <table className="table table-striped">
+              <table className="table table-bordered">
                 <thead>
                   <tr>
                     <th>Sr.No</th>

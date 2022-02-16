@@ -1938,6 +1938,19 @@ pre code {
 }
 
 /* css for landng page  */
+.navigation .nav-content ul li a.active{
+  background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28);
+  background-size: 300% 100%;
+  transition: all .3s ease-in-out;
+  font-size: 16px;
+  font-weight: 600;
+}
+.profile-nm{
+  color:#fff;
+  padding: 0px 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
 .landing-container{
   background: #000;
 }
@@ -2210,7 +2223,8 @@ pre code {
 
 .middle-sidebar-left .card .form-control{
   color: #fff;
-  background-color: #212121;
+  background-color: #373737;
+  border:1px solid #eee;
 }
 .middle-sidebar-left .card .form-control:hover,
 .middle-sidebar-left .card .form-control:focus{
@@ -12785,7 +12799,7 @@ strong,
   top: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: 280px;
+  width: 230px;
   height: 100vh;
   overflow: hidden;
   background: #000000;
@@ -12836,7 +12850,7 @@ strong,
   .navigation {
     position: fixed;
     top: 0;
-    left: -280px;
+    left: -230px;
     z-index: 1000;
     height: 100vh;
     padding-top: 0;
@@ -12895,7 +12909,7 @@ strong,
   transition: padding 0.25s;
 }
 .navigation .nav-content {
-  width: 280px;
+  width: 230px;
   transition: all 0.2s ease;
 }
 @media (max-width: 991.98px) {
@@ -12956,14 +12970,14 @@ strong,
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 15px 15px 15px 18px;
+  padding: 15px 15px 15px 10px;
   white-space: nowrap;
   position: relative;
   font-size: 15px;
   font-weight: 600;
   line-height: 28px;
   color: #fff;
-  height: 58px;
+  height: 44px;
   display: flex;
   overflow: hidden;
   transition: all 0.2s ease;
@@ -13016,7 +13030,7 @@ strong,
   flex: 1;
 }
 .navigation .nav-content ul li > a.active {
-  background: #212121!important;
+  /* background: #212121!important; */
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -13138,7 +13152,7 @@ strong,
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
-    padding-left: 280px;
+    padding-left: 230px;
     -webkit-transition: all 0.25s;
     -o-transition: all 0.25s;
     transition: all 0.25s;
@@ -13266,7 +13280,7 @@ strong,
 .main-content .middle-sidebar-header {
   position: fixed;
   top: 0;
-  left: 280px;
+  left: 230px;
   right: 0;
   z-index: 10;
   display: -webkit-box;
@@ -13353,11 +13367,17 @@ strong,
 }
 .main-content .middle-sidebar-header .right-menu-icon li {
   margin-left: 25px;
+  color:#fff;
 }
+.main-content .middle-sidebar-header .right-menu-icon li.logout i{
+  font-size: 28px;
+}
+
 .main-content .middle-sidebar-header .right-menu-icon li a {
   display: inline-block;
   position: relative;
 }
+
 .main-content .middle-sidebar-header .right-menu-icon li a .dot-count {
   position: absolute;
   top: -3px;
@@ -16487,6 +16507,12 @@ select.sort {
     padding-bottom: 100px;
   } */
 
+  .btn-common {
+      font-size: 0.7em;
+  }
+  .cource-section .box .icon {
+    font-size: 75px;
+  }
   .display4-lg-size {
     font-size: 50px !important;
   }
@@ -16642,7 +16668,7 @@ select.sort {
   top: 1.3em;
 }
 .header-btn a{
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   margin: 0.3em;
   padding: 0.6em 2em;
   font-size: 0.9em;
@@ -16783,9 +16809,7 @@ select.sort {
 .site_logo{
   height: 7em;
 }
-.site_ul{
-  margin-top: 1em !important;
-}
+
 .approve_btn{
   color: #fff;
   font-weight: 400;
