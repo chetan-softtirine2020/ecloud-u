@@ -17,15 +17,14 @@ const ResetPassword = () => {
     password: "",
     password_confirmation: "",
   });
-  const { h_id, i_t } = useParams();
+  const {i_t} = useParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
       resetPassword({
         password: user.password,
-        password_confirmation: user.password_confirmation,
-        h_id: h_id,
+        password_confirmation: user.password_confirmation,     
         i_t: i_t,
       })
     );
@@ -60,7 +59,7 @@ const ResetPassword = () => {
                   </span>
                   {auth.is_done && (
                     <div class="alert alert-success" role="alert">
-                      Your password change successfully!
+                      Your password reset successfully!
                     </div>
                   )}
                   <form onSubmit={handleSubmit}>

@@ -1,7 +1,18 @@
 import React from "react";
 import profleIco from "../../images/female-profile.png";
+import { useDispatch } from "react-redux";
+import { singOut } from "../../actions/auth_action";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 
 const AppNavBar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handelClick = () => {
+    dispatch(singOut());
+    navigate("/");
+  };
+  const userData = JSON.parse(localStorage.getItem("data"));
+
   return (
     <div>
       <div class="middle-sidebar-header bg-navbar">
@@ -16,7 +27,7 @@ const AppNavBar = () => {
             />
           </div>
         </form>
-        <ul class="d-flex ml-auto right-menu-icon">  
+        <ul class="d-flex ml-auto right-menu-icon">
           <li>
             <a href="">
               <img
@@ -24,6 +35,14 @@ const AppNavBar = () => {
                 alt="user"
                 class="w40 rounded-circle mt--1"
               />
+              <span className="profile-nm">
+                {userData && userData.first_name}
+              </span>
+            </a>
+          </li>
+          <li className="logout">
+            <a title="Log-Out" onClick={() => handelClick()}>
+              <i class="feather-log-out mr-3"></i>
             </a>
           </li>
           <li>

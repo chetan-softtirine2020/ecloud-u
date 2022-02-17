@@ -12,8 +12,7 @@ const ForgotPassword = () => {
   const auth = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const [user, setUser] = useState({
-    password: "",
-    email: "",
+      email: "",
   });
 
   const handleSubmit = (e) => {

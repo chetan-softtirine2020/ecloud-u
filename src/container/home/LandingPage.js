@@ -9,8 +9,8 @@ import LoadingOverlay from "react-loading-overlay";
 import { Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import { redirectUser } from "../../config/redirect";
-import Carousel from 'react-elastic-carousel';
-import {useRef } from "react";
+import Carousel from "react-elastic-carousel";
+import { useRef } from "react";
 
 const LandingPage = () => {
   const state = useSelector((state) => state.homeReducer);
@@ -36,20 +36,18 @@ const LandingPage = () => {
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2, itemsToScroll: 2 },
     { width: 768, itemsToShow: 3 },
-    { width: 1200, itemsToShow: 4 }
+    { width: 1200, itemsToShow: 4 },
   ];
 
-
-  const itemsPerPage = 3
+  const itemsPerPage = 3;
   const items = [];
   const carouselRef = useRef(null);
-  const totalPages = Math.ceil(items.length / itemsPerPage)
+  const totalPages = Math.ceil(items.length / itemsPerPage);
   let resetTimeout;
 
   if (localStorage.getItem("token")) {
     redirectUser();
   }
-  
 
   return (
     <LoadingOverlay active={state.loading} spinner text="Loading...">
@@ -79,7 +77,8 @@ const LandingPage = () => {
               </div>
             </div>
           </div>
-          <div className="row">
+
+          {/*  <div className="row">
             <div className="col-md-12">
               <div className="titlepage">
                 <h2>
@@ -130,7 +129,8 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
-          </div>
+  </div>*/}
+
           <div className="row cource-section">
             <div className="col-12">
               <div className="titlepage">
@@ -139,6 +139,73 @@ const LandingPage = () => {
                 </h2>
               </div>
             </div>
+
+            <div className="col-md-6 col-lg-4">
+              <div className="box">
+                <div className="row">
+                  <div className="col-8">
+                    <h4 className="title">
+                      Training Name -{" "}
+                      <span className="course-nm">{".NET"}</span>
+                    </h4>
+                    <p className="course-count">10+ Courses</p>
+                    <div className="">
+                      <a href="#." className="banner-btn posts-btn btn-common">
+                        Get Started
+                      </a>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <i className="icon ti-desktop"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-6 col-lg-4">
+              <div className="box">
+                <div className="row">
+                  <div className="col-8">
+                    <h4 className="title">
+                      Training Name -{" "}
+                      <span className="course-nm">{"Paython"}</span>
+                    </h4>
+                    <p className="course-count">10+ Courses</p>
+                    <div className="">
+                      <a href="#." className="banner-btn posts-btn btn-common">
+                        Get Started
+                      </a>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <i className="icon ti-desktop"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-md-6 col-lg-4">
+              <div className="box">
+                <div className="row">
+                  <div className="col-8">
+                    <h4 className="title">
+                      Training Name -{" "}
+                      <span className="course-nm">{"MySql"}</span>
+                    </h4>
+                    <p className="course-count">10+ Courses</p>
+                    <div className="">
+                      <a href="#." className="banner-btn posts-btn btn-common">
+                        Get Started
+                      </a>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <i className="icon ti-desktop"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {state.list &&
               state.list.map((li, i) => (
                 <div className="col-md-6 col-lg-4" key={i + 1}>
@@ -178,18 +245,18 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="col-12 carousel-section">
-              <Carousel breakPoints={breakPoints} 
-              enableAutoPlay
-              autoPlaySpeed={1500} // same time
-              onNextEnd={({ index }) => {
-                clearTimeout(resetTimeout)
-                if (index + 1 === totalPages) {
-                   resetTimeout = setTimeout(() => {
-                      carouselRef.current.goTo(0)
-                  }, 1500) // same time
-                }
-           }}
-
+              <Carousel
+                breakPoints={breakPoints}
+                enableAutoPlay
+                autoPlaySpeed={1500} // same time
+                onNextEnd={({ index }) => {
+                  clearTimeout(resetTimeout);
+                  if (index + 1 === totalPages) {
+                    resetTimeout = setTimeout(() => {
+                      carouselRef.current.goTo(0);
+                    }, 1500); // same time
+                  }
+                }}
               >
                 <div>
                   <div className="box">
@@ -200,17 +267,17 @@ const LandingPage = () => {
                           <span className="course-nm">Angular</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
-                        <div className="">
-                          <a
-                            href="#."
-                            className="banner-btn posts-btn btn-common"
-                          >
-                            Get Started
-                          </a>
-                        </div>
                       </div>
                       <div className="col-xs-12 col-4">
                         <i className="icon ti-desktop"></i>
+                      </div>
+                      <div className="col-12">
+                        <a
+                          href="#."
+                          className="banner-btn posts-btn btn-common"
+                        >
+                          Get Started
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -224,17 +291,17 @@ const LandingPage = () => {
                           <span className="course-nm">JAVA</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
-                        <div className="">
-                          <a
-                            href="#."
-                            className="banner-btn posts-btn btn-common"
-                          >
-                            Get Started
-                          </a>
-                        </div>
                       </div>
                       <div className="col-xs-12 col-4">
                         <i className="icon ti-desktop"></i>
+                      </div>
+                      <div className="col-12">
+                        <a
+                          href="#."
+                          className="banner-btn posts-btn btn-common"
+                        >
+                          Get Started
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -244,21 +311,20 @@ const LandingPage = () => {
                     <div className="row">
                       <div className="col-xs-12 col-8">
                         <h4 className="title">
-                          Training Name -{" "}
-                          <span className="course-nm">C#</span>
+                          Training Name - <span className="course-nm">C#</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
-                        <div className="">
-                          <a
-                            href="#."
-                            className="banner-btn posts-btn btn-common"
-                          >
-                            Get Started
-                          </a>
-                        </div>
                       </div>
                       <div className="col-xs-12 col-4">
                         <i className="icon ti-desktop"></i>
+                      </div>
+                      <div className="col-12">
+                        <a
+                          href="#."
+                          className="banner-btn posts-btn btn-common"
+                        >
+                          Get Started
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -268,21 +334,20 @@ const LandingPage = () => {
                     <div className="row">
                       <div className="col-xs-12 col-8">
                         <h4 className="title">
-                          Training Name -{" "}
-                          <span className="course-nm">CSS</span>
+                          Training Name - <span className="course-nm">CSS</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
-                        <div className="">
-                          <a
-                            href="#."
-                            className="banner-btn posts-btn btn-common"
-                          >
-                            Get Started
-                          </a>
-                        </div>
                       </div>
                       <div className="col-xs-12 col-4">
                         <i className="icon ti-desktop"></i>
+                      </div>
+                      <div className="col-12">
+                        <a
+                          href="#."
+                          className="banner-btn posts-btn btn-common"
+                        >
+                          Get Started
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -296,26 +361,24 @@ const LandingPage = () => {
                           <span className="course-nm">HTML</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
-                        <div className="">
-                          <a
-                            href="#."
-                            className="banner-btn posts-btn btn-common"
-                          >
-                            Get Started
-                          </a>
-                        </div>
                       </div>
                       <div className="col-xs-12   col-4">
                         <i className="icon ti-desktop"></i>
                       </div>
+                      <div className="col-12">
+                        <a
+                          href="#."
+                          className="banner-btn posts-btn btn-common"
+                        >
+                          Get Started
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-
               </Carousel>
             </div>
           </div>
-
 
           <div className="row trainer-secton">
             <div className="col-sm-12 col-lg-6">

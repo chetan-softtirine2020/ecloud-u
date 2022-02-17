@@ -21,8 +21,8 @@ const JoinedTrainingUserDetails = () => {
       loading={state.loading}
       content={
         <div className="middle-sidebar-left">
-          <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
-            <div className="card-body p-4 w-100 bg-current border-0 d-flex rounded-lg">
+          <div className="card w-100 border-0 shadow-xs p-0 mb-4">
+          <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
               <Link to={"/completed-trainings"} className="d-inline-block mt-2">
                 <i className="ti-arrow-left font-sm text-white"></i>
               </Link>
@@ -30,8 +30,8 @@ const JoinedTrainingUserDetails = () => {
                 Completed Training User
               </h4>
             </div>
-            <div className="card-body p-lg-5 p-4 w-100 border-0 ">
-              <table className="table table-striped">
+            <div className="card-body p-4 w-100 border-0 ">
+              <table className="table table-bordered">
                 <thead>
                   <tr>
                     <th>Sr.No</th>
