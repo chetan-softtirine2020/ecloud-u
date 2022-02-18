@@ -196,6 +196,14 @@ export const resetPassword = (user) => {
   }
 }
 
+export const resetErorrs = () => {
+  return (dispatch) => {
+    dispatch({
+      type: "RESET_AUTH_ERROR",
+    });   
+  }
+}
+
 export const changePassword = (cred) => {
   return (dispatch) => {
     dispatch({

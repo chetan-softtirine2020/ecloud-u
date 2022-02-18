@@ -5,9 +5,9 @@ const initState = {
   _id: null,
   roles: [],
   isLoggedIn: false,
-  is_done:false,
-   errors:[],
-   list:[] 
+  is_done: false,
+  errors: [],
+  list: [],
 };
 
 const authReducer = (state = initState, { type, payload }) => {
@@ -25,7 +25,7 @@ const authReducer = (state = initState, { type, payload }) => {
         is_done: false,
         errors: [],
       };
-    
+
     case "SINGUP":
     case "SINGIN":
       // toast("Welcome......", {
@@ -46,20 +46,28 @@ const authReducer = (state = initState, { type, payload }) => {
         ...state,
         loading: false,
         errors: [],
-        is_done:true,
-      }; 
+        is_done: true,
+      };
 
-      case "RESET_PASSWORD":
+    case "RESET_PASSWORD":
       return {
         ...state,
         loading: false,
         errors: [],
-        is_done:true,
-      }; 
-            
+        is_done: true,
+      };
+
+    case "RESET_AUTH_ERROR":
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        is_done: false,
+      };
+
     case "SIGN_OUT":
       localStorage.removeItem("token");
-      localStorage.removeItem("data");      
+      localStorage.removeItem("data");
       return {
         name: null,
         email: null,
@@ -68,22 +76,22 @@ const authReducer = (state = initState, { type, payload }) => {
         roles: [],
         isLoggedIn: false,
       };
-     case "GET_REGISTER_ORGANIZATIONS":
+    case "GET_REGISTER_ORGANIZATIONS":
       return {
         ...state,
         loading: false,
         errors: [],
         list: payload,
-      };     
+      };
 
-      case "CHANGE_PASSWORD":
-        return {
-          ...state,
-          loading: false,
-          errors: [],
-          is_done:true,
-        }; 
-       
+    case "CHANGE_PASSWORD":
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        is_done: true,
+      };
+
     default:
       return state;
   }

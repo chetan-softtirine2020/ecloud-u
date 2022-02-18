@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import NavBar from "../components/NavBar";
 import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logIn } from "../../actions/auth_action";
+import { logIn,resetErorrs } from "../../actions/auth_action";
 import LoadingOverlay from "react-loading-overlay";
 import facebook from "../../images/icon-3.png";
 import google from "../../images/icon-1.png";
@@ -13,6 +13,11 @@ import { redirectUser } from "../../config/redirect";
 const Login = () => {
   const auth = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(resetErorrs());
+  }, []);
+
   const [user, setUser] = useState({
     password: "",
     email: "",
