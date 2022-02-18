@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import NavBar from "../components/NavBar";
-import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { resetPassword } from "../../actions/auth_action";
+import { resetPassword,resetErorrs } from "../../actions/auth_action";
 import LoadingOverlay from "react-loading-overlay";
 import facebook from "../../images/icon-3.png";
 import google from "../../images/icon-1.png";
@@ -17,15 +16,18 @@ const ResetPassword = () => {
     password: "",
     password_confirmation: "",
   });
-  const { h_id, i_t } = useParams();
+  const {i_t} = useParams();
+  
+  useEffect(() => {
+    dispatch(resetErorrs());
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
       resetPassword({
         password: user.password,
-        password_confirmation: user.password_confirmation,
-        h_id: h_id,
+        password_confirmation: user.password_confirmation,     
         i_t: i_t,
       })
     );
@@ -60,7 +62,7 @@ const ResetPassword = () => {
                   </span>
                   {auth.is_done && (
                     <div class="alert alert-success" role="alert">
-                      Your password change successfully!
+                      Your password reset successfully!
                     </div>
                   )}
                   <form onSubmit={handleSubmit}>

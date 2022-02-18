@@ -1,6 +1,6 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment,useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { signUp, getAllOrganizationRegister } from "../../actions/auth_action";
+import { signUp, getAllOrganizationRegister,resetErorrs } from "../../actions/auth_action";
 import { Navigate, Link } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 import NavBar from "../components/NavBar";
@@ -17,6 +17,12 @@ const SignUp = () => {
     user_type: 2,
     org_id: "",
   });
+  
+  useEffect(() => {
+    dispatch(resetErorrs());
+  }, []);
+  
+
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -121,7 +127,7 @@ const SignUp = () => {
                         }
                       />
                       <span className="error-msg">
-                        {auth.errors.first_name && auth.errors.first_name
+                        {auth.errors && auth.errors.first_name
                           ? auth.errors.first_name
                           : ""}{" "}
                       </span>
@@ -140,7 +146,7 @@ const SignUp = () => {
                         }
                       />
                       <span className="error-msg">
-                        {auth.errors.last_name && auth.errors.last_name
+                        {auth.errors && auth.errors.last_name
                           ? auth.errors.last_name
                           : ""}{" "}
                       </span>
@@ -158,7 +164,7 @@ const SignUp = () => {
                         }
                       />
                       <span className="error-msg">
-                        {auth.errors.email && auth.errors.email
+                        {auth.errors && auth.errors.email
                           ? auth.errors.email
                           : ""}{" "}
                       </span>
@@ -177,7 +183,7 @@ const SignUp = () => {
                         }
                       />
                       <span className="error-msg">
-                        {auth.errors.mobile_no && auth.errors.mobile_no
+                        {auth.errors && auth.errors.mobile_no
                           ? auth.errors.mobile_no
                           : ""}{" "}
                       </span>
@@ -195,7 +201,7 @@ const SignUp = () => {
                         }
                       />
                       <span className="error-msg">
-                        {auth.errors.password && auth.errors.password
+                        {auth.errors && auth.errors.password
                           ? auth.errors.password
                           : ""}{" "}
                       </span>

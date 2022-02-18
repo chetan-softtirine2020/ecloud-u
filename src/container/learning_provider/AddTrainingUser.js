@@ -7,7 +7,10 @@ import {
   addUserTraining,
   importUserTraining,
 } from "../../actions/learning_provider/lp_users_action";
+import { Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+
 const AddTrainingUser = () => {
   let { slug } = useParams();
   const dispatch = useDispatch();
@@ -26,6 +29,7 @@ const AddTrainingUser = () => {
     email: "",
     slug: slug,
     file: [],
+    is_file: false,
   });
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -42,41 +46,74 @@ const AddTrainingUser = () => {
     //   file: [],
     // });
   }
-  
+
   const onSubmit = (data) => {
+    setUser({ is_file: true });
     const formData = new FormData();
     formData.append("file", data.file[0]);
     formData.append("slug", slug);
     dispatch(importUserTraining(formData));
   };
-  console.log(state);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false);
+    setUser({ is_file: false });
+     
+  }
+
+  console.log("Erro=" + state.errors.length + "File Leng=" + user.is_file);
+  if (state.errors.length > 0 && user.is_file && !show) {
+    setShow(true);
+  }
+
   return (
     <AppBody
       loading={state.loading}
       content={
         <div className="middle-sidebar-left">
-        <div className="">
-          <div className="card">
-            <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
-              <Link to={"/all-trainings"} className="d-inline-block mt-2">
-                <i className="ti-arrow-left font-sm text-white"></i>
-              </Link>
-              <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
+          <div className="">
+            <div className="card">
+              <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
+                <Link to={"/all-trainings"} className="d-inline-block mt-2">
+                  <i className="ti-arrow-left font-sm text-white"></i>
+                </Link>
+                <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
                   Add Training User
                 </h4>
               </div>
+              {show ? (
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Errors</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body className="err-model-body">                      
+                  {state.errors &&
+                    state.errors.map((li, i) => (    
+                          <h4 key={i} className={"error-msg"}>{"Row "+li.row+" "+ li.attribute+ " "+ li.errors } </h4>
+                  ))}
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                      Close
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+              ) : (
+                <div />
+              )}  
+
               <div className="card-body  p-4 w-100 border-0 ">
                 <form
                   onSubmit={handleSubmit(onSubmit)}
                   enctype="multipart/form-data"
-                 >
+                >
                   <div class="alert alert-success">
                     <strong>
                       You can add singal user at time, Other wise you can upload
                       excel sheet
                     </strong>
-                    (column name must be
-                      first_name,last_name,mobile_no,email)
+                    (column name must be firstname,lastname,mobileno,email)
                   </div>
                   <h1 className="text-white">Import Excel </h1>
                   <div className={"row"}>
@@ -94,10 +131,10 @@ const AddTrainingUser = () => {
                           Choose file
                         </label>
                         <span className="error-msg">
-                        {state.errors.other_error
-                          ? state.errors.other_error
-                          : ""}
-                      </span>
+                          {state.errors.other_error
+                            ? state.errors.other_error
+                            : ""}
+                        </span>
                       </div>
                     </div>
                     <div className="col-lg-3">
@@ -121,7 +158,7 @@ const AddTrainingUser = () => {
                         </label>
                         <input
                           type="text"
-                          className="form-control" 
+                          className="form-control"
                           value={user.first_name}
                           onChange={(e) =>
                             setUser({ ...user, first_name: e.target.value })

@@ -142,9 +142,8 @@ function App() {
           <Route
             path={"/change-password"}
             caseSensitive={false}
-            element={<ChangePasswordPage/>}
+            element={<ChangePasswordPage />}
           />
-       
         </Fragment>
 
         {Object.keys(auth).length && hasRole(auth, ["organization"]) && (
@@ -154,9 +153,17 @@ function App() {
         <Route path="/" caseSensitive={false} element={<LandingPage />} />
         <Route path={"/login"} caseSensitive={false} element={<Login />} />
         <Route path={"/register"} caseSensitive={false} element={<SignUp />} />
-        <Route path={"/forgot-password"} caseSensitive={false} element={<ForgotPassword />} />
-        <Route path={"/reset-password/:i_t/:h_id"} caseSensitive={false} element={<ResetPassword />} />
-     
+        <Route
+          path={"/forgot-password"}
+          caseSensitive={false}
+          element={<ForgotPassword />}
+        />
+        <Route
+          path={"/reset-password/:i_t"}
+          caseSensitive={false}
+          element={<ResetPassword />}
+        />
+
         <Route
           path={"/register-organization"}
           caseSensitive={false}

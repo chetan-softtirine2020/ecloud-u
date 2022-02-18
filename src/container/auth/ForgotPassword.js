@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import NavBar from "../components/NavBar";
 import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { forgotPassword } from "../../actions/auth_action";
+import { forgotPassword,resetErorrs } from "../../actions/auth_action";
 import LoadingOverlay from "react-loading-overlay";
 import facebook from "../../images/icon-3.png";
 import google from "../../images/icon-1.png";
@@ -12,9 +12,12 @@ const ForgotPassword = () => {
   const auth = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const [user, setUser] = useState({
-    password: "",
-    email: "",
+      email: "",
   });
+
+  useEffect(() => {
+    dispatch(resetErorrs());
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

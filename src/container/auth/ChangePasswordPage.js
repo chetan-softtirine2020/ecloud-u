@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import AppBody from "../components/AppBody";
 import "react-datepicker/dist/react-datepicker.css";
 import { Navigate } from "react-router-dom";
-import { changePassword } from "../../actions/auth_action";
+import { changePassword, resetErorrs } from "../../actions/auth_action";
 const ChangePasswordPage = () => {
-  
   const [password, setPassword] = useState({
     current_password: "",
     password: "",
     password_confirmation: "",
   });
-  
+
   const dispatch = useDispatch();
   const state = useSelector((state) => state.authReducer);
+  useEffect(() => {
+    dispatch(resetErorrs());
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(changePassword(password));
@@ -25,7 +27,7 @@ const ChangePasswordPage = () => {
     //   password: "",
     //   password_confirmation: "",
     // });
-   // return <Navigate to="/change-password" />;
+    // return <Navigate to="/change-password" />;
   }
 
   return (
@@ -33,18 +35,18 @@ const ChangePasswordPage = () => {
       loading={state.loading}
       content={
         <div className="middle-sidebar-left">
-        <div className="">
-          <div className="card">
-            <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">           
-              <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
+          <div className="">
+            <div className="card">
+              <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
+                <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
                   Change Password
                 </h4>
               </div>
-               {state.is_done&& 
-              <div className="alert alert-success" role="alert">
-                   Password change successfully!
-              </div>
-               }
+              {state.is_done && (
+                <div className="alert alert-success" role="alert">
+                  Password change successfully!
+                </div>
+              )}
               <div className="card-body p-4 w-100 border-0 ">
                 <form onSubmit={handleSubmit}>
                   <div className="row">
@@ -114,13 +116,13 @@ const ChangePasswordPage = () => {
                     </div>
 
                     <div className="col-lg-12 my-3">
-                    <input
-                      type="submit"
-                      name="submit"
-                      value="Submit"
-                      className="btn-common px-5"
-                    />
-                  </div>
+                      <input
+                        type="submit"
+                        name="submit"
+                        value="Submit"
+                        className="btn-common px-5"
+                      />
+                    </div>
                   </div>
                 </form>
               </div>
