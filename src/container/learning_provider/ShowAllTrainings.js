@@ -48,10 +48,11 @@ const ShowAllTrainings = () => {
                 <i className="ti-arrow-left font-sm text-white"></i>
               </Link>
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                All Training 
+                All Training
               </h4>
             </div>
             <div className="card-body p-4 w-100 border-0 ">
+            <div className="table-responsive">
               <table className="table table-bordered">
                 <thead>
                   <tr>
@@ -60,7 +61,7 @@ const ShowAllTrainings = () => {
                     <th>Date</th>
                     <th>Availbale</th>
                     {/* <th>Description</th>*/}
-                    <th>Action</th>
+                    <th className="tblaction">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -72,7 +73,7 @@ const ShowAllTrainings = () => {
                         <td>{li.date}</td>
                         <td>{li.is_public == 0 ? "Not Public" : "Public"}</td>
                         {/* <td>{li.description}</td>*/}
-                        <td>
+                        <td className="tblaction">
                           <input
                             type="button"
                             value="Add User"
@@ -104,6 +105,7 @@ const ShowAllTrainings = () => {
                     ))}
                 </tbody>
               </table>
+            </div>
             </div>
           </div>
         </div>

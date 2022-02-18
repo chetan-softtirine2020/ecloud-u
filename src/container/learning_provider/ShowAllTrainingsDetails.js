@@ -33,6 +33,7 @@ const ShowAllTrainingsDetails = () => {
               </h4>
             </div>
             <div className="card-body p-4 w-100 border-0 ">
+            <div className="table-responsive">
               <table className="table table-bordered">
                 <thead>
                   <tr>
@@ -64,6 +65,7 @@ const ShowAllTrainingsDetails = () => {
                     ))}
                 </tbody>
               </table>
+            </div>
             </div>
           </div>
         </div>

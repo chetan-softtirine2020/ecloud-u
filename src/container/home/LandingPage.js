@@ -150,7 +150,12 @@ const LandingPage = () => {
                           <span className="course-nm">{li.name}</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
-                        <div className="">
+
+                      </div>
+                      <div className="col-4">
+                        <i className="icon ti-desktop"></i>
+                      </div>
+                      <div className="col-12">
                           <a
                             href="#."
                             onClick={() => handleShow(li)}
@@ -159,10 +164,6 @@ const LandingPage = () => {
                             Get Started
                           </a>
                         </div>
-                      </div>
-                      <div className="col-4">
-                        <i className="icon ti-desktop"></i>
-                      </div>
                     </div>
                   </div>
                 </div>

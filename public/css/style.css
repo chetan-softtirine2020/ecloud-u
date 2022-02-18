@@ -1938,6 +1938,14 @@ pre code {
 }
 
 /* css for landng page  */
+
+
+#root,html,body{
+  height:100%;
+}
+.main-content{
+  background: #000;
+}
 .navigation .nav-content ul li a.active{
   background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28);
   background-size: 300% 100%;
@@ -2213,6 +2221,10 @@ pre code {
 
 .middle-sidebar-left .card {
   color:#fff;
+}
+
+.middle-sidebar-left .card .table {
+  min-width:700px;
 }
 .middle-sidebar-left .card .card-header{
   background-color: #1a1a1a;
@@ -12960,7 +12972,7 @@ strong,
 }
 @media (max-width: 991.98px) {
   .navigation .nav-content ul li:not(.logo) {
-    margin: 4px 15px;
+    margin: 4px 10px 4px 0px;
   }
 }
 .navigation .nav-content ul li:not(.logo) a {
@@ -13144,9 +13156,8 @@ strong,
   }
 }
 
-.main-content {
-  background-color: #fbfcfe;
-}
+
+
 @media (min-width: 992px) {
   .main-content {
     -webkit-box-flex: 1;
@@ -13168,10 +13179,13 @@ strong,
   .main-content {
     order: 1;
     position: relative;
-    height: calc(100vh - 56px);
+    height: calc(100vh - 15px);
     overflow-x: hidden;
     overflow-y: auto;
   }
+  .table-bordered th, .table-bordered td {
+    font-size: 12px;
+}
 }
 .main-content .left-sidebar, .main-content .right-sidebar {
   display: -webkit-box;
@@ -13329,7 +13343,7 @@ strong,
   height: 2px;
   margin: 3px auto;
   border-radius: 1px;
-  background: #1B1D21;
+  background: #fff;
   -webkit-transition: all 0.25s;
   -o-transition: all 0.25s;
   transition: all 0.25s;
@@ -13341,7 +13355,7 @@ strong,
   height: 2px;
   margin: 3px auto;
   border-radius: 1px;
-  background: #1B1D21;
+  background: #fff;
   -webkit-transition: all 0.25s;
   -o-transition: all 0.25s;
   transition: all 0.25s;
@@ -13463,6 +13477,7 @@ strong,
 @media (max-width: 991.98px) {
   .main-content .middle-sidebar-bottom {
     width: 100%;
+    height:100%;
     padding: 76px 15px 15px;
   }
 }
@@ -13680,6 +13695,66 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
   }
 }
 @media only screen and (max-width: 768px) {
+  
+  .landing-container .top-hedtxt-section{
+    padding: 2em 1em 2em 1em;
+    text-align: center;
+  }
+  .landing-container .top-hedtxt-section .first-title {
+    font-size: 26px;
+  }
+  .landing-container .top-hedtxt-section .banner-des {
+    font-size: 14px;
+  }
+  .titlepage h2 {
+    line-height: 36px;
+    font-size: 24px;
+}
+
+.titlepage {
+  padding: 15px 0px 15px;
+}
+
+.important_bg .important_box h3 {
+  font-size: 32px;
+  line-height: 32px;}
+  .important_bg .important_box span {
+    font-size: 22px;
+    line-height: 22px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.cource-section .box {
+  margin-left: 0px;
+}
+
+.carousel-section .box, .cource-section .box {
+  padding: 15px 15px;
+
+}
+.carousel-section .box{
+  text-align: center;
+}
+
+.cource-section .box .course-count {
+  margin-bottom: 10px;
+}
+
+  .rec-arrow-left, .rec-arrow-right{
+    position: absolute;
+    top: 35%;
+    z-index: 9999;
+    background: rgb(82 78 78 / 30%) !important;
+  }
+
+  .rec-arrow-left{
+    left: 4%;
+  }
+  .rec-arrow-right{
+    right: 4%;
+  }
+
   .header-wrapper.pos-fixed .navbar-collapse {
     background-color: #212121;
     padding: 0 10px;

@@ -25,8 +25,8 @@ const SiteBar = () => {
                   Educloudlabs{" "}
                 </span>
               </Link>
-              <a href="/" class="close-nav d-inline-block d-lg-none">
-                <i class="ti-close bg-grey mb-4 btn-round-sm font-xssss fw-700 text-dark ml-auto mr-2 "></i>
+              <a href="/" class="close-nav d-inline-block d-lg-none pl-2">
+                <i class="ti-close bg-grey mb-4 btn-round-sm font-xssss fw-700 text-dark ml-auto mr-1 "></i>
               </a>
             </div>
 
