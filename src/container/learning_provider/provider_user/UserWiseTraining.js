@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserWiseTraining } from "../../../actions/learning_provider/provider_user/training_action";
+import { getUserWiseTraining,updateUserTrainingJoinStatus } from "../../../actions/learning_provider/provider_user/training_action";
 import { useNavigate } from "react-router-dom";
 
 import AppBody from "../../components/AppBody";
@@ -13,8 +13,10 @@ const UserWiseTraining = () => {
   }, []);
 
   const handelStartMeetingClick = (slug) => {
+    dispatch(updateUserTrainingJoinStatus({slug:slug}));       
     navigate("/training/" + slug);
   };
+  
   return (
     <AppBody
       loading={state.loading}

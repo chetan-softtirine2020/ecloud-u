@@ -8,6 +8,7 @@ import adminOrgReducer from "./admin/admin_org_reducer";
 import orgTrainingReducer from "./organization/org_training_reducer";
 import homeReducer from "./home/home_reducer";
 import dashboardReducer from "./learning_provider/dashboard_reducer";
+import adminUsersReducer from "./admin/admin_users";
 const rootReducer = combineReducers({
   authReducer: authReducer,
   adminOrgReducer: adminOrgReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   puTrainingReducer: puTrainingReducer,
   homeReducer: homeReducer,
   dashboardReducer: dashboardReducer,
+  adminUsersReducer: adminUsersReducer,
 });
 
 export default rootReducer;
