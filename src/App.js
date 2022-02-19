@@ -30,6 +30,7 @@ import JoinedTrainingUserDetails from "./container/learning_provider/JoinedTrain
 import ChangePasswordPage from "./container/auth/ChangePasswordPage";
 import ForgotPassword from "./container/auth/ForgotPassword";
 import ResetPassword from "./container/auth/ResetPassword";
+import LearningProvidersList from "./container/admin/users/LearningProvidersList";
 function App() {
   const auth = useSelector((state) => state.authReducer);
   return (
@@ -122,12 +123,7 @@ function App() {
             caseSensitive={false}
             element={<ShowAllTrainings />}
           />
-          <Route
-            path={"/all-trainings"}
-            caseSensitive={false}
-            element={<ShowAllTrainings />}
-          />
-
+        
           <Route
             path={"/completed-trainings"}
             caseSensitive={false}
@@ -137,6 +133,11 @@ function App() {
             path={"/completed-training-users/:slug"}
             caseSensitive={false}
             element={<JoinedTrainingUserDetails />}
+          />
+          <Route
+            path={"/admin/learning-providers"}
+            caseSensitive={false}
+            element={<LearningProvidersList />}
           />
 
           <Route

@@ -3,6 +3,7 @@ import SiteBar from "../components/SiteBar";
 import AppNavBar from "../components/AppNavBar";
 import { Navigate } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
+import { redirectUser } from "../../config/redirect";
 const AppBody = (props) => {
  
   if (!localStorage.getItem("token") && localStorage.getItem("redirectLink")) {
@@ -12,6 +13,9 @@ const AppBody = (props) => {
   if (!localStorage.getItem("token")) {
     return <Navigate to="/" />;
   }
+  // if (localStorage.getItem("token")) {
+  //   return <Navigate to={redirectUser()} />;
+  // }
 
   return (
     <LoadingOverlay active={props.loading} spinner text="Loading...">
