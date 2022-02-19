@@ -29,6 +29,7 @@ const UserWiseTraining = () => {
               </h4>
             </div>
             <div className="card-body  p-4 w-100 border-0 ">
+            <div className="table-responsive">
               <table class="table table-bordered">
                 <thead>
                   <tr>
@@ -61,6 +62,7 @@ const UserWiseTraining = () => {
                     ))}                    
                 </tbody>                
               </table>                
+            </div>
             </div>
           </div>
         </div>
