@@ -285,6 +285,20 @@ const SiteBar = () => {
                     <span>Approve Organizations</span>
                   </Link>
                 </li>
+                <li>
+                <Link
+                  to={"/admin/learning-providers"}
+                  class={`nav-content-bttn open-font ${
+                    location.pathname === "/admin/learning-providers"
+                      ? "active"
+                      : ""
+                  }`}
+                  data-tab="favorites"
+                >
+                  <i class="feather-globe mr-3"></i>
+                  <span>Learning Providers</span>
+                </Link>
+              </li>              
               </ul>
             )}
 

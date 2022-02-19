@@ -7,7 +7,7 @@ export const initState = {
   
   const puTrainingReducer = (state = initState, { type, payload }) => {
     switch (type) {
-      case "ERROR":
+      case "PROVIDER_USER_ERROR":
         return {
           ...state,
           loading: false,

@@ -46,7 +46,7 @@ const LandingPage = () => {
   let resetTimeout;
 
   if (localStorage.getItem("token")) {
-    redirectUser();
+    return <Navigate to={redirectUser()} />;
   }
 
   return (
