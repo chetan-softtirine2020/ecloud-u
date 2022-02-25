@@ -1,8 +1,8 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logIn,resetErorrs } from "../../actions/auth_action";
+import { logIn, resetErorrs } from "../../actions/auth_action";
 import LoadingOverlay from "react-loading-overlay";
 import facebook from "../../images/icon-3.png";
 import google from "../../images/icon-1.png";
@@ -10,6 +10,7 @@ import lognbg from "../../images/login/login-bg.jpg";
 
 import { Link } from "react-router-dom";
 import { redirectUser } from "../../config/redirect";
+import SocialLogin from "./SocialLogin";
 const Login = () => {
   const auth = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
@@ -141,7 +142,8 @@ const Login = () => {
                       Or, Sign in with your social account{" "}
                     </h6>
                     <div className="row">
-                      <div className="col-sm-12 col-md-6">
+                      <SocialLogin />
+                      {/* <div className="col-sm-12 col-md-6">                     
                         <div className="form-group mb-1">
                           <a
                             href="#"
@@ -155,8 +157,9 @@ const Login = () => {
                             Sign in with Google
                           </a>
                         </div>
-                      </div>
-                      <div className="col-sm-12 col-md-6">
+                        </div>*/}
+
+                      {/*<div className="col-sm-12 col-md-6">
                         <div className="form-group mb-1">
                           <a
                             href="#"
@@ -170,7 +173,7 @@ const Login = () => {
                             Sign in with Facebook
                           </a>
                         </div>
-                      </div>
+                        </div>*/}
                     </div>
                   </div>
                 </div>

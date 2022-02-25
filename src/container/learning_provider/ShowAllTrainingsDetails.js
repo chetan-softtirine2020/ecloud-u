@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AppBody from "../components/AppBody";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,6 @@ const ShowAllTrainingsDetails = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
  
-
   useEffect(() => {
     if (state.list.length == 0) {
       dispatch(getAllTrainings());
@@ -40,6 +39,7 @@ const ShowAllTrainingsDetails = () => {
                     <th>Sr.No</th>
                     <th>Name</th>
                     <th>Date</th>
+                    <th>Status</th>
                     {/* <th>Description</th>*/}
                     <th>Action</th>
                   </tr>
