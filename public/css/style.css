@@ -2107,8 +2107,7 @@ pre code {
 .course-modal .course-ttl {
   font-size: 48px;
   font-weight: 600;
-  color: #80201e;
-  padding-bottom: 15px;
+  color: #fff;
 }
 .course-modal .paths-list-details ul {
   display: flex;
@@ -2137,8 +2136,7 @@ pre code {
   font-size: 20px;
 }
 .course-modal .paths-content-description p{
-    padding-bottom: 10px;
-    color: #222;
+    color: #fff;
 }
 
 .course-modal .modal-footer{
@@ -2150,13 +2148,14 @@ pre code {
 .course-modal .paths-content-highlight h3{
   font-size: 24px;
   font-weight: 600;
+  color: #fff;
 }
 .course-modal .paths-content-highlight ul{
   padding-left: 20px;
 }
 .course-modal .paths-content-highlight ul li {
   font-size: 17px;
-  color: #000000;
+  color: #fff;
   margin: 0;
   padding: 0;
   position: relative;
@@ -2321,6 +2320,35 @@ pre code {
 }
 .btn-common:hover, .btn-common:focus{
 color:#fff;
+}
+
+
+.error-box{
+  color: #fff;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.error-box h1{
+  color: #ef3d48;
+  font-size: 12rem;
+  font-weight: 600;
+}
+.error-box h3{
+  color: #727272;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.error-box p{
+  color: #545454;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 60px;
+}
+.error-box .btn-common{
+  padding: 15px 30px;
 }
 
 @media (min-width: 576px) {
@@ -4753,13 +4781,12 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-info {
-  color: #2754e6;
-  border-color: #2754e6;
+  color: #fff;
+  border-color: #fff;
 }
 .btn-outline-info:hover {
   color: #fff;
-  background-color: #2754e6;
-  border-color: #2754e6;
+  border-color: #fff;
 }
 .btn-outline-info:focus, .btn-outline-info.focus {
   box-shadow: 0 0 0 0rem rgba(39, 84, 230, 0.5);
@@ -7481,7 +7508,7 @@ a.close.disabled {
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #fff;
+  background-color: #444;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
