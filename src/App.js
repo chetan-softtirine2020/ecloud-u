@@ -31,6 +31,7 @@ import ChangePasswordPage from "./container/auth/ChangePasswordPage";
 import ForgotPassword from "./container/auth/ForgotPassword";
 import ResetPassword from "./container/auth/ResetPassword";
 import LearningProvidersList from "./container/admin/users/LearningProvidersList";
+import AddOrgSubAdmin from "./container/organization/AddOrgSubAdmin";
 function App() {
   const auth = useSelector((state) => state.authReducer);
   return (
@@ -139,6 +140,12 @@ function App() {
             caseSensitive={false}
             element={<LearningProvidersList />}
           />
+          <Route
+          path={"/org/add-org-sub-admin"}
+          caseSensitive={false}
+          element={<AddOrgSubAdmin />}
+        />
+
 
           <Route
             path={"/change-password"}
@@ -167,7 +174,7 @@ function App() {
 
         <Route
           path={"/register-organization"}
-          caseSensitive={false}
+          caseSensitive={false} 
           element={<RegisterOrganization />}
         />
       </Routes>

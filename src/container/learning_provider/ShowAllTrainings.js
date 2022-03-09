@@ -7,11 +7,13 @@ import {
   getAllTrainings,
   addMakePublicTraining,
 } from "../../actions/learning_provider/training_action";
+import { UI_URL } from "../../config/api";
 const ShowAllTrainings = () => {
   const state = useSelector((state) => state.trainingReducer);
+  const conferance = useSelector((state) => state.conferanceReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [slug, setSlug] = useState("");
   useEffect(() => {
     if (state.list.length == 0) {
       dispatch(getAllTrainings());
@@ -30,12 +32,23 @@ const ShowAllTrainings = () => {
     dispatch(addMakePublicTraining({ id: id }));
   };
   const checkCallFun = (slug) => {
-       
+   
+    window.open(UI_URL + "/training/" + slug);
+    // setSlug(slug);
+    //dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
   };
 
   if (state.is_done) {
     dispatch(getAllTrainings());
   }
+  // if (conferance.joinCount > 0 && slug) {
+  //   // alert("Call the ")
+  //   setSlug("")
+  //   dispatch(getAllTrainings());
+  //   //window.open(UI_URL + "/" + "");
+  //   window.open(UI_URL + "/training/" + slug);
+  // }
+
   return (
     <AppBody
       loading={state.loading}
@@ -47,7 +60,7 @@ const ShowAllTrainings = () => {
                 <i className="ti-arrow-left font-sm text-white"></i>
               </Link>
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                All Training
+                Upcoming Trainings
               </h4>
             </div>
             <div className="card-body p-4 w-100 border-0 ">
@@ -59,6 +72,7 @@ const ShowAllTrainings = () => {
                       <th>Name</th>
                       <th>Date</th>
                       <th>Availbale</th>
+                      <th>Status</th>
                       {/* <th>Description</th>*/}
                       <th className="tblaction">Action</th>
                     </tr>
@@ -70,7 +84,14 @@ const ShowAllTrainings = () => {
                           <td>{i + 1}</td>
                           <td>{li.name}</td>
                           <td>{li.date}</td>
-                          <td>{li.is_public == 0 ? "Not Public" : "Public"}</td>
+                          <td>
+                            {li.is_public === 0 ? "Not Public" : "Public"}
+                          </td>
+                          <td>
+                            {li.status === 1 && "Schedule"}
+                            {li.status === 2 && "Starting"}{" "}
+                            {li.status === 3 && "Completed"}
+                          </td>
                           {/* <td>{li.description}</td>*/}
                           <td className="tblaction">
                             <input
@@ -96,14 +117,22 @@ const ShowAllTrainings = () => {
                               onClick={() => handelPublicClick(li.id)}
                             />
 
-                            <Link
+                            <input
+                              type="button"
+                              value={"Start"}
+                              readOnly={li.status === 1 ? true : false}
+                              className="btn approve_btn mg-l btn-common"
+                              onClick={() => checkCallFun(li.slug)}
+                            />
+
+                            {/*<Link
                               to={"/training/" + li.slug}
                               className="btn approve_btn mg-l btn-common"
                               target="_blank"
                               onClick={() => checkCallFun(li.slug)}
                             >
                               start
-                            </Link>
+                            </Link>*/}
                           </td>
                         </tr>
                       ))}

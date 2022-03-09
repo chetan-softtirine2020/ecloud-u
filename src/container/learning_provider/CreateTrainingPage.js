@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import AppBody from "../components/AppBody";
 import DatePicker from "react-datepicker";
@@ -13,6 +13,16 @@ const CreateTrainingPage = () => {
   });
   const dispatch = useDispatch();
   const state = useSelector((state) => state.trainingReducer);
+  useEffect(() => {
+    const onbeforeunloadFn = (data) => {
+      alert(data);
+      localStorage.setItem("color", "red");
+    };
+     window.addEventListener("beforeunload", onbeforeunloadFn(2));
+    return () => {
+      window.removeEventListener("beforeunload", onbeforeunloadFn(1));
+    };
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createTraining(traning));

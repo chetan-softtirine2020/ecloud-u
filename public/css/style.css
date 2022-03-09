@@ -26,6 +26,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import "./../vendor/owl-carousel/css/owl.carousel.min.css";
 @import "./../vendor/owl-carousel/css/owl.theme.default.css";
+.fs-48{
+  font: size 48px;
+}
 .error-msg{
   color: red;
 }

@@ -66,7 +66,7 @@ const SiteBar = () => {
                     }`}
                   >
                     <i class="feather-video mr-3"></i>
-                    <span>All Tranings</span>
+                    <span>Upcoming Trainings</span>
                   </Link>
                 </li>
                 <li class="flex-lg-brackets">
@@ -74,11 +74,25 @@ const SiteBar = () => {
                     to={"/completed-trainings"}
                     data-tab="archived"
                     class={`nav-content-bttn open-font ${
-                      location.pathname === "/completed-trainings" ? "active" : ""
+                      location.pathname === "/completed-trainings"
+                        ? "active"
+                        : ""
                     }`}
                   >
                     <i class="feather-video mr-3"></i>
                     <span>Completed Tainings</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/org/add-org-sub-admin"}
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/org/add-org-sub-admin" ? "active" : ""
+                    }`}
+                    data-tab="favorites"
+                  >
+                    <i class="feather-home mr-3"></i>
+                    <span>Org Sub Admin</span>
                   </Link>
                 </li>
               </ul>
@@ -286,19 +300,19 @@ const SiteBar = () => {
                   </Link>
                 </li>
                 <li>
-                <Link
-                  to={"/admin/learning-providers"}
-                  class={`nav-content-bttn open-font ${
-                    location.pathname === "/admin/learning-providers"
-                      ? "active"
-                      : ""
-                  }`}
-                  data-tab="favorites"
-                >
-                  <i class="feather-globe mr-3"></i>
-                  <span>Learning Providers</span>
-                </Link>
-              </li>              
+                  <Link
+                    to={"/admin/learning-providers"}
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/admin/learning-providers"
+                        ? "active"
+                        : ""
+                    }`}
+                    data-tab="favorites"
+                  >
+                    <i class="feather-globe mr-3"></i>
+                    <span>Learning Providers</span>
+                  </Link>
+                </li>
               </ul>
             )}
 
@@ -335,7 +349,7 @@ const SiteBar = () => {
                   <i class="font-sm feather-log-out mr-3"></i>
                   <span>Logout</span>
                 </a>
-              </li>              
+              </li>
             </ul>
           </div>
         </div>
