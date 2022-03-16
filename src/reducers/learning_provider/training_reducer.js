@@ -8,7 +8,7 @@ export const initState = {
 
 const trainingReducer = (state = initState, { type, payload }) => {
   switch (type) {
-    case "ERROR":
+    case "TRAINING_ERROR":
       return {
         ...state,
         loading: false,
@@ -63,6 +63,14 @@ const trainingReducer = (state = initState, { type, payload }) => {
         loading: false,
         errors: [],
         list: payload,
+      };
+      
+     case "DELETE_TRAINING":
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        is_done: true,
       };
 
     default:

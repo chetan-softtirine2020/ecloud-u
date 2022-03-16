@@ -7,17 +7,17 @@ let token = getToken();
 export const errorMessage = (err) => {
   switch (err.response.status) {
     case 422:
-      return { type: "ERROR", payload: err.response.data };
+      return { type: "TRAINING_ERROR", payload: err.response.data };
     case 405:
-      return { type: "ERROR", payload: { other_error: "Method Not Allowed" } };
+      return { type: "TRAINING_ERROR", payload: { other_error: "Method Not Allowed" } };
     case 500:
       return {
-        type: "ERROR",
+        type: "TRAINING_ERROR",
         payload: { other_error: "Internal Server Error." },
       };
     default:
       return {
-        type: "ERROR",
+        type: "TRAINING_ERROR",
         payload: { other_error: "Something went worng." },
       };
   }
@@ -207,7 +207,7 @@ export const getAllTrainings = () => {
   };
 };
 
-export const deleteTraining = (id) => {
+export const deleteTraining = (slug) => {
   return (dispatch) => {
     dispatch({
       type: "TRAINING_REQUEST",
@@ -216,6 +216,7 @@ export const deleteTraining = (id) => {
       .request({
         method: "post",
         url: `${APP_URL}/delete-trainings`,
+        data:slug,
         headers: {
           Authorization: `Bearer ${getToken().substring(
             1,

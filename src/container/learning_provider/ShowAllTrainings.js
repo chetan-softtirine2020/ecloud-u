@@ -6,6 +6,7 @@ import { joinConferanceCheckCount } from "../../actions/conferance_action";
 import {
   getAllTrainings,
   addMakePublicTraining,
+  deleteTraining,
 } from "../../actions/learning_provider/training_action";
 import { UI_URL } from "../../config/api";
 const ShowAllTrainings = () => {
@@ -14,11 +15,19 @@ const ShowAllTrainings = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [slug, setSlug] = useState("");
-  useEffect(() => {
-    if (state.list.length == 0) {
-      dispatch(getAllTrainings());
-    }
-  }, []);
+
+  
+
+  const handleTabClosing = () => {
+    // alert("Hiiiii");
+  };
+
+  const alertUser = (event) => {
+    alert("ny");
+    event.preventDefault();
+    event.returnValue = "ssdsd";
+  };
+
   const location = useLocation();
   const handelClick = (slug) => {
     navigate("/add-training-user/" + slug);
@@ -32,10 +41,13 @@ const ShowAllTrainings = () => {
     dispatch(addMakePublicTraining({ id: id }));
   };
   const checkCallFun = (slug) => {
-   
     window.open(UI_URL + "/training/" + slug);
     // setSlug(slug);
     //dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
+  };
+
+  const getDeleteTraining = (slug) => {
+    dispatch(deleteTraining({ slug: slug }));
   };
 
   if (state.is_done) {
@@ -124,6 +136,15 @@ const ShowAllTrainings = () => {
                               className="btn approve_btn mg-l btn-common"
                               onClick={() => checkCallFun(li.slug)}
                             />
+
+                            {li.status === 1 && (
+                              <input
+                                type="button"
+                                value={"Delete"}
+                                className="btn approve_btn mg-l btn-common"
+                                onClick={() => getDeleteTraining(li.slug)}
+                              />
+                            )}
 
                             {/*<Link
                               to={"/training/" + li.slug}

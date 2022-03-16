@@ -1,10 +1,16 @@
-import React,  {Fragment, useState, useEffect, useCallback, useRef } from "react";
+import React, {
+  Fragment,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from "react";
 import AppBody from "./components/AppBody";
 import { useParams } from "react-router";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { joinConferanceCheckCount } from "../actions/conferance_action";
-
+import jwt from "jwt-simple";
 
 function EducloundMeet() {
   const location = useLocation();
@@ -24,6 +30,8 @@ function EducloundMeet() {
   let { slug } = useParams();
   const userData = JSON.parse(localStorage.getItem("data"));
   const [userText, setUserText] = useState("");
+
+ 
 
   useEffect(() => {
     // dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
@@ -79,6 +87,7 @@ function EducloundMeet() {
     role = "participant";
     isModerator = false;
   }
+
   function startConference() {
     try {
       const domain = "educloud-meet.com";
@@ -90,38 +99,43 @@ function EducloundMeet() {
         },
         roomName: slug,
         height: 550,
-        parentNode: document.getElementById("jitsi-container"),       
+        parentNode: document.getElementById("jitsi-container"),
         localRecording: {
           enabled: true,
-          format: 'flac'
+          format: "flac",
         },
         interfaceConfigOverwrite: {
           filmStripOnly: false,
           SHOW_JITSI_WATERMARK: false,
-          //TOOLBAR_BUTTONS: ['localrecording'],
-          SETTINGS_SECTIONS: ['devices', 'language', '-moderator', 'profile', '-calendar'],
+          TOOLBAR_BUTTONS: ["camera"],
+          SETTINGS_SECTIONS: [
+            "devices",
+            "language",
+            "-moderator",
+            "profile",
+            "-calendar",
+          ],
         },
         configOverwrite: {
           prejoinPageEnabled: false,
-          doNotStoreRoom:true,
+          doNotStoreRoom: true,
           disableSimulcast: false,
-          startWithVideoMuted:true,
-          startWithAudioMuted:true,
-          disableRemoteMute:true,
-          remoteVideoMenu:{
-            disableKick:true,
-            disableGrantModerator: true
-          }
+          startWithVideoMuted: false,
+          startWithAudioMuted: false,
+          disableRemoteMute: true,
+          disableDeepLinking: true,
+          remoteVideoMenu: {
+            disableKick: true,
+            disableGrantModerator: true,
+          },
         },
       };
-
       const api = new window.JitsiMeetExternalAPI(domain, options);
       setApiObj(api);
-      api.executeCommand("overwriteConfig", {
-      // toolbarButtons: [ 'microphone', 'camera','raisehand','tileview','hangup','mute-everyone','chat','fullscreen','select-background','shareaudio','sharedvideo','mute-video-everyone','livestreaming'],
-    // toolbarButtons: ['']
-    });
-     
+      // api.executeCommand("overwriteConfig", {
+      //    toolbarButtons: [ 'microphone', 'camera','raisehand','tileview','hangup','mute-everyone','chat','fullscreen','select-background','shareaudio','sharedvideo','mute-video-everyone','livestreaming'],
+      //   // toolbarButtons: ['']
+      // });
     } catch (error) {
       console.error("Failed to load Educloudlabs API", error);
     }
@@ -181,13 +195,10 @@ function EducloundMeet() {
       apiObj.executeCommand("muteEveryone", "video");
     }
   };
- 
-  
 
-  const askForMeeting = () => {   
-    apiObj.executeCommand('toggleLobby', true);
+  const askForMeeting = () => {
+    apiObj.executeCommand("toggleLobby", true);
   };
- 
 
   return (
     <AppBody
@@ -201,7 +212,7 @@ function EducloundMeet() {
                   Training
                 </h4>
               </div>
-            {/*  {!isModerator && (
+              {/*  {!isModerator && (
                 <div>
                   <button
                     type="button"
@@ -222,52 +233,82 @@ function EducloundMeet() {
 
               <div className="row">
                 <table>
-                  <tr>   
-                         
+                  <tr>
                     <th>
                       {" "}
-                      <button className="btn btn-primary" onClick={() => microphone()}>Microphone</button>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => microphone()}
+                      >
+                        Microphone
+                      </button>
                     </th>
                     <th>
                       {" "}
-                      <button className="btn btn-primary" onClick={() => video()}>Video</button>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => video()}
+                      >
+                        Video
+                      </button>
                     </th>
                     <th>
                       {" "}
-                      <button className="btn btn-primary" onClick={() => screenShare()}>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => screenShare()}
+                      >
                         Screen Share
                       </button>
                     </th>
                     <th>
                       {" "}
-                      <button className="btn btn-primary" onClick={() => chat()}>Chat</button>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => chat()}
+                      >
+                        Chat
+                      </button>
                     </th>
                     <th>
                       {" "}
-                      <button className="btn btn-primary" onClick={() => raseHand()}>Rase Hand</button>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => raseHand()}
+                      >
+                        Rase Hand
+                      </button>
                     </th>
                     <th>
-                      <button className="btn btn-primary" onClick={() => tileView()}>Tile View</button>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => tileView()}
+                      >
+                        Tile View
+                      </button>
                     </th>
                     <th>
-                      <button className="btn btn-primary" onClick={() => toggleVirtualBackgroundDialog()}>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => toggleVirtualBackgroundDialog()}
+                      >
                         Select Background
                       </button>
                     </th>
-                    {isModerator  &&
+                    {isModerator && (
                       <Fragment>
-                      <th>
-                      <button onClick={() => muteAudio()}>
-                        Mute Audio Everyone
-                      </button>
-                    </th>
-                    <th>
-                      <button onClick={() => muteVideo()}>
-                        Mute Video Everyone
-                      </button>
-                    </th>
-                    </Fragment>
-                    }
+                        <th>
+                          <button onClick={() => muteAudio()}>
+                            Mute Audio Everyone
+                          </button>
+                        </th>
+                        <th>
+                          <button onClick={() => muteVideo()}>
+                            Mute Video Everyone
+                          </button>
+                        </th>
+                      </Fragment>
+                    )}
                     <th>
                       <button
                         className="btn-danger"
