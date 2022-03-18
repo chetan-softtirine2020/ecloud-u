@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./store";
 import { Provider } from "react-redux";
+import 'font-awesome/css/font-awesome.min.css';
 
 ReactDOM.render(
   <React.Fragment>
