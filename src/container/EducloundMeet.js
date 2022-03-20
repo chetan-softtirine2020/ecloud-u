@@ -206,8 +206,8 @@ function EducloundMeet() {
       content={
         <div className="middle-sidebar-left">
           <div className="">
-            <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
-              <div className="card-body p-4 w-100 bg-current border-0 d-flex rounded-lg">
+            <div className="card w-100 border-0 shadow-xs p-0 mb-4">
+            <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
                 <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
                   Training
                 </h4>
@@ -225,100 +225,112 @@ function EducloundMeet() {
               )}
             */}
 
-              <div className="card-body p-lg-5 p-4 w-100 border-0 ">
+            <div className="card-body p-4 w-100 border-0 traning-vido-section">
                 <div style={containerStyle}>
                   <div id="jitsi-container" style={jitsiContainerStyle} />
                 </div>
               </div>
 
               <div className="row">
-                <table>
-                  <tr>
-                    <th>
+                <div className="col">
+                  <div className="control-section">
+                      <div className="d-inline-block">
                       {" "}
-                      <button
-                        className="btn btn-primary"
+                      <a title="Start Microphone"
+                        className="btn"
                         onClick={() => microphone()}
                       >
-                        Microphone
-                      </button>
-                    </th>
-                    <th>
+                         <i class="fa fa-microphone"></i>
+                      </a>
+                      </div>
+                      <div className="d-inline-block">
+                          <a   title="Mute Audio" className="btn btn-selected-control" onClick={() => muteAudio()}>
+                          <i class="fa fa-microphone-slash"></i>
+                          </a>
+                          </div>
+                      <div className="d-inline-block">
                       {" "}
-                      <button
-                        className="btn btn-primary"
+                      <a  title="Start Video"
+                        className="btn"
                         onClick={() => video()}
                       >
-                        Video
-                      </button>
-                    </th>
-                    <th>
+                        <i className="feather-video"></i>
+                      </a>
+                      </div>
+                      <div className="d-inline-block">
+                          <a data-toggle="tooltip"  title="Mute Video"  className="btn btn-selected-control" onClick={() => muteVideo()}>
+                          <i className="fa fa-video-slash"></i>
+                          </a>
+                          </div>
+                      <div className="d-inline-block">
                       {" "}
-                      <button
-                        className="btn btn-primary"
+                      <a title="Screen Share"
+                        className="btn"
                         onClick={() => screenShare()}
                       >
-                        Screen Share
-                      </button>
-                    </th>
-                    <th>
+                        <i className="feather-share"></i>
+                      </a>
+                      </div>
+                      <div className="d-inline-block">
                       {" "}
-                      <button
-                        className="btn btn-primary"
+                      <a title="Chat"
+                        className="btn"
                         onClick={() => chat()}
                       >
-                        Chat
-                      </button>
-                    </th>
-                    <th>
+                        <i className="feather-message-square"></i>
+                      </a>
+                      </div>
+                      <div className="d-inline-block">
                       {" "}
-                      <button
-                        className="btn btn-primary"
+                      <a title="Rase Hand"
+                        className="btn"
                         onClick={() => raseHand()}
                       >
-                        Rase Hand
-                      </button>
-                    </th>
-                    <th>
-                      <button
-                        className="btn btn-primary"
+                        <i className="fa fa-hand"></i>
+                      </a>
+                      </div>
+                      <div className="d-inline-block">
+                      <a title="Tile View"
+                        className="btn"
                         onClick={() => tileView()}
                       >
-                        Tile View
-                      </button>
-                    </th>
-                    <th>
-                      <button
-                        className="btn btn-primary"
+                        <svg aria-hidden="true" width="20px" focusable="false" data-prefix="fas" data-icon="grid-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 512" className="svg-inline--fa fa-grid-2 fa-lg"><path fill="currentColor" d="M192 176C192 202.5 170.5 224 144 224H48C21.49 224 0 202.5 0 176V80C0 53.49 21.49 32 48 32H144C170.5 32 192 53.49 192 80V176zM192 432C192 458.5 170.5 480 144 480H48C21.49 480 0 458.5 0 432V336C0 309.5 21.49 288 48 288H144C170.5 288 192 309.5 192 336V432zM256 80C256 53.49 277.5 32 304 32H400C426.5 32 448 53.49 448 80V176C448 202.5 426.5 224 400 224H304C277.5 224 256 202.5 256 176V80zM448 432C448 458.5 426.5 480 400 480H304C277.5 480 256 458.5 256 432V336C256 309.5 277.5 288 304 288H400C426.5 288 448 309.5 448 336V432z" className=""></path></svg>
+                      </a>
+                      </div>
+                      <div className="d-inline-block">
+                      <a title="toggle Virtual Background"
+                        className="btn"
                         onClick={() => toggleVirtualBackgroundDialog()}
                       >
-                        Select Background
-                      </button>
-                    </th>
-                    {isModerator && (
+                       <i className="fa fa-window-restore"></i>
+                      </a>
+                      </div>
+                      <div className="d-inline-block">
+                      {isModerator && (
                       <Fragment>
-                        <th>
-                          <button onClick={() => muteAudio()}>
-                            Mute Audio Everyone
-                          </button>
-                        </th>
-                        <th>
-                          <button onClick={() => muteVideo()}>
-                            Mute Video Everyone
-                          </button>
-                        </th>
+                          <div className="d-inline-block">
+                          <a   title="Mute Audio" className="btn btn-selected-control" onClick={() => muteAudio()}>
+                          <i class="fa fa-microphone-slash"></i>
+                          </a>
+                          </div>
+                          <div className="d-inline-block">
+                          <a data-toggle="tooltip"  title="Mute Video"  className="btn btn-selected-control" onClick={() => muteVideo()}>
+                          <i className="fa fa-video-slash"></i>
+                          </a>
+                          </div>
                       </Fragment>
                     )}
-                    <th>
-                      <button
-                        className="btn-danger"
+                      </div>
+                      <div className="d-inline-block ml-2">
+                      <a
+                        className="btn-common"
                         onClick={() => closeCall()}
                       >
                         End Meeting
-                      </button>
-                    </th>
-                  </tr>
-                </table>
+                      </a>
+                      </div>
+                  </div>
+                </div>
               </div>
 
               {/*  {state.joinCount !== 1 && !state.loading && (
