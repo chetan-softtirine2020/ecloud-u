@@ -5,19 +5,29 @@ import DatePicker from "react-datepicker";
 import { createTraining } from "../../actions/learning_provider/training_action";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link, Navigate } from "react-router-dom";
-const CreateTrainingPage = () => {
+const CreateTrainingPage = (fn) => {
   const [traning, setTraining] = useState({
     name: "",
     date: new Date(),
     description: "",
   });
 
+  
   const dispatch = useDispatch();
   const state = useSelector((state) => state.trainingReducer);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createTraining(traning));
   };
+  
+
+  const cb = React.useRef(fn);  
+  useEffect(() => {
+    const onUnload = cb.current;
+    window.addEventListener("beforeunload", onUnload);  
+    return () => window.removeEventListener("beforeunload", onUnload);
+  }, [cb]);
+
   if (state.is_done) {
     // setTraining({
     //   name: "",
