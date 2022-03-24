@@ -2320,6 +2320,7 @@ pre code {
   background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28);
   background-size: 300% 100%;
   transition: all .6s ease-in-out;
+  cursor: pointer;
 }
 .btn-common:hover, .btn-common:focus{
 color:#fff;
@@ -2352,6 +2353,39 @@ color:#fff;
 }
 .error-box .btn-common{
   padding: 15px 30px;
+}
+
+
+.control-section{
+  text-align: center;
+  background: #343434;
+  padding: 10px;
+}
+.control-section .btn{
+  margin: 4px;
+  height: 35px;
+  width: 40px;
+  background-color: #505050;
+  border: none;
+}
+.control-section .btn:hover, .control-section .btn:focus {
+  background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28);
+  background-size: 300% 100%;
+  transition: all .6s ease-in-out;
+}
+.traning-vido-section{
+  min-height: 370px;
+}
+
+.btn-selected-control{
+  background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28);
+  background-size: 300% 100%;
+  transition: all .6s ease-in-out;
+}
+.kep-login-facebook.metro{
+  font-size: 14px;
+  padding: 10px;
+  margin: 0px 5px;
 }
 
 @media (min-width: 576px) {
@@ -6406,7 +6440,6 @@ input[type=button].btn-block {
 
 .card-body {
   flex: 1 1 auto;
-  min-height: 1px;
   padding: 1.25rem;
 }
 

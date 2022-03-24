@@ -5,12 +5,15 @@ import DatePicker from "react-datepicker";
 import { createTraining } from "../../actions/learning_provider/training_action";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link, Navigate } from "react-router-dom";
+import { Beforeunload } from 'react-beforeunload';
+
 const CreateTrainingPage = (fn) => {
   const [traning, setTraining] = useState({
     name: "",
     date: new Date(),
     description: "",
   });
+
 
   
   const dispatch = useDispatch();
@@ -19,7 +22,6 @@ const CreateTrainingPage = (fn) => {
     e.preventDefault();
     dispatch(createTraining(traning));
   };
-  
 
   const cb = React.useRef(fn);  
   useEffect(() => {
@@ -36,6 +38,8 @@ const CreateTrainingPage = (fn) => {
     // });
     return <Navigate to="/all-trainings" />;
   }
+
+
 
   // useEffect(() => {
   //    alert("Add");
@@ -56,7 +60,9 @@ const CreateTrainingPage = (fn) => {
   //   };
   // },[]);
 
+
   return (
+    <Beforeunload onBeforeunload={() => 'You’ll lose your data!'}>
     <AppBody
       loading={state.loading}
       content={
@@ -153,7 +159,8 @@ const CreateTrainingPage = (fn) => {
         </div>
       }
     />
+    </Beforeunload>
   );
 };
 
-export default CreateTrainingPage;
+export default CreateTrainingPage; 
