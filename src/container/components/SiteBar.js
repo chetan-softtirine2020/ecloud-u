@@ -83,18 +83,6 @@ const SiteBar = () => {
                     <span>Completed Tainings</span>
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    to={"/org/add-org-sub-admin"}
-                    class={`nav-content-bttn open-font ${
-                      location.pathname === "/org/add-org-sub-admin" ? "active" : ""
-                    }`}
-                    data-tab="favorites"
-                  >
-                    <i class="feather-home mr-3"></i>
-                    <span>Org Sub Admin</span>
-                  </Link>
-                </li>
               </ul>
             )}
 
@@ -126,7 +114,7 @@ const SiteBar = () => {
                     data-tab="favorites"
                   >
                     <i class="feather-play-circle mr-3"></i>
-                    <span>Trainigs</span>
+                    <span>Home</span>
                   </Link>
                 </li>
               </ul>
@@ -146,6 +134,22 @@ const SiteBar = () => {
                     <span> Home</span>
                   </Link>
                 </li>
+
+                <li>
+                  <Link
+                    to={"/org/add-org-sub-admin"}
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/org/add-org-sub-admin"
+                        ? "active"
+                        : ""
+                    }`}
+                    data-tab="favorites"
+                  >
+                    <i class="feather-home mr-3"></i>
+                    <span>Org Sub Admin</span>
+                  </Link>
+                </li>
+
                 {/*  <li>
 
                  <Link

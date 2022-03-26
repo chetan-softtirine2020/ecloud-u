@@ -138,11 +138,11 @@ const Login = () => {
                   </form>
 
                   <div className="col-sm-12 p-0 text-center mt-2">
-                    <h6 className="mb-0 d-inline-block fw-500 font-xsss text-grey-500 mb-3">
-                      Or, Sign in with your social account{" "}
-                    </h6>
+                    {/*<h6 className="mb-0 d-inline-block fw-500 font-xsss text-grey-500 mb-3">
+                     Or, Sign in with your social account{" "}
+                        </h6>*/}
                     <div className="row">
-                      <SocialLogin />
+                      {/*<SocialLogin />
                       {/* <div className="col-sm-12 col-md-6">                     
                         <div className="form-group mb-1">
                           <a

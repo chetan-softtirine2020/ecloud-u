@@ -33,6 +33,11 @@ const AddOrgSubAdmin = () => {
     file: [],
     is_file: false,
   });
+
+  const [mName, setSetTitle] = useState({
+    name: "",
+    type: "",
+  });
   const handleFormSubmit = (e) => {
     e.preventDefault();
     dispatch(addUserTraining(user));
@@ -57,17 +62,27 @@ const AddOrgSubAdmin = () => {
     dispatch(importUserTraining(formData));
   };
 
-  const [show, setShow] = useState(true);
-  
+  const [show, setShow] = useState(false);
+  const [popupTitile, setPopupTitle] = useState("");
   const handleClose = () => {
     setShow(false);
     setUser({ is_file: false });
   };
 
-  console.log("Erro=" + state.errors.length + "File Leng=" + user.is_file);
   if (state.errors.length > 0 && user.is_file && !show) {
-    setShow(true);
+    //
   }
+
+  const clickOnAdd = (act) => {
+    setPopupTitle(act);
+    setShow(true);
+  };
+  const addTiles = () => {
+    if (popupTitile && mName.name) {
+      //call Submit API
+      dispatch();
+    }
+  };
 
   return (
     <AppBody
@@ -88,35 +103,32 @@ const AddOrgSubAdmin = () => {
               {show ? (
                 <Modal show={show} onHide={handleClose}>
                   <Modal.Header closeButton>
-                    <Modal.Title>Add Name</Modal.Title>
+                    <Modal.Title>Add {popupTitile} </Modal.Title>
                   </Modal.Header>
                   <Modal.Body className="err-model-body">
                     <div className={"row"}>
                       <div className="col-lg-6 mb-2">
                         <div className="form-group">
                           <label className="mont-font fw-600 font-xsss">
-                            First Name
+                            {popupTitile} Name
                           </label>
                           <input
                             type="text"
+                            required
                             className="form-control"
-                            value={user.first_name}
+                            value={mName.name}
                             onChange={(e) =>
-                              setUser({ ...user, first_name: e.target.value })
+                              setUser({ ...mName, name: e.target.value })
                             }
                           />
-                          <span className="error-msg">
-                            {state.errors.first_name
-                              ? state.errors.first_name
-                              : ""}
-                          </span>
                         </div>
                       </div>
                       <div className="col-lg-3">
                         <input
                           type="submit"
                           name="submit"
-                          value="Upload"
+                          value="Submit"
+                          onClick={() => addTiles()}
                           className="btn-common px-5 mt-30"
                         />
                       </div>
@@ -152,9 +164,10 @@ const AddOrgSubAdmin = () => {
                     </div>
                     <div className="col-lg-2">
                       <input
-                        type="submit"
+                        type="button"
                         name="submit"
                         value="Add New"
+                        onClick={() => clickOnAdd("Department")}
                         className="btn-common px-5 mt-30"
                       />
                     </div>
@@ -176,8 +189,9 @@ const AddOrgSubAdmin = () => {
                     </div>
                     <div className="col-lg-2">
                       <input
-                        type="submit"
+                        type="button"
                         name="submit"
+                        onClick={() => clickOnAdd("Branch")}
                         value="Add New"
                         className="btn-common px-5 mt-30"
                       />
@@ -202,9 +216,10 @@ const AddOrgSubAdmin = () => {
                     </div>
                     <div className="col-lg-2">
                       <input
-                        type="submit"
+                        type="button"
                         name="submit"
                         value="Add New"
+                        onClick={() => clickOnAdd("Section")}
                         className="btn-common px-5 mt-30"
                       />
                     </div>
