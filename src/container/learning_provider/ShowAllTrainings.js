@@ -17,7 +17,11 @@ const ShowAllTrainings = () => {
   const [slug, setSlug] = useState("");
 
   
-
+  useEffect(() => {
+    if (state.list.length == 0) {
+      dispatch(getAllTrainings());
+    }   
+  }, []);
   const handleTabClosing = () => {
     // alert("Hiiiii");
   };

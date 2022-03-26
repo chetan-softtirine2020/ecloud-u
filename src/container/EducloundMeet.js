@@ -162,7 +162,7 @@ function EducloundMeet(fn) {
 
   const [micStatus, setMicrophone] = useState(true);
   const [viStatus, setVideo] = useState(true);
-  const [muteAudStatus, setMuteAudio] = useState(false);
+  const [muteAudStatus, setMuteAudio] = useState(true);
   const [muteVidStatus, setMuteVideo] = useState(false);
   const [handStatus, setRaiseHand] = useState(false);
   const [toggleStatus, setToggleView] = useState(false);
