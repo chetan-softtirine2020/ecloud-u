@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import "./App.css";
 import { useSelector } from "react-redux";
 import SignUp from "./container/auth/SignUp";
@@ -10,6 +10,8 @@ import OrganizationDashboard from "./container/home/OrganizationDashboard";
 import UserDashboard from "./container/home/UserDashboard";
 import LearningProviderDashboard from "./container/home/LearningProviderDashboard";
 import NotFoundPage from "./container/other/NotFoundPage";
+import NotAuthorisedPage from "./container/other/NotAuthorisedPage";
+
 import AddTrainingUser from "./container/learning_provider/AddTrainingUser";
 import CreateTrainingPage from "./container/learning_provider/CreateTrainingPage";
 import RegisterOrganization from "./container/organization/RegisterOrganization";
@@ -34,6 +36,11 @@ import LearningProvidersList from "./container/admin/users/LearningProvidersList
 import AddOrgSubAdmin from "./container/organization/AddOrgSubAdmin";
 function App() {
   const auth = useSelector((state) => state.authReducer);
+  const userData = JSON.parse(localStorage.getItem("data"));
+  if (userData) {
+    console.log("ahow" + userData.role);
+  }
+
   return (
     <Router>
       <Routes>
@@ -69,11 +76,7 @@ function App() {
             caseSensitive={false}
             element={<ProviderUserDashboard />}
           />
-          <Route
-            path={"/users"}
-            caseSensitive={false}
-            element={<UserDashboard />}
-          />
+
           <Route
             path={"/organization"}
             caseSensitive={false}
@@ -124,7 +127,7 @@ function App() {
             caseSensitive={false}
             element={<ShowAllTrainings />}
           />
-        
+
           <Route
             path={"/completed-trainings"}
             caseSensitive={false}
@@ -141,11 +144,10 @@ function App() {
             element={<LearningProvidersList />}
           />
           <Route
-          path={"/org/add-org-sub-admin"}
-          caseSensitive={false}
-          element={<AddOrgSubAdmin />}
-        />
-
+            path={"/org/add-org-sub-admin"}
+            caseSensitive={false}
+            element={<AddOrgSubAdmin />}
+          />
 
           <Route
             path={"/change-password"}
@@ -154,10 +156,18 @@ function App() {
           />
         </Fragment>
 
-        {Object.keys(auth).length && hasRole(auth, ["organization"]) && (
-          <Fragment></Fragment>
-        )}
-        <Route path="*" element={<NotFoundPage />} />
+        {userData && hasRole(userData, ["user"]) ? (
+          <Fragment>
+            <Route
+              path={"/users"}
+              caseSensitive={false}
+              element={<UserDashboard />}
+            />
+          </Fragment>
+        ):
+        <Route path="/not-authorized" element={<NotAuthorisedPage />} />
+      }
+       {/* <Route path="*" element={<NotFoundPage />} />*/}
         <Route path="/" caseSensitive={false} element={<LandingPage />} />
         <Route path={"/login"} caseSensitive={false} element={<Login />} />
         <Route path={"/register"} caseSensitive={false} element={<SignUp />} />
@@ -174,7 +184,7 @@ function App() {
 
         <Route
           path={"/register-organization"}
-          caseSensitive={false} 
+          caseSensitive={false}
           element={<RegisterOrganization />}
         />
       </Routes>

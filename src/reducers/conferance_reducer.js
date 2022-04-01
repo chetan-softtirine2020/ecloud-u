@@ -5,6 +5,7 @@ export const initState = {
   loading: false,
   errors: [],
   joinCount: 0,
+  training:{}
 };
 
 const conferanceReducer = (state = initState, { type, payload }) => {
@@ -21,6 +22,7 @@ const conferanceReducer = (state = initState, { type, payload }) => {
         loading: true,
         is_done: false,
         errors: [],
+        training:{}
       };
     case "CHECK_USER_JOIN_COUNT":
       return {
@@ -28,6 +30,7 @@ const conferanceReducer = (state = initState, { type, payload }) => {
         loading: false,
         errors: [],
         joinCount:payload,
+        //training:payload.training
       };
 
     default:

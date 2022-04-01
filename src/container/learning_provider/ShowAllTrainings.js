@@ -16,11 +16,10 @@ const ShowAllTrainings = () => {
   const navigate = useNavigate();
   const [slug, setSlug] = useState("");
 
-  
   useEffect(() => {
     if (state.list.length == 0) {
       dispatch(getAllTrainings());
-    }   
+    }
   }, []);
   const handleTabClosing = () => {
     // alert("Hiiiii");
@@ -104,9 +103,9 @@ const ShowAllTrainings = () => {
                             {li.is_public === 0 ? "Not Public" : "Public"}
                           </td>
                           <td>
-                            {li.status === 1 && "Schedule"}
-                            {li.status === 2 && "Starting"}{" "}
-                            {li.status === 3 && "Completed"}
+                            {li.status === 0 && "Schedule"}
+                            {li.status === 1 && "Start"}
+                            {li.status === 2 && "Completed"}
                           </td>
                           {/* <td>{li.description}</td>*/}
                           <td className="tblaction">
@@ -149,15 +148,6 @@ const ShowAllTrainings = () => {
                                 onClick={() => getDeleteTraining(li.slug)}
                               />
                             )}
-
-                            {/*<Link
-                              to={"/training/" + li.slug}
-                              className="btn approve_btn mg-l btn-common"
-                              target="_blank"
-                              onClick={() => checkCallFun(li.slug)}
-                            >
-                              start
-                            </Link>*/}
                           </td>
                         </tr>
                       ))}

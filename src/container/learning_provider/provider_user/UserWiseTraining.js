@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserWiseTraining,updateUserTrainingJoinStatus } from "../../../actions/learning_provider/provider_user/training_action";
-import { useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 import AppBody from "../../components/AppBody";
+import { UI_URL } from "../../../config/api";
 const UserWiseTraining = () => {
   const state = useSelector((state) => state.puTrainingReducer);
   const dispatch = useDispatch();
@@ -13,7 +14,8 @@ const UserWiseTraining = () => {
   }, []);
 
   const handelStartMeetingClick = (slug) => {
-    dispatch(updateUserTrainingJoinStatus({slug:slug}));       
+   // dispatch(updateUserTrainingJoinStatus({slug:slug}));       
+   // window.open(UI_URL + "/training/" + slug);
     navigate("/training/" + slug);
   };
   
@@ -53,10 +55,11 @@ const UserWiseTraining = () => {
                         <td>
                           <input
                             type="button"
-                            value="Start"
+                            value="Start"                            
                             className="btn approve_btn btn-common mg-l"
+                            target="_blank"
                             onClick={() => handelStartMeetingClick(li.slug)}
-                          />
+                          />                       
                         </td>
                       </tr>
                     ))}                    
