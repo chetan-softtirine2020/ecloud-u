@@ -4,7 +4,8 @@ export const initState = {
   is_done: false,
   loading: false,
   errors: [],
-  joinCount: 0,
+  joinCount: 0, 
+
   training:{}
 };
 
@@ -32,6 +33,14 @@ const conferanceReducer = (state = initState, { type, payload }) => {
         joinCount:payload,
         //training:payload.training
       };
+      case "SET_JOIN_COUNT":
+        return {
+          ...state,
+          loading: false,
+          errors: [],
+          joinCount:payload,
+          //training:payload.training
+        };
 
     default:
       return state;

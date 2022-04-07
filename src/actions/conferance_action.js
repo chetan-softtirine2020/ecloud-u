@@ -1,19 +1,22 @@
 import axios from "axios";
-import { APP_URL,getToken } from "../config/api";
+import { APP_URL, getToken } from "../config/api";
 
 export const errorMessage = (err) => {
   switch (err.response.status) {
-    case 422:  
+    case 422:
       return { type: "CONF_ERROR", payload: err.response.data };
     case 405:
-      return { type: "CONF_ERROR", payload: { other_error: "Method Not Allowed" } };
+      return {
+        type: "CONF_ERROR",
+        payload: { other_error: "Method Not Allowed" },
+      };
     case 500:
       return {
         type: "CONF_ERROR",
-        payload: { other_error: "Internal server error"},
+        payload: { other_error: "Internal server error" },
       };
     default:
-      return {  
+      return {
         type: "CONF_ERROR",
         payload: { other_error: "Something went worng." },
       };
@@ -44,11 +47,11 @@ export const joinConferanceCheckCount = (count) => {
           payload: result.data.count,
         });
       })
-      .catch((error) => {      
-        dispatch(errorMessage(error));       
-      })
-  }
-}
+      .catch((error) => {
+        dispatch(errorMessage(error));
+      });
+  };
+};
 
 export const getAllOrganization = (parm) => {
   return (dispatch) => {
@@ -59,7 +62,7 @@ export const getAllOrganization = (parm) => {
       .request({
         method: "post",
         url: `${APP_URL}/get-org-approved`,
-        data:parm, 
+        data: parm,
         headers: {
           Authorization: `Bearer ${getToken().substring(
             1,
@@ -75,7 +78,19 @@ export const getAllOrganization = (parm) => {
         });
       })
       .catch((error) => {
-        dispatch(errorMessage(error));       
+        dispatch(errorMessage(error));
       });
+  };
+};
+export const checkJounCount = (parm) => {
+  return (dispatch) => {
+    dispatch({
+      type: "CONF_REQUEST",
+    });
+
+    dispatch({
+      type: "SET_JOIN_COUNT",
+      payload: 1,
+    });
   };
 };

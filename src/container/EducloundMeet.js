@@ -23,20 +23,22 @@ function EducloundMeet() {
   const [loading, setLoading] = useState(false);
   let { slug } = useParams();
   const userData = JSON.parse(localStorage.getItem("data"));
-
-  useEffect(() => {
+ 
+  useEffect(() => {   
     const unloadCallback = (event) => {
       dispatch(
         joinConferanceCheckCount({
           is_end: true,
           slug: slug,
           min: time.seconds,
+          is_open: isOpen,
+          event:event
         })
       );
       event.preventDefault();
       if (typeof event == "undefined") {
         event = window.event;
-      }
+      }      
       event.returnValue = "";
       return "";
     };
@@ -54,6 +56,7 @@ function EducloundMeet() {
     };
   }, []);
 
+ 
   useEffect(() => {
     const advanceTime = () => {
       setTimeout(() => {
