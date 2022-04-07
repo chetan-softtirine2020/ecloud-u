@@ -1,13 +1,12 @@
-import React, {
-  useState,
-  useEffect 
-} from "react";
+import React, { useState, useEffect } from "react";
 import AppBody from "./components/AppBody";
 import { useParams } from "react-router";
-import { useLocation  } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { joinConferanceCheckCount } from "../actions/conferance_action";
 import ConferencePage from "./ConferencePage";
+import { Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 function EducloundMeet() {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -16,6 +15,7 @@ function EducloundMeet() {
     seconds: 0,
   });
 
+  const [isOpen, setIsOpen] = useState(false);
   const [meetingStatus, setMeetingStatus] = useState(false);
   if (!localStorage.getItem("token") && !localStorage.getItem("token")) {
     localStorage.setItem("redirectLink", location.pathname);
@@ -25,38 +25,46 @@ function EducloundMeet() {
   const userData = JSON.parse(localStorage.getItem("data"));
 
   useEffect(() => {
-    dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
-    //startConference();
     const unloadCallback = (event) => {
-      dispatch(joinConferanceCheckCount({ is_end: true, slug: slug,min: time.seconds}));
+      dispatch(
+        joinConferanceCheckCount({
+          is_end: true,
+          slug: slug,
+          min: time.seconds,
+        })
+      );
       event.preventDefault();
-      if (typeof event == 'undefined') {
+      if (typeof event == "undefined") {
         event = window.event;
-     }
+      }
       event.returnValue = "";
       return "";
     };
     //beforeunload
     window.addEventListener("beforeunload", unloadCallback);
     return () => {
+      dispatch(
+        joinConferanceCheckCount({
+          is_end: true,
+          slug: slug,
+          min: time.seconds ,
+        })
+      );
       window.removeEventListener("beforeunload", unloadCallback);
     };
   }, []);
 
-  useEffect(() => {  
+  useEffect(() => {
     const advanceTime = () => {
-    setTimeout(() => {
-      let nSeconds = time.seconds;
-      nSeconds++;
-      setTime({ seconds: nSeconds });
-    },1000);        
-  };
-  advanceTime();  
-  return () => { 
-    }
-
-}, [time.seconds]);
-
+      setTimeout(() => {
+        let nSeconds = time.seconds;
+        nSeconds++;
+        setTime({ seconds: nSeconds });
+      }, 1000);
+    };
+    advanceTime();
+    return () => {};
+  }, [time.seconds]);
 
   if (state.joinCount === 1 && !meetingStatus) {
     if (window.JitsiMeetExternalAPI && !localStorage.getItem("redirectLink")) {
@@ -66,8 +74,8 @@ function EducloundMeet() {
     } else {
       if (!localStorage.getItem("redirectLink")) {
         alert("Wait meeting  Not Loaded..");
-      }    
-    }  
+      }
+    }
     setLoading(true);
     setMeetingStatus(true);
   }
@@ -90,7 +98,22 @@ function EducloundMeet() {
       isModerator = false;
     }
   }
- 
+  const [userName, setUserName] = useState("");
+  const [show, setShow] = useState(true);
+  const handleClose = (traning) => {
+    if (traning) {
+      dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
+      setShow(false);
+      setUserName(traning);
+    }
+  };
+
+  const handelWindowClose = () => {
+    dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
+    setIsOpen(true);
+    window.close();
+  };
+
   return (
     <AppBody
       loading={false}
@@ -103,17 +126,64 @@ function EducloundMeet() {
                   Training
                 </h4>
               </div>
-              {state.joinCount === 1 && !state.loading && (
-                  <ConferencePage/>
+              {show ? (
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header>
+                    <Modal.Title
+                      className={"color-white"}
+                      style={{ color: "aliceblue", fontWeight: 700 }}
+                    >
+                      Confim
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body className="err-model-body">
+                    <div className="form-group">
+                      <label className="mont-font fw-600 font-xsss color-white">
+                        Are you sure want to start Training?
+                      </label>
+                    </div>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        handleClose("traning");
+                      }}
+                    >
+                      Yes
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      onClick={() => handelWindowClose()}
+                    >
+                      No
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+              ) : (
+                <div />
               )}
-               {state.joinCount >1 && !state.loading && (                         
-                <div className="card-body p-lg-5 p-4 w-100 border-0" onLoad={()=>alert("dsdsad")}>
+
+              {userName && state.joinCount === 1 && !state.loading && (
+                <ConferencePage userName={userName} />
+              )}
+
+              {userName && state.joinCount > 1 && !state.loading && (
+                <div
+                  className="card-body p-lg-5 p-4 w-100 border-0"
+                  onLoad={() => alert("dsdsad")}
+                >
                   <div style={containerStyle}>
                     <h1 className="color-white">
                       Training already open in another tab or browser please
-                      check{" "}                     
+                      check{" "}
                     </h1>
-                      <button className="btn btn-danger text-center" onClick={()=> window.close()}>Close</button>
+                    <button
+                      className="btn btn-danger text-center"
+                      onClick={() => window.close()}
+                    >
+                      Close
+                    </button>
                   </div>
                 </div>
               )}
@@ -125,4 +195,3 @@ function EducloundMeet() {
   );
 }
 export default EducloundMeet;
-//https://www.youtube.com/watch?v=rSUvYHAAMqY&list=RDqr8YUtUCRx8&index=27

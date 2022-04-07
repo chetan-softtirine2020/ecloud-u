@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AppBody from "../components/AppBody";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { joinConferanceCheckCount } from "../../actions/conferance_action";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getAllTrainings,
   addMakePublicTraining,
@@ -11,27 +10,16 @@ import {
 import { UI_URL } from "../../config/api";
 const ShowAllTrainings = () => {
   const state = useSelector((state) => state.trainingReducer);
-  const conferance = useSelector((state) => state.conferanceReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [slug, setSlug] = useState("");
+  
 
   useEffect(() => {
     if (state.list.length == 0) {
       dispatch(getAllTrainings());
     }
   }, []);
-  const handleTabClosing = () => {
-    // alert("Hiiiii");
-  };
-
-  const alertUser = (event) => {
-    alert("ny");
-    event.preventDefault();
-    event.returnValue = "ssdsd";
-  };
-
-  const location = useLocation();
+  
   const handelClick = (slug) => {
     navigate("/add-training-user/" + slug);
   };
@@ -43,10 +31,9 @@ const ShowAllTrainings = () => {
   const handelPublicClick = (id) => {
     dispatch(addMakePublicTraining({ id: id }));
   };
+
   const checkCallFun = (slug) => {
-    window.open(UI_URL + "/training/" + slug);
-    // setSlug(slug);
-    //dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
+    window.open(UI_URL + "/training/" + slug); 
   };
 
   const getDeleteTraining = (slug) => {
@@ -55,15 +42,7 @@ const ShowAllTrainings = () => {
 
   if (state.is_done) {
     dispatch(getAllTrainings());
-  }
-  // if (conferance.joinCount > 0 && slug) {
-  //   // alert("Call the ")
-  //   setSlug("")
-  //   dispatch(getAllTrainings());
-  //   //window.open(UI_URL + "/" + "");
-  //   window.open(UI_URL + "/training/" + slug);
-  // }
-
+  }  
   return (
     <AppBody
       loading={state.loading}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import AppBody from "../components/AppBody";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
@@ -35,7 +35,8 @@ const AddTrainingUser = () => {
     e.preventDefault();
     dispatch(addUserTraining(user));
   };
-  if (state.is_done) {
+ 
+   if (state.is_done) {
     navigate("/show-training-users/" + slug);
     // setUser({
     //   first_name: "",
@@ -55,7 +56,7 @@ const AddTrainingUser = () => {
     dispatch(importUserTraining(formData));
   };
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const handleClose = () => {
     setShow(false);
     setUser({ is_file: false });

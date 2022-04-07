@@ -40,12 +40,14 @@ function ConferencePage(props) {
     };
     advanceTime();
     return () => {
-      console.log("TImne" + time.seconds);
+      // console.log("TImne" + time.seconds);
     };
   }, [time.seconds]);
 
   useEffect(() => {
-    startConference();
+    if (props.userName) {
+      startConference();
+    }
   }, []);
 
   const containerStyle = {
@@ -75,10 +77,10 @@ function ConferencePage(props) {
   }
   // if(state.training && state.training.user_id!==userData._id){
   //   isModerator = false;
-  // } 
+  // }
 
   function startConference() {
-    try {    
+    try {
       const domain = "educloud-meet.com";
       let options = {
         moderator: false,
@@ -205,19 +207,18 @@ function ConferencePage(props) {
   const muteAudio = () => {
     if (apiObj) {
       //setMuteAudio((current) => !current);
-      setMicrophone(false)
+      setMicrophone(false);
       apiObj.executeCommand("muteEveryone", "audio");
     }
   };
 
   const muteVideo = () => {
     if (apiObj) {
-     // setMuteVideo((current) => !current);
-     setVideo(true);
-     apiObj.executeCommand("muteEveryone", "video");
+      // setMuteVideo((current) => !current);
+      setVideo(true);
+      apiObj.executeCommand("muteEveryone", "video");
     }
   };
-
 
   return (
     <div>
