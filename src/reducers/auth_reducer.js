@@ -8,6 +8,7 @@ const initState = {
   is_done: false,
   errors: [],
   list: [],
+  currentToken:"",
 };
 
 const authReducer = (state = initState, { type, payload }) => {
@@ -91,6 +92,13 @@ const authReducer = (state = initState, { type, payload }) => {
         errors: [],
         is_done: true,
       };
+     case "CURRENT_TOKEN":
+      return {
+        ...state,
+        loading: false,  
+        errors:[],       
+        currentToken:payload,          
+       };   
 
     default:
       return state;

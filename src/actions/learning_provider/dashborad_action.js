@@ -1,7 +1,8 @@
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 import { APP_URL,getToken } from "../../config/api";
 import { authHeader } from "../../config/auth_header";
-
+const appToken=localStorage.getItem('token'); 
 export const errorMessage = (err) => {
   switch (err.response) {
     case 422:  
@@ -12,7 +13,7 @@ export const errorMessage = (err) => {
       return {
         type: "ERROR",
         payload: { other_error: "Internal server error"},
-      };
+      };     
     default:
       return {  
         type: "ERROR",
@@ -31,10 +32,7 @@ export const getDashboardData = () => {
         method: "post",
         url: `${APP_URL}/get-dashboard-data`,
         headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
+          Authorization: `Bearer ${localStorage.getItem('token').slice(1, -1)}`,
           "Content-Type": "application/json",
         },
       })

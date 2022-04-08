@@ -3,22 +3,22 @@ import AppBody from "../components/AppBody";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { getAllTrainingUsers } from "../../actions/learning_provider/lp_users_action";
+import { getAllTrainingUsers,reactiveUserTraining } from "../../actions/learning_provider/lp_users_action";
 const ShowTrainingUser = () => {
   const state = useSelector((state) => state.trainingUserReducer);
   const dispatch = useDispatch();
   let { slug } = useParams();
   useEffect(() => {
-    dispatch(getAllTrainingUsers({"slug":slug}));
-  },[]);
+    dispatch(getAllTrainingUsers({ slug: slug }));
+  }, []);
 
-//   const handelClick = (id) => {
-//    navigate("/add-training-user");
-//     // return < to="/add-training-user"/>          
-//   };
+  const handelUserClick = () => {
+     alert(slug);
+    dispatch(reactiveUserTraining({ slug: slug }));
+  };
   return (
     <AppBody
-     loading={state.loading}
+      loading={state.loading}
       content={
         <div className="middle-sidebar-left">
           <div className="card w-100 border-0  shadow-xs p-0 mb-4">
@@ -31,34 +31,42 @@ const ShowTrainingUser = () => {
               </h4>
             </div>
             <div className="card-body  p-4 w-100 border-0 ">
-            <div className="table-responsive">
-              <table className="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Sr.No</th>
-                    <th>User Name</th>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Link</th>
-                    <th>Join</th>
-                   
-                  </tr>
-                </thead>
-                <tbody>
-                  {state.list &&
-                    state.list.map((li, i) => (
-                      <tr key={i}>
-                        <td>{i + 1}</td>
-                        <td>{li.user_name}</td>
-                        <td>{li.name}</td>
-                        <td>{li.date}</td>
-                        <td>{li.link}</td>  
-                        <td>{li.join}</td>                       
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
+              <div className="table-responsive">
+                <table className="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Sr.No</th>
+                      <th>User Name</th>
+                      <th>Name</th>
+                      <th>Date</th>
+                      <th>Link</th>
+                      <th>Join</th>
+                      <th>Re-Active</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {state.list &&
+                      state.list.map((li, i) => (
+                        <tr key={i}>
+                          <td>{i + 1}</td>
+                          <td>{li.user_name}</td>
+                          <td>{li.name}</td>
+                          <td>{li.date}</td>
+                          <td>{li.link}</td>
+                          <td>{li.join}</td>
+                          <td>
+                            <input
+                              type="button"
+                              value="Active"
+                              className="btn approve_btn btn-common mg-l"
+                              onClick={() => handelUserClick(li.slug)}
+                            />
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

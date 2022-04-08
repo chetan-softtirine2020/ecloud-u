@@ -3,7 +3,10 @@ import AppBody from "./components/AppBody";
 import { useParams } from "react-router";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { joinConferanceCheckCount } from "../actions/conferance_action";
+import {
+  joinConferanceCheckCount,
+  checkJoinCount,
+} from "../actions/conferance_action";
 import ConferencePage from "./ConferencePage";
 import { Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
@@ -23,8 +26,9 @@ function EducloundMeet() {
   const [loading, setLoading] = useState(false);
   let { slug } = useParams();
   const userData = JSON.parse(localStorage.getItem("data"));
- 
-  useEffect(() => {   
+  useEffect(() => {
+    dispatch(checkJoinCount({ slug: slug }));
+
     const unloadCallback = (event) => {
       dispatch(
         joinConferanceCheckCount({
@@ -32,13 +36,13 @@ function EducloundMeet() {
           slug: slug,
           min: time.seconds,
           is_open: isOpen,
-          event:event
         })
       );
       event.preventDefault();
       if (typeof event == "undefined") {
         event = window.event;
-      }      
+      }
+      event.cancelBubble = false;
       event.returnValue = "";
       return "";
     };
@@ -49,14 +53,13 @@ function EducloundMeet() {
         joinConferanceCheckCount({
           is_end: true,
           slug: slug,
-          min: time.seconds ,
+          min: time.seconds,
         })
       );
       window.removeEventListener("beforeunload", unloadCallback);
     };
-  }, []);
+  }, []); 
 
- 
   useEffect(() => {
     const advanceTime = () => {
       setTimeout(() => {
@@ -68,6 +71,10 @@ function EducloundMeet() {
     advanceTime();
     return () => {};
   }, [time.seconds]);
+
+  if (state.isTrainingStart>0){
+    window.close();
+  }
 
   if (state.joinCount === 1 && !meetingStatus) {
     if (window.JitsiMeetExternalAPI && !localStorage.getItem("redirectLink")) {
@@ -103,6 +110,7 @@ function EducloundMeet() {
   }
   const [userName, setUserName] = useState("");
   const [show, setShow] = useState(true);
+ console.log("Is Tra"+state.isTrainingStart);
   const handleClose = (traning) => {
     if (traning) {
       dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));

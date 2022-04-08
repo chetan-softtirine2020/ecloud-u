@@ -22,6 +22,7 @@ const Login = () => {
   const [user, setUser] = useState({
     password: "",
     email: "",
+    is_previous:false
   });
 
   const handleSubmit = (e) => {
@@ -41,6 +42,7 @@ const Login = () => {
   if (!localStorage.getItem("redirectLink") && localStorage.getItem("token")) {
     return <Navigate to={redirectUser()} />;
   }
+
 
   return (
     <LoadingOverlay active={auth.loading} spinner text="Loading...">
@@ -104,12 +106,15 @@ const Login = () => {
                         type="checkbox"
                         className="form-check-input mt-2"
                         id="exampleCheck1"
+                        onChange={(e) =>
+                          setUser({ ...user, is_previous: e.target.checked })
+                        }
                       />
                       <label
                         className="form-check-label font-xsss text-grey-500"
                         htmlFor="exampleCheck1"
                       >
-                        Remember me
+                        Logout Previous Account
                       </label>
                       <Link
                         to={"/forgot-password"}

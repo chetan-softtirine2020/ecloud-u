@@ -8,6 +8,7 @@ const LearningProviderDashboard = () => {
   const state = useSelector((state) => state.dashboardReducer);
   const dispatch = useDispatch();
   useEffect(() => {
+     if(localStorage.getItem('token'))  
     dispatch(getDashboardData());
   }, []);
 

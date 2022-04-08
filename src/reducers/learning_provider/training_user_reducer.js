@@ -1,8 +1,8 @@
 export const initState = {
-   is_done: false,
+  is_done: false,
   loading: false,
   errors: [],
-  list:[]
+  list: [],
 };
 
 const trainingUserReducer = (state = initState, { type, payload }) => {
@@ -11,16 +11,16 @@ const trainingUserReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        errors: payload,       
+        errors: payload,
       };
-      
-      case "REQUEST_TRAINING":    
+
+    case "REQUEST_TRAINING":
       return {
-          ...state,
-          loading: true,
-          errors: [],
-      };       
-        
+        ...state,
+        loading: true,
+        errors: [],
+      };
+
     case "ADD_USER_TRAINING":
     case "IMPORT_USER_TRAINING":
       return {
@@ -30,14 +30,21 @@ const trainingUserReducer = (state = initState, { type, payload }) => {
         is_done: true,
       };
 
-      case "ALL_TRAINING_USRS":
-        return {
-          ...state,
-          loading: false,
-          errors: [],
-          list: payload,         
-        };
-  
+    case "ALL_TRAINING_USRS":
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        list: payload,
+      };
+
+    case "REACTIVE_TRAINING":
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+      };
+
     default:
       return state;
   }

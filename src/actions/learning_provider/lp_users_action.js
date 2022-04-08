@@ -140,3 +140,35 @@ export const getAllTrainingUsers = (parm) => {
       });
   };
 };
+
+export const reactiveUserTraining = (parm) => {
+  return (dispatch) => {
+    dispatch({
+      type: "REQUEST_TRAINING",
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/reactive-training`,
+        data: parm,
+        headers: {
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        dispatch({
+          type: "REACTIVE_TRAINING",
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error));
+      });
+  };
+};
+
+

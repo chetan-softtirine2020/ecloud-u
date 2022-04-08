@@ -82,15 +82,33 @@ export const getAllOrganization = (parm) => {
       });
   };
 };
-export const checkJounCount = (parm) => {
+
+export const checkJoinCount = (count) => {
   return (dispatch) => {
     dispatch({
       type: "CONF_REQUEST",
     });
-
-    dispatch({
-      type: "SET_JOIN_COUNT",
-      payload: 1,
-    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/lp/get-training-join-count`,
+        data: count,
+        headers: {
+          Authorization: `Bearer ${getToken().substring(
+            1,
+            getToken().length - 1
+          )}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((result) => {
+        dispatch({
+          type: "CHECK_TRANINING_COUNT",
+          payload: result.data.count,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error));
+      });
   };
 };
