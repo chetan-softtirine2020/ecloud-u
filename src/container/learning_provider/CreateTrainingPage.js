@@ -30,25 +30,7 @@ const CreateTrainingPage = (fn) => {
     // });
     return <Navigate to="/all-trainings" />;
   }
-
-  // useEffect(() => {
-  //    alert("Add");
-  //   window.addEventListener("beforeunload", function (e) {
-  //     let confirmationMessage = "o/";
-  //     (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-  //     console.log("logout !");
-  //     return confirmationMessage; //Webkit, Safari, Chrome
-  //   });
-  //   return () => {
-  //     alert("Remove");
-  //     window.removeEventListener("beforeunload", function (e) {
-  //       let confirmationMessage = "o/";
-  //       (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-  //       console.log("logout !");
-  //       return confirmationMessage; //Webkit, Safari, Chrome
-  //     });
-  //   };
-  // },[]);
+ 
 
   return (
     <Beforeunload onBeforeunload={() => "You’ll lose your data!"}>

@@ -8,8 +8,11 @@ import {
   deleteTraining,
 } from "../../actions/learning_provider/training_action";
 import { UI_URL } from "../../config/api";
+import { reactiveUserTraining } from "../../actions/learning_provider/lp_users_action";
 const ShowAllTrainings = () => {
   const state = useSelector((state) => state.trainingReducer);
+  const traningReducer = useSelector((state) => state.trainingUserReducer);
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
@@ -40,12 +43,17 @@ const ShowAllTrainings = () => {
     dispatch(deleteTraining({ slug: slug }));
   };
 
+  const handelActiveClick = (slug) => {    
+    dispatch(reactiveUserTraining({ slug: slug }));
+  };
+
   if (state.is_done) {
     dispatch(getAllTrainings());
   }  
+ 
   return (
     <AppBody
-      loading={state.loading}
+      loading={state.loading ||traningReducer.loading}
       content={
         <div className="middle-sidebar-left">
           <div className="card w-100 border-0 shadow-xs p-0 mb-4">
@@ -126,7 +134,13 @@ const ShowAllTrainings = () => {
                                 className="btn approve_btn mg-l btn-common"
                                 onClick={() => getDeleteTraining(li.slug)}
                               />
-                            )}
+                            )} 
+                             <input
+                              type="button"
+                              value="Re-Active"
+                              className="btn approve_btn btn-common mg-l"
+                              onClick={() => handelActiveClick(li.slug)}
+                            />
                           </td>
                         </tr>
                       ))}

@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import SiteBar from "../components/SiteBar";
 import AppNavBar from "../components/AppNavBar";
 import { Navigate } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 import { useSelector, useDispatch } from "react-redux";
 import { getCurrentToken, singOut } from "../../actions/auth_action";
-import { getToken } from "../../config/api";
-import { useNavigate } from "react-router-dom";
 const AppBody = (props) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const auth = useSelector((state) => state.authReducer);
-  const userData = JSON.parse(localStorage.getItem("data"));
-  const [isLogout, setIsLogout] = useState(false);
+  const userData = JSON.parse(localStorage.getItem("data"));  
   useEffect(() => {
-    if (
-      auth.currentToken === "" &&
+    if (     
       userData &&
       userData.email &&
       localStorage.getItem("token")
@@ -31,7 +26,7 @@ const AppBody = (props) => {
   if (JSON.stringify(auth.currentToken)) {
     const token = JSON.stringify(auth.currentToken);
     currentToken = token.slice(1, -1);
-  }
+  } 
 
   if(oldToken && currentToken && oldToken !== currentToken) {
     dispatch(singOut());

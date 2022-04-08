@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import AppBody from "../components/AppBody";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";

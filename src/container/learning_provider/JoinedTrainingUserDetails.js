@@ -12,10 +12,7 @@ const JoinedTrainingUserDetails = () => {
     dispatch(getAllTrainingUsers({ slug: slug }));
   }, []);
 
-  //   const handelClick = (id) => {
-  //    navigate("/add-training-user");
-  //     // return < to="/add-training-user"/>
-  //   };
+ 
   return (
     <AppBody
       loading={state.loading}

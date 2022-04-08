@@ -12,8 +12,7 @@ const ShowTrainingUser = () => {
     dispatch(getAllTrainingUsers({ slug: slug }));
   }, []);
 
-  const handelUserClick = () => {
-     alert(slug);
+  const handelUserClick = () => {    
     dispatch(reactiveUserTraining({ slug: slug }));
   };
   return (

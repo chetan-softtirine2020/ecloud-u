@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AppBody from "../components/AppBody";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ const ShowAllTrainingsDetails = () => {
   const state = useSelector((state) => state.trainingReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [newList, setNewList] = useState(null);
+
   useEffect(() => {
     if (state.list.length == 0) {
       dispatch(getAllTrainings());
