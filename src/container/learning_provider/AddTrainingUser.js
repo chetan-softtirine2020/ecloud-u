@@ -56,14 +56,12 @@ const AddTrainingUser = () => {
     dispatch(importUserTraining(formData));
   };
 
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
-    setUser({ is_file: false });
-     
+    setUser({ is_file: false });     
   }
-
-  console.log("Erro=" + state.errors.length + "File Leng=" + user.is_file);
+  
   if (state.errors.length > 0 && user.is_file && !show) {
     setShow(true);
   }

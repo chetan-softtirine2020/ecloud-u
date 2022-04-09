@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import AppBody from "../components/AppBody";
 import DatePicker from "react-datepicker";
 import { createTraining } from "../../actions/learning_provider/training_action";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link, Navigate } from "react-router-dom";
-import { Beforeunload } from "react-beforeunload";
 
 const CreateTrainingPage = (fn) => {
   const [traning, setTraining] = useState({
@@ -33,7 +32,7 @@ const CreateTrainingPage = (fn) => {
  
 
   return (
-    <Beforeunload onBeforeunload={() => "You’ll lose your data!"}>
+  
       <AppBody
         loading={state.loading}
         content={
@@ -129,8 +128,7 @@ const CreateTrainingPage = (fn) => {
             </div>
           </div>
         }
-      />
-    </Beforeunload>
+      />  
   );
 };
 
