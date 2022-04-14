@@ -102,10 +102,11 @@ export const checkJoinCount = (count) => {
         },
       })
       .then((result) => {
+        console.log("CheckAss" + result.data.isAssign);
         dispatch({
           type: "CHECK_TRANINING_COUNT",
-          payload: result.data.count,
-        });
+          payload: result.data,
+          });
       })
       .catch((error) => {
         dispatch(errorMessage(error));

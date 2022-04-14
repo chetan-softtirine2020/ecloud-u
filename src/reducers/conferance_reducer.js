@@ -7,6 +7,8 @@ export const initState = {
   joinCount: 0,
   isTrainingStart: 0,
   training: {},
+  isAssing:'',
+  isModerator:false
 };
 
 const conferanceReducer = (state = initState, { type, payload }) => {
@@ -38,8 +40,10 @@ const conferanceReducer = (state = initState, { type, payload }) => {
         ...state,
         loading: false,
         errors: [],
-        isTrainingStart: payload,
-      };
+        isTrainingStart: payload.count,
+        isAssing: payload.isAssing,
+        isModerator: payload.isModerator,
+       };
     default:
       return state;
   }

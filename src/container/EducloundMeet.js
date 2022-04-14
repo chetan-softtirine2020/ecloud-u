@@ -28,7 +28,6 @@ function EducloundMeet() {
   const userData = JSON.parse(localStorage.getItem("data"));
   useEffect(() => {
     dispatch(checkJoinCount({ slug: slug }));
-
     const unloadCallback = (event) => {
       dispatch(
         joinConferanceCheckCount({
@@ -47,7 +46,7 @@ function EducloundMeet() {
       return "";
     };
     //beforeunload
-    window.addEventListener("beforeunload", unloadCallback);
+   // window.addEventListener("beforeunload", unloadCallback);
     return () => {
       dispatch(
         joinConferanceCheckCount({
@@ -58,7 +57,7 @@ function EducloundMeet() {
       );
       window.removeEventListener("beforeunload", unloadCallback);
     };
-  }, []); 
+  }, []);
 
   useEffect(() => {
     const advanceTime = () => {
@@ -72,7 +71,11 @@ function EducloundMeet() {
     return () => {};
   }, [time.seconds]);
 
-  if (state.isTrainingStart>0){
+  if (state.isAssing === 0) {
+    window.close();
+  }
+
+  if (state.isTrainingStart > 0) {
     window.close();
   }
 
@@ -94,24 +97,13 @@ function EducloundMeet() {
     height: "auto",
   };
 
-  let role = null;
-  let isModerator = false;
-  if (userData) {
-    if (
-      userData.roles.includes("provider") ||
-      userData.roles.includes("organization")
-    ) {
-      role = "moderator";
-      isModerator = true;
-    } else {
-      role = "participant";
-      isModerator = false;
-    }
-  }
   const [userName, setUserName] = useState("");
   const [show, setShow] = useState(true);
- console.log("Is Tra"+state.isTrainingStart);
+
   const handleClose = (traning) => {
+    if (state.isAssign === 0) {
+      window.close();
+    }
     if (traning) {
       dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
       setShow(false);
@@ -120,9 +112,11 @@ function EducloundMeet() {
   };
 
   const handelWindowClose = () => {
-    dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
-    setIsOpen(true);
+    setIsOpen(false);
     window.close();
+   // dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
+   //setIsOpen(true);
+   
   };
 
   return (

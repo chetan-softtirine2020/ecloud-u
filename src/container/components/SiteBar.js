@@ -28,7 +28,7 @@ const SiteBar = () => {
               </a>
             </div>
 
-            {userData.roles.includes("provider") && (
+            {userData && userData.roles.includes("provider") && (
               <ul class="site_ul">
                 <li>
                   <Link
@@ -84,7 +84,7 @@ const SiteBar = () => {
               </ul>
             )}
 
-            {userData.roles.includes("provider_user") && (
+            {userData && userData.roles.includes("provider_user") && (
               <ul class="">
                 <li>
                   <Link
@@ -101,7 +101,7 @@ const SiteBar = () => {
               </ul>
             )}
 
-            {userData.roles.includes("user") && (
+            {userData && userData.roles.includes("user") && (
               <ul class="">
                 <li>
                   <Link
@@ -118,7 +118,7 @@ const SiteBar = () => {
               </ul>
             )}
 
-            {userData.roles.includes("organization") && (
+            {userData && userData.roles.includes("organization") && (
               <ul>
                 <li>
                   <Link
@@ -215,7 +215,7 @@ const SiteBar = () => {
               </ul>
             )}
 
-            {userData.roles.includes("organization_user") && (
+            {userData && userData.roles.includes("organization_user") && (
               <ul>
                 <li>
                   <Link
@@ -228,38 +228,11 @@ const SiteBar = () => {
                     <i class="feather-home mr-3"></i>
                     <span> Home</span>
                   </Link>
-                </li>
-                <li>
-                  <Link
-                    to={"/org/create-training"}
-                    class={`nav-content-bttn open-font ${
-                      location.pathname === "/org/create-training"
-                        ? "active"
-                        : ""
-                    }`}
-                    data-tab="favorites"
-                  >
-                    <i class="feather-globe mr-3"></i>
-                    <span> Create Training</span>
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    to={"/org/all-trainings"}
-                    class={`nav-content-bttn open-font ${
-                      location.pathname === "/all-trainings" ? "active" : ""
-                    }`}
-                    data-tab="favorites"
-                  >
-                    <i class="feather-globe mr-3"></i>
-                    <span> All Trainings</span>
-                  </Link>
-                </li>
+                </li>             
               </ul>
             )}
 
-            {userData.roles.includes("admin") && (
+            {userData && userData.roles.includes("admin") && (
               <ul>
                 <li>
                   <Link
@@ -319,7 +292,7 @@ const SiteBar = () => {
             )}
 
             <ul>
-              {!userData.roles.includes("admin") && (
+              {userData && !userData.roles.includes("admin") && (
                 <li>
                   <Link
                     to={"/my-trainings"}
@@ -337,7 +310,9 @@ const SiteBar = () => {
               <li>
                 <Link
                   to={"/change-password"}
-                  class="nav-content-bttn open-font h-auto pt-2 pb-2"
+                  class={`nav-content-bttn open-font ${
+                    location.pathname === "/change-password" ? "active" : ""
+                  }`}
                 >
                   <i class="font-sm feather-lock mr-3 "></i>
                   <span>Change Password</span>

@@ -1,13 +1,8 @@
-import React, {
-  Fragment,
-  useState,
-  useEffect
-} from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { joinConferanceCheckCount } from "../actions/conferance_action";
-
 
 function ConferencePage(props) {
   const location = useLocation();
@@ -18,6 +13,7 @@ function ConferencePage(props) {
     seconds: 0,
   });
 
+   
   const [apiObj, setApiObj] = useState(null);
 
   if (!localStorage.getItem("token") && !localStorage.getItem("token")) {
@@ -29,7 +25,7 @@ function ConferencePage(props) {
   useEffect(() => {
     const advanceTime = () => {
       setTimeout(() => {
-        let nSeconds = time.seconds;
+        let nSeconds = time.seconds; 
         nSeconds++;
         setTime({ seconds: nSeconds });
       }, 1000);
@@ -56,24 +52,7 @@ function ConferencePage(props) {
     height: "auto",
   };
 
-  const api = null;
-  let role = null;
-  let isModerator = false;
-  if (userData) {
-    if (
-      userData.roles.includes("provider") ||
-      userData.roles.includes("organization")
-    ) {
-      role = "moderator";
-      isModerator = true;
-    } else {
-      role = "participant";
-      isModerator = false;
-    }
-  }
-  // if(state.training && state.training.user_id!==userData._id){
-  //   isModerator = false;
-  // }
+  let isModerator = state.isModerator;
 
   function startConference() {
     try {
@@ -312,7 +291,7 @@ function ConferencePage(props) {
               </a>
             </div>
             <div className="d-inline-block">
-              {isModerator && (
+              {state.isModerator && (
                 <Fragment>
                   <div className="d-inline-block">
                     <a

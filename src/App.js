@@ -1,17 +1,14 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 import "./App.css";
-import { useSelector } from "react-redux";
 import SignUp from "./container/auth/SignUp";
 import Login from "./container/auth/Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { hasRole } from "../src/config/auth";
 import LandingPage from "./container/home/LandingPage";
 import OrganizationDashboard from "./container/home/OrganizationDashboard";
 import UserDashboard from "./container/home/UserDashboard";
 import LearningProviderDashboard from "./container/home/LearningProviderDashboard";
 import NotFoundPage from "./container/other/NotFoundPage";
 import NotAuthorisedPage from "./container/other/NotAuthorisedPage";
-
 import AddTrainingUser from "./container/learning_provider/AddTrainingUser";
 import CreateTrainingPage from "./container/learning_provider/CreateTrainingPage";
 import RegisterOrganization from "./container/organization/RegisterOrganization";
@@ -23,8 +20,8 @@ import ProviderUserDashboard from "./container/learning_provider/provider_user/P
 import OrganizationRequest from "./container/admin/OrganizationRequest";
 import ShowAllOrg from "./container/admin/ShowAllOrg";
 import NewRegisterOrganizations from "./container/admin/NewRegisterOrganizations";
-import CreateOrgTrainingPage from "./container/organization/CreateOrgTrainingPage";
-import ShowAllOrgTrainings from "./container/organization/ShowAllOrgTrainings";
+// import CreateOrgTrainingPage from "./container/organization/CreateOrgTrainingPage";
+// import ShowAllOrgTrainings from "./container/organization/ShowAllOrgTrainings";
 import OrgUserDashboard from "./container/organization/org_user/OrgUserDashboard";
 import EducloundMeet from "./container/EducloundMeet";
 import ShowAllTrainingsDetails from "./container/learning_provider/ShowAllTrainingsDetails";
@@ -34,28 +31,76 @@ import ForgotPassword from "./container/auth/ForgotPassword";
 import ResetPassword from "./container/auth/ResetPassword";
 import LearningProvidersList from "./container/admin/users/LearningProvidersList";
 import AddOrgSubAdmin from "./container/organization/AddOrgSubAdmin";
-function App() {
-  const auth = useSelector((state) => state.authReducer);
-  const userData = JSON.parse(localStorage.getItem("data"));
-  if (userData) {
-    console.log("ahow" + userData.role);
-  }
+import { PrivateRoute } from "./container/other/PrivateRoute";
 
+function App() {
   return (
     <Router>
       <Routes>
-        <Fragment>
-          <Route
-            path={"/training/:slug"}
-            caseSensitive={false}
-            element={<EducloundMeet />}
-          />
-          <Route
-            path={"/my-trainings"}
-            caseSensitive={false}
-            element={<UserWiseTraining />}
-          />
+        {/*Normal User */}
 
+        <Route
+          path={"/my-trainings"}
+          caseSensitive={false}
+          element={<UserWiseTraining />}
+        />
+        <Route
+          path={"/training/:slug"}
+          caseSensitive={false}
+          element={<EducloundMeet />}
+        />
+
+        <Route element={<PrivateRoute allowedRoles={["user"]} />}>
+          <Route
+            path={"/users"}
+            caseSensitive={false}
+            element={<UserDashboard />}
+          />
+        </Route>
+
+        {/*Provider */}
+        <Route element={<PrivateRoute allowedRoles={["provider"]} />}>
+          <Route
+            path={"/learning-provider"}
+            caseSensitive={false}
+            element={<LearningProviderDashboard />}
+          />
+        </Route>
+
+        {/*Provider User */}
+        <Route element={<PrivateRoute allowedRoles={["provider_user"]} />}>
+          <Route
+            path={"/lpu-home"}
+            caseSensitive={false}
+            element={<ProviderUserDashboard />}
+          />
+        </Route>
+
+        {/*Organization */}
+        <Route element={<PrivateRoute allowedRoles={["organization"]} />}>
+          <Route
+            path={"/organization"}
+            caseSensitive={false}
+            element={<OrganizationDashboard />}
+          />
+          <Route
+            path={"/org/add-org-sub-admin"}
+            caseSensitive={false}
+            element={<AddOrgSubAdmin />}
+          />
+        </Route>
+
+        {/*Organization User */}
+        <Route element={<PrivateRoute allowedRoles={["organization_user"]} />}>
+          <Route
+            path={"/ou/home"}
+            caseSensitive={false}
+            element={<OrgUserDashboard />}
+          />
+        </Route>
+
+        {/*Admin Routes */}
+        <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
           <Route
             path={"/admin/home"}
             caseSensitive={false}
@@ -72,51 +117,21 @@ function App() {
             element={<NewRegisterOrganizations />}
           />
           <Route
-            path={"/lpu-home"}
+            path={"/admin/learning-providers"}
             caseSensitive={false}
-            element={<ProviderUserDashboard />}
-          />
-
-          <Route
-            path={"/organization"}
-            caseSensitive={false}
-            element={<OrganizationDashboard />}
-          />
-          <Route
-            path={"/org/create-training"}
-            caseSensitive={false}
-            element={<CreateTrainingPage />}
-          />
-          <Route
-            path={"/org/all-trainings"}
-            caseSensitive={false}
-            element={<ShowAllTrainings />}
+            element={<LearningProvidersList />}
           />
           <Route
             path={"/get-organizations"}
             caseSensitive={false}
             element={<OrganizationRequest />}
           />
-          <Route
-            path={"/ou/home"}
-            caseSensitive={false}
-            element={<OrgUserDashboard />}
-          />
-          <Route
-            path={"/learning-provider"}
-            caseSensitive={false}
-            element={<LearningProviderDashboard />}
-          />
-          <Route
-            path={"/add-training-user/:slug"}
-            caseSensitive={false}
-            element={<AddTrainingUser />}
-          />
-          <Route
-            path={"/show-training-users/:slug"}
-            caseSensitive={false}
-            element={<ShowTrainingUser />}
-          />
+        </Route>
+
+        {/*Provider And Organization Routes */}
+        <Route
+          element={<PrivateRoute allowedRoles={["provider", "organization"]} />}
+        >
           <Route
             path={"/create-training"}
             caseSensitive={false}
@@ -127,7 +142,6 @@ function App() {
             caseSensitive={false}
             element={<ShowAllTrainings />}
           />
-
           <Route
             path={"/completed-trainings"}
             caseSensitive={false}
@@ -139,35 +153,26 @@ function App() {
             element={<JoinedTrainingUserDetails />}
           />
           <Route
-            path={"/admin/learning-providers"}
+            path={"/add-training-user/:slug"}
             caseSensitive={false}
-            element={<LearningProvidersList />}
+            element={<AddTrainingUser />}
           />
           <Route
-            path={"/org/add-org-sub-admin"}
+            path={"/show-training-users/:slug"}
             caseSensitive={false}
-            element={<AddOrgSubAdmin />}
+            element={<ShowTrainingUser />}
           />
+        </Route>
 
-          <Route
-            path={"/change-password"}
-            caseSensitive={false}
-            element={<ChangePasswordPage />}
-          />
-        </Fragment>
+        {/*Comman  Private Routes */}
 
-        {userData && hasRole(userData, ["user"]) ? (
-          <Fragment>
-            <Route
-              path={"/users"}
-              caseSensitive={false}
-              element={<UserDashboard />}
-            />
-          </Fragment>
-        ):
-        <Route path="/not-authorized" element={<NotAuthorisedPage />} />
-      }
-       {/* <Route path="*" element={<NotFoundPage />} />*/}
+        <Route
+          path={"/change-password"}
+          caseSensitive={false}
+          element={<ChangePasswordPage />}
+        />
+
+        {/*Public Routes */}
         <Route path="/" caseSensitive={false} element={<LandingPage />} />
         <Route path={"/login"} caseSensitive={false} element={<Login />} />
         <Route path={"/register"} caseSensitive={false} element={<SignUp />} />
@@ -181,12 +186,13 @@ function App() {
           caseSensitive={false}
           element={<ResetPassword />}
         />
-
         <Route
           path={"/register-organization"}
           caseSensitive={false}
           element={<RegisterOrganization />}
         />
+        <Route path="/not-authorized" element={<NotAuthorisedPage />} />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
