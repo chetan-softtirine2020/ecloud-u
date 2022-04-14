@@ -2388,6 +2388,11 @@ color:#fff;
   margin: 0px 5px;
 }
 
+.sitebar-section.show .navigation{
+  left: 0px;
+  width: 250px;
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -13031,8 +13036,12 @@ strong,
 .navigation .nav-content ul li:not(.logo) {
   list-style-image: none;
   list-style-type: none;
-  margin: 1px 15px;
+  margin: 1px 5px;
 }
+
+
+
+
 @media (max-width: 991.98px) {
   .navigation .nav-content ul li:not(.logo) {
     margin: 4px 10px 4px 0px;
@@ -13511,6 +13520,10 @@ strong,
   .main-content .middle-sidebar-header .right-menu-icon li:last-child {
     display: inline-block;
   }
+  .middle-sidebar-left .navbar-toggler.collapsed,
+  .middle-sidebar-left .card .card-header .navbar-toggler{
+    display: none;
+  }
 }
 .main-content .middle-sidebar-bottom {
   width: 100%;
@@ -13530,6 +13543,36 @@ strong,
     flex: 1;
     margin-top: 96px;
     min-height: 560px;
+  }
+
+ .sitebar-section .navigation .navbar-toggler.collapsed, 
+ .sitebar-section  .collapse.navbar-collapse .navbar-toggler ,
+ .collapse.navbar-collapse.show .navbar-toggler
+ {
+    display: none;
+}
+.navigation .navbar-toggler.collapsed,
+.collapse.navbar-collapse .navbar-toggler{
+  display: none;
+}
+
+
+.middle-sidebar-left .card .card-header .navbar-toggler{
+  display: block;
+}
+.navigation .navbar-toggler{
+  display: none !important;
+}
+
+
+  .navbar-collapse.sitebar-section.collapse.show +.main-content .middle-sidebar-header {
+    left:0px;
+  }
+  .navbar-collapse.sitebar-section.collapse.show .navigation {
+    width: 0px;
+  }
+  .navbar-collapse.sitebar-section.collapse.show + .main-content{
+    padding-left: 0px;
   }
 }
 @media (max-width: 1399.98) {
@@ -15542,6 +15585,7 @@ select.sort {
 .login-card {
   min-width: 500px;
   max-width: 400px;
+  min-height: 467px;
 }
 
 .coming-soon-card {

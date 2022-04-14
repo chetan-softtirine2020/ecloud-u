@@ -16,7 +16,17 @@ const AppNavBar = () => {
   return (
     <div>
       <div class="middle-sidebar-header bg-navbar">
-        <button class="header-menu"></button>
+      <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNavDropdown2"
+                aria-controls="navbarNavDropdown2"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon"></span>
+              </button>
         <form action="#" class="float-left header-search">
           <div class="form-group mb-0 icon-input">
             <i class="feather-search font-lg text-grey-400"></i>

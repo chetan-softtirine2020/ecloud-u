@@ -12,8 +12,8 @@ const SiteBar = () => {
   const location = useLocation();
   const userData = JSON.parse(localStorage.getItem("data"));
   return (
-    <div>
-      <nav class="navigation scroll-bar">
+    <div className="collapse navbar-collapse sitebar-section" id="navbarNavDropdown2">
+      <nav class="navigation">
         <div class="container pl-0 pr-0">
           <div class="nav-content">
             <div class="nav-top">
@@ -23,8 +23,13 @@ const SiteBar = () => {
                   Educloudlabs{" "}
                 </span>
               </Link>
-              <a href="/" class="close-nav d-inline-block d-lg-none pl-2">
-                <i class="ti-close bg-grey mb-4 btn-round-sm font-xssss fw-700 text-dark ml-auto mr-1 "></i>
+              <a href="/" class="close-nav d-inline-block d-lg-none pl-2" className="navbar-toggler"
+                data-toggle="collapse"
+                data-target="#navbarNavDropdown2"
+                aria-controls="navbarNavDropdown2"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="ti-close bg-grey mb-0 btn-round-sm font-xssss fw-700 text-dark ml-auto mr-1 "></i>
               </a>
             </div>
 
