@@ -1,11 +1,8 @@
 import React from "react";
 import { Whiteboard } from "react-fabricjs-whiteboard";
+import AppBody from "./components/AppBody";
 
 const WhiteBoard = () => {
-  return (
-    <div>      
-      <Whiteboard />
-    </div>
-  );
+  return <AppBody content={<Whiteboard />} />;
 };
 export default WhiteBoard;

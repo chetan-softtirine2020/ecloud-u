@@ -12,17 +12,16 @@ import { reactiveUserTraining } from "../../actions/learning_provider/lp_users_a
 const ShowAllTrainings = () => {
   const state = useSelector((state) => state.trainingReducer);
   const traningReducer = useSelector((state) => state.trainingUserReducer);
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     if (state.list.length == 0) {
       dispatch(getAllTrainings());
     }
   }, []);
-  
+
   const handelClick = (slug) => {
     navigate("/add-training-user/" + slug);
   };
@@ -36,24 +35,24 @@ const ShowAllTrainings = () => {
   };
 
   const checkCallFun = (slug) => {
-    window.open(UI_URL + "/training/" + slug); 
+    window.open(UI_URL + "/training/" + slug);
   };
 
   const getDeleteTraining = (slug) => {
     dispatch(deleteTraining({ slug: slug }));
   };
 
-  const handelActiveClick = (slug) => {    
+  const handelActiveClick = (slug) => {
     dispatch(reactiveUserTraining({ slug: slug }));
   };
 
   if (state.is_done) {
     dispatch(getAllTrainings());
-  }  
- 
+  }
+
   return (
     <AppBody
-      loading={state.loading ||traningReducer.loading}
+      loading={state.loading || traningReducer.loading}
       content={
         <div className="middle-sidebar-left">
           <div className="card w-100 border-0 shadow-xs p-0 mb-4">
@@ -134,13 +133,15 @@ const ShowAllTrainings = () => {
                                 className="btn approve_btn mg-l btn-common"
                                 onClick={() => getDeleteTraining(li.slug)}
                               />
-                            )} 
-                             <input
+                            )}
+
+                            {/* <input
                               type="button"
                               value="Re-Active"
                               className="btn approve_btn btn-common mg-l"
                               onClick={() => handelActiveClick(li.slug)}
-                            />
+                            />*/}
+                            
                           </td>
                         </tr>
                       ))}
