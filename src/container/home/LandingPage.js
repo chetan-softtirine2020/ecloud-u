@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import fogg from "../../images/landingPage/4.webp";
 import trainer from "../../images/fogg-clip.png";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllHomeTrainings } from "../../actions/home/home_action";
 import LoadingOverlay from "react-loading-overlay";
@@ -11,7 +11,6 @@ import { Modal } from "react-bootstrap";
 import { redirectUser } from "../../config/redirect";
 import Carousel from "react-elastic-carousel";
 import { useRef } from "react";
-
 const LandingPage = () => {
   const state = useSelector((state) => state.homeReducer);
   const dispatch = useDispatch();
@@ -27,8 +26,7 @@ const LandingPage = () => {
   const handleClose = () => {
     setShow({ show: false, data: {} });
   };
-  const handleShow = (li) => {
-    console.log(li);
+  const handleShow = (li) => {    
     setShow({ show: true, data: li });
   };
 
@@ -56,8 +54,8 @@ const LandingPage = () => {
         <div className="container-fluid top-margin">
           <div className="row">
             <div className="col-sm-12 col-lg-6">
-              <div className="top-hedtxt-section">
-                <p className="first-title">
+              <div className="top-hedtxt-section">                 
+               <p className="first-title">
                   Take the first step
                   <br></br>
                   to learn with us

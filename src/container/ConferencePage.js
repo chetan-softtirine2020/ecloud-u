@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { joinConferanceCheckCount } from "../actions/conferance_action";
+import { UI_URL } from "../config/api";
 
 function ConferencePage(props) {
   const location = useLocation();
@@ -13,7 +14,6 @@ function ConferencePage(props) {
     seconds: 0,
   });
 
-   
   const [apiObj, setApiObj] = useState(null);
 
   if (!localStorage.getItem("token") && !localStorage.getItem("token")) {
@@ -25,7 +25,7 @@ function ConferencePage(props) {
   useEffect(() => {
     const advanceTime = () => {
       setTimeout(() => {
-        let nSeconds = time.seconds; 
+        let nSeconds = time.seconds;
         nSeconds++;
         setTime({ seconds: nSeconds });
       }, 1000);
@@ -187,6 +187,12 @@ function ConferencePage(props) {
     }
   };
 
+  const isWhiteBoard = () => {
+    if (apiObj) {
+      window.open(UI_URL + "/white-board");
+    }
+  };
+
   const muteVideo = () => {
     if (apiObj) {
       // setMuteVideo((current) => !current);
@@ -293,6 +299,20 @@ function ConferencePage(props) {
             <div className="d-inline-block">
               {state.isModerator && (
                 <Fragment>
+                  <div className="d-inline-block">
+                    <a
+                      title="WhiteBoard"
+                      target="_blank"
+                      className="btn btn-selected-control"
+                      onClick={() => isWhiteBoard()}
+                    >
+                      {muteAudStatus ? (
+                        <i class="fa-solid fa-chalkboard"></i>
+                      ) : (
+                        <i class="fa-solid fa-chalkboard"></i>
+                      )}
+                    </a>
+                  </div>
                   <div className="d-inline-block">
                     <a
                       title="Mute Everyone Audio"

@@ -26,6 +26,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import "./../vendor/owl-carousel/css/owl.carousel.min.css";
 @import "./../vendor/owl-carousel/css/owl.theme.default.css";
+.Whiteboard_whiteboard__3nm0m {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: aliceblue !important;
+}
+.Whiteboard_toolbar__1V-kQ button{
+   color: white !important;
+   padding-left: 12px;
+   padding-right: 12px;
+   padding-top: 4px;
+   padding-bottom: 4px;
+   background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28) !important;
+}
+.PdfReader_pageInfo__z06UU button{
+ 
+  background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28) !important;
+}
+
 .fs-48{
   font: size 48px;
 }

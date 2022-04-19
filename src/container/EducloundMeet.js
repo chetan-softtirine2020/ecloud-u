@@ -71,13 +71,13 @@ function EducloundMeet() {
     return () => {};
   }, [time.seconds]);
 
-  if (state.isAssing === 0) {
-    window.close();
-  }
+  // if (state.isAssing === 0) {
+  //   window.close();
+  // }
 
-  if (state.isTrainingStart > 0) {
-    window.close();
-  }
+  // if (state.isTrainingStart > 0) {
+  //   window.close();
+  // }
 
   if (state.joinCount === 1 && !meetingStatus) {
     if (window.JitsiMeetExternalAPI && !localStorage.getItem("redirectLink")) {
@@ -133,7 +133,7 @@ function EducloundMeet() {
                 data-toggle="collapse"
                 data-target="#navbarNavDropdown2"
                 aria-controls="navbarNavDropdown2"
-                aria-expanded="false"
+                aria-expanded="true"
                 aria-label="Toggle navigation"
               >
                 <span className="navbar-toggler-icon"></span>

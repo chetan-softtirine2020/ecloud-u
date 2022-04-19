@@ -32,7 +32,7 @@ import ResetPassword from "./container/auth/ResetPassword";
 import LearningProvidersList from "./container/admin/users/LearningProvidersList";
 import AddOrgSubAdmin from "./container/organization/AddOrgSubAdmin";
 import { PrivateRoute } from "./container/other/PrivateRoute";
-
+import WhiteBoard from "./container/WhiteBoard"; 
 function App() {
   return (
     <Router>
@@ -43,6 +43,11 @@ function App() {
           path={"/my-trainings"}
           caseSensitive={false}
           element={<UserWiseTraining />}
+        />
+        <Route
+          path={"/white-board"}
+          caseSensitive={false}
+          element={<WhiteBoard/>}
         />
         <Route
           path={"/training/:slug"}

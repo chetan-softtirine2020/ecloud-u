@@ -2,7 +2,7 @@ import React from "react";
 import profleIco from "../../images/female-profile.png";
 import { useDispatch } from "react-redux";
 import { singOut } from "../../actions/auth_action";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AppNavBar = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,6 @@ const AppNavBar = () => {
     navigate("/");
   };
   const userData = JSON.parse(localStorage.getItem("data"));
-
   return (
     <div>
       <div class="middle-sidebar-header bg-navbar">

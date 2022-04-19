@@ -1,21 +1,17 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserWiseTraining } from "../../../actions/learning_provider/provider_user/training_action";
-import { useNavigate } from "react-router-dom";
 import AppBody from "../../components/AppBody";
-
+import { UI_URL } from "../../../config/api";
 const UserWiseTraining = () => {
   const state = useSelector((state) => state.puTrainingReducer);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getUserWiseTraining());
   }, []);
 
   const handelStartMeetingClick = (slug) => {
-   // dispatch(updateUserTrainingJoinStatus({slug:slug}));       
-   // window.open(UI_URL + "/training/" + slug);
-    navigate("/training/" + slug);
+    window.open(UI_URL + "/training/" + slug);
   };
   
   return (
@@ -56,7 +52,7 @@ const UserWiseTraining = () => {
                             type="button"
                             value="Start"                            
                             className="btn approve_btn btn-common mg-l"
-                            target="_blank"
+                            target="_blank"                         
                             onClick={() => handelStartMeetingClick(li.slug)}
                           />                       
                         </td>
