@@ -101,6 +101,10 @@ function EducloundMeet() {
   const [show, setShow] = useState(true);
 
   const handleClose = (traning) => {
+    
+  if (window.location.href.indexOf("training") > -1) {
+    document.getElementById("navbarTraning").click();
+  }
     if (state.isAssign === 0) {
       window.close();
     }
@@ -110,6 +114,7 @@ function EducloundMeet() {
       setUserName(traning);
     }
   };
+
 
   const handelWindowClose = () => {
     setIsOpen(false);
@@ -127,7 +132,7 @@ function EducloundMeet() {
           <div className="">
             <div className="card w-100 border-0 shadow-xs p-0 mb-4">
               <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
-              <button
+              <button id="navbarTraning"
                 className="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
