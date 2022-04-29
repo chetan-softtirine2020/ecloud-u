@@ -26,6 +26,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import "./../vendor/owl-carousel/css/owl.carousel.min.css";
 @import "./../vendor/owl-carousel/css/owl.theme.default.css";
+#navbarTraning{
+  display: none !important;
+}
 .Whiteboard_whiteboard__3nm0m {
   display: flex;
   flex-direction: column;

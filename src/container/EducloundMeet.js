@@ -135,6 +135,7 @@ function EducloundMeet() {
               <button id="navbarTraning"
                 className="navbar-toggler"
                 type="button"
+                aria-readonly={true}
                 data-toggle="collapse"
                 data-target="#navbarNavDropdown2"
                 aria-controls="navbarNavDropdown2"
