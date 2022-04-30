@@ -2415,6 +2415,71 @@ color:#fff;
   width: 250px;
 }
 
+/* css for white board */
+
+.card .Whiteboard_whiteboard__owdLW{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: initial;
+}
+
+.card .Whiteboard_toolbar__3AxJG {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-direction: row;
+  width: 160px;
+  height: 300px;
+}
+
+
+.card .Whiteboard_toolbar__3AxJG button {
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 3px;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28);
+  background-size: 300% 100%;
+  transition: all .6s ease-in-out;
+  cursor: pointer;
+}
+
+.card .canvas-container{
+  margin: 5px;
+}
+.card .canvas-container, .card .canvas-container canvas{
+  width: 100% !important;
+  height:calc(100vh - 195px) !important;
+}
+.card .canvas-container + div
+{
+  position: absolute;
+  bottom: 2px;
+  width: 145px;
+  height: 66px;
+  text-align: center;
+}
+.PdfReader_pageInfo__3o3sm {
+  display: block !important;
+  align-items: center;
+}
+.PdfReader_pageInfo__3o3sm span{
+  display: block;
+  width: 100%;
+}
+.PdfReader_pageInfo__3o3sm button{
+  padding: 5px 10px;
+  font-size: 14px;
+  background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28);
+  background-size: 300% 100%;
+  transition: all .6s ease-in-out;
+  cursor: pointer;
+}
+
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -4046,6 +4111,9 @@ color:#fff;
   }
   .table-responsive-lg > .table-bordered {
     border: 0;
+  }
+  .card .canvas-container, .card .canvas-container canvas {
+    height: calc(100vh - 150px) !important;
   }
 }
 @media (max-width: 1199.98px) {
@@ -13564,7 +13632,7 @@ strong,
     -ms-flex: 1;
     flex: 1;
     margin-top: 96px;
-    min-height: 560px;
+    min-height: 520px;
   }
 
  .sitebar-section .navigation .navbar-toggler.collapsed, 
@@ -17029,3 +17097,4 @@ select.sort {
 .approve_btn:hover,.approve_btn:focus{
   color: #fff;
 }
+
