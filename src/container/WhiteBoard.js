@@ -3,6 +3,13 @@ import { Whiteboard } from "react-fabricjs-whiteboard";
 import AppBody from "./components/AppBody";
 
 const WhiteBoard = () => {
+
+  setTimeout(function(){
+    if (window.location.href.indexOf("white") > -1) {
+      document.getElementById("navbarTraning").click();
+    }
+  },50);
+
   return (
     <AppBody
       loading={false}
