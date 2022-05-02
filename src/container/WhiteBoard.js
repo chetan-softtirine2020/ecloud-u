@@ -25,9 +25,9 @@ const WhiteBoard = () => {
                 <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
                   WhiteBoard
                 </h4>
-              </div>         
-              <Whiteboard />
-            </div>
+              </div>      
+              <Whiteboard/>
+               </div>
           </div>
         </div>
       }
