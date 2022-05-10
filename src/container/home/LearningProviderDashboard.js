@@ -10,8 +10,8 @@ const LearningProviderDashboard = () => {
      if(localStorage.getItem('token'))  
     dispatch(getDashboardData());
   }, []);
-
-  const statCard = [1];
+  console.log(state.list)
+  const statCard = [0];
   return (
     <AppBody
       loading={state.loading}
@@ -74,11 +74,11 @@ const LearningProviderDashboard = () => {
                   </div>
                 </div>
               ))}
-
+              {/*
             <div className="col-lg-12 mt-3">
               <h1 className="dash-heading">Dashboard</h1>
             </div>
-            {statCard.map((number) => (
+            {statCard.length>0 && statCard.map((number) => (
               <div className="col-lg-4 mt-3" key={number}>
                 <div className="card bg-theme-color shadow-lg">
                     <div className="card-header">
@@ -128,6 +128,7 @@ const LearningProviderDashboard = () => {
                   </div>
               </div>
             ))}
+            */}
           </div>
         </div>
       }

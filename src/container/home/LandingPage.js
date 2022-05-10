@@ -456,10 +456,10 @@ const LandingPage = () => {
                   <div class="col-md-3 col-sm-4 col-xs-6">
                     <h5 class="mb-3">Office</h5>
                     <p class="w-100">
-                      41 madison ave, floor 24 new work, NY 10010 1-877-932-7111
+                    7, Dotivala Estate, 2nd Victoria X Lane, Opp Masina Hospital, Byculla, Mumbai 400027.
                     </p>
                     <p class="w-100">
-                      41 madison ave, floor 24 new work, NY 10010 1-877-932-7111
+                 
                     </p>
                   </div>
                 </div>
