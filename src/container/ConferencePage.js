@@ -128,9 +128,9 @@ function ConferencePage(props) {
         })
       );
       if (isModerator) {
-        navigate("/all-trainings/");
+         navigate("/all-trainings/");
       } else {
-        navigate("/my-trainings/");
+         navigate("/my-trainings/");
       }
       // return <Navigate to="/all-trainings"/>;
       //apiObj.executeCommand("hangup");

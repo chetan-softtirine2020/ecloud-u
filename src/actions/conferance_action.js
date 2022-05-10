@@ -101,8 +101,7 @@ export const checkJoinCount = (count) => {
           "Content-Type": "application/json",
         },
       })
-      .then((result) => {
-        console.log("CheckAss" + result.data.isAssign);
+      .then((result) => {        
         dispatch({
           type: "CHECK_TRANINING_COUNT",
           payload: result.data,

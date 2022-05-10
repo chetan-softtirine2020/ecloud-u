@@ -22,7 +22,7 @@ const Login = () => {
   const [user, setUser] = useState({
     password: "",
     email: "",
-    is_previous:false
+    is_previous: false,
   });
 
   const handleSubmit = (e) => {
@@ -42,7 +42,6 @@ const Login = () => {
   if (!localStorage.getItem("redirectLink") && localStorage.getItem("token")) {
     return <Navigate to={redirectUser()} />;
   }
-
 
   return (
     <LoadingOverlay active={auth.loading} spinner text="Loading...">
@@ -64,6 +63,24 @@ const Login = () => {
                       ? auth.errors.other_error
                       : ""}{" "}
                   </span>
+
+                  {auth.isRegister && (
+                    <div
+                      class="alert alert-success alert-dismissible fade show"
+                      role="alert"
+                    >
+                      <strong>Your account successfully register!</strong>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  )}
+
                   <form onSubmit={handleSubmit}>
                     <div className="form-group icon-input mb-3">
                       <i className="font-sm ti-email text-grey-500 pr-0"></i>

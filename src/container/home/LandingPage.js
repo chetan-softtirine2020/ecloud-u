@@ -26,7 +26,7 @@ const LandingPage = () => {
   const handleClose = () => {
     setShow({ show: false, data: {} });
   };
-  const handleShow = (li) => {    
+  const handleShow = (li) => {
     setShow({ show: true, data: li });
   };
 
@@ -54,15 +54,15 @@ const LandingPage = () => {
         <div className="container-fluid top-margin">
           <div className="row">
             <div className="col-sm-12 col-lg-6">
-              <div className="top-hedtxt-section">                 
-               <p className="first-title">
+              <div className="top-hedtxt-section">
+                <p className="first-title">
                   Take the first step
                   <br></br>
                   to learn with us
                 </p>
                 <p className="banner-des">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  {/*  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.*/}
                 </p>
                 <a href="#." className="banner-btn">
                   Get Started for Free
@@ -215,20 +215,19 @@ const LandingPage = () => {
                           <span className="course-nm">{li.name}</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
-
                       </div>
                       <div className="col-4">
                         <i className="icon ti-desktop"></i>
                       </div>
                       <div className="col-12">
-                          <a
-                            href="#."
-                            onClick={() => handleShow(li)}
-                            className="banner-btn posts-btn btn-common"
-                          >
-                            Get Started
-                          </a>
-                        </div>
+                        <a
+                          href="#."
+                          onClick={() => handleShow(li)}
+                          className="banner-btn posts-btn btn-common"
+                        >
+                          Get Started
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -392,10 +391,7 @@ const LandingPage = () => {
                   <br></br>
                   in Live Action
                 </p>
-                <p className="banner-des">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
+                <p className="banner-des"></p>
                 <a href="#." className="banner-btn">
                   Click Here
                 </a>
@@ -418,9 +414,7 @@ const LandingPage = () => {
                         </span>
                       </h1>
                     </a>
-                    <p class="w-100 mt-5">
-                      41 madison ave, floor 24 new work, support@mail.com
-                    </p>
+                    <p class="w-100 mt-5">support@educloulabas.com</p>
                     <ul class="d-flex align-items-center mt-3 float-left">
                       <li class="mr-2">
                         <a href="#" class="btn-round-md bg-facebook">
@@ -480,8 +474,8 @@ const LandingPage = () => {
               <div class="col-sm-6 col-xs-12 text-right">
                 <p class="copyright-text float-right">
                   Design by{" "}
-                  <a href="http://softtrine.com/" class="">
-                    Softtrine
+                  <a href="https://educloudlabs.com/" class="">
+                    Educloudlabs
                   </a>
                 </p>
               </div>

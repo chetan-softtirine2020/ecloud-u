@@ -83,7 +83,7 @@ const SiteBar = () => {
                     }`}
                   >
                     <i class="feather-video mr-3"></i>
-                    <span>Completed Tainings</span>
+                    <span>Completed Trainings</span>
                   </Link>
                 </li>
               </ul>
@@ -307,7 +307,7 @@ const SiteBar = () => {
                     data-tab="favorites"
                   >
                     <i class="feather-monitor mr-3"></i>
-                    <span>My Trainigs</span>
+                    <span>My Trainings</span>
                   </Link>
                 </li>
               )}

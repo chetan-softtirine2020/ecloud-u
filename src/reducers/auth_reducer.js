@@ -5,10 +5,11 @@ const initState = {
   _id: null,
   roles: [],
   isLoggedIn: false,
-  is_done: false,
+  is_done: true,
   errors: [],
   list: [],
   currentToken:"",
+  isRegister:false
 };
 
 const authReducer = (state = initState, { type, payload }) => {
@@ -28,13 +29,23 @@ const authReducer = (state = initState, { type, payload }) => {
       };
 
     case "SINGUP":
+      return {
+        ...initState,
+        isRegister: true,
+        // token: user.token,
+        // name: user.name,
+        // email: user.email,
+        // _id: user._id,
+        // roles: user.roles,
+        // isLoggedIn: true,
+      };
     case "SINGIN":
       // toast("Welcome......", {
       //   position: toast.POSITION.BOTTOM_RIGHT,
       // });
       const user = payload;
       return {
-        ...initState,
+        ...initState,       
         token: user.token,
         name: user.name,
         email: user.email,

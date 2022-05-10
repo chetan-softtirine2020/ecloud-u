@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import AppBody from "../components/AppBody";
-import v1 from "../../images/v-1.png";
 import { useSelector, useDispatch } from "react-redux";
 import { getDashboardData } from "../../actions/learning_provider/dashborad_action";
 import { Link } from "react-router-dom";

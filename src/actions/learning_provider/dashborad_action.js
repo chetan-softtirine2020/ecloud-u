@@ -1,8 +1,5 @@
 import axios from "axios";
-import { Navigate } from "react-router-dom";
-import { APP_URL,getToken } from "../../config/api";
-import { authHeader } from "../../config/auth_header";
-const appToken=localStorage.getItem('token'); 
+import { APP_URL } from "../../config/api";
 export const errorMessage = (err) => {
   switch (err.response) {
     case 422:  

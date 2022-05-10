@@ -1,6 +1,10 @@
-import React, { useState, Fragment,useEffect } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { signUp, getAllOrganizationRegister,resetErorrs } from "../../actions/auth_action";
+import {
+  signUp,
+  getAllOrganizationRegister,
+  resetErorrs,
+} from "../../actions/auth_action";
 import { Navigate, Link } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 import NavBar from "../components/NavBar";
@@ -17,11 +21,10 @@ const SignUp = () => {
     user_type: 2,
     org_id: "",
   });
-  
+
   useEffect(() => {
     dispatch(resetErorrs());
   }, []);
-  
 
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
@@ -44,8 +47,13 @@ const SignUp = () => {
     setUser({ ...user, user_type: e.target.value });
   };
 
-  if (localStorage.getItem("token")) {
-    return <Navigate to={redirectUser()} />;
+  // if (localStorage.getItem("token")) {
+  //   return <Navigate to={redirectUser()} />;
+  // }
+
+  
+  if (auth.is_done) {
+       return <Navigate to={"/login"} />; 
   }
 
   return (
@@ -63,6 +71,8 @@ const SignUp = () => {
                   <h2 className="fw-700 font-xl display2-md-size login_heading">
                     Register Account <br />
                   </h2>
+                  
+
                   <span className="error-msg">
                     {auth.errors && auth.errors.other_error
                       ? auth.errors.other_error

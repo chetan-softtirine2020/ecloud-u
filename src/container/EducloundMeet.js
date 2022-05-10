@@ -26,7 +26,7 @@ function EducloundMeet() {
   const [loading, setLoading] = useState(false);
   let { slug } = useParams();
   const userData = JSON.parse(localStorage.getItem("data"));
-  useEffect(() => {
+  useEffect(() => {  
     dispatch(checkJoinCount({ slug: slug }));
     const unloadCallback = (event) => {
       dispatch(

@@ -45,8 +45,8 @@ export const signUp = (user) => {
         authHeader,
       })
       .then((token) => {
-        localStorage.setItem("token", JSON.stringify(token.data.success.token));
-        localStorage.setItem("data", JSON.stringify(token.data.success));
+       // localStorage.setItem("token", JSON.stringify(token.data.success.token));
+       // localStorage.setItem("data", JSON.stringify(token.data.success));
         dispatch({
           type: "SINGUP",
           payload: token.data.success,
