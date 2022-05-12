@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AppBody from "./components/AppBody";
 import { useParams } from "react-router";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   joinConferanceCheckCount,
@@ -13,6 +13,7 @@ import { Modal } from "react-bootstrap";
 function EducloundMeet() {
   const location = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const state = useSelector((state) => state.conferanceReducer);
   const [time, setTime] = useState({
     seconds: 0,
@@ -26,37 +27,41 @@ function EducloundMeet() {
   const [loading, setLoading] = useState(false);
   let { slug } = useParams();
   const userData = JSON.parse(localStorage.getItem("data"));
-  useEffect(() => {  
-    dispatch(checkJoinCount({ slug: slug }));
-    const unloadCallback = (event) => {
-      dispatch(
-        joinConferanceCheckCount({
-          is_end: true,
-          slug: slug,
-          min: time.seconds,
-          is_open: isOpen,
-        })
-      );
-      event.preventDefault();
-      if (typeof event == "undefined") {
-        event = window.event;
-      }
-      event.cancelBubble = false;
-      event.returnValue = "";
-      return "";
-    };
-    //beforeunload
-   // window.addEventListener("beforeunload", unloadCallback);
-    return () => {
-      dispatch(
-        joinConferanceCheckCount({
-          is_end: true,
-          slug: slug,
-          min: time.seconds,
-        })
-      );
-      window.removeEventListener("beforeunload", unloadCallback);
-    };
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      dispatch(checkJoinCount({ slug: slug }));
+      const unloadCallback = (event) => {
+        dispatch(
+          joinConferanceCheckCount({
+            is_end: true,
+            slug: slug,
+            min: time.seconds,
+            is_open: isOpen,
+          })
+        );
+        event.preventDefault();
+        if (typeof event == "undefined") {
+          event = window.event;
+        }
+        event.cancelBubble = false;
+        event.returnValue = "";
+        return "";
+      };
+      //beforeunload
+      // window.addEventListener("beforeunload", unloadCallback);
+      return () => {
+        dispatch(
+          joinConferanceCheckCount({
+            is_end: true,
+            slug: slug,
+            min: time.seconds,
+          })
+        );
+        window.removeEventListener("beforeunload", unloadCallback);
+      };
+    } else {
+      navigate("/login");
+    }
   }, []);
 
   useEffect(() => {
@@ -101,10 +106,9 @@ function EducloundMeet() {
   const [show, setShow] = useState(true);
 
   const handleClose = (traning) => {
-    
-  if (window.location.href.indexOf("training") > -1) {
-    document.getElementById("navbarTraning").click();
-  }
+    if (window.location.href.indexOf("training") > -1) {
+      document.getElementById("navbarTraning").click();
+    }
     if (state.isAssign === 0) {
       window.close();
     }
@@ -115,38 +119,35 @@ function EducloundMeet() {
     }
   };
 
-
   const handelWindowClose = () => {
     setIsOpen(false);
     window.close();
-   // dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
-   //setIsOpen(true);
-   
+    // dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
+    //setIsOpen(true);
   };
 
   return (
     <AppBody
       loading={false}
       content={
-        <div className="middle-sidebar-left">
+        <div className="middle-sidebar-left fill-window">
           <div className="">
             <div className="card w-100 border-0 shadow-xs p-0 mb-4">
               <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
-              <button id="navbarTraning"
-                className="navbar-toggler"
-                type="button"
-                aria-readonly={true}
-                data-toggle="collapse"
-                data-target="#navbarNavDropdown2"
-                aria-controls="navbarNavDropdown2"
-                aria-expanded="true"
-                aria-label="Toggle navigation"
-              >
-                <span className="navbar-toggler-icon"></span>
-              </button>
-                <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                  Training
-                </h4>
+                <button
+                  id="navbarTraning"
+                  className="navbar-toggler"
+                  type="button"
+                  aria-readonly={true}
+                  data-toggle="collapse"
+                  data-target="#navbarNavDropdown2"
+                  aria-controls="navbarNavDropdown2"
+                  aria-expanded="true"
+                  aria-label="Toggle navigation"
+                >
+                  <span className="navbar-toggler-icon"></span>
+                </button>
+                <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2"></h4>
               </div>
               {show ? (
                 <Modal show={show} onHide={handleClose}>

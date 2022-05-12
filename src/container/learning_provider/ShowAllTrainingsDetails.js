@@ -52,7 +52,7 @@ const ShowAllTrainingsDetails = () => {
                             <td>{li.name}</td>
                             <td>{li.date}</td>
                             <td>
-                              {li.is_public == 0 ? "Not Public" : "Public"}
+                              {li.is_public === 0 ? "Not Public" : "Public"}
                             </td>
                             {/* <td>{li.description}</td>*/}
                             <td>

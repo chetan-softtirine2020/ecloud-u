@@ -1,7 +1,6 @@
 import axios from "axios";
 import { APP_URL,getToken } from "../../config/api";
 import { authHeader } from "../../config/auth_header";
-const token=localStorage.getItem('token');
 
 export const errorMessage = (err) => {
   switch (err.response.status) {

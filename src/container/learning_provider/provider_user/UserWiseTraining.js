@@ -32,8 +32,7 @@ const UserWiseTraining = () => {
                   <tr>
                     <th>Sr.No</th>
                     <th>Name</th>
-                    <th>Date</th>
-                    <th>Link</th>
+                    <th>Date</th>               
                     <th>Join</th>
                     <th>Action</th>
                   </tr>
@@ -44,8 +43,7 @@ const UserWiseTraining = () => {
                       <tr key={i}>
                         <td>{i + 1}</td>
                         <td>{li.name}</td>
-                        <td>{li.date}</td>
-                        <td>{li.link}</td>
+                        <td>{li.date}</td>                      
                         <td>{li.join}</td>
                         <td>
                           <input

@@ -10,7 +10,7 @@ import {
 import { Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-
+import templte from "../../templete/template.xlsx";
 const AddTrainingUser = () => {
   let { slug } = useParams();
   const dispatch = useDispatch();
@@ -35,8 +35,8 @@ const AddTrainingUser = () => {
     e.preventDefault();
     dispatch(addUserTraining(user));
   };
- 
-   if (state.is_done) {
+
+  if (state.is_done) {
     navigate("/show-training-users/" + slug);
     // setUser({
     //   first_name: "",
@@ -59,9 +59,9 @@ const AddTrainingUser = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
-    setUser({ is_file: false });     
-  }
-  
+    setUser({ is_file: false });
+  };
+
   if (state.errors.length > 0 && user.is_file && !show) {
     setShow(true);
   }
@@ -86,11 +86,18 @@ const AddTrainingUser = () => {
                   <Modal.Header closeButton>
                     <Modal.Title>Errors</Modal.Title>
                   </Modal.Header>
-                  <Modal.Body className="err-model-body">                      
-                  {state.errors &&
-                    state.errors.map((li, i) => (    
-                          <h4 key={i} className={"error-msg"}>{"Row "+li.row+" "+ li.attribute+ " "+ li.errors } </h4>
-                  ))}
+                  <Modal.Body className="err-model-body">
+                    {state.errors &&
+                      state.errors.map((li, i) => (
+                        <h4 key={i} className={"error-msg"}>
+                          {"Row " +
+                            li.row +
+                            " " +
+                            li.attribute +
+                            " " +
+                            li.errors}{" "}
+                        </h4>
+                      ))}
                   </Modal.Body>
                   <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
@@ -100,7 +107,7 @@ const AddTrainingUser = () => {
                 </Modal>
               ) : (
                 <div />
-              )}  
+              )}
 
               <div className="card-body  p-4 w-100 border-0 ">
                 <form
@@ -124,11 +131,13 @@ const AddTrainingUser = () => {
                         <input
                           type="file"
                           class="custom-file-input"
+                          accept=".xls, .xlsx"
                           {...register("file", { required: true })}
                         />
                         <label class="custom-file-label" for="customFile">
                           Choose file
                         </label>
+
                         <span className="error-msg">
                           {state.errors.other_error
                             ? state.errors.other_error
@@ -136,14 +145,25 @@ const AddTrainingUser = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="col-lg-3">
+                    <div className="col-lg-6">
                       <input
                         type="submit"
                         name="submit"
                         value="Upload"
                         className="btn-common px-5 mt-30"
                       />
+                      <a
+                        className="btn-common px-5 mt-30 temp-btn"
+                        href={templte}
+                        download
+                        title={"Doownload excel file template"}
+                        style={{ margin: "4px", padding: "12.5px" }}
+                      >
+                        <i class="fa fa-download"></i>
+                        Download
+                      </a>
                     </div>
+                    <div className="col-lg-3"></div>
                   </div>
                 </form>
 

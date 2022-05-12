@@ -10,15 +10,15 @@ const LearningProviderDashboard = () => {
      if(localStorage.getItem('token'))  
     dispatch(getDashboardData());
   }, []);
-  console.log(state.list)
+  
   const statCard = [0];
   return (
     <AppBody
       loading={state.loading}
       content={
         <div className="middle-sidebar-left lrn-provider">
-          <div className="row">
-            <div className="col-lg-12">
+          <div className="row">            
+            <div className="col-lg-12">          
               <h1 className="dash-heading">Upcomming Trainings</h1>
             </div>
             {state.list &&
@@ -28,8 +28,8 @@ const LearningProviderDashboard = () => {
                     <div className="card-header">
                       <div className="row">
                       <div className="col-7">
-                        <h4 className="fw-700 font-xss my-1">
-                          <Link
+                        <h4 className="fw-700 font-xss my-1">                   
+                         <Link
                             to={"/training/" + li.slug}
                             className="text-grey-900"
                           >

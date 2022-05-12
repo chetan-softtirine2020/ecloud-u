@@ -200,7 +200,7 @@ function ConferencePage(props) {
       apiObj.executeCommand("muteEveryone", "video");
     }
   };
-
+    
   return (
     <div>
       <div className="card-body p-4 w-100 border-0 traning-vido-section">
@@ -224,7 +224,8 @@ function ConferencePage(props) {
                   <i class="fa fa-microphone-slash"></i>
                 )}
               </a>
-            </div>
+           </div>
+         
 
             <div className="d-inline-block">
               {" "}

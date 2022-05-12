@@ -38,7 +38,7 @@ const ShowTrainingUser = () => {
                       <th>User Name</th>
                       <th>Name</th>
                       <th>Date</th>
-                      <th>Link</th>
+                    
                       <th>Join</th>
                       <th>Re-Active</th>
                     </tr>
@@ -50,8 +50,7 @@ const ShowTrainingUser = () => {
                           <td>{i + 1}</td>
                           <td>{li.user_name}</td>
                           <td>{li.name}</td>
-                          <td>{li.date}</td>
-                          <td>{li.link}</td>
+                          <td>{li.date}</td>                          
                           <td>{li.join}</td>
                           <td>
                             <input

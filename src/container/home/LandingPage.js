@@ -138,6 +138,35 @@ const LandingPage = () => {
               </div>
             </div>
 
+            {state.list &&
+              state.list.map((li, i) => (
+                <div className="col-md-6 col-lg-4" key={i + 1}>
+                  <div className="box">
+                    <div className="row">
+                      <div className="col-8">
+                        <h4 className="title">
+                          Training Name -{" "}
+                          <span className="course-nm">{li.name}</span>
+                        </h4>
+                        <p className="course-count">10+ Courses</p>
+                      </div>
+                      <div className="col-4">
+                        <i className="icon ti-desktop"></i>
+                      </div>
+                      <div className="col-12">
+                        <a
+                          href="#."
+                          onClick={() => handleShow(li)}
+                          className="banner-btn posts-btn btn-common"
+                        >
+                          Get Started
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
             <div className="col-md-6 col-lg-4">
               <div className="box">
                 <div className="row">
@@ -166,7 +195,7 @@ const LandingPage = () => {
                   <div className="col-8">
                     <h4 className="title">
                       Training Name -{" "}
-                      <span className="course-nm">{"Paython"}</span>
+                      <span className="course-nm">{"Python"}</span>
                     </h4>
                     <p className="course-count">10+ Courses</p>
                     <div className="">
@@ -204,34 +233,7 @@ const LandingPage = () => {
               </div>
             </div>
 
-            {state.list &&
-              state.list.map((li, i) => (
-                <div className="col-md-6 col-lg-4" key={i + 1}>
-                  <div className="box">
-                    <div className="row">
-                      <div className="col-8">
-                        <h4 className="title">
-                          Training Name -{" "}
-                          <span className="course-nm">{li.name}</span>
-                        </h4>
-                        <p className="course-count">10+ Courses</p>
-                      </div>
-                      <div className="col-4">
-                        <i className="icon ti-desktop"></i>
-                      </div>
-                      <div className="col-12">
-                        <a
-                          href="#."
-                          onClick={() => handleShow(li)}
-                          className="banner-btn posts-btn btn-common"
-                        >
-                          Get Started
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+            
           </div>
 
           <div className="row cource-section">

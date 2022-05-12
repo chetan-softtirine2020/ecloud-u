@@ -72,7 +72,7 @@ const ShowAllTrainings = () => {
                       <th>Sr.No</th>
                       <th>Name</th>
                       <th>Date</th>
-                      <th>Availbale</th>
+                      <th>Available</th>
                       <th>Status</th>
                       {/* <th>Description</th>*/}
                       <th className="tblaction">Action</th>
@@ -110,7 +110,7 @@ const ShowAllTrainings = () => {
                             <input
                               type="button"
                               value={
-                                li.is_public == 0
+                                li.is_public === 0
                                   ? "Make Public"
                                   : "Stop Public"
                               }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { APP_URL,getToken } from "../../config/api";
-const token = localStorage.getItem("token");
+
 // Create New Training
 
 export const errorMessage = (err) => {
