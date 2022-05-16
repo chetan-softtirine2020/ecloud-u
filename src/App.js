@@ -16,6 +16,7 @@ import ShowAllTrainings from "./container/learning_provider/ShowAllTrainings";
 import ShowTrainingUser from "./container/learning_provider/ShowTrainingUser";
 import UserWiseTraining from "./container/learning_provider/provider_user/UserWiseTraining";
 import HomePage from "./container/home/HomePage";
+import PlayCourse from "./container/courses/PlayCourse";
 import ProviderUserDashboard from "./container/learning_provider/provider_user/ProviderUserDashboard";
 import OrganizationRequest from "./container/admin/OrganizationRequest";
 import ShowAllOrg from "./container/admin/ShowAllOrg";
@@ -142,6 +143,13 @@ function App() {
             caseSensitive={false}
             element={<CreateTrainingPage />}
           />
+
+          <Route
+          path={"/course"}
+          caseSensitive={false}
+          element={<PlayCourse />}
+          />
+
           <Route
             path={"/all-trainings"}
             caseSensitive={false}

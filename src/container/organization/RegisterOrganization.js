@@ -3,9 +3,7 @@ import NavBar from "../components/NavBar";
 import { useSelector, useDispatch } from "react-redux";
 import { regiterOrganization } from "../../actions/organization/org_action";
 import LoadingOverlay from "react-loading-overlay";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Navigate } from "react-router";
 const RegisterOrganization = () => {
   const [org, setOrg] = useState({
     name: "",
