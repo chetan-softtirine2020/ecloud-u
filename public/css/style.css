@@ -13467,7 +13467,7 @@ strong,
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 96px;
+  height: 70px;
   padding: 0 15px;
   background: #212121;
   border-bottom: 2px #eee solid;
@@ -13633,7 +13633,7 @@ strong,
     -moz-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    margin-top: 96px;
+    margin-top: 70px;
     min-height: 520px;
   }
 
@@ -17099,4 +17099,174 @@ select.sort {
 .approve_btn:hover,.approve_btn:focus{
   color: #fff;
 }
+
+.video-cotainer{
+  border:1px solid #ccc;
+  min-height: 460px;
+  width: 100%;
+  position: relative;
+}
+.summery-conatiner{
+  border:1px solid #ccc;
+  width:32%;
+  margin-left: 10px;
+  min-height: 300px;
+}
+.chapter-container{
+  border-left: 1px solid #ccc;
+  margin-left: 10px;
+  min-height: 300px;
+  padding-left: 10px;
+  overflow-x:hidden;
+  overflow-y: auto;
+    height: calc(100vh - 165px);
+    width: 40%;
+}
+
+.chapter-container.collapse {
+  display: block;
+}
+.chapter-container.collapse.show{
+  display: none;
+}
+
+.video-cotainer .navbar-toggler {
+  display: block;
+  position: absolute;
+  right: 3px;
+  top: 5px;
+  box-shadow: 0px 0px 10px #888;
+  padding: 4px 7px 2px 7px;
+}
+
+.video-cotainer .navbar-toggler:hover,.video-cotainer .navbar-toggler:focus {
+  background-color: #eceff1;
+  color: #fff;
+}
+
+
+
+/* css for play-coure */
+.chapter-section{
+  display: flex;
+}
+.summery-conatiner li a {
+  color: #fff;
+}
+.summery-conatiner li  {
+  list-style: unset;
+  font-size: 13px;
+}
+.summery-conatiner ul  {
+  padding-left: 30px;
+}
+.summery-conatiner h5 {
+
+  background: #ccc;
+  padding: 10px;
+
+}
+
+.video-cotainer iframe{
+height: 100%;
+width: 100%;
+}
+
+.chapter-container .accordion-item{
+  margin-bottom: 10px;
+  margin-right: 5px;
+}
+
+.chapter-container .accordion-header{
+  margin-bottom: 0;
+}
+
+.chapter-container .accordion-header button{
+  width: 100%;
+  text-align: left;
+  background-color: #3e3b3b;
+  border-left:4px solid #e5c059;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.chapter-container .accordion-header button[aria-expanded="true"]{
+  border-left:4px solid #07ff03;
+}
+.chapter-container .accordion-header button:hover, .chapter-container .accordion-header button:focus{
+  background-color: #3e3b3b;
+  border-left:4px solid #07ff03;
+}
+
+.chapter-container .accordion-body{
+  padding: 0px 0px 0px 0px;
+}
+.chapter-container .accordion-body li {
+  list-style: none;
+  font-size: 14px;
+  background: #3e3b3b;
+  margin-bottom: 2px;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+.chapter-container .accordion-body li ul {
+  padding: 0px 0px 0px 5px;
+}
+.chapter-container .accordion-body li a{
+  color:#fff;
+}
+.chapter-container .accordion-body li ul a{
+  color:#ccc;
+}
+.chapter-container .paths-list-details ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.chapter-container .paths-list-details ul li {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-right: 10px;
+}
+.chapter-container .paths-list-details .paths-icon {
+  padding-right: 6px;
+  font-size: 18px;
+}
+.chapter-container .accordion-body .paths-list-details .paths-icon {
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.chapter-container .accordion-body  .desc {
+  font-size: 12px;
+  color: #ccc;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
 
