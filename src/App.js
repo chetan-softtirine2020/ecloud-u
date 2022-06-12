@@ -37,6 +37,7 @@ import { PrivateRoute } from "./container/other/PrivateRoute";
 import WhiteBoard from "./container/WhiteBoard";
 import axios from "axios";
 import { getToken } from "./config/api";
+import AllCoures from "./container/courses/AllCoures";
 
 function App() {
   if (localStorage.getItem("token")) {
@@ -153,7 +154,7 @@ function App() {
           />
 
           <Route
-            path={"/course"}
+            path={"/course/:slug"}
             caseSensitive={false}
             element={<PlayCourse />}
           />
@@ -163,6 +164,12 @@ function App() {
             caseSensitive={false}
             element={<CreateCourse />}
           />
+          <Route
+          path={"/all-courses"}
+          caseSensitive={false}
+          element={<AllCoures />}
+        />
+          
 
           <Route
             path={"/all-trainings"}

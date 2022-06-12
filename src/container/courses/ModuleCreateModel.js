@@ -32,7 +32,7 @@ const ModuleCreateModel = (props) => {
     setShow(false);
     dispatch(getCoureseWiseModuleList({ course_id: module.course_id }));
   }
-   console.log(module.course_id)
+
 
   return (
     <div >

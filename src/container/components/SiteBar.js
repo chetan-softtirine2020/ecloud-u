@@ -12,7 +12,10 @@ const SiteBar = () => {
   const location = useLocation();
   const userData = JSON.parse(localStorage.getItem("data"));
   return (
-    <div className="collapse navbar-collapse sitebar-section" id="navbarNavDropdown2">
+    <div
+      className="collapse navbar-collapse sitebar-section"
+      id="navbarNavDropdown2"
+    >
       <nav class="navigation">
         <div class="container pl-0 pr-0">
           <div class="nav-content">
@@ -23,12 +26,16 @@ const SiteBar = () => {
                   Educloudlabs{" "}
                 </span>
               </Link>
-              <a href="/" class="close-nav d-inline-block d-lg-none pl-2" className="navbar-toggler"
+              <a
+                href="/"
+                class="close-nav d-inline-block d-lg-none pl-2"
+                className="navbar-toggler"
                 data-toggle="collapse"
                 data-target="#navbarNavDropdown2"
                 aria-controls="navbarNavDropdown2"
                 aria-expanded="false"
-                aria-label="Toggle navigation">
+                aria-label="Toggle navigation"
+              >
                 <i class="ti-close bg-grey mb-0 btn-round-sm font-xssss fw-700 text-dark ml-auto mr-1 "></i>
               </a>
             </div>
@@ -84,6 +91,32 @@ const SiteBar = () => {
                   >
                     <i class="feather-video mr-3"></i>
                     <span>Completed Trainings</span>
+                  </Link>
+                </li>
+
+                <li class="flex-lg-brackets">
+                  <Link
+                    to={"/create-course"}
+                    data-tab="archived"
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/create-course" ? "active" : ""
+                    }`}
+                  >
+                    <i class="feather-video mr-3"></i>
+                    <span>Create Course</span>
+                  </Link>
+                </li>
+
+                <li class="flex-lg-brackets">
+                  <Link
+                    to={"/all-courses"}
+                    data-tab="archived"
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/all-courses" ? "active" : ""
+                    }`}
+                  >
+                    <i class="feather-video mr-3"></i>
+                    <span>All Courses</span>
                   </Link>
                 </li>
               </ul>
@@ -233,7 +266,7 @@ const SiteBar = () => {
                     <i class="feather-home mr-3"></i>
                     <span> Home</span>
                   </Link>
-                </li>             
+                </li>
               </ul>
             )}
 

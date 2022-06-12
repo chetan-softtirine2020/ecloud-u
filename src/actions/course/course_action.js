@@ -113,7 +113,28 @@ export const createAllCourse = (prm) => {
   };
 };
 
-
+export const getPlayCourseData = (prm) => {
+  return (dispatch) => {
+    dispatch({
+      type: COURSE.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/play-course-data`,
+        data: prm,
+      })
+      .then((res) => {
+        dispatch({
+          type: COURSE.PLAY_COURSE,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, COURSE.ERROR));
+      });
+  };
+};
 
 
 const TAG = "COURSE_";
@@ -127,4 +148,5 @@ export const COURSE = {
   ADD_MODULE: TAG + "ADD_MODULE",
   ADD_ALL_COURSE: TAG + "ADD_ALL_COURSE",
   LIST_MODULE: TAG + "LIST_MODULE",
+  PLAY_COURSE:TAG + "PLAY_DATA"
   };

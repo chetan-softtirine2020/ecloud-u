@@ -8,6 +8,8 @@ export const initState = {
   loading: false,
   errors: [],
   isCourseCreated:false,
+  isAllCourseCreated:false,
+  playCourseData:{}
 };
 
 const courseReducer = (state = initState, { type, payload }) => {
@@ -16,13 +18,15 @@ const courseReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        errors: payload,
+        isAllCourseCreated:false,
+        errors: payload
       };
     case COURSE.REQUEST:
       return {
         ...state,
         loading: true,
         is_done: false,
+        isAllCourseCreated:false,
         errors: [],
       };
     case COURSE.ADD_COURSE:
@@ -31,6 +35,7 @@ const courseReducer = (state = initState, { type, payload }) => {
         loading: false,
         is_done: true,
         isCourseCreated:true,
+        isAllCourseCreated:false,
         errors: [],
       };
     case COURSE.LIST_COURSE:
@@ -40,6 +45,7 @@ const courseReducer = (state = initState, { type, payload }) => {
         errors: [],
         courseList: payload,
         is_done: false,
+        isAllCourseCreated:false,
         isCourseCreated:false
       };
     case COURSE.LIST_MODULE:     
@@ -48,6 +54,7 @@ const courseReducer = (state = initState, { type, payload }) => {
         loading: false,
         errors: [],
         moduleList: payload,
+        isAllCourseCreated:false,
         is_done: false,
       };
 
@@ -56,6 +63,7 @@ const courseReducer = (state = initState, { type, payload }) => {
         ...state,
         loading: false,
         is_done: true,
+        isAllCourseCreated:false,        
         errors: [],
       };
       case COURSE.ADD_ALL_COURSE:
@@ -63,8 +71,18 @@ const courseReducer = (state = initState, { type, payload }) => {
           ...state,
           loading: false,
           is_done: true,
+          isAllCourseCreated:true, 
           errors: [],
-        };
+        };    
+        case COURSE.PLAY_COURSE: 
+        return {
+          ...state,
+          loading: false,
+          is_done: true,
+          isAllCourseCreated:false,
+          playCourseData:payload,  
+          errors: [],
+        };    
       
     default:
       return state;

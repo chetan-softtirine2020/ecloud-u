@@ -77,10 +77,12 @@ const CreateCourse = () => {
     setShow(false);
   };
   // console.log("Modi"+state.moduleList);
+  if (state.isAllCourseCreated) {
+    navigate("/all-courses");
+  }
 
   return (
     <AppBody
-    
       loading={state.loading}
       content={
         <div className="middle-sidebar-left">
