@@ -1,5 +1,5 @@
 import axios from "axios";
-import { APP_URL,getToken } from "../../config/api";
+import { APP_URL } from "../../config/api";
 
 
 export const errorMessage = (err) => {
@@ -30,14 +30,7 @@ export const addOrganizationSubAdmin = (org) => {
       .request({
         method: "post",
         url: `${APP_URL}/create-organization`,
-        data: org,
-        headers: {
-            Authorization: `Bearer ${getToken().substring(
-              1,
-              getToken().length - 1
-            )}`,
-            "Content-Type": "application/json",
-          },
+        data: org
       })
       .then((result) => {
         dispatch({
@@ -60,14 +53,7 @@ export const addOrgDeptBranchSection = (org) => {
         .request({
           method: "post",
           url: `${APP_URL}/create-organization`,
-          data: org,
-          headers: {
-              Authorization: `Bearer ${getToken().substring(
-                1,
-                getToken().length - 1
-              )}`,
-              "Content-Type": "application/json",
-            },
+          data: org         
         })
         .then((result) => {
           dispatch({
@@ -91,14 +77,7 @@ export const getAllOrganization = (parm) => {
       .request({
         method: "post",
         url: `${APP_URL}/get-org-approved`,
-        data:parm, 
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data:parm
       })
       .then((res) => {
         dispatch({

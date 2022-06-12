@@ -17,6 +17,7 @@ import ShowTrainingUser from "./container/learning_provider/ShowTrainingUser";
 import UserWiseTraining from "./container/learning_provider/provider_user/UserWiseTraining";
 import HomePage from "./container/home/HomePage";
 import PlayCourse from "./container/courses/PlayCourse";
+import CreateCourse from "./container/courses/CreateCourse";
 import ProviderUserDashboard from "./container/learning_provider/provider_user/ProviderUserDashboard";
 import OrganizationRequest from "./container/admin/OrganizationRequest";
 import ShowAllOrg from "./container/admin/ShowAllOrg";
@@ -33,8 +34,15 @@ import ResetPassword from "./container/auth/ResetPassword";
 import LearningProvidersList from "./container/admin/users/LearningProvidersList";
 import AddOrgSubAdmin from "./container/organization/AddOrgSubAdmin";
 import { PrivateRoute } from "./container/other/PrivateRoute";
-import WhiteBoard from "./container/WhiteBoard"; 
+import WhiteBoard from "./container/WhiteBoard";
+import axios from "axios";
+import { getToken } from "./config/api";
+
 function App() {
+  if (localStorage.getItem("token")) {
+    const token = getToken().substring(1, getToken().length - 1);
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  }
   return (
     <Router>
       <Routes>
@@ -48,7 +56,7 @@ function App() {
         <Route
           path={"/white-board"}
           caseSensitive={false}
-          element={<WhiteBoard/>}
+          element={<WhiteBoard />}
         />
         <Route
           path={"/training/:slug"}
@@ -145,9 +153,15 @@ function App() {
           />
 
           <Route
-          path={"/course"}
-          caseSensitive={false}
-          element={<PlayCourse />}
+            path={"/course"}
+            caseSensitive={false}
+            element={<PlayCourse />}
+          />
+
+          <Route
+            path={"/create-course"}
+            caseSensitive={false}
+            element={<CreateCourse />}
           />
 
           <Route

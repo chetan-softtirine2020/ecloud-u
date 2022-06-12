@@ -29,14 +29,7 @@ import { APP_URL,getToken } from "../../../config/api";
         .request({
           method: "post",
           url: `${APP_URL}/lpu/get-trainings`,          
-          headers: {
-            Authorization: `Bearer ${getToken().substring(
-              1,
-              getToken().length - 1
-            )}`,
-            "Content-Type": "application/json",
-          },
-        })
+          })
         .then((res) => {
           dispatch({
             type: "USER_WISE_TRAINING",
@@ -58,14 +51,7 @@ import { APP_URL,getToken } from "../../../config/api";
         .request({
           method: "post",
           url: `${APP_URL}/lp/update-training-join-status`,
-          data: details,
-          headers: {
-            Authorization: `Bearer ${getToken().substring(
-              1,
-              getToken().length - 1
-            )}`,
-            "Content-Type": "application/json",
-          },
+          data: details         
         })
         .then((res) => {
           dispatch({

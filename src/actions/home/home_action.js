@@ -30,10 +30,7 @@ export const getAllHomeTrainings = () => {
     axios
       .request({
         method: "post",
-        url: `${APP_URL}/get-home-trainings`,
-        headers: {         
-          "Content-Type": "application/json",
-        },
+        url: `${APP_URL}/get-home-trainings`,       
       })
       .then((res) => {
         dispatch({

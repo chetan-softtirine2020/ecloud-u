@@ -29,14 +29,7 @@ export const addUserTraining = (training) => {
       .request({
         method: "post",
         url: `${APP_URL}/lp/add-training-user`,
-        data: training,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: training
       })
       .then((res) => {
         dispatch({
@@ -59,14 +52,7 @@ export const importUserTraining = (file) => {
       .request({
         method: "post",
         url: `${APP_URL}/lp/import-training-user`,
-        data: file,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: file
       })
       .then((res) => {
         dispatch({
@@ -89,14 +75,7 @@ export const updateUserTrainingMin = (datas) => {
       .request({
         method: "post",
         url: `${APP_URL}/update-training-min`,
-        data: datas,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: datas
       })
       .then((res) => {
         dispatch({
@@ -120,14 +99,7 @@ export const getAllTrainingUsers = (parm) => {
       .request({
         method: "post",
         url: `${APP_URL}/lp/get-training-users`,
-        data: parm,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: parm
       })
       .then((res) => {
         dispatch({
@@ -150,14 +122,7 @@ export const reactiveUserTraining = (parm) => {
       .request({
         method: "post",
         url: `${APP_URL}/reactive-training`,
-        data: parm,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: parm      
       })
       .then((res) => {
         dispatch({

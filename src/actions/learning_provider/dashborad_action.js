@@ -28,11 +28,7 @@ export const getDashboardData = () => {
       .request({
         method: "post",
         url: `${APP_URL}/get-dashboard-data`,
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token').slice(1, -1)}`,
-          "Content-Type": "application/json",
-        },
-      })
+        })
       .then((res) => {
         dispatch({
           type: "LP_DASHBOARD_DATA",

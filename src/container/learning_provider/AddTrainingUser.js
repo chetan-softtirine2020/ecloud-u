@@ -131,10 +131,10 @@ const AddTrainingUser = () => {
                         <input
                           type="file"
                           class="custom-file-input"
-                          accept=".xls, .xlsx"
+                          //accept=".xls, .xlsx"
                           {...register("file", { required: true })}
                         />
-                        <label class="custom-file-label" for="customFile">
+                        <label class="custom-file-label" htmlFor="customFile">
                           Choose file
                         </label>
 

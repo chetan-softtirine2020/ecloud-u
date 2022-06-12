@@ -125,15 +125,8 @@ export const singOut = () => {
       .request({
         method: "post",
         url: `${APP_URL}/logout`,
-        data: { token: getToken().substring(1, getToken().length - 1) },
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
-      })
+        data: { token: getToken().substring(1, getToken().length - 1) }
+        })
       .then((token) => {
         dispatch({
           type: "SIGN_OUT",
@@ -210,15 +203,8 @@ export const changePassword = (cred) => {
       .request({
         method: "post",
         url: `${APP_URL}/change-password`,
-        data: cred,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
-      })
+        data: cred
+       })
       .then((res) => {
         dispatch({
           type: "CHANGE_PASSWORD",
@@ -242,14 +228,7 @@ export const getCurrentToken = (pram) => {
       .request({
         method: "post",
         url: `${APP_URL}/current-token`,
-        data:pram,       
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data:pram
       })
       .then((res) => {
         dispatch({
@@ -260,9 +239,7 @@ export const getCurrentToken = (pram) => {
       .catch((error) => {
         dispatch(errorMessage(error));
       });
-  };
-
-
+   };
 };
 
 

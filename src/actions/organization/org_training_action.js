@@ -31,14 +31,7 @@ export const createOrgTraining = (training) => {
       .request({
         method: "post",
         url: `${APP_URL}/create-org-training`,
-        data: training,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: training
       })
       .then((res) => {        
         dispatch({
@@ -62,14 +55,7 @@ export const updateOrgTraining = (training) => {
       .request({
         method: "post",
         url: `${APP_URL}/update-org-training`,
-        data: training,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: training
       })
       .then((res) => {
         dispatch({
@@ -92,14 +78,7 @@ export const getTraining = (id) => {
       .request({
         method: "post",
         url: `${APP_URL}/get-org-training`,
-        data: id,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: id
       })
       .then((res) => {
         dispatch({
@@ -121,14 +100,7 @@ export const getAllOrgTrainings = () => {
     axios
       .request({
         method: "post",
-        url: `${APP_URL}/get-org-training`,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        url: `${APP_URL}/get-org-training`,       
       })
       .then((res) => {
         dispatch({
@@ -151,14 +123,7 @@ export const deleteTraining = (id) => {
       .request({
         method: "post",
         url: `${APP_URL}/delete-org-trainings`,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
-      })
+       })
       .then((res) => {
         dispatch({
           type: "DELETE_ORG_TRAINING",

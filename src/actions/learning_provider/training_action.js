@@ -1,46 +1,18 @@
 import axios from "axios";
-import { APP_URL, getToken } from "../../config/api";
-let token = getToken();
-
-// Create New Training
-
-export const errorMessage = (err) => {
-  switch (err.response.status) {
-    case 422:
-      return { type: "TRAINING_ERROR", payload: err.response.data };
-    case 405:
-      return { type: "TRAINING_ERROR", payload: { other_error: "Method Not Allowed" } };
-    case 500:
-      return {
-        type: "TRAINING_ERROR",
-        payload: { other_error: "Internal Server Error." },
-      };
-    default:
-      return {
-        type: "TRAINING_ERROR",
-        payload: { other_error: "Something went worng." },
-      };
-  }
-};
+import { APP_URL} from "../../config/api";
+import { errorMessage } from "../errorHandle";
 
 export const getTrainingDetailsForMeeting = (training) => {
   return (dispatch) => {
     dispatch({
-      type: "TRAINING_REQUEST",
+      type: TRAINING.REQUEST,
     });
     axios
       .request({
         method: "post",
         url: `${APP_URL}/lp-training-details`,
-        data: training,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
-      })
+        data: training    
+        })
       .then((res) => {
         dispatch({
           type: "TRAINING_DETAILS",
@@ -48,7 +20,7 @@ export const getTrainingDetailsForMeeting = (training) => {
         });
       })
       .catch((error) => {
-        dispatch(errorMessage(error));
+        dispatch(errorMessage(error,TRAINING.ERROR));
       });
   };
 };
@@ -56,29 +28,22 @@ export const getTrainingDetailsForMeeting = (training) => {
 export const createTraining = (training) => {
   return (dispatch) => {
     dispatch({
-      type: "TRAINING_REQUEST",
+      type: TRAINING.REQUEST,
     });
     axios
       .request({
         method: "post",
         url: `${APP_URL}/create-training`,
-        data: training,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: training
       })
       .then((res) => {
         dispatch({
-          type: "CREATE_TRAINING",
+          type: TRAINING.CREATE_TRAINING,
           payload: res.data.message,
         });
       })
       .catch((error) => {
-        dispatch(errorMessage(error));
+        dispatch(errorMessage(error,TRAINING.ERROR));
       });
   };
 };
@@ -87,20 +52,13 @@ export const createTraining = (training) => {
 export const addMakePublicTraining = (training) => {
   return (dispatch) => {
     dispatch({
-      type: "TRAINING_REQUEST",
+      type: TRAINING.REQUEST,
     });
     axios
       .request({
         method: "post",
         url: `${APP_URL}/lp-public-training`,
-        data: training,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: training        
       })
       .then((res) => {
         dispatch({
@@ -109,7 +67,7 @@ export const addMakePublicTraining = (training) => {
         });
       })
       .catch((error) => {
-        dispatch(errorMessage(error));
+        dispatch(errorMessage(error,TRAINING.ERROR));
       });
   };
 };
@@ -121,20 +79,13 @@ export const addMakePublicTraining = (training) => {
 export const updateTraining = (training) => {
   return (dispatch) => {
     dispatch({
-      type: "TRAINING_REQUEST",
+      type: TRAINING.REQUEST,
     });
     axios
       .request({
         method: "post",
         url: `${APP_URL}/update-training`,
-        data: training,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: training
       })
       .then((res) => {
         dispatch({
@@ -143,7 +94,7 @@ export const updateTraining = (training) => {
         });
       })
       .catch((error) => {
-        dispatch(errorMessage(error));
+        dispatch(errorMessage(error,TRAINING.ERROR));
       });
   };
 };
@@ -151,20 +102,13 @@ export const updateTraining = (training) => {
 export const getTraining = (id) => {
   return (dispatch) => {
     dispatch({
-      type: "TRAINING_REQUEST",
+      type: TRAINING.REQUEST,
     });
     axios
       .request({
         method: "post",
         url: `${APP_URL}/get-training`,
-        data: id,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: id       
       })
       .then((res) => {
         dispatch({
@@ -173,7 +117,7 @@ export const getTraining = (id) => {
         });
       })
       .catch((error) => {
-        dispatch(errorMessage(error));
+        dispatch(errorMessage(error,TRAINING.ERROR));
       });
   };
 };
@@ -181,28 +125,21 @@ export const getTraining = (id) => {
 export const getAllTrainings = () => { 
   return (dispatch) => {
     dispatch({
-      type: "TRAINING_REQUEST",
+      type: TRAINING.REQUEST,
     });
     axios
       .request({
         method: "post",
-        url: `${APP_URL}/all-trainings`,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        url: `${APP_URL}/all-trainings`,       
       })
       .then((res) => {
         dispatch({
           type: "ALL_TRAINING",
-          payload: res.data.list,
+          payload: res.data.list
         });
       })
       .catch((error) => {
-        dispatch(errorMessage(error));
+        dispatch(errorMessage(error,TRAINING.ERROR));
       });
   };
 };
@@ -210,20 +147,13 @@ export const getAllTrainings = () => {
 export const deleteTraining = (slug) => {
   return (dispatch) => {
     dispatch({
-      type: "TRAINING_REQUEST",
+      type: TRAINING.REQUEST,
     });
     axios
       .request({
         method: "post",
         url: `${APP_URL}/delete-trainings`,
-        data:slug,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data:slug       
       })
       .then((res) => {
         dispatch({
@@ -232,7 +162,18 @@ export const deleteTraining = (slug) => {
         });
       })
       .catch((error) => {
-        dispatch(errorMessage(error));
+        dispatch(errorMessage(error,TRAINING.ERROR));
       });
   };
 };
+
+
+const TAG = "TRAINING_";
+
+export const TRAINING = {
+    ERROR: TAG + "ERROR",
+    REQUEST: TAG + "REQUEST",
+    GET_COURSE_DETAILS: TAG + "GET_COURSE_DETAILS",
+    CREATE_TRAINING:  "CREATE_TRAINING",
+    LIST_COURSE: TAG + "LIST_COURSE",  
+ };

@@ -32,14 +32,7 @@ export const joinConferanceCheckCount = (count) => {
       .request({
         method: "post",
         url: `${APP_URL}/lp/update-training-join-status`,
-        data: count,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: count
       })
       .then((result) => {
         dispatch({
@@ -62,14 +55,7 @@ export const getAllOrganization = (parm) => {
       .request({
         method: "post",
         url: `${APP_URL}/get-org-approved`,
-        data: parm,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: parm       
       })
       .then((res) => {
         dispatch({
@@ -92,14 +78,7 @@ export const checkJoinCount = (count) => {
       .request({
         method: "post",
         url: `${APP_URL}/lp/get-training-join-count`,
-        data: count,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data: count
       })
       .then((result) => {        
         dispatch({
