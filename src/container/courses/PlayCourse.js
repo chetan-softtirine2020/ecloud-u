@@ -13,6 +13,7 @@ const PlayCourse = () => {
   }, []);
   const state = useSelector((state) => state.courseReducer);
   const { playCourseData } = state;
+   console.log(playCourseData);
   return (
     <AppBody
       content={
@@ -38,7 +39,7 @@ const PlayCourse = () => {
                     >
                       <span className="navbar-toggler-icon"></span>
                     </button>
-                    <iframe src="https://www.youtube.com/watch?v=k5E2AVpwsko"></iframe>
+                    <video src="https://www.youtube.com/watch?v=k5E2AVpwsko"></video>
                   </div>
 
                   <div
@@ -138,7 +139,7 @@ const PlayCourse = () => {
                         </Accordion.Body>
                       </Accordion.Item>
 
-                      
+
 
                       <Accordion.Item eventKey="1">
                         <Accordion.Header>
