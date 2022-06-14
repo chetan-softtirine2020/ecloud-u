@@ -16,7 +16,6 @@ const PlayCourse = () => {
   }, []);
   const state = useSelector((state) => state.courseReducer);
   const { playCourseData } = state;
-   console.log(playCourseData);
   return (
     <AppBody
       content={
@@ -25,7 +24,7 @@ const PlayCourse = () => {
             <div className="card">
               <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
                 <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                  Courses 
+                  Courses
                 </h4>
               </div>
               <div className="card-body w-100 border-0 p-1">
@@ -42,7 +41,6 @@ const PlayCourse = () => {
                     >
                       <span className="navbar-toggler-icon"></span>
                     </button>
-                    <video src="https://www.youtube.com/watch?v=k5E2AVpwsko"></video>
                     <iframe src=""></iframe>
                     <div className="controler-section">
                     <span className="ti-angle-left paths-icon"></span>
@@ -206,7 +204,6 @@ const PlayCourse = () => {
                                   </div>
                                 </Accordion.Header>
                                 <Accordion.Body>
-
 
                                 </Accordion.Body>
                               </Accordion.Item>
