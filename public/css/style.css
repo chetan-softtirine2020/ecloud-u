@@ -5833,7 +5833,7 @@ input[type=button].btn-block {
   position: relative;
   z-index: 2;
   width: 100%;
-  height: calc(1.5em + 0.75rem + 2px);
+  height: 50px;
   margin: 0;
   opacity: 0;
 }
@@ -5857,10 +5857,10 @@ input[type=button].btn-block {
   right: 0;
   left: 0;
   z-index: 1;
-  height: calc(1.5em + 0.75rem + 2px);
+  height: 50px;
   padding: 0.375rem 0.75rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 35px;
   color: #495057;
   background-color: #fff;
   border: 1px solid #ced4da;
@@ -5873,9 +5873,9 @@ input[type=button].btn-block {
   bottom: 0;
   z-index: 3;
   display: block;
-  height: calc(1.5em + 0.75rem);
+  height: 48px;
   padding: 0.375rem 0.75rem;
-  line-height: 1.5;
+  line-height: 35px;
   color: #495057;
   content: "Browse";
   background-color: #e9ecef;
@@ -17279,6 +17279,34 @@ width: 100%;
 .chapter-container .accordion-body  .desc {
   font-size: 12px;
   color: #ccc;
+}
+
+.custom-modal .modal-content {
+  background-color: #222222;
+  color:#fff;
+}
+.custom-modal .modal-title {
+  color:#fff;
+}
+.custom-modal .btn-close {
+  background: transparent;
+  padding: 0;
+  height: 20px;
+
+}
+.custom-modal .btn-close::after{
+  content: ' \0058';
+  width: 1em;
+  height: 1em;
+  color: #fff;
+  border: 0;
+  border-radius: 0.375rem;
+}
+
+.custom-modal .form-control {
+  color: #fff;
+  background-color: #373737;
+  border: 1px solid #eee;
 }
 
 /* width */

@@ -36,7 +36,7 @@ const ModuleCreateModel = (props) => {
 
   return (
     <div >
-      <Modal show={show} onHide={handleClose} size={"lg"}>
+      <Modal className="custom-modal" show={show} onHide={handleClose} size={"lg"}>
         <Modal.Header closeButton>
           <Modal.Title>Add Module </Modal.Title>
         </Modal.Header>
@@ -92,22 +92,22 @@ const ModuleCreateModel = (props) => {
             </div>
 
             <div className={"row"}>
-              <div className="col-lg-3">
+              <div className="col-lg-12 text-right">
                 <input
                   type="submit"
                   name="submit"
                   value="Submit"
-                  className="btn-common px-5 mt-30"
+                  className="btn-common px-5 mt-15"
                 />
               </div>
             </div>
           </form>
         </Modal.Body>
-        <Modal.Footer>
+        {/* <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </div>
   );

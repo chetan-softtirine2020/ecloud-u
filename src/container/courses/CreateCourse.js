@@ -146,13 +146,13 @@ const CreateCourse = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="col-lg-2">
+                    <div className="col-lg-2 pt-2">
                       <input
                         type="button"
                         name="submit"
                         value="Add New"
                         onClick={() => clickOnAdd(1)}
-                        className="btn-common px-5 mt-30"
+                        className="btn-common px-3 mt-30"
                       />
                     </div>
 
@@ -181,13 +181,13 @@ const CreateCourse = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="col-lg-2">
+                    <div className="col-lg-2 pt-2">
                       <input
                         type="button"
                         name="submit"
                         onClick={() => clickOnAdd(2)}
                         value="Add New"
-                        className="btn-common px-5 mt-30"
+                        className="btn-common px-3 mt-30"
                       />
                     </div>
                   </div>
@@ -266,7 +266,7 @@ const CreateCourse = () => {
                   </div>
 
                   <div className="row">
-                    <div className="col-lg-12">
+                    <div className="col-lg-12 text-center">
                       <input
                         type="submit"
                         name="submit"
