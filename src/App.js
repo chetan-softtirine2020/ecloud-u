@@ -41,7 +41,8 @@ import AllCoures from "./container/courses/AllCoures";
 
 function App() {
   if (localStorage.getItem("token")) {
-    const token = getToken().substring(1, getToken().length - 1);
+    const token = getToken();
+    //.substring(1, getToken().length - 1);
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   }
   return (
