@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AppBody from "../components/AppBody";
 import Badge from "react-bootstrap/Badge";
 import Accordion from "react-bootstrap/Accordion";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlayCourseData } from "../../actions/course/course_action";
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 const PlayCourse = () => {
   let { slug } = useParams();
@@ -14,8 +14,64 @@ const PlayCourse = () => {
   useEffect(() => {
     dispatch(getPlayCourseData({ slug: slug }));
   }, []);
+  const [currentUrl, setCurrrentUrl] = useState("");
+  const [currentIndex, setCurrentIndex] = useState("");
+  const [next, setNextVideo] = useState("");
+  const [previous, setPreviousVideo] = useState("");
+  const [currentPlay, setcurrentPlay] = useState({
+    currentModule: "",
+    currentTopic: [],
+    totalTopic: 0,
+    playList: [],
+  });
   const state = useSelector((state) => state.courseReducer);
   const { playCourseData } = state;
+  const setVideo = (url, j) => {
+    setCurrentIndex(j);
+    setCurrrentUrl(url);
+    if (currentUrl !== url) {
+      var vi = document.getElementById("video");
+      vi.src = url;
+      vi.load();
+      vi.play();
+    }
+  };
+  const getCurrentModule = (id, topic) => {
+    const playList = [];
+    topic.forEach((object) => {
+      playList.push(object.url);
+    });
+    setcurrentPlay({
+      currentModule: id,
+      currentTopic: topic,
+      totalTopic: topic.length,
+      playList: playList,
+    });
+  };
+
+  const nextPlay = () => {
+    const totalUrl = currentPlay.totalTopic - 1;
+    if(currentIndex <= totalUrl) {
+      console.log("Playlist" + currentPlay.playList);
+      var vi = document.getElementById("video");
+      
+      vi.src = currentPlay.playList[currentIndex + 1];
+      vi.load();
+      vi.play();
+    }
+  };
+
+  const previousPlay = () => {
+    const totalUrl = currentPlay.totalTopic - 1;
+    if (currentIndex !== 0) {
+      var vi = document.getElementById("video");
+       console.log(currentPlay.playList[currentIndex - 1]);
+      vi.src = currentPlay.playList[currentIndex - 1];
+      vi.load();
+      vi.play();
+    }
+  };
+
   return (
     <AppBody
       content={
@@ -41,13 +97,23 @@ const PlayCourse = () => {
                     >
                       <span className="navbar-toggler-icon"></span>
                     </button>
-                    <iframe src=""></iframe>
+                    <video id="video" width="800" height="550" controls>
+                      <source type="video/mp4" />
+                    </video>
+                    <br />
+                    <br />
+
                     <div className="controler-section">
-                    <span className="ti-angle-left paths-icon"></span>
-                    <span className="ti-angle-right paths-icon"></span>
+                      <span
+                        className="ti-angle-left paths-icon"
+                        onClick={() => previousPlay()}
+                      ></span>
+                      <span
+                        className="ti-angle-right paths-icon"
+                        onClick={() => nextPlay()}
+                      ></span>
                     </div>
                   </div>
-
                   <div
                     className="chapter-container collapse"
                     id="navbarNavDropdown5"
@@ -56,286 +122,74 @@ const PlayCourse = () => {
                       {playCourseData &&
                         playCourseData.course &&
                         playCourseData.course.name}
-                        Angular 
                     </h1>
 
                     <div className="course-module">
                       <Accordion defaultActiveKey="0">
-                        <Accordion.Item className="mb-2" eventKey="0">
-                          <Accordion.Header>
-                            Module 1
-                            <div class="paths-list-details mt-0">
-                              <ul>
-                                <li>
-                                  <span className="ti-video-camera paths-icon" alt="Number of Courses"></span>
-                                  <span>18 Trainigs</span>
-                                </li>
-                                <li>
-                                  <span className="ti-time paths-icon" alt="Duration"></span>
-                                  <span>65 hours</span>
-                                </li>
-                              </ul>
-                            </div>
-                          </Accordion.Header>
-                          <Accordion.Body>
-
-                            <Accordion defaultActiveKey="0">
-                              <Accordion.Item className="m-0">
-                                <Accordion.Header>
-                                  <div className="paths-list-details">
-                                    <i class="feather-play-circle mr-1"></i>{" "}
-                                    <span className="txthead">Introduction</span>
-                                    <span
-                                      className="ti-time paths-icon"
-                                      alt="Duration"
-                                    ></span>
-                                    <span>6 hours</span>
-                                  </div>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                  <div className="desc">
-                                    Angular is a platform for building mobile and
-                                    desktop web applications. Join the community of
-                                    millions of developers who build compelling user
-                                    interfaces
-                                  </div>
-                                </Accordion.Body>
-                              </Accordion.Item>
-                              <Accordion.Item className="m-0" eventKey="1">
-                                <Accordion.Header>
-                                  <div className="paths-list-details">
-                                    <i class="feather-play-circle mr-1"></i>{" "}
-                                    <span className="txthead">Components</span>
-                                    <span
-                                      className="ti-time paths-icon"
-                                      alt="Duration"
-                                    ></span>
-                                    <span>8 hours</span>
-                                  </div>
-                                </Accordion.Header>
-                                <Accordion.Body>
-
-                                </Accordion.Body>
-                              </Accordion.Item>
-                              <Accordion.Item className="m-0" eventKey="2">
-                                <Accordion.Header>
-                                  <div className="paths-list-details">
-                                    <i class="feather-play-circle mr-1"></i>{" "}
-                                    <span className="txthead">Directives</span>
-                                    <span
-                                      className="ti-time paths-icon"
-                                      alt="Duration"
-                                    ></span>
-                                    <span>9 hours</span>
-                                  </div>
-                                </Accordion.Header>
-                                <Accordion.Body>
+                        {playCourseData &&
+                          playCourseData.data &&
+                          playCourseData.data.map((li, i) => (
+                            <Accordion.Item
+                              className="mb-2"
+                              eventKey={i}
+                              onClick={() => getCurrentModule(li.id, li.topic)}
+                            >
+                              <Accordion.Header>
+                                {li.name}
+                                <div class="paths-list-details mt-0">
                                   <ul>
                                     <li>
-                                      <a href="#">Directive are 3 Types</a>
-                                      <ul>
-                                        <li>
-                                          <a href="#">Componet</a>
-                                        </li>
-                                        <li>
-                                          <a href="#">Structural</a>
-                                        </li>
-                                        <li>
-                                          <a href="#">Attribute</a>
-                                        </li>
-                                      </ul>
+                                      <span
+                                        className="ti-video-camera paths-icon"
+                                        alt="Number of Courses"
+                                      ></span>
+                                      <span>18 Trainigs</span>
                                     </li>
-                                  </ul>
-                                </Accordion.Body>
-                              </Accordion.Item>
-                            </Accordion>
-
-                          </Accordion.Body>
-                        </Accordion.Item>
-                        <Accordion.Item className="mb-2" eventKey="1">
-                          <Accordion.Header>
-                            Module 2
-                            <div class="paths-list-details mt-0">
-                              <ul>
-                                <li>
-                                  <span className="ti-video-camera paths-icon" alt="Number of Courses"></span>
-                                  <span>18 Trainigs</span>
-                                </li>
-                                <li>
-                                  <span className="ti-time paths-icon" alt="Duration"></span>
-                                  <span>65 hours</span>
-                                </li>
-                              </ul>
-                            </div>
-                          </Accordion.Header>
-                          <Accordion.Body>
-                            <Accordion defaultActiveKey="1">
-                              <Accordion.Item className="m-0" eventKey="0">
-                                <Accordion.Header>
-                                  <div className="paths-list-details">
-                                    <i class="feather-play-circle mr-1"></i>{" "}
-                                    <span className="txthead">Introduction</span>
-                                    <span
-                                      className="ti-time paths-icon"
-                                      alt="Duration"
-                                    ></span>
-                                    <span>6 hours</span>
-                                  </div>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                  <div className="desc">
-                                    Angular is a platform for building mobile and
-                                    desktop web applications. Join the community of
-                                    millions of developers who build compelling user
-                                    interfaces
-                                  </div>
-                                </Accordion.Body>
-                              </Accordion.Item>
-                              <Accordion.Item className="m-0" eventKey="1">
-                                <Accordion.Header>
-                                  <div className="paths-list-details">
-                                    <i class="feather-play-circle mr-1"></i>{" "}
-                                    <span className="txthead">Components</span>
-                                    <span
-                                      className="ti-time paths-icon"
-                                      alt="Duration"
-                                    ></span>
-                                    <span>8 hours</span>
-                                  </div>
-                                </Accordion.Header>
-                                <Accordion.Body>
-
-                                </Accordion.Body>
-                              </Accordion.Item>
-                              <Accordion.Item className="m-0" eventKey="2">
-                                <Accordion.Header>
-                                  <div className="paths-list-details">
-                                    <i class="feather-play-circle mr-1"></i>{" "}
-                                    <span className="txthead">Directives</span>
-                                    <span
-                                      className="ti-time paths-icon"
-                                      alt="Duration"
-                                    ></span>
-                                    <span>9 hours</span>
-                                  </div>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                  <ul>
                                     <li>
-                                      <a href="#">Directive are 3 Types</a>
-                                      <ul>
-                                        <li>
-                                          <a href="#">Componet</a>
-                                        </li>
-                                        <li>
-                                          <a href="#">Structural</a>
-                                        </li>
-                                        <li>
-                                          <a href="#">Attribute</a>
-                                        </li>
-                                      </ul>
+                                      <span
+                                        className="ti-time paths-icon"
+                                        alt="Duration"
+                                      ></span>
+                                      <span>65 hours</span>
                                     </li>
                                   </ul>
-                                </Accordion.Body>
-                              </Accordion.Item>
-                            </Accordion>
-
-                          </Accordion.Body>
-                        </Accordion.Item>
-                        <Accordion.Item className="mb-2" eventKey="2">
-                          <Accordion.Header>
-                            Module 3
-                            <div class="paths-list-details mt-0">
-                              <ul>
-                                <li>
-                                  <span className="ti-video-camera paths-icon" alt="Number of Courses"></span>
-                                  <span>18 Trainigs</span>
-                                </li>
-                                <li>
-                                  <span className="ti-time paths-icon" alt="Duration"></span>
-                                  <span>65 hours</span>
-                                </li>
-                              </ul>
-                            </div>
-                          </Accordion.Header>
-                          <Accordion.Body>
-
-                            <Accordion defaultActiveKey="2">
-                              <Accordion.Item className="m-0" eventKey="0">
-                                <Accordion.Header>
-                                  <div className="paths-list-details">
-                                    <i class="feather-play-circle mr-1"></i>{" "}
-                                    <span className="txthead">Introduction</span>
-                                    <span
-                                      className="ti-time paths-icon"
-                                      alt="Duration"
-                                    ></span>
-                                    <span>6 hours</span>
-                                  </div>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                  <div className="desc">
-                                    Angular is a platform for building mobile and
-                                    desktop web applications. Join the community of
-                                    millions of developers who build compelling user
-                                    interfaces
-                                  </div>
-                                </Accordion.Body>
-                              </Accordion.Item>
-                              <Accordion.Item className="m-0" eventKey="1">
-                                <Accordion.Header>
-                                  <div className="paths-list-details">
-                                    <i class="feather-play-circle mr-1"></i>{" "}
-                                    <span className="txthead">Components</span>
-                                    <span
-                                      className="ti-time paths-icon"
-                                      alt="Duration"
-                                    ></span>
-                                    <span>8 hours</span>
-                                  </div>
-                                </Accordion.Header>
-                                <Accordion.Body>
-
-                                </Accordion.Body>
-                              </Accordion.Item>
-                              <Accordion.Item className="m-0" eventKey="2">
-                                <Accordion.Header>
-                                  <div className="paths-list-details">
-                                    <i class="feather-play-circle mr-1"></i>{" "}
-                                    <span className="txthead">Directives</span>
-                                    <span
-                                      className="ti-time paths-icon"
-                                      alt="Duration"
-                                    ></span>
-                                    <span>9 hours</span>
-                                  </div>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                  <ul>
-                                    <li>
-                                      <a href="#">Directive are 3 Types</a>
-                                      <ul>
-                                        <li>
-                                          <a href="#">Componet</a>
-                                        </li>
-                                        <li>
-                                          <a href="#">Structural</a>
-                                        </li>
-                                        <li>
-                                          <a href="#">Attribute</a>
-                                        </li>
-                                      </ul>
-                                    </li>
-                                  </ul>
-                                </Accordion.Body>
-                              </Accordion.Item>
-                            </Accordion>
-
-                          </Accordion.Body>
-                        </Accordion.Item>
+                                </div>
+                              </Accordion.Header>
+                              <Accordion.Body>
+                                <Accordion defaultActiveKey="0">
+                                  {li.topic &&
+                                    li.topic.map((tp, j) => (
+                                      <Accordion.Item
+                                        className="m-0"
+                                        eventKey={j}
+                                      >
+                                        <Accordion.Header>
+                                          <div
+                                            className="paths-list-details"
+                                            onClick={() => setVideo(tp.url, j)}
+                                          >
+                                            <i class="feather-play-circle mr-1"></i>{" "}
+                                            <span className="txthead">
+                                              {tp.name}
+                                            </span>
+                                            {/* <span className="ti-time paths-icon"
+                                                alt="Duration"></span>
+                                                <span>6 hours</span>*/}
+                                          </div>
+                                        </Accordion.Header>
+                                        <Accordion.Body>
+                                          <div className="desc">
+                                            {tp.description}
+                                          </div>
+                                        </Accordion.Body>
+                                      </Accordion.Item>
+                                    ))}
+                                </Accordion>
+                              </Accordion.Body>
+                            </Accordion.Item>
+                          ))}
                       </Accordion>
                     </div>
-
                   </div>
                 </div>
               </div>

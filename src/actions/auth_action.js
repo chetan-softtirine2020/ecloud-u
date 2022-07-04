@@ -1,6 +1,5 @@
 import axios from "axios";
 import { APP_URL, getToken } from "../config/api";
-import { authHeader } from "../config/auth_header";
 
 export const errorMessage = (err) => {
   
@@ -41,8 +40,7 @@ export const signUp = (user) => {
       .request({
         method: "post",
         url: `${APP_URL}/register`,
-        data: user,
-        authHeader,
+        data: user     
       })
       .then((token) => {
        // localStorage.setItem("token", JSON.stringify(token.data.success.token));
@@ -64,10 +62,15 @@ export const logIn = (cred) => {
       type: "AUTH_REQUEST",
     });
     axios
-      .post(`${APP_URL}/login`, cred, authHeader())
+      .post(`${APP_URL}/login`, cred)
       .then((token) => {
-        localStorage.setItem("token", JSON.stringify(token.data.success.token));
+        const tok=JSON.stringify(token.data.success.token);
+        const toke = tok.substring(1, tok.length - 1);
+        localStorage.setItem("token", toke);
         localStorage.setItem("data", JSON.stringify(token.data.success));
+       // const token = getToken().substring(1, getToken().length - 1);
+        axios.defaults.headers.common["Authorization"] = `Bearer ${toke}`;
+       
         dispatch({
           type: "SINGUP",
           payload: token.data.success,
