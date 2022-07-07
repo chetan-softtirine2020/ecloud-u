@@ -2,7 +2,6 @@ import axios from "axios";
 import { APP_URL, getToken } from "../config/api";
 
 export const errorMessage = (err) => {
-  
   //console.log("erreee"+err.response.status);
   switch (err.response.status) {
     case 422:
@@ -21,7 +20,7 @@ export const errorMessage = (err) => {
       return {
         type: "AUTH_ERROR",
         payload: { other_error: err.response.data.message },
-      };      
+      };
     default:
       return {
         type: "AUTH_ERROR",
@@ -40,11 +39,11 @@ export const signUp = (user) => {
       .request({
         method: "post",
         url: `${APP_URL}/register`,
-        data: user     
+        data: user,
       })
       .then((token) => {
-       // localStorage.setItem("token", JSON.stringify(token.data.success.token));
-       // localStorage.setItem("data", JSON.stringify(token.data.success));
+        // localStorage.setItem("token", JSON.stringify(token.data.success.token));
+        // localStorage.setItem("data", JSON.stringify(token.data.success));
         dispatch({
           type: "SINGUP",
           payload: token.data.success,
@@ -64,13 +63,14 @@ export const logIn = (cred) => {
     axios
       .post(`${APP_URL}/login`, cred)
       .then((token) => {
-        const tok=JSON.stringify(token.data.success.token);
-        const toke = tok.substring(1, tok.length - 1);
-        localStorage.setItem("token", toke);
-        localStorage.setItem("data", JSON.stringify(token.data.success));
-       // const token = getToken().substring(1, getToken().length - 1);
-        axios.defaults.headers.common["Authorization"] = `Bearer ${toke}`;
-       
+        const tok = JSON.stringify(token.data.success.token);
+        if (tok) {
+          const toke = tok.substring(1, tok.length - 1);
+          localStorage.setItem("token", toke);
+          localStorage.setItem("data", JSON.stringify(token.data.success));
+          // const token = getToken().substring(1, getToken().length - 1);
+          axios.defaults.headers.common["Authorization"] = `Bearer ${toke}`;
+        }
         dispatch({
           type: "SINGUP",
           payload: token.data.success,
@@ -128,8 +128,8 @@ export const singOut = () => {
       .request({
         method: "post",
         url: `${APP_URL}/logout`,
-        data: { token: getToken().substring(1, getToken().length - 1) }
-        })
+        data: { token: getToken().substring(1, getToken().length - 1) },
+      })
       .then((token) => {
         dispatch({
           type: "SIGN_OUT",
@@ -206,8 +206,8 @@ export const changePassword = (cred) => {
       .request({
         method: "post",
         url: `${APP_URL}/change-password`,
-        data: cred
-       })
+        data: cred,
+      })
       .then((res) => {
         dispatch({
           type: "CHANGE_PASSWORD",
@@ -220,9 +220,7 @@ export const changePassword = (cred) => {
   };
 };
 
-
 export const getCurrentToken = (pram) => {
- 
   return (dispatch) => {
     dispatch({
       type: "AUTH_REQUEST",
@@ -231,7 +229,7 @@ export const getCurrentToken = (pram) => {
       .request({
         method: "post",
         url: `${APP_URL}/current-token`,
-        data:pram
+        data: pram,
       })
       .then((res) => {
         dispatch({
@@ -242,7 +240,5 @@ export const getCurrentToken = (pram) => {
       .catch((error) => {
         dispatch(errorMessage(error));
       });
-   };
+  };
 };
-
-
