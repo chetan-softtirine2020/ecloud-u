@@ -23,6 +23,7 @@ const SignUp = () => {
   });
 
   useEffect(() => {
+    dispatch(getAllOrganizationRegister());
     dispatch(resetErorrs());
   }, []);
 
@@ -40,20 +41,14 @@ const SignUp = () => {
     //   org_id: "",
     // });
   };
-  const handleOnChange = (e) => {
-    if (e.target.value === 6 && auth.list.length == 0) {
-      dispatch(getAllOrganizationRegister());
-    }
-    setUser({ ...user, user_type: e.target.value });
-  };
+
 
   // if (localStorage.getItem("token")) {
   //   return <Navigate to={redirectUser()} />;
   // }
 
-  
   if (auth.is_done) {
-       return <Navigate to={"/login"} />; 
+    return <Navigate to={"/login"} />;
   }
 
   return (
@@ -71,7 +66,6 @@ const SignUp = () => {
                   <h2 className="fw-700 font-xl display2-md-size login_heading">
                     Register Account <br />
                   </h2>
-                  
 
                   <span className="error-msg">
                     {auth.errors && auth.errors.other_error
@@ -83,7 +77,9 @@ const SignUp = () => {
                       <select
                         name="user_type"
                         className="style2-input pl-5 form-control font-xss ls-3"
-                        onChange={(e) => handleOnChange(e)}
+                        onChange={(e) =>
+                            setUser({ ...user, user_type: e.target.value })
+                        }
                       >
                         <option value="">Select Account</option>
                         <option value={2} selected={true}>

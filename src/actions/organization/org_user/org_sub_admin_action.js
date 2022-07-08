@@ -68,7 +68,31 @@ export const addOrgDeptBranchSection = (org) => {
   }
 
 
-export const getAllOrganization = (parm) => {
+export const getAllDepartments = (parm) => {
+  return (dispatch) => {
+    dispatch({
+      type: "ORG_SUBADMIN_REQUEST",
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/get-departments`,
+        data:parm
+      })
+      .then((res) => {
+        dispatch({
+          type: "ALL_DEPARTMENTS",
+          payload: res.data.list,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error));       
+      });
+  };
+};
+
+
+export const getAllBranch = (parm) => {
   return (dispatch) => {
     dispatch({
       type: "REQUEST",
@@ -76,12 +100,37 @@ export const getAllOrganization = (parm) => {
     axios
       .request({
         method: "post",
-        url: `${APP_URL}/get-org-approved`,
+        url: `${APP_URL}/get-branches`,
         data:parm
       })
       .then((res) => {
         dispatch({
-          type: "ALL_ORGANIZATIONS",
+          type: "ALL_DEPARTMENTS",
+          payload: res.data.list,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error));       
+      });
+  };
+};
+
+
+
+export const getAllSection = (parm) => {
+  return (dispatch) => {
+    dispatch({
+      type: "REQUEST",
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/get-branches`,
+        data:parm
+      })
+      .then((res) => {
+        dispatch({
+          type: "ALL_DEPARTMENTS",
           payload: res.data.list,
         });
       })

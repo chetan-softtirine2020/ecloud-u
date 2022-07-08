@@ -13,8 +13,7 @@ const LearningProvidersList = () => {
   }, []);
 
   const handelShowProviserUser = (slug) => {
-   /// dispatch(updateUserTrainingJoinStatus({ slug: slug }));
-    navigate("/training/" + slug);
+    navigate("/admin/learning-provider-users-list/" + slug);
   };
 
   return (
@@ -37,7 +36,6 @@ const LearningProvidersList = () => {
                       <th>Name</th>
                       <th>Email</th>
                       <th>Mobile</th>
-                      <th>No Of Users</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -49,7 +47,6 @@ const LearningProvidersList = () => {
                           <td>{li.first_name + " " + li.last_name}</td>
                           <td>{li.email}</td>
                           <td>{li.mobile_no}</td>
-                          <td>{"15"}</td>
                           <td>
                             <input
                               type="button"

@@ -3,6 +3,7 @@ export const initState = {
   loading: false,
   errors: [],
   list: [],
+  childList:[]
 };
 
 const adminUsersReducer = (state = initState, { type, payload }) => {
@@ -34,7 +35,7 @@ const adminUsersReducer = (state = initState, { type, payload }) => {
         ...state,
         loading: false,
         errors: [],
-        list: payload,
+        childList: payload,
       };
     default:
       return state;

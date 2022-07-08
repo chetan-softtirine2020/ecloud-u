@@ -128,7 +128,7 @@ export const singOut = () => {
       .request({
         method: "post",
         url: `${APP_URL}/logout`,
-        data: { token: getToken().substring(1, getToken().length - 1) },
+        data: { token: getToken()},
       })
       .then((token) => {
         dispatch({

@@ -54,13 +54,7 @@ const AddOrgSubAdmin = () => {
     // });
   }
 
-  const onSubmit = (data) => {
-    setUser({ is_file: true });
-    const formData = new FormData();
-    formData.append("file", data.file[0]);
-    formData.append("slug", slug);
-    dispatch(importUserTraining(formData));
-  };
+
 
   const [show, setShow] = useState(false);
   const [popupTitile, setPopupTitle] = useState("");

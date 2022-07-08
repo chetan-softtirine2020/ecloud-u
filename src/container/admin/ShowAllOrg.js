@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AppBody from "../components/AppBody";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllOrganization } from "../../actions/admin/admin_org_action";
+import { Link } from "react-router-dom";
 const ShowAllOrg = () => {
   const state = useSelector((state) => state.adminOrgReducer);
   const dispatch = useDispatch();
@@ -19,9 +20,9 @@ const ShowAllOrg = () => {
         <div className="middle-sidebar-left">
           <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
             <div className="card-body p-3 w-100 bg-current border-0 d-flex rounded-lg">
-              <a href="default-settings.html" className="d-inline-block mt-2">
-                <i className="ti-arrow-left font-sm text-white"></i>
-              </a>
+            <Link to={"/admin/home"} className="d-inline-block mt-2">
+            <i className="ti-arrow-left font-sm text-white"></i>
+            </Link>
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
                 All Organizations
               </h4>
@@ -35,7 +36,7 @@ const ShowAllOrg = () => {
                     <th>Name</th>
                     <th>Email</th>
                     <th>Description</th>
-                    <th>Status</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -49,19 +50,13 @@ const ShowAllOrg = () => {
                         <td>                        
                           <input
                             type="button"
-                            value="Active"
-                            className="btn approve_btn"
+                            title={li.status===1?"Make Inactive":"Make Active"}
+                            value={li.status===1?"Inactive":"Active"}
+                            className="btn approve_btn btn-common"
                             onClick={() => handelClick(li.slug)}
-                          />
-                          <input
-                          type="button"
-                          value="Inactive"
-                          className="btn approve_btn"
-                          onClick={() => handelClick(li.slug)}
-                        />
+                          />                        
                         </td>
-                      </tr>
-                      
+                      </tr>                      
                     ))}
                 </tbody>
               </table>

@@ -38,12 +38,15 @@ import WhiteBoard from "./container/WhiteBoard";
 import axios from "axios";
 import { getToken } from "./config/api";
 import AllCoures from "./container/courses/AllCoures";
+import LearningProvidersUsersList from "./container/admin/users/LearningProvidersUsersList";
+import AddSubAdmin from "./container/organization/org_subadmin/AddSubAdmin";
 
 function App() {
   if (localStorage.getItem("token")) {
     const token = getToken();
+      console.log("Totk" + token);
     //.substring(1, getToken().length - 1);
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   }
   return (
     <Router>
@@ -104,6 +107,12 @@ function App() {
             caseSensitive={false}
             element={<AddOrgSubAdmin />}
           />
+          <Route
+          path={"/org/add-org-subadmin"}
+          caseSensitive={false}
+          element={<AddSubAdmin />}
+        />
+
         </Route>
 
         {/*Organization User */}
@@ -122,6 +131,7 @@ function App() {
             caseSensitive={false}
             element={<HomePage />}
           />
+         
           <Route
             path={"/admin/organizations"}
             caseSensitive={false}
@@ -136,6 +146,11 @@ function App() {
             path={"/admin/learning-providers"}
             caseSensitive={false}
             element={<LearningProvidersList />}
+          />
+          <Route
+          path={"/admin/learning-provider-users-list/:slug"}
+          caseSensitive={false}
+          element={<LearningProvidersUsersList />}
           />
           <Route
             path={"/get-organizations"}

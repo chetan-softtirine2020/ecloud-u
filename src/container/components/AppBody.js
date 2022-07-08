@@ -5,10 +5,13 @@ import { Navigate } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 import { useSelector, useDispatch } from "react-redux";
 import { getCurrentToken, singOut } from "../../actions/auth_action";
+
 const AppBody = (props) => {
+
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.authReducer);
   const userData = JSON.parse(localStorage.getItem("data"));  
+  
   useEffect(() => {
     if (     
       userData &&

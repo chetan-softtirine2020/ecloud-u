@@ -1,5 +1,5 @@
 import axios from "axios";
-import { APP_URL,getToken } from "../../config/api";
+import { APP_URL} from "../../config/api";
 
 export const errorMessage = (err) => {
   switch (err.response.status) {
@@ -29,14 +29,7 @@ export const getAdminUsersList = (user) => {
       .request({
         method: "post",
         url: `${APP_URL}/admin/get-users-list`,      
-        data:user,
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
+        data:user        
       })
       .then((res) => {
         dispatch({
@@ -58,15 +51,8 @@ export const getChildUsersList = (user) => {
       axios
         .request({
           method: "post",
-          url: `${APP_URL}/admin/get-users-list`,      
-          data:user,
-          headers: {
-            Authorization: `Bearer ${getToken().substring(
-              1,
-              getToken().length - 1
-            )}`,
-            "Content-Type": "application/json",
-          },
+          url: `${APP_URL}/admin/get-child-users-list`,      
+          data:user          
         })
         .then((res) => {
           dispatch({

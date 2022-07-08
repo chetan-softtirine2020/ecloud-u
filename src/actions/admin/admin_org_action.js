@@ -1,6 +1,5 @@
 import axios from "axios";
-import { APP_URL,getToken } from "../../config/api";
-const token=localStorage.getItem('token');
+import { APP_URL } from "../../config/api";
 
 export const errorMessage = (err) => {
   switch (err.response.status) {
@@ -29,15 +28,8 @@ export const getAllOrganization = () => {
     axios
       .request({
         method: "post",
-        url: `${APP_URL}/get-orgs`,      
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
-      })
+        url: `${APP_URL}/get-orgs`,    
+        })
       .then((res) => {
         dispatch({
           type: "GET_ALL_ORGANIZATION",
@@ -60,15 +52,8 @@ export const getAllNewOrganization = () => {
     axios
       .request({
         method: "post",
-        url: `${APP_URL}/get-org-approve`,      
-        headers: {
-          Authorization: `Bearer ${getToken().substring(
-            1,
-            getToken().length - 1
-          )}`,
-          "Content-Type": "application/json",
-        },
-      })
+        url: `${APP_URL}/get-org-approve`     
+       })
       .then((res) => {
         dispatch({
           type: "GET_APPROVE_ORGANIZATION",
@@ -90,14 +75,7 @@ export const updateApproveOrganization = (org) => {
         .request({
           method: "post",
           url: `${APP_URL}/org-approved`,      
-          data: org,  
-          headers: {
-            Authorization: `Bearer ${getToken().substring(
-              1,
-              getToken().length - 1
-            )}`,
-            "Content-Type": "application/json",
-          },
+          data: org         
         })
         .then((res) => {
           dispatch({
