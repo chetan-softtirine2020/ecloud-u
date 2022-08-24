@@ -45,7 +45,6 @@ export const getCoureseList = (prm) => {
   };
 };
 
-
 export const createCourseModule = (prm) => {
   return (dispatch) => {
     dispatch({
@@ -78,7 +77,7 @@ export const getCoureseWiseModuleList = (prm) => {
         data: prm,
       })
       .then((res) => {
-         console.log("Data"+ res.data.list);
+        console.log("Data" + res.data.list);
         dispatch({
           type: COURSE.LIST_MODULE,
           payload: res.data.list,
@@ -113,6 +112,32 @@ export const createAllCourse = (prm) => {
   };
 };
 
+export const updateAllCourse = (prm) => {
+  return (dispatch) => {
+    dispatch({
+      type: COURSE.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/update-all-course`,
+        data: prm,
+      })
+      .then((res) => {
+        dispatch({
+          type: COURSE.UPDATE_ALL_COURSE,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, COURSE.ERROR));
+      });
+  };
+};
+
+
+
+
 export const getPlayCourseData = (prm) => {
   return (dispatch) => {
     dispatch({
@@ -136,6 +161,48 @@ export const getPlayCourseData = (prm) => {
   };
 };
 
+export const getCourseDetail = (prm) => {
+  return (dispatch) => {
+    dispatch({
+      type: COURSE.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/get-course-details`,
+        data: prm,
+      })
+      .then((res) => {
+        dispatch({
+          type: COURSE.GET_COURSE_DETAILS,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, COURSE.ERROR));
+      });
+  };
+};
+
+export const getCureseModuleTopicWiseList = (prm) => {
+  return (dispatch) => {
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/get-course-module-topic-list`,
+        data: prm,
+      })
+      .then((res) => {
+        dispatch({
+          type: COURSE.GET_COURSE_MODULE_TOPIC_LIST,
+          payload: res.data.list,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, COURSE.ERROR));
+      });
+  };
+};
 
 const TAG = "COURSE_";
 
@@ -147,6 +214,8 @@ export const COURSE = {
   LIST_COURSE: TAG + "LIST_COURSE",
   ADD_MODULE: TAG + "ADD_MODULE",
   ADD_ALL_COURSE: TAG + "ADD_ALL_COURSE",
+  UPDATE_ALL_COURSE: TAG + "UPDATE_ALL_COURSE",
   LIST_MODULE: TAG + "LIST_MODULE",
-  PLAY_COURSE:TAG + "PLAY_DATA"
-  };
+  PLAY_COURSE: TAG + "PLAY_DATA",
+  GET_COURSE_MODULE_TOPIC_LIST: TAG + "GET_COURSE_MODULE_TOPIC_LIST",
+};

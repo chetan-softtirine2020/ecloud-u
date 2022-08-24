@@ -3,18 +3,25 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import AppBody from "../../components/AppBody";
-import { getAdminUsersList } from "../../../actions/admin/admin_users_action";
-const LearningProvidersList = () => {
+import {
+  getOrgSubAdminRequestList,
+  updateSubAdminRequest,
+} from "../../../actions/admin/admin_users_action";
+const NewOrgSubAdminRequest = () => {
   const state = useSelector((state) => state.adminUsersReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    dispatch(getAdminUsersList({ role: 3, type: 1 }));
+    dispatch(getOrgSubAdminRequestList({ type: 0 }));
   }, []);
 
-  const handelShowProviserUser = (slug) => {
-    navigate("/admin/learning-provider-users-list/" + slug);
-  };
+  if (state.is_done) {
+     navigate("/admin/org-sub-admin");
+  }
+
+  // const handelShowProviserUser = (slug) => {
+  //   navigate("/admin/learning-provider-users-list/" + slug);
+  // };
 
   return (
     <AppBody
@@ -24,7 +31,7 @@ const LearningProvidersList = () => {
           <div className="card w-100 border-0 shadow-xs p-0 mb-4">
             <div className="card-header p-4 w-100 border-0 d-flex rounded-lg">
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                Learning Providers
+                New Org Sub Admin Request
               </h4>
             </div>
             <div className="card-body  p-4 w-100 border-0 ">
@@ -35,7 +42,8 @@ const LearningProvidersList = () => {
                       <th>Sr.No</th>
                       <th>Name</th>
                       <th>Email</th>
-                      <th>Mobile</th>
+                      <th>Org Name</th>
+                      <th>Line Of Business</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -46,15 +54,37 @@ const LearningProvidersList = () => {
                           <td>{i + 1}</td>
                           <td>{li.first_name + " " + li.last_name}</td>
                           <td>{li.email}</td>
-                          <td>{li.mobile_no}</td>
+                          <td>{li.oname}</td>
+                          <td>{li.lob}</td>
                           <td>
                             <input
                               type="button"
-                              value="View Users"
-                              className="btn approve_btn btn-common mg-l"
-                              onClick={() => handelShowProviserUser(li.slug)}
+                              value={"Accept"}
+                              className="btn approve_btn btn-common"
+                              onClick={() =>
+                                dispatch(
+                                  updateSubAdminRequest({
+                                    odid: li.odid,
+                                    status: 1,
+                                  })
+                                )
+                              }
+                            />
+                            <input
+                              type="button"
+                              value={"Reject"}
+                              className="btn approve_btn btn-common"
+                              onClick={() =>
+                                dispatch(
+                                  updateSubAdminRequest({
+                                    odid: li.odid,
+                                    status: 0,
+                                  })
+                                )
+                              }
                             />
                           </td>
+
                         </tr>
                       ))}
                   </tbody>
@@ -68,4 +98,4 @@ const LearningProvidersList = () => {
   );
 };
 
-export default LearningProvidersList;
+export default NewOrgSubAdminRequest;

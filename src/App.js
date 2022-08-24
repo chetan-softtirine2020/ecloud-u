@@ -40,13 +40,22 @@ import { getToken } from "./config/api";
 import AllCoures from "./container/courses/AllCoures";
 import LearningProvidersUsersList from "./container/admin/users/LearningProvidersUsersList";
 import AddSubAdmin from "./container/organization/org_subadmin/AddSubAdmin";
+import NewOrgSubAdminRequest from "./container/admin/users/NewOrgSubAdminRequest";
+import NewLearningProvidersRequest from "./container/admin/users/NewLearningProvidersRequest";
+import OrgSubAdminList from "./container/admin/users/OrgSubAdminList";
+import EditCourse from "./container/courses/EditCourse";
+import ViewCourseByModulesAndTopic from "./container/courses/ViewCourseByModulesAndTopic";
+import GCRegisterPage from "./container/google_cloud/GCRegisterPage";
+import GCCreateVM from "./container/google_cloud/GCCreateVM";
+import GCLoginPage from "./container/google_cloud/GCLoginPage";
+import ShowVMList from "./container/google_cloud/ShowVMList";
 
 function App() {
   if (localStorage.getItem("token")) {
     const token = getToken();
-      console.log("Totk" + token);
+    console.log("Totk" + token);
     //.substring(1, getToken().length - 1);
-   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   }
   return (
     <Router>
@@ -108,11 +117,10 @@ function App() {
             element={<AddOrgSubAdmin />}
           />
           <Route
-          path={"/org/add-org-subadmin"}
-          caseSensitive={false}
-          element={<AddSubAdmin />}
-        />
-
+            path={"/org/add-org-subadmin"}
+            caseSensitive={false}
+            element={<AddSubAdmin />}
+          />
         </Route>
 
         {/*Organization User */}
@@ -131,7 +139,7 @@ function App() {
             caseSensitive={false}
             element={<HomePage />}
           />
-         
+
           <Route
             path={"/admin/organizations"}
             caseSensitive={false}
@@ -148,20 +156,39 @@ function App() {
             element={<LearningProvidersList />}
           />
           <Route
-          path={"/admin/learning-provider-users-list/:slug"}
-          caseSensitive={false}
-          element={<LearningProvidersUsersList />}
+            path={"/admin/learning-provider-users-list/:slug"}
+            caseSensitive={false}
+            element={<LearningProvidersUsersList />}
           />
           <Route
             path={"/get-organizations"}
             caseSensitive={false}
             element={<OrganizationRequest />}
           />
+          <Route
+            path={"/admin/org-sub-admin-requests"}
+            caseSensitive={false}
+            element={<NewOrgSubAdminRequest />}
+          />
+          <Route
+            path={"/admin/org-sub-admin"}
+            caseSensitive={false}
+            element={<OrgSubAdminList />}
+          />
+          <Route
+            path={"/admin/learning-provider-requests"}
+            caseSensitive={false}
+            element={<NewLearningProvidersRequest />}
+          />
         </Route>
 
         {/*Provider And Organization Routes */}
         <Route
-          element={<PrivateRoute allowedRoles={["provider", "organization"]} />}
+          element={
+            <PrivateRoute
+              allowedRoles={["provider", "organization", "org_subadmin"]}
+            />
+          }
         >
           <Route
             path={"/create-training"}
@@ -169,6 +196,27 @@ function App() {
             element={<CreateTrainingPage />}
           />
 
+          <Route
+            path={"/register-cloud-account"}
+            caseSensitive={false}
+            element={<GCRegisterPage />}
+          />
+          <Route
+            path={"/authorize-cloud-account"}
+            caseSensitive={false}
+            element={<GCLoginPage />}
+          />
+
+          <Route
+            path={"/create-vm"}
+            caseSensitive={false}
+            element={<GCCreateVM />}
+          />
+          <Route
+            path={"/vm-list"}
+            caseSensitive={false}
+            element={<ShowVMList />}
+          />
           <Route
             path={"/course/:slug"}
             caseSensitive={false}
@@ -180,12 +228,24 @@ function App() {
             caseSensitive={false}
             element={<CreateCourse />}
           />
+
           <Route
-          path={"/all-courses"}
-          caseSensitive={false}
-          element={<AllCoures />}
-        />
-          
+            path={"/course-view/:slug"}
+            caseSensitive={false}
+            element={<ViewCourseByModulesAndTopic />}
+          />
+
+          <Route
+            path={"/edit-course/:slug"}
+            caseSensitive={false}
+            element={<EditCourse />}
+          />
+
+          <Route
+            path={"/all-courses"}
+            caseSensitive={false}
+            element={<AllCoures />}
+          />
 
           <Route
             path={"/all-trainings"}

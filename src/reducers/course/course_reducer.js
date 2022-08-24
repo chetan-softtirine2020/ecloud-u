@@ -7,9 +7,11 @@ export const initState = {
   is_done: false,
   loading: false,
   errors: [],
-  isCourseCreated:false,
-  isAllCourseCreated:false,
-  playCourseData:{}
+  isCourseCreated: false,
+  isAllCourseCreated: false,
+  playCourseData: {},
+  list: [],
+  isAllCourseUpdated: false,
 };
 
 const courseReducer = (state = initState, { type, payload }) => {
@@ -18,15 +20,16 @@ const courseReducer = (state = initState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        isAllCourseCreated:false,
-        errors: payload
+        isAllCourseCreated: false,
+        errors: payload,
       };
     case COURSE.REQUEST:
       return {
         ...state,
         loading: true,
         is_done: false,
-        isAllCourseCreated:false,
+        isAllCourseCreated: false,
+        isAllCourseUpdated: false,
         errors: [],
       };
     case COURSE.ADD_COURSE:
@@ -34,8 +37,8 @@ const courseReducer = (state = initState, { type, payload }) => {
         ...state,
         loading: false,
         is_done: true,
-        isCourseCreated:true,
-        isAllCourseCreated:false,
+        isCourseCreated: true,
+        isAllCourseCreated: false,
         errors: [],
       };
     case COURSE.LIST_COURSE:
@@ -45,45 +48,72 @@ const courseReducer = (state = initState, { type, payload }) => {
         errors: [],
         courseList: payload,
         is_done: false,
-        isAllCourseCreated:false,
-        isCourseCreated:false
+        isAllCourseCreated: false,
+        isCourseCreated: false,
       };
-    case COURSE.LIST_MODULE:     
+    case COURSE.LIST_MODULE:
       return {
         ...state,
         loading: false,
         errors: [],
         moduleList: payload,
-        isAllCourseCreated:false,
+        isAllCourseCreated: false,
         is_done: false,
       };
 
-    case COURSE.ADD_MODULE: 
+    case COURSE.ADD_MODULE:
       return {
         ...state,
         loading: false,
         is_done: true,
-        isAllCourseCreated:false,        
+        isAllCourseCreated: false,
         errors: [],
       };
-      case COURSE.ADD_ALL_COURSE:
-        return {
-          ...state,
-          loading: false,
-          is_done: true,
-          isAllCourseCreated:true, 
-          errors: [],
-        };    
-        case COURSE.PLAY_COURSE: 
-        return {
-          ...state,
-          loading: false,
-          is_done: true,
-          isAllCourseCreated:false,
-          playCourseData:payload,  
-          errors: [],
-        };    
-      
+    case COURSE.ADD_ALL_COURSE:
+      return {
+        ...state,
+        loading: false,
+        is_done: true,
+        isAllCourseCreated: true,
+        errors: [],
+      };
+
+    case COURSE.UPDATE_ALL_COURSE:
+      return {
+        ...state,
+        loading: false,
+        is_done: false,
+        isAllCourseCreated: false,
+        isAllCourseUpdated: true,
+        errors: [],
+      };
+    case COURSE.GET_COURSE_DETAILS:
+      return {
+        ...state,
+        loading: false,
+        details: payload,
+        moduleList: payload.modules,
+        errors: [],
+      };
+
+    case COURSE.PLAY_COURSE:
+      return {
+        ...state,
+        loading: false,
+        is_done: true,
+        isAllCourseCreated: false,
+        playCourseData: payload,
+        errors: [],
+      };
+
+    case COURSE.GET_COURSE_MODULE_TOPIC_LIST:
+      return {
+        ...state,
+        loading: false,
+        is_done: false,
+        errors: [],
+        list: payload,
+      };
     default:
       return state;
   }

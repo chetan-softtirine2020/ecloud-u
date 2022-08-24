@@ -119,6 +119,50 @@ const SiteBar = () => {
                     <span>All Courses</span>
                   </Link>
                 </li>
+
+                <li class="flex-lg-brackets">
+                  <Link
+                    to={"/register-cloud-account"}
+                    data-tab="archived"
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/register-cloud-account"
+                        ? "active"
+                        : ""
+                    }`}
+                  >
+                    <i class="feather-video mr-3"></i>
+                    <span>Register Cloud A/C</span>
+                  </Link>
+                </li>
+
+                <li class="flex-lg-brackets">
+                  <Link
+                    to={"/authorize-cloud-account"}
+                    data-tab="archived"
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/authorize-cloud-account"
+                        ? "active"
+                        : ""
+                    }`}
+                  >
+                    <i class="feather-video mr-3"></i>
+                    <span>Authorize Cloud A/C</span>
+                  </Link>
+                </li>
+                <li class="flex-lg-brackets">
+                  <Link
+                    to={"/create-vm"}
+                    data-tab="archived"
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/create-vm"
+                        ? "active"
+                        : ""
+                    }`}
+                  >
+                    <i class="feather-video mr-3"></i>
+                    <span>Create Virtul Machine</span>
+                  </Link>
+                </li>
               </ul>
             )}
 
@@ -171,21 +215,6 @@ const SiteBar = () => {
                   </Link>
                 </li>
 
-                <li>
-                  <Link
-                    to={"/org/add-org-sub-admin"}
-                    class={`nav-content-bttn open-font ${
-                      location.pathname === "/org/add-org-sub-admin"
-                        ? "active"
-                        : ""
-                    }`}
-                    data-tab="favorites"
-                  >
-                    <i class="feather-home mr-3"></i>
-                    <span>Org Sub Admin</span>
-                  </Link>
-                </li>
-
                 {/*  <li>
 
                  <Link
@@ -235,19 +264,21 @@ const SiteBar = () => {
                     }`}
                   >
                     <i class="feather-video mr-3"></i>
-                    <span>All Tranings</span>
+                    <span>Upcoming Tranings</span>
                   </Link>
                 </li>
                 <li class="flex-lg-brackets">
                   <Link
-                    to={"/joined-trainings"}
+                    to={"/completed-trainings"}
                     data-tab="archived"
                     class={`nav-content-bttn open-font ${
-                      location.pathname === "/joined-trainings" ? "active" : ""
+                      location.pathname === "/completed-trainings"
+                        ? "active"
+                        : ""
                     }`}
                   >
                     <i class="feather-video mr-3"></i>
-                    <span>Joined Tranings</span>
+                    <span>Completed Trainings</span>
                   </Link>
                 </li>
               </ul>
@@ -312,6 +343,52 @@ const SiteBar = () => {
                     <span>Approve Organizations</span>
                   </Link>
                 </li>
+
+                <li>
+                  <Link
+                    to={"/admin/org-sub-admin-requests"}
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/admin/org-sub-admin-requests"
+                        ? "active"
+                        : ""
+                    }`}
+                    data-tab="favorites"
+                  >
+                    <i class="feather-globe mr-3"></i>
+                    <span>Org SubAdmin Requests</span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    to={"/admin/org-sub-admin"}
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/admin/org-sub-admin"
+                        ? "active"
+                        : ""
+                    }`}
+                    data-tab="favorites"
+                  >
+                    <i class="feather-globe mr-3"></i>
+                    <span>Org SubAdmin</span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    to={"/admin/learning-provider-requests"}
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/admin/learning-provider-requests"
+                        ? "active"
+                        : ""
+                    }`}
+                    data-tab="favorites"
+                  >
+                    <i class="feather-globe mr-3"></i>
+                    <span>Learning Provider Requests</span>
+                  </Link>
+                </li>
+
                 <li>
                   <Link
                     to={"/admin/learning-providers"}

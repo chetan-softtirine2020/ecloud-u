@@ -16,8 +16,10 @@ const Login = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(resetErorrs());
-  }, []);
+    setTimeout(function(){
+      dispatch(resetErorrs());
+    }, 3000);
+    }, []);
 
   const [user, setUser] = useState({
     password: "",

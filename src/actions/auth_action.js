@@ -242,3 +242,50 @@ export const getCurrentToken = (pram) => {
       });
   };
 };
+
+
+export const addLineOfBusiness = (pram) => {
+  return (dispatch) => {
+    dispatch({
+      type: "AUTH_REQUEST",
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/add-line-of-business`,
+        data: pram,
+      })
+      .then((res) => {
+        dispatch({
+          type: "ADD_LINE_OF_BUSINESS",
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error));
+      });
+  };
+};
+
+
+export const getLineOfBusiness = () => {
+  return (dispatch) => {
+    dispatch({
+      type: "AUTH_REQUEST",
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/get-line-of-business`,        
+      })
+      .then((res) => {
+        dispatch({
+          type: "GET_LINE_OF_BUSINESS",
+          payload: res.data.list,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error));
+      });
+  };
+};

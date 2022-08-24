@@ -11,6 +11,7 @@ import dashboardReducer from "./learning_provider/dashboard_reducer";
 import adminUsersReducer from "./admin/admin_users";
 import conferanceReducer from "./conferance_reducer";
 import courseReducer from "./course/course_reducer";
+import gcReducer from "./gogole_cloud/gc_reducer";
 const rootReducer = combineReducers({
   authReducer: authReducer,
   adminOrgReducer: adminOrgReducer,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   adminUsersReducer: adminUsersReducer,
   conferanceReducer:conferanceReducer,
   courseReducer:courseReducer,
+  gcReducer:gcReducer
 });
 
 export default rootReducer;

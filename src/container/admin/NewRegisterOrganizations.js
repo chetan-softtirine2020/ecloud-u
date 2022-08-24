@@ -34,13 +34,9 @@ const NewRegisterOrganizations = () => {
             <Link to={"/admin/home"} className="d-inline-block mt-2">
             <i className="ti-arrow-left font-sm text-white"></i>
             </Link>
-            
-            <a href="default-settings.html" className="d-inline-block mt-2">
-                <i className="ti-arrow-left font-sm text-white"></i>
-              </a>
-              <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                Approve Organizations
-              </h4>
+            <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
+             Approve Organizations
+             </h4>
             </div>
             <div className="card-body p-4 w-100 border-0 ">
               <div className="table-responsive">
@@ -68,13 +64,13 @@ const NewRegisterOrganizations = () => {
                           <input
                             type="button"
                             value={"Yes"}
-                            className="btn approve_btn"
+                            className="btn approve_btn btn-common"
                             onClick={() => handelClick(li.id, 1)}
                           />
                           <input
                             type="button"
                             value={"No"}
-                            className="btn approve_btn"
+                            className="btn approve_btn btn-common"
                             onClick={() => handelClick(li.id, 0)}
                           />
                         </td>

@@ -1,25 +1,21 @@
 import React, { useEffect } from "react";
 import AppBody from "../components/AppBody";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { getCoureseList } from "../../actions/course/course_action";
+import { Link, useNavigate,useParams } from "react-router-dom";
+import { getCureseModuleTopicWiseList } from "../../actions/course/course_action";
 
-const AllCoures = () => {
+const ViewCourseByModulesAndTopic = () => {
   const state = useSelector((state) => state.courseReducer);
-
+  let { slug } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getCoureseList());
+    dispatch(getCureseModuleTopicWiseList({ slug: slug }));
   }, []);
 
   const handelClick = (slug) => {
-    navigate("/course-view/" + slug);
-  };
-
-  const handelStartCourse = (slug) => {
-    navigate("/course/" + slug);
+    navigate("/edit-course/" + slug);
   };
 
   return (
@@ -29,11 +25,11 @@ const AllCoures = () => {
         <div className="middle-sidebar-left">
           <div className="card w-100 border-0 shadow-xs p-0 mb-4">
             <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
-              <Link to={"/create-training"} className="d-inline-block mt-2">
+              <Link to={"/all-courses"} className="d-inline-block mt-2">
                 <i className="ti-arrow-left font-sm text-white"></i>
               </Link>
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                All Courese
+                Courese Topics
               </h4>
             </div>
             <div className="card-body p-4 w-100 border-0 ">
@@ -42,34 +38,34 @@ const AllCoures = () => {
                   <thead>
                     <tr>
                       <th>Sr.No</th>
-                      <th>Courese Name</th>
-                      <th>Courese Amount</th>
-                      <th>Description</th>
+                      <th>Courese</th>
+                      <th>Module</th>
+                      <th>Topic</th>
                       <th className="tblaction">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {state.courseList &&
-                      state.courseList.map((li, i) => (
+                    {state.list &&
+                      state.list.map((li, i) => (
                         <tr key={i}>
                           <td>{i + 1}</td>
-                          <td>{li.name}</td>
-                          <td>{li.amount}</td>
-                          <td>{li.description}</td>
+                          <td>{li.course}</td>
+                          <td>{li.module}</td>
+                          <td>{li.topic}</td>
 
                           {/* <td>{li.description}</td>*/}
                           <td className="tblaction">
                             <input
                               type="button"
-                              value="Start"
-                              className="btn approve_btn btn-common"
-                              onClick={() => handelStartCourse(li.slug)}
-                            />                        
-                            <input
-                              type="button"
                               value="Edit"
                               className="btn approve_btn btn-common"
-                              onClick={() => handelClick(li.slug)}
+                              onClick={() => handelClick(li.tslug)}
+                            />
+                            <input
+                              type="button"
+                              value="Delete"
+                              className="btn approve_btn btn-common"
+                              onClick={() => handelClick()}
                             />
                           </td>
                         </tr>
@@ -85,4 +81,4 @@ const AllCoures = () => {
   );
 };
 
-export default AllCoures;
+export default ViewCourseByModulesAndTopic;

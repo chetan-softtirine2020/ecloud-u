@@ -53,7 +53,7 @@ const OrganizationRequest = () => {
                             <input
                               type="button"
                               value="Approve"
-                              className="btn approve_btn"
+                              className="btn approve_btn btn-common"
                               onClick={() => handelClick(li.id)}
                             />
                           </td>

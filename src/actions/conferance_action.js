@@ -1,5 +1,5 @@
 import axios from "axios";
-import { APP_URL, getToken } from "../config/api";
+import { APP_URL } from "../config/api";
 
 export const errorMessage = (err) => {
   switch (err.response.status) {

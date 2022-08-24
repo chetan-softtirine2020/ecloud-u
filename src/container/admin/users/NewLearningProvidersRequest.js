@@ -1,20 +1,28 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import AppBody from "../../components/AppBody";
-import { getAdminUsersList } from "../../../actions/admin/admin_users_action";
-const LearningProvidersList = () => {
+
+import {
+  getAdminUsersList,
+  updateNewLeaninigProviderRequest,
+} from "../../../actions/admin/admin_users_action";
+
+const NewLearningProvidersRequest = () => {
   const state = useSelector((state) => state.adminUsersReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    dispatch(getAdminUsersList({ role: 3, type: 1 }));
+    dispatch(getAdminUsersList({ role: 3, type: 0 }));
   }, []);
 
-  const handelShowProviserUser = (slug) => {
-    navigate("/admin/learning-provider-users-list/" + slug);
-  };
+  // const handelShowProviserUser = (slug) => {
+  //   navigate("/admin/learning-provider-users-list/" + slug);
+  // };
+    if(state.is_done){
+      navigate("/admin/learning-providers");
+    }
+
 
   return (
     <AppBody
@@ -24,7 +32,7 @@ const LearningProvidersList = () => {
           <div className="card w-100 border-0 shadow-xs p-0 mb-4">
             <div className="card-header p-4 w-100 border-0 d-flex rounded-lg">
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                Learning Providers
+                New Learning Providers Request
               </h4>
             </div>
             <div className="card-body  p-4 w-100 border-0 ">
@@ -50,9 +58,29 @@ const LearningProvidersList = () => {
                           <td>
                             <input
                               type="button"
-                              value="View Users"
-                              className="btn approve_btn btn-common mg-l"
-                              onClick={() => handelShowProviserUser(li.slug)}
+                              value={"Accept"}
+                              className="btn approve_btn btn-common"
+                              onClick={() =>
+                                dispatch(
+                                  updateNewLeaninigProviderRequest({
+                                    id: li.id,
+                                    status: 1,
+                                  })
+                                )
+                              }
+                            />
+                            <input
+                              type="button"
+                              value={"Reject"}
+                              className="btn approve_btn btn-common"
+                              onClick={() =>
+                                dispatch(
+                                  updateNewLeaninigProviderRequest({
+                                    id: li.id,
+                                    status: 0,
+                                  })
+                                )
+                              }
                             />
                           </td>
                         </tr>
@@ -68,4 +96,4 @@ const LearningProvidersList = () => {
   );
 };
 
-export default LearningProvidersList;
+export default NewLearningProvidersRequest;

@@ -11,6 +11,11 @@ export const errorMessage = (err,errorType) => {
           type: errorType,
           payload: { other_error: "The given data was invalid"},
         };
+        case 403:
+          return {
+            type: errorType,
+            payload: { other_error: err.response.data.message },
+          };
       default:
         return {  
           type: errorType,

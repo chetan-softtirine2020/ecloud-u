@@ -23,6 +23,7 @@
     "react-hook-form": "^7.22.5",
     "react-loading-overlay": "^1.0.1",
     "react-multi-carousel": "^2.6.5",
+    "react-multiple-select-dropdown-lite": "^2.0.5",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.1",
     "react-scripts": "4.0.3",

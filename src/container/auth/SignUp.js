@@ -4,12 +4,13 @@ import {
   signUp,
   getAllOrganizationRegister,
   resetErorrs,
+  getLineOfBusiness,
 } from "../../actions/auth_action";
 import { Navigate, Link } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 import NavBar from "../components/NavBar";
 import lognbg from "../../images/login/login-bg.jpg";
-import { redirectUser } from "../../config/redirect";
+import AddLineOfBuniessModel from "./AddLineOfBuniessModel";
 const SignUp = () => {
   const auth = useSelector((state) => state.authReducer);
   const [user, setUser] = useState({
@@ -20,12 +21,15 @@ const SignUp = () => {
     email: "",
     user_type: 2,
     org_id: "",
+    lob_id: "",
   });
 
   useEffect(() => {
     dispatch(getAllOrganizationRegister());
+    dispatch(getLineOfBusiness());
     dispatch(resetErorrs());
   }, []);
+  const [show, setPopupShow] = useState(false);
 
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
@@ -42,13 +46,24 @@ const SignUp = () => {
     // });
   };
 
-
   // if (localStorage.getItem("token")) {
   //   return <Navigate to={redirectUser()} />;
   // }
 
-  if (auth.is_done) {
-    return <Navigate to={"/login"} />;
+  if (auth.is_done) {   
+      return <Navigate to={"/login"} />;
+     }
+ const handelClick = () => {
+    setPopupShow(true);
+  };
+
+  const resetPopup = () => {
+    setPopupShow(false);
+  };
+
+  if (auth.isAddLob && auth.lob.length === 0) {
+    setPopupShow(true);
+    dispatch(getLineOfBusiness());
   }
 
   return (
@@ -66,7 +81,30 @@ const SignUp = () => {
                   <h2 className="fw-700 font-xl display2-md-size login_heading">
                     Register Account <br />
                   </h2>
+                 
+                  {auth.isRegister && (
+                    <div
+                      class="alert alert-success alert-dismissible fade show"
+                      role="alert"
+                     >
+                      <strong> {user.user_type==2 ?"Your account successfully register!":"Wait for account approval you will get mail."}</strong>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  )}
 
+                  {show && (
+                    <AddLineOfBuniessModel
+                      show={show}
+                      onAddClick={() => resetPopup()}
+                    />
+                  )}
                   <span className="error-msg">
                     {auth.errors && auth.errors.other_error
                       ? auth.errors.other_error
@@ -78,7 +116,7 @@ const SignUp = () => {
                         name="user_type"
                         className="style2-input pl-5 form-control font-xss ls-3"
                         onChange={(e) =>
-                            setUser({ ...user, user_type: e.target.value })
+                          setUser({ ...user, user_type: e.target.value })
                         }
                       >
                         <option value="">Select Account</option>
@@ -97,28 +135,60 @@ const SignUp = () => {
                     </div>
 
                     {user.user_type == 6 && (
-                      <div className="form-group icon-input mb-1">
-                        <select
-                          name="org_id"
-                          className="style2-input pl-5 form-control  font-xss ls-3"
-                          onChange={(e) =>
-                            setUser({ ...user, org_id: e.target.value })
-                          }
-                        >
-                          <option value="" key={0}>
-                            Select Organization
-                          </option>
-                          {auth.list &&
-                            auth.list.map((li, i) => (
-                              <Fragment>
-                                <option value={li.id} key={li.id + 1}>
-                                  {li.name}
-                                </option>
-                              </Fragment>
-                            ))}
-                        </select>
-                        <i className="font-sm ti-lock text-grey-500 pr-0"></i>
-                      </div>
+                      <Fragment>
+                        <div className="form-group icon-input mb-1">
+                          <select
+                            name="org_id"
+                            className="style2-input pl-5 form-control  font-xss ls-3"
+                            onChange={(e) =>
+                              setUser({ ...user, org_id: e.target.value })
+                            }
+                          >
+                            <option value="" key={0}>
+                              Select Organization
+                            </option>
+                            {auth.list &&
+                              auth.list.map((li, i) => (
+                                <Fragment>
+                                  <option value={li.id} key={li.id + 1}>
+                                    {li.name}
+                                  </option>
+                                </Fragment>
+                              ))}
+                          </select>
+                          <i className="font-sm ti-lock text-grey-500 pr-0"></i>
+                        </div>
+
+                        <div className="form-group icon-input mb-1">
+                          <select
+                            name="org_id"
+                            className="style2-input pl-5 form-control  font-xss ls-3"
+                            onChange={(e) =>
+                              setUser({ ...user, lob_id: e.target.value })
+                            }
+                          >
+                            <option value="" key={0}>
+                              Select Line Of Business
+                            </option>
+                            {auth.lob &&
+                              auth.lob.map((li, i) => (
+                                <Fragment>
+                                  <option value={li.id} key={li.id + 1}>
+                                    {li.name}
+                                  </option>
+                                </Fragment>
+                              ))}
+                          </select>
+                          <i className="font-sm ti-lock text-grey-500 pr-0"></i>
+                        </div>
+                        <input
+                          type="button"
+                          value="Add"
+                          title="Add new line of business"
+                          className="btn approve_btn btn-common"
+                          onClick={() => handelClick()}
+                        />
+                      </Fragment>
                     )}
                     <div className="form-group icon-input mb-3">
                       <i className="font-sm ti-user text-grey-500 pr-0"></i>

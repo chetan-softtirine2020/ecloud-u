@@ -8,8 +8,10 @@ const initState = {
   is_done: true,
   errors: [],
   list: [],
-  currentToken:"",
-  isRegister:false
+  currentToken: "",
+  isRegister: false,
+  lob: [],
+  isAddLob: false,
 };
 
 const authReducer = (state = initState, { type, payload }) => {
@@ -19,12 +21,14 @@ const authReducer = (state = initState, { type, payload }) => {
         ...state,
         loading: false,
         errors: payload,
+        isAddLob: false,
       };
     case "AUTH_REQUEST":
       return {
         ...state,
         loading: true,
         is_done: false,
+        isAddLob: false,
         errors: [],
       };
 
@@ -32,6 +36,7 @@ const authReducer = (state = initState, { type, payload }) => {
       return {
         ...initState,
         isRegister: true,
+        isLoggedIn: true,
         // token: user.token,
         // name: user.name,
         // email: user.email,
@@ -45,13 +50,14 @@ const authReducer = (state = initState, { type, payload }) => {
       // });
       const user = payload;
       return {
-        ...initState,       
+        ...initState,
         token: user.token,
         name: user.name,
         email: user.email,
         _id: user._id,
         roles: user.roles,
         isLoggedIn: true,
+        isAddLob: false,
       };
     case "FORGOT_PASSWORD":
       return {
@@ -67,6 +73,7 @@ const authReducer = (state = initState, { type, payload }) => {
         loading: false,
         errors: [],
         is_done: true,
+        isAddLob: false,
       };
 
     case "RESET_AUTH_ERROR":
@@ -75,6 +82,8 @@ const authReducer = (state = initState, { type, payload }) => {
         loading: false,
         errors: [],
         is_done: false,
+        isAddLob: false,
+        isRegister: false,
       };
 
     case "SIGN_OUT":
@@ -87,6 +96,7 @@ const authReducer = (state = initState, { type, payload }) => {
         _id: null,
         roles: [],
         isLoggedIn: false,
+        isAddLob: false,
       };
     case "GET_REGISTER_ORGANIZATIONS":
       return {
@@ -102,14 +112,31 @@ const authReducer = (state = initState, { type, payload }) => {
         loading: false,
         errors: [],
         is_done: true,
+        isAddLob: false,
       };
-     case "CURRENT_TOKEN":
+    case "CURRENT_TOKEN":
       return {
         ...state,
-        loading: false,  
-        errors:[],       
-        currentToken:payload,          
-       };   
+        loading: false,
+        errors: [],
+        currentToken: payload,
+      };
+
+    case "ADD_LINE_OF_BUSINESS":
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        isAddLob: true,
+      };
+    case "GET_LINE_OF_BUSINESS":
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        lob: payload,
+        isAddLob: false,
+      };
 
     default:
       return state;
