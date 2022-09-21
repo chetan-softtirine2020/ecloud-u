@@ -9,7 +9,7 @@ export const errorMessage = (err,errorType) => {
       case 500:
         return {
           type: errorType,
-          payload: { other_error: "The given data was invalid"},
+          payload: { other_error: "Internal Serve Error."},
         };
         case 403:
           return {

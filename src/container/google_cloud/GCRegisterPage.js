@@ -94,13 +94,10 @@ const GCRegisterPage = () => {
                         {state.errors ? state.errors.email : ""}
                       </span>
                     </div>
+                  </div>              
                   </div>
-               
-
-                  </div>
-
-                  <div className="row">
-                   
+                  
+                  <div className="row">                 
                   <div className="col-lg-6 mb-2">
                   <div className="form-group">
                     <label className="mont-font fw-600 font-xsss">

@@ -49,6 +49,9 @@ import GCRegisterPage from "./container/google_cloud/GCRegisterPage";
 import GCCreateVM from "./container/google_cloud/GCCreateVM";
 import GCLoginPage from "./container/google_cloud/GCLoginPage";
 import ShowVMList from "./container/google_cloud/ShowVMList";
+import ShowVMDetails from "./container/google_cloud/ShowVMDetails";
+import AssignUserToVM from "./container/google_cloud/AssignUserToVM";
+import ShowVm from "./container/google_cloud/ShowVm";
 
 function App() {
   if (localStorage.getItem("token")) {
@@ -217,6 +220,24 @@ function App() {
             caseSensitive={false}
             element={<ShowVMList />}
           />
+          <Route
+            path={"/vm-details/:name"}
+            caseSensitive={false}
+            element={<ShowVMDetails />}
+          />
+
+          <Route
+            path={"/assign-vm-to-user"}
+            caseSensitive={false}
+            element={<AssignUserToVM />}
+          />
+
+          <Route
+            path={"/vm/:name"}
+            caseSensitive={false}
+            element={<ShowVm/>}
+          />
+
           <Route
             path={"/course/:slug"}
             caseSensitive={false}

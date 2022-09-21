@@ -1,29 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import AppBody from "../components/AppBody";
-import { gcCreateVM, getVmList, resetStatus } from "../../actions/google_cloud/gc_action";
-import { Link } from "react-router-dom";
+import {
+  deleteVM,
+  getVmList,
+  resetStatus,
+  updateStartStopVm,
+} from "../../actions/google_cloud/gc_action";
+import { Link, useNavigate } from "react-router-dom";
 const ShowVMList = () => {
- 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const state = useSelector((state) => state.gcReducer);
   useEffect(() => {
-     dispatch(getVmList());
+    dispatch(getVmList());
     dispatch(resetStatus());
   }, []);
 
-   const handelActiveClick = (slug) => {
-      // dispatch()   
-   };
+  const handelStartStopClick = (name, status) => {
+    dispatch(
+      updateStartStopVm({ action: status === 1 ? "stop" : "start", name: name })
+    );
+  };
 
-  if (state.is_done) {
-    // setPassword({
-    //   current_password: "",
-    //   password: "",
-    //   password_confirmation: "",
-    // });
-    // return <Navigate to="/change-password" />;
-  }
+  const handelDeleteClick = (name) => {
+    dispatch(deleteVM({ name: name }));
+  };
+  
+  const handelInfoClick = (name) => {
+    navigate("/vm-details/" + name);
+  };
+
   return (
     <AppBody
       loading={state.loading}
@@ -35,9 +42,30 @@ const ShowVMList = () => {
                 <i className="ti-arrow-left font-sm text-white"></i>
               </Link>
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                VMs List
+                Virtul Machines
               </h4>
+              <Link to={"/create-vm"}>
+                <input
+                  type="submit"
+                  name="submit"
+                  value="Create VM"
+                  className="approve_btn btn-common mg-l float-right"
+                />
+              </Link>
             </div>
+
+            {state.is_update && (
+              <div className="alert alert-success" role="alert">
+                VM Update successfully
+              </div>
+            )}
+
+            {state.is_delete && (
+              <div className="alert alert-success" role="alert">
+                VM deleted successfully.
+              </div>
+            )}
+
             <div className="card-body p-4 w-100 border-0 ">
               <div className="table-responsive">
                 <table className="table table-bordered">
@@ -46,10 +74,11 @@ const ShowVMList = () => {
                       <th>Sr.No</th>
                       <th>VM Name</th>
                       <th>Image</th>
-                      <th>Ram</th>
                       <th>Zone</th>
+                      <th>Ram</th>
                       <th>Storage</th>
-                       {/* <th>Description</th>*/}
+                      <th>Created At</th>
+                      <th>Status</th>
                       <th className="tblaction">Action</th>
                     </tr>
                   </thead>
@@ -63,18 +92,34 @@ const ShowVMList = () => {
                           <td>{li.zone}</td>
                           <td>{li.ram}</td>
                           <td>{li.storage}</td>
+                          <td>{li.created}</td>
                           <td>
                             {li.status === 0 && "Create"}
                             {li.status === 1 && "Start"}
                             {li.status === 2 && "Stop"}
                           </td>
-                           <td className="tblaction">                       
-                              <input
+                          
+                          <td className="tblaction">
+                            <input
                               type="button"
-                              value="Re-Active"
+                              value={li.status === 1 ? "Stop" : "Start"}
                               className="btn approve_btn btn-common mg-l"
-                              onClick={() => handelActiveClick(li.slug)}
-                            />                            
+                              onClick={() =>
+                                handelStartStopClick(li.vm_name, li.status)
+                              }
+                            />
+                            <input
+                              type="button"
+                              value="Delete"
+                              className="btn approve_btn btn-common mg-l"
+                              onClick={() => handelDeleteClick(li.vm_name)}
+                            />
+                            <input
+                              type="button"
+                              value="Details"
+                              className="btn approve_btn btn-common mg-l"
+                              onClick={() => handelInfoClick(li.vm_name)}
+                            />
                           </td>
                         </tr>
                       ))}

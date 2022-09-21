@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import AppBody from "../components/AppBody";
 import { gcCreateVM, resetStatus } from "../../actions/google_cloud/gc_action";
 import { InstanceImagess, softwares, ZONES } from "../../config/api";
 import MultiSelect from "react-multiple-select-dropdown-lite";
+import { Navigate } from "react-router-dom";
 import "react-multiple-select-dropdown-lite/dist/index.css";
+import { gcPayload } from "../../config/gc_payload";
 const GCCreateVM = () => {
   const [vm, setVm] = useState({
     image: "",
     protocol: "",
     zone: "",
     count: 1,
-    softwares: [1],
+    softwares: [],
     storage: "",
     ram: 2,
   });
-
+  const [price, setPrice] = useState("");
   const dispatch = useDispatch();
+  const imageRef = useRef(null);
+  const ramRef = useRef(null);
+  const storageRef = useRef(null);
+  const noRef = useRef(null);
   const state = useSelector((state) => state.gcReducer);
   useEffect(() => {
     dispatch(resetStatus());
@@ -28,21 +34,25 @@ const GCCreateVM = () => {
   };
 
   if (state.is_done) {
-    // setPassword({
-    //   current_password: "",
-    //   password: "",
-    //   password_confirmation: "",
-    // });
-    // return <Navigate to="/change-password" />;
+    return <Navigate to="/vm-list" />;
   }
 
   const handleOnchange = (val) => {
     setVm({
       ...vm,
-      softwares: val.split(","),
+      softwares: val,
     });
   };
 
+  const calculatePrice = () => {
+   // console.log("vm" + imageRef.current.value);
+    const priceData = gcPayload(vm.image, vm.storage, vm.ram);
+    if (priceData) {
+      setPrice(priceData);
+    }
+  };
+
+  console.log("ahow" + JSON.stringify( price));
 
   return (
     <AppBody
@@ -56,15 +66,30 @@ const GCCreateVM = () => {
                   Create Virtul Machines
                 </h4>
               </div>
+              <div className="alert alert-warning" role="alert">
+                <strong>
+                  1) Minimum Ram that should be allocated 2 GB - Linux, 4 GB
+                  Windows. <br />
+                  2) Minimum Storage that should be allocated 10 GB - Linux, 50
+                  GB Windows.
+                </strong>
+              </div>
               {state.is_done && (
                 <div className="alert alert-success" role="alert">
                   VM Created successfully!
                 </div>
               )}
+
+              {state.errors.other_error && (
+                <div className="alert alert-danger" role="alert">
+                  Your token is expire login cloud account again.
+                </div>
+              )}
+
               <div className="card-body p-4 w-100 border-0 ">
                 <form onSubmit={handleSubmit}>
                   <div className="row">
-                    <div className="col-lg-6 mb-2">
+                    <div className="col-lg-4 mb-2">
                       <div className="form-group">
                         <label className="mont-font fw-600 font-xsss">
                           Image
@@ -72,6 +97,8 @@ const GCCreateVM = () => {
                         <select
                           className="form-control"
                           name={"image"}
+                          id={"image"}
+                          ref={imageRef}
                           onChange={(e) => {
                             setVm({
                               ...vm,
@@ -80,6 +107,7 @@ const GCCreateVM = () => {
                                 e.target.value === "windows" ? "rdp" : "ssh",
                               storage: e.target.value === "windows" ? 50 : 10,
                             });
+                            calculatePrice();
                           }}
                         >
                           <option value={""}>Select Image</option>
@@ -96,7 +124,7 @@ const GCCreateVM = () => {
                       </div>
                     </div>
 
-                    <div className="col-lg-6 mb-2">
+                    <div className="col-lg-4 mb-2">
                       <div className="form-group">
                         <label className="mont-font fw-600 font-xsss">
                           Protocols
@@ -112,10 +140,7 @@ const GCCreateVM = () => {
                         </span>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-lg-6 mb-2">
+                    <div className="col-lg-4 mb-2">
                       <div className="form-group">
                         <label className="mont-font fw-600 font-xsss">
                           Select Zone
@@ -145,8 +170,10 @@ const GCCreateVM = () => {
                         </span>
                       </div>
                     </div>
+                  </div>
 
-                    <div className="col-lg-6 mb-2">
+                  <div className="row">
+                    <div className="col-lg-2 mb-2">
                       <div className="form-group">
                         <label className="mont-font fw-600 font-xsss">
                           No Of VM
@@ -155,6 +182,7 @@ const GCCreateVM = () => {
                           type="text"
                           className="form-control"
                           value={vm.count}
+                          ref={noRef}
                           onChange={(e) =>
                             setVm({
                               ...vm,
@@ -167,10 +195,8 @@ const GCCreateVM = () => {
                         </span>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="row">
-                    <div className="col-lg-4 mb-2">
+                    <div className="col-lg-3 mb-2">
                       <div className="form-group">
                         <label className="mont-font fw-600 font-xsss">
                           Storage{" "}
@@ -180,12 +206,14 @@ const GCCreateVM = () => {
                           type="text"
                           className="form-control"
                           value={vm.storage}
-                          onChange={(e) =>
+                          onChange={(e) => {
                             setVm({
                               ...vm,
                               storage: e.target.value,
-                            })
-                          }
+                            });
+                          }}
+                          onKeyUp={() => calculatePrice()}
+                          ref={storageRef}
                         />
                         <span className="error-msg">
                           {state.errors ? state.errors.storage : ""}
@@ -193,7 +221,7 @@ const GCCreateVM = () => {
                       </div>
                     </div>
 
-                    <div className="col-lg-4 mb-2">
+                    <div className="col-lg-3 mb-2">
                       <div className="form-group">
                         <label className="mont-font fw-600 font-xsss">
                           Ram (GB)
@@ -201,22 +229,29 @@ const GCCreateVM = () => {
                         <select
                           className="form-control"
                           name={"ram"}
+                          ref={ramRef}
                           onChange={(e) => {
                             setVm({
                               ...vm,
                               ram: e.target.value,
                             });
+                            calculatePrice();
                             //courseOnChnage(e.target.value);
                             //setCourse(e.target.value);
                           }}
                         >
-                          <option value={0.5} key={1}>
-                            0.5
-                          </option>
-                          <option value={2} key={3}>
+                          <option
+                            value={2}
+                            selected={vm.image === "ubuntu" && true}
+                            key={3}
+                          >
                             2
                           </option>
-                          <option value={4} key={4}>
+                          <option
+                            value={4}
+                            key={4}
+                            selected={vm.image === "windows" && true}
+                          >
                             4
                           </option>
                           <option value={8} key={5}>
@@ -248,6 +283,29 @@ const GCCreateVM = () => {
                           options={softwares}
                         />
                       </div>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="col-lg-12 mb-2">
+                      <h2 className="text-white">Price in $</h2>
+                    </div>
+                    <div className="col-lg-4 mb-2">
+                      <span>
+                        <strong>STORAGE PER MONTH</strong>: $50
+                      </span>
+                    </div>
+
+                    <div className="col-lg-4 mb-2">
+                      <span>
+                        <strong>CPU Price (USD)/hr</strong>: $50
+                      </span>
+                    </div>
+
+                    <div className="col-lg-4 mb-2">
+                      <span>
+                        <strong>Total Per Month</strong>: $50
+                      </span>
                     </div>
                   </div>
 

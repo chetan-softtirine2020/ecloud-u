@@ -149,20 +149,37 @@ const SiteBar = () => {
                     <span>Authorize Cloud A/C</span>
                   </Link>
                 </li>
+
                 <li class="flex-lg-brackets">
                   <Link
-                    to={"/create-vm"}
+                    to={"/vm-list"}
                     data-tab="archived"
                     class={`nav-content-bttn open-font ${
-                      location.pathname === "/create-vm"
+                      location.pathname === "/vm-list"
                         ? "active"
                         : ""
                     }`}
                   >
                     <i class="feather-video mr-3"></i>
-                    <span>Create Virtul Machine</span>
+                    <span>Virtul Machines</span>
                   </Link>
                 </li>
+               
+                <li class="flex-lg-brackets">
+                <Link
+                  to={"/assign-vm-to-user"}
+                  data-tab="archived"
+                  class={`nav-content-bttn open-font ${
+                    location.pathname === "/assign-vm-to-user"
+                      ? "active"
+                      : ""
+                  }`}
+                >
+                  <i class="feather-video mr-3"></i>
+                  <span>Assign VMs</span>
+                </Link>
+              </li>
+               
               </ul>
             )}
 

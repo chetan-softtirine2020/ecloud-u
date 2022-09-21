@@ -59,6 +59,13 @@
 .color-white{
   color: white;
 }
+.no-data-found{
+  color: white;
+  text-align: center !important;
+  padding-top: 15px;
+}
+
+
 .bg-navbar{
   background-color: #212121
 }
