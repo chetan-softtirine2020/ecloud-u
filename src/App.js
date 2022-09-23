@@ -52,6 +52,7 @@ import ShowVMList from "./container/google_cloud/ShowVMList";
 import ShowVMDetails from "./container/google_cloud/ShowVMDetails";
 import AssignUserToVM from "./container/google_cloud/AssignUserToVM";
 import ShowVm from "./container/google_cloud/ShowVm";
+import MainHomePage from "./container/home/MainHomePage";
 
 function App() {
   if (localStorage.getItem("token")) {
@@ -64,6 +65,12 @@ function App() {
     <Router>
       <Routes>
         {/*Normal User */}
+
+        <Route
+          path={"/main-page"}
+          caseSensitive={false}
+          element={<MainHomePage />}
+        />
 
         <Route
           path={"/my-trainings"}
@@ -235,7 +242,7 @@ function App() {
           <Route
             path={"/vm/:name"}
             caseSensitive={false}
-            element={<ShowVm/>}
+            element={<ShowVm />}
           />
 
           <Route

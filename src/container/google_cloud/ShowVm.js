@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import AppBody from "../components/AppBody";
 import { Link, useNavigate } from "react-router-dom";
 import Guacamole from "guacamole-common-js";
-import SiteBar from "../components/SiteBar";
 const ShowVm = () => {
   const state = useSelector((state) => state.gcReducer);
   const [gua, setGua] = useState(null);

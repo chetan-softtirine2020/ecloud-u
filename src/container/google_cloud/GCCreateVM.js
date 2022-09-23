@@ -18,11 +18,7 @@ const GCCreateVM = () => {
     ram: 2,
   });
   const [price, setPrice] = useState("");
-  const dispatch = useDispatch();
-  const imageRef = useRef(null);
-  const ramRef = useRef(null);
-  const storageRef = useRef(null);
-  const noRef = useRef(null);
+  const dispatch = useDispatch(); 
   const state = useSelector((state) => state.gcReducer);
   useEffect(() => {
     dispatch(resetStatus());
@@ -44,15 +40,18 @@ const GCCreateVM = () => {
     });
   };
 
-  const calculatePrice = () => {
-   // console.log("vm" + imageRef.current.value);
-    const priceData = gcPayload(vm.image, vm.storage, vm.ram);
-    if (priceData) {
-      setPrice(priceData);
-    }
+  const calculatePrice = (image, storage, ram, noOfvm) => {
+     console.log(image + storage + ram + noOfvm);
+     setTimeout(function () {
+      const priceData = gcPayload(image, storage, ram, noOfvm);
+      if (priceData) {
+      ;
+        setPrice(priceData);
+      }
+    }, 1000);
   };
 
-  console.log("ahow" + JSON.stringify( price));
+  console.log("vm ram=" + vm.ram);
 
   return (
     <AppBody
@@ -97,8 +96,7 @@ const GCCreateVM = () => {
                         <select
                           className="form-control"
                           name={"image"}
-                          id={"image"}
-                          ref={imageRef}
+                          id={"image"}                         
                           onChange={(e) => {
                             setVm({
                               ...vm,
@@ -107,7 +105,12 @@ const GCCreateVM = () => {
                                 e.target.value === "windows" ? "rdp" : "ssh",
                               storage: e.target.value === "windows" ? 50 : 10,
                             });
-                            calculatePrice();
+                            calculatePrice(
+                              e.target.value,
+                              e.target.value === "windows" ? 50 : 10,
+                              e.target.value === "windows" ? 4 : 2,
+                              1
+                            );
                           }}
                         >
                           <option value={""}>Select Image</option>
@@ -182,13 +185,27 @@ const GCCreateVM = () => {
                           type="text"
                           className="form-control"
                           value={vm.count}
-                          ref={noRef}
-                          onChange={(e) =>
+                          onChange={(e) => {
                             setVm({
                               ...vm,
                               count: e.target.value,
-                            })
-                          }
+                            });
+                            calculatePrice(
+                              vm.image,
+                              vm.storage,
+                              vm.ram,
+                              e.target.value
+                            );
+                          }}
+
+                          // onKeyUp={(e) =>
+                          //   calculatePrice(
+                          //     vm.image,
+                          //     vm.storage,
+                          //     vm.ram,
+                          //     e.target.value
+                          //   )
+                          // }
                         />
                         <span className="error-msg">
                           {state.errors ? state.errors.count : ""}
@@ -212,8 +229,15 @@ const GCCreateVM = () => {
                               storage: e.target.value,
                             });
                           }}
-                          onKeyUp={() => calculatePrice()}
-                          ref={storageRef}
+                          
+                          onKeyUp={(e) =>
+                            calculatePrice(
+                              vm.image,
+                              e.target.value,
+                              vm.ram,
+                              vm.count
+                            )
+                          }
                         />
                         <span className="error-msg">
                           {state.errors ? state.errors.storage : ""}
@@ -229,13 +253,17 @@ const GCCreateVM = () => {
                         <select
                           className="form-control"
                           name={"ram"}
-                          ref={ramRef}
                           onChange={(e) => {
                             setVm({
                               ...vm,
                               ram: e.target.value,
                             });
-                            calculatePrice();
+                            calculatePrice(
+                              vm.image,
+                              vm.storage,
+                              e.target.value,
+                              vm.count
+                            );
                             //courseOnChnage(e.target.value);
                             //setCourse(e.target.value);
                           }}
@@ -288,23 +316,25 @@ const GCCreateVM = () => {
 
                   <div className="row">
                     <div className="col-lg-12 mb-2">
-                      <h2 className="text-white">Price in $</h2>
+                      <h2 className="text-white">Month Price IN $</h2>
                     </div>
                     <div className="col-lg-4 mb-2">
                       <span>
-                        <strong>STORAGE PER MONTH</strong>: $50
+                        <strong>STORAGE PER MONTH</strong>:${" "}
+                        {price && price.totalStoragePrice}
                       </span>
                     </div>
 
                     <div className="col-lg-4 mb-2">
                       <span>
-                        <strong>CPU Price (USD)/hr</strong>: $50
+                        <strong>CPU Price(USD)</strong>: $
+                        {price && price.vmPerMonthPrice}
                       </span>
                     </div>
 
                     <div className="col-lg-4 mb-2">
                       <span>
-                        <strong>Total Per Month</strong>: $50
+                        <strong>Total Per Month</strong>: $
                       </span>
                     </div>
                   </div>
