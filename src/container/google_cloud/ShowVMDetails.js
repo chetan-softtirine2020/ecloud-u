@@ -23,7 +23,7 @@ const ShowVMDetails = () => {
         <div className="middle-sidebar-left">
           <div className="card w-100 border-0 shadow-xs p-0 mb-4">
             <div className="card-header p-3 w-100 border-0 d-flex rounded-lg">
-              <Link to={"/create-training"} className="d-inline-block mt-2">
+              <Link to={"/vm-list"} className="d-inline-block mt-2">
                 <i className="ti-arrow-left font-sm text-white"></i>
               </Link>
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">

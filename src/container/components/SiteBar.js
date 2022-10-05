@@ -155,31 +155,26 @@ const SiteBar = () => {
                     to={"/vm-list"}
                     data-tab="archived"
                     class={`nav-content-bttn open-font ${
-                      location.pathname === "/vm-list"
-                        ? "active"
-                        : ""
+                      location.pathname === "/vm-list" ? "active" : ""
                     }`}
                   >
                     <i class="feather-video mr-3"></i>
                     <span>Virtul Machines</span>
                   </Link>
                 </li>
-               
+
                 <li class="flex-lg-brackets">
-                <Link
-                  to={"/assign-vm-to-user"}
-                  data-tab="archived"
-                  class={`nav-content-bttn open-font ${
-                    location.pathname === "/assign-vm-to-user"
-                      ? "active"
-                      : ""
-                  }`}
-                >
-                  <i class="feather-video mr-3"></i>
-                  <span>Assign VMs</span>
-                </Link>
-              </li>
-               
+                  <Link
+                    to={"/assign-vm-to-user"}
+                    data-tab="archived"
+                    class={`nav-content-bttn open-font ${
+                      location.pathname === "/assign-vm-to-user" ? "active" : ""
+                    }`}
+                  >
+                    <i class="feather-video mr-3"></i>
+                    <span>Assign VMs</span>
+                  </Link>
+                </li>
               </ul>
             )}
 
@@ -216,6 +211,7 @@ const SiteBar = () => {
                 </li>
               </ul>
             )}
+   
 
             {userData && userData.roles.includes("organization") && (
               <ul>
@@ -420,7 +416,21 @@ const SiteBar = () => {
                     <span>Learning Providers</span>
                   </Link>
                 </li>
-              </ul>
+                <li>
+                <Link
+                  to={"/admin/vm-pricing-chart"}
+                  class={`nav-content-bttn open-font ${
+                    location.pathname === " /admin/vm-pricing-chart"
+                      ? "active"
+                      : ""
+                  }`}
+                  data-tab="favorites"
+                >
+                  <i class="feather-globe mr-3"></i>
+                  <span>VM Pricing Chart</span>
+                </Link>
+              </li>   
+            </ul>
             )}
 
             <ul>

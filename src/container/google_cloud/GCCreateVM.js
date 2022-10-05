@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import AppBody from "../components/AppBody";
-import { gcCreateVM, resetStatus } from "../../actions/google_cloud/gc_action";
+import {
+  gcCreateVM,
+  getGCAccountExist,
+  resetStatus,
+} from "../../actions/google_cloud/gc_action";
 import { InstanceImagess, softwares, ZONES } from "../../config/api";
 import MultiSelect from "react-multiple-select-dropdown-lite";
 import { Navigate } from "react-router-dom";
@@ -18,10 +22,11 @@ const GCCreateVM = () => {
     ram: 2,
   });
   const [price, setPrice] = useState("");
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const state = useSelector((state) => state.gcReducer);
   useEffect(() => {
     dispatch(resetStatus());
+    dispatch(getGCAccountExist());
   }, []);
 
   const handleSubmit = (e) => {
@@ -41,17 +46,21 @@ const GCCreateVM = () => {
   };
 
   const calculatePrice = (image, storage, ram, noOfvm) => {
-     console.log(image + storage + ram + noOfvm);
-     setTimeout(function () {
+
+    setTimeout(function () {
       const priceData = gcPayload(image, storage, ram, noOfvm);
       if (priceData) {
-      ;
         setPrice(priceData);
       }
     }, 1000);
   };
-
-  console.log("vm ram=" + vm.ram);
+  console.log("Is Create" + state.is_created);
+  if (state.is_created === false) {
+    return <Navigate to="/register-cloud-account" />;
+  }
+  // if (state.is_created === false) {
+  //   return <Navigate to="/register-cloud-account" />;
+  // }
 
   return (
     <AppBody
@@ -81,7 +90,7 @@ const GCCreateVM = () => {
 
               {state.errors.other_error && (
                 <div className="alert alert-danger" role="alert">
-                  Your token is expire login cloud account again.
+                  Your token is expire go to authorize and login your account.
                 </div>
               )}
 
@@ -96,7 +105,7 @@ const GCCreateVM = () => {
                         <select
                           className="form-control"
                           name={"image"}
-                          id={"image"}                         
+                          id={"image"}
                           onChange={(e) => {
                             setVm({
                               ...vm,
@@ -229,7 +238,6 @@ const GCCreateVM = () => {
                               storage: e.target.value,
                             });
                           }}
-                          
                           onKeyUp={(e) =>
                             calculatePrice(
                               vm.image,
@@ -314,29 +322,26 @@ const GCCreateVM = () => {
                     </div>
                   </div>
 
-                  <div className="row">
-                    <div className="col-lg-12 mb-2">
-                      <h2 className="text-white">Month Price IN $</h2>
-                    </div>
-                    <div className="col-lg-4 mb-2">
+                  <div className="row">                  
+                    <div className="col-lg-6 mb-2">
                       <span>
-                        <strong>STORAGE PER MONTH</strong>:${" "}
+                        <strong>STORAGE PER GB MONTH</strong>:${" "}
                         {price && price.totalStoragePrice}
                       </span>
                     </div>
 
-                    <div className="col-lg-4 mb-2">
+                    <div className="col-lg-6 mb-2">
                       <span>
-                        <strong>CPU Price(USD)</strong>: $
+                        <strong>CPU Price(Hour/USD)</strong>: $
                         {price && price.vmPerMonthPrice}
                       </span>
                     </div>
 
-                    <div className="col-lg-4 mb-2">
+                    {/*<div className="col-lg-4 mb-2">
                       <span>
                         <strong>Total Per Month</strong>: $
                       </span>
-                    </div>
+                        </div>*/}
                   </div>
 
                   <div className="row">

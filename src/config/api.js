@@ -19,14 +19,14 @@ export function getToken() {
   return localStorage.getItem("token");
 }
 
-export const InstanceImagess = [ 
+export const InstanceImagess = [
   { value: "windows", name: "windows" },
   { value: "ubuntu", name: "ubuntu" },
   // { value: "debian", name: "debian" },
   // { value: "windows-2019", name: "windows-2019" },
 ];
 
-export const softwares = [ 
+export const softwares = [
   { value: "1", label: "Firefox" },
   { value: "2", label: "Google Chrome" },
 ];

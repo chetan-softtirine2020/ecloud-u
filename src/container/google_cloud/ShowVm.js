@@ -1,22 +1,30 @@
-import React, { Fragment, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import AppBody from "../components/AppBody";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Guacamole from "guacamole-common-js";
+import { redirectUser } from "../../config/redirect";
+import { updateStartStopVm } from "../../actions/google_cloud/gc_action";
 const ShowVm = () => {
   const state = useSelector((state) => state.gcReducer);
   const [gua, setGua] = useState(null);
   const navigate = useNavigate();
+  let { name } = useParams();
+  const [vmLoading, setVmLoadig] = useState(false);
+  const userData = JSON.parse(localStorage.getItem("data"));
+  const dispatch = useDispatch();
   const startVm = () => {
+    // setVmLoadig(true);
     let mouse;
     let keyboard;
     var display = document.getElementById("displayyy");
+    dispatch(updateStartStopVm({ action: "start", name: name, is_user: true }));
     let guac = new Guacamole.Client(
       // new Guacamole.WebSocketTunnel(
       //   "ws://34.93.116.53/ws/chat/robert-tillis/1000/460"
       // )
       new Guacamole.WebSocketTunnel(
-        "ws://34.93.116.53/ws/chat/greg-close/1200/460"
+        `ws://34.93.116.53/ws/chat/${name}/1200/460`
       )
     );
     if (guac) {
@@ -29,6 +37,7 @@ const ShowVm = () => {
     guac.onerror = function (error) {
       alert(JSON.stringify(error));
     };
+
     // Connect
     guac.connect();
     mouse.onmousedown =
@@ -52,13 +61,28 @@ const ShowVm = () => {
   const stopVm = () => {
     if (gua) {
       gua.disconnect();
-      console.log(gua);
-      navigate("/vm-list");
+      dispatch(
+        updateStartStopVm({ action: "stop", name: name, is_user: true })
+      );
+      if (
+        userData.roles.includes("provider") ||
+        userData.roles.includes("organization")
+      ) {
+        navigate("/vm-list");
+      } else {
+        let path = redirectUser();
+        navigate(path);
+      }
     }
   };
 
+  // if (gua && vmLoading) {
+  //   setVmLoadig(false);
+  // }
+
   return (
     <AppBody
+      loading={state.loading || vmLoading}
       content={
         <div className="card-body p-4 w-100 border-0 ">
           <div id="displayyy"></div>

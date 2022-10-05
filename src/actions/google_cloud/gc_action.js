@@ -140,6 +140,29 @@ export const updateStartStopVm = (cred) => {
   };
 };
 
+export const startStopMultipleVm = (cred) => {
+  return (dispatch) => {
+    dispatch({
+      type: GOOGLECLOUD.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/vms-start-stop`,
+        data: cred,
+      })
+      .then((res) => {
+        dispatch({
+          type: GOOGLECLOUD.START_STOP_MULTIPLE,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, GOOGLECLOUD.ERROR));
+      });
+  };
+};
+
 export const deleteVM = (cred) => {
   return (dispatch) => {
     dispatch({
@@ -194,7 +217,7 @@ export const getCountOfVirtualMachine = () => {
     axios
       .request({
         method: "post",
-        url: `${APP_URL}/get-vm-count`,    
+        url: `${APP_URL}/get-vm-count`,
       })
       .then((res) => {
         dispatch({
@@ -208,7 +231,71 @@ export const getCountOfVirtualMachine = () => {
   };
 };
 
+export const getGCAccountExist = () => {
+  return (dispatch) => {
+    dispatch({
+      type: GOOGLECLOUD.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/check-gc-ac-exist`,
+      })
+      .then((res) => {
+        dispatch({
+          type: GOOGLECLOUD.CHECK_ACCOUNT,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, GOOGLECLOUD.ERROR));
+      });
+  };
+};
 
+export const getVMPricing = () => {
+  return (dispatch) => {
+    dispatch({
+      type: GOOGLECLOUD.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/get-pricing`,
+      })
+      .then((res) => {
+        dispatch({
+          type: GOOGLECLOUD.VM_PRICING,
+          payload: res.data.list,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, GOOGLECLOUD.ERROR));
+      });
+  };
+};
+
+export const updateVMPricing = () => {
+  return (dispatch) => {
+    dispatch({
+      type: GOOGLECLOUD.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/update-pricing`,
+      })
+      .then((res) => {
+        dispatch({
+          type: GOOGLECLOUD.UPDATE_VM_PRICING,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, GOOGLECLOUD.ERROR));
+      });
+  };
+};
 
 
 export const resetStatus = () => {
@@ -233,4 +320,8 @@ export const GOOGLECLOUD = {
   RESET: TAG + "RESET",
   UPDATE_START_STOP: TAG + "UPDATE_START_STOP",
   DELETE_VM: TAG + "DELETE_VM",
+  CHECK_ACCOUNT: TAG + "CHECK_ACCOUNT",
+  START_STOP_MULTIPLE: TAG + "START_STOP_MULTIPLE",
+  VM_PRICING: TAG + "VM_PRICING",
+  UPDATE_VM_PRICING: TAG + "UPDATE_VM_PRICING",
 };

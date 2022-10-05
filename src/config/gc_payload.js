@@ -72,7 +72,7 @@ export const gcPayload = (image, storage, ram, noOfvm) => {
   let totalVMMonthPrice = parseFloat(vmPerMonthPrice) * parseInt(noOfvm);
   return {
     totalStoragePrice: totalStoragePrice.toFixed(2),
-    vmPerMonthPrice: totalVMMonthPrice.toFixed(2),
+    vmPerMonthPrice: perHrVmPrice,
     //   totalCost: totalCost.toFixed(2),
   };
 };

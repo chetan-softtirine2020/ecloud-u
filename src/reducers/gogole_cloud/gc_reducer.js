@@ -8,7 +8,10 @@ export const initState = {
   vm_details: [],
   is_delete: false,
   is_update: false,
-  vm_count:"",
+  vm_count: "",
+  is_created: "",
+  price_updated: "",
+  vm_pricing: [],
 };
 
 const gcReducer = (state = initState, { type, payload }) => {
@@ -86,13 +89,14 @@ const gcReducer = (state = initState, { type, payload }) => {
       };
 
     case GOOGLECLOUD.UPDATE_START_STOP:
+    case GOOGLECLOUD.START_STOP_MULTIPLE:
       return {
         ...state,
         loading: false,
         errors: [],
         is_update: true,
       };
-      
+
     case GOOGLECLOUD.VM_ASSING:
       return {
         ...state,
@@ -100,14 +104,38 @@ const gcReducer = (state = initState, { type, payload }) => {
         errors: [],
         is_done: true,
       };
-      
-      case GOOGLECLOUD.VM_COUNT:
-        return{
-          ...state,
-          loading: false,
-          errors: [],
-          vm_count: payload,
-      }
+
+    case GOOGLECLOUD.VM_COUNT:
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        vm_count: payload,
+      };
+
+    case GOOGLECLOUD.CHECK_ACCOUNT:
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        is_created: payload.is_created,
+      };
+
+    case GOOGLECLOUD.VM_PRICING:
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        vm_pricing: payload,
+      };
+
+    case GOOGLECLOUD.UPDATE_VM_PRICING:
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        is_update: true,
+      };
 
     default:
       return state;

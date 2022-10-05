@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import AppBody from "../components/AppBody";
 import { resetErorrs } from "../../actions/auth_action";
 import { gcRegisterAdmin } from "../../actions/google_cloud/gc_action";
+import { Navigate } from "react-router-dom";
 const GCRegisterPage = () => {
   const [register, setRegister] = useState({
     username: "",
@@ -25,14 +26,8 @@ const GCRegisterPage = () => {
   };
 
   if (state.is_done) {
-    // setPassword({
-    //   current_password: "",
-    //   password: "",
-    //   password_confirmation: "",
-    // });
-    // return <Navigate to="/change-password" />;
+    return <Navigate to="/authorize-cloud-account" />;
   }
-
   return (
     <AppBody
       loading={state.loading}
