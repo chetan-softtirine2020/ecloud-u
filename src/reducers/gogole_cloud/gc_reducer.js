@@ -98,12 +98,13 @@ const gcReducer = (state = initState, { type, payload }) => {
       };
 
     case GOOGLECLOUD.VM_ASSING:
+    case GOOGLECLOUD.VM_ASSING_USER:   
       return {
         ...state,
         loading: false,
         errors: [],
         is_done: true,
-      };
+      };   
 
     case GOOGLECLOUD.VM_COUNT:
       return {
@@ -136,6 +137,7 @@ const gcReducer = (state = initState, { type, payload }) => {
         errors: [],
         is_update: true,
       };
+
 
     default:
       return state;

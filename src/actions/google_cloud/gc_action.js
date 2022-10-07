@@ -209,6 +209,29 @@ export const importVMTrainingUser = (cred) => {
   };
 };
 
+export const addVMTrainingUser = (cred) => {
+  return (dispatch) => {
+    dispatch({
+      type: GOOGLECLOUD.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/assign-vm-to-user`,
+        data: cred,
+      })
+      .then((res) => {
+        dispatch({
+          type: GOOGLECLOUD.VM_ASSING_USER,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, GOOGLECLOUD.ERROR));
+      });
+  };
+};
+
 export const getCountOfVirtualMachine = () => {
   return (dispatch) => {
     dispatch({
@@ -297,7 +320,6 @@ export const updateVMPricing = () => {
   };
 };
 
-
 export const resetStatus = () => {
   return (dispatch) => {
     dispatch({
@@ -324,4 +346,5 @@ export const GOOGLECLOUD = {
   START_STOP_MULTIPLE: TAG + "START_STOP_MULTIPLE",
   VM_PRICING: TAG + "VM_PRICING",
   UPDATE_VM_PRICING: TAG + "UPDATE_VM_PRICING",
+  VM_ASSING_USER: TAG + "VM_ASSING_USER",
 };
