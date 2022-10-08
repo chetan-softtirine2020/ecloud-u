@@ -2,11 +2,9 @@ export const gcPayload = (image, storage, ram, noOfvm) => {
   let perMonthStoragePrice = 0.17;
   let perHrVmPrice = 0;
 
-  console.log("I="+image +"S="+storage + "R="+ram + "NO="+noOfvm)
-
   switch (parseInt(ram)) {
     case 2:
-      if (image == "windows") {
+      if (image === "windows") {
         perHrVmPrice = 0.07;
       } else {
         perHrVmPrice = 0.03;
@@ -14,7 +12,7 @@ export const gcPayload = (image, storage, ram, noOfvm) => {
       break;
 
     case 4:
-      if (image == "windows") {
+      if (image === "windows") {
         perHrVmPrice = 0.2;
       } else {
         perHrVmPrice = 0.05;
@@ -22,7 +20,7 @@ export const gcPayload = (image, storage, ram, noOfvm) => {
       break;
 
     case 8:
-      if (image == "windows") {
+      if (image === "windows") {
         perHrVmPrice = 0.3;
       } else {
         perHrVmPrice = 0.1;
@@ -30,7 +28,7 @@ export const gcPayload = (image, storage, ram, noOfvm) => {
       break;
 
     case 16:
-      if (image == "windows") {
+      if (image === "windows") {
         perHrVmPrice = 0.6;
       } else {
         perHrVmPrice = 0.2;
@@ -38,7 +36,7 @@ export const gcPayload = (image, storage, ram, noOfvm) => {
       break;
 
     case 32:
-      if (image == "windows") {
+      if (image === "windows") {
         perHrVmPrice = 1.4;
       } else {
         perHrVmPrice = 0.42;
@@ -60,7 +58,6 @@ export const gcPayload = (image, storage, ram, noOfvm) => {
   let storagePrice = parseFloat(perMonthStoragePrice) * parseFloat(storage);
   let totalStoragePrice = parseFloat(storagePrice) * parseInt(noOfvm);
 
-
   let noOfHr = parseInt(days) * 24;
   let vmPerMonthPrice = parseFloat(perHrVmPrice) * parseInt(noOfHr);
   console.log(
@@ -75,7 +72,7 @@ export const gcPayload = (image, storage, ram, noOfvm) => {
   let totalVMMonthPrice = parseFloat(vmPerMonthPrice) * parseInt(noOfvm);
   return {
     totalStoragePrice: totalStoragePrice.toFixed(2),
-    vmPerMonthPrice: totalVMMonthPrice.toFixed(2),
+    vmPerMonthPrice: perHrVmPrice,
     //   totalCost: totalCost.toFixed(2),
   };
 };

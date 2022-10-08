@@ -53,6 +53,7 @@ import ShowVMDetails from "./container/google_cloud/ShowVMDetails";
 import AssignUserToVM from "./container/google_cloud/AssignUserToVM";
 import ShowVm from "./container/google_cloud/ShowVm";
 import MainHomePage from "./container/home/MainHomePage";
+import ShowPricingChart from "./container/admin/ShowPricingChart";
 
 function App() {
   if (localStorage.getItem("token")) {
@@ -71,6 +72,8 @@ function App() {
           caseSensitive={false}
           element={<MainHomePage />}
         />
+
+        <Route path={"/vm/:name"} caseSensitive={false} element={<ShowVm />} />
 
         <Route
           path={"/my-trainings"}
@@ -94,6 +97,11 @@ function App() {
             caseSensitive={false}
             element={<UserDashboard />}
           />
+          <Route
+            path={"/vm/:name"}
+            caseSensitive={false}
+            element={<ShowVm />}
+          />
         </Route>
 
         {/*Provider */}
@@ -111,6 +119,11 @@ function App() {
             path={"/lpu-home"}
             caseSensitive={false}
             element={<ProviderUserDashboard />}
+          />
+          <Route
+            path={"/vm/:name"}
+            caseSensitive={false}
+            element={<ShowVm />}
           />
         </Route>
 
@@ -140,6 +153,11 @@ function App() {
             caseSensitive={false}
             element={<OrgUserDashboard />}
           />
+          <Route
+            path={"/vm/:name"}
+            caseSensitive={false}
+            element={<ShowVm />}
+          />
         </Route>
 
         {/*Admin Routes */}
@@ -148,6 +166,11 @@ function App() {
             path={"/admin/home"}
             caseSensitive={false}
             element={<HomePage />}
+          />
+          <Route
+            path={"/admin/vm-pricing-chart"}
+            caseSensitive={false}
+            element={<ShowPricingChart />}
           />
 
           <Route

@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import AppBody from "../components/AppBody";
 import {
   deleteVM,
   getVmList,
   resetStatus,
+  startStopMultipleVm,
   updateStartStopVm,
 } from "../../actions/google_cloud/gc_action";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,9 +27,24 @@ const ShowVMList = () => {
   const handelDeleteClick = (name) => {
     dispatch(deleteVM({ name: name }));
   };
-  
+
   const handelInfoClick = (name) => {
     navigate("/vm-details/" + name);
+  };
+
+  const [checkedVMNames, setCheckedVMNames] = useState([]);
+  const handelCheckedValue = (e) => {
+    var updatedList = [...checkedVMNames];
+    if (e.target.checked) {
+      updatedList = [...checkedVMNames, e.target.value];
+    } else {
+      updatedList.splice(checkedVMNames.indexOf(e.target.value), 1);
+    }
+    setCheckedVMNames(updatedList);
+  };
+
+  const startStopsVms = (action) => {
+     dispatch(startStopMultipleVm({ action: action, names: checkedVMNames }));
   };
 
   return (
@@ -52,6 +68,24 @@ const ShowVMList = () => {
                   className="approve_btn btn-common mg-l float-right"
                 />
               </Link>
+
+              <input
+                type="submit"
+                name="submit"
+                value="Start"
+                readOnly={true}
+                className="approve_btn btn-common mg-l float-right"
+                onClick={() => startStopsVms("start")}
+              />
+
+              <input
+                type="submit"
+                name="submit"
+                value="Stop"
+                readOnly={true}
+                className="approve_btn btn-common mg-l float-right"
+                onClick={() => startStopsVms("stop")}
+              />
             </div>
 
             {state.is_update && (
@@ -72,6 +106,7 @@ const ShowVMList = () => {
                   <thead>
                     <tr>
                       <th>Sr.No</th>
+                      <th>Check</th>
                       <th>VM Name</th>
                       <th>Image</th>
                       <th>Zone</th>
@@ -87,6 +122,13 @@ const ShowVMList = () => {
                       state.list.map((li, i) => (
                         <tr key={i}>
                           <td>{i + 1}</td>
+                          <td>
+                            <input
+                              type="checkbox"
+                              value={li.vm_name}
+                              onChange={(e) => handelCheckedValue(e)}
+                            />
+                          </td>
                           <td>{li.vm_name}</td>
                           <td>{li.image}</td>
                           <td>{li.zone}</td>
@@ -98,7 +140,7 @@ const ShowVMList = () => {
                             {li.status === 1 && "Start"}
                             {li.status === 2 && "Stop"}
                           </td>
-                          
+
                           <td className="tblaction">
                             <input
                               type="button"
@@ -119,6 +161,12 @@ const ShowVMList = () => {
                               value="Details"
                               className="btn approve_btn btn-common mg-l"
                               onClick={() => handelInfoClick(li.vm_name)}
+                            />
+                            <input
+                              type="button"
+                              value="Start"
+                              className="btn approve_btn btn-common mg-l"
+                              onClick={() => navigate("/vm/" + li.vm_name)}
                             />
                           </td>
                         </tr>

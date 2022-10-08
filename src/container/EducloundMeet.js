@@ -122,10 +122,11 @@ function EducloundMeet() {
   const handelWindowClose = () => {
     setIsOpen(false);
     window.close();
+    navigate("/all-trainings");
     // dispatch(joinConferanceCheckCount({ is_start: true, slug: slug }));
     //setIsOpen(true);
   };
-
+ 
   return (
     <AppBody
       loading={false}

@@ -1,66 +1,77 @@
 import axios from "axios";
-import { APP_URL,getToken } from "../../../config/api";
+import { APP_URL } from "../../../config/api";
+import { errorMessage } from "../../errorHandle";
 
- export const errorMessage = (err) => {
-  switch (err.response.status) {
-    case 422:     
-      return { type: "PROVIDER_USER_ERROR", payload: err.response.data };
-    case 405:
-      return { type: "PROVIDER_USER_ERROR", payload: { other_error: "Method Not Allowed" } };
-    case 500:
-      return {
-        type: "PROVIDER_USER_ERROR",
-        payload: { other_error: "The given data was invalid"},
-      };
-    default:
-      return {  
-        type: "PROVIDER_USER_ERROR",
-        payload: { other_error: "Something went worng." },
-      };
-  }
+export const getUserWiseTraining = () => {
+  return (dispatch) => {
+    dispatch({
+      type: LP_USER.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/lpu/get-trainings`,
+      })
+      .then((res) => {
+        dispatch({
+          type: LP_USER.USER_WISE_TRAINING,
+          payload: res.data.list,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, LP_USER.ERROR));
+      });
+  };
 };
 
- export const getUserWiseTraining = () => {
-    return (dispatch) => {
-      dispatch({
-        type: "PRVIDER_USER_REQUEST",
+export const updateUserTrainingJoinStatus = (details) => {
+  return (dispatch) => {
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/lp/update-training-join-status`,
+        data: details,
+      })
+      .then((res) => {
+        dispatch({
+          type: LP_USER.UPDATE_TRAINING_JOIN_STATUS,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, LP_USER.ERROR));
       });
-      axios
-        .request({
-          method: "post",
-          url: `${APP_URL}/lpu/get-trainings`,          
-          })
-        .then((res) => {
-          dispatch({
-            type: "USER_WISE_TRAINING",
-            payload: res.data.list,
-          });
-        })
-        .catch((error) => {
-          dispatch({
-            type: "ERROR",
-            payload: error.response.data,
-          });
-        });
-    };
   };
+};
 
-  export const updateUserTrainingJoinStatus = (details) => {
-    return (dispatch) => {  
-      axios
-        .request({
-          method: "post",
-          url: `${APP_URL}/lp/update-training-join-status`,
-          data: details         
-        })
-        .then((res) => {
-          dispatch({
-            type: "UPDATE_TRAINING_JOIN_STATUS",
-            payload: res.data,
-          });
-        })
-        .catch((error) => {
-          dispatch(errorMessage(error));
+export const getLPUDashboarData = () => {
+  return (dispatch) => {
+    dispatch({
+      type: LP_USER.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/lpu/dashboard-data`,
+      })
+      .then((res) => {
+        dispatch({
+          type: LP_USER.DASHBOARD_DATA,
+          payload: res.data,
         });
-    };
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, LP_USER.ERROR));
+      });
   };
+};
+
+const TAG = "LP_";
+
+export const LP_USER = {
+  ERROR: TAG + "ERROR",
+  REQUEST: TAG + "REQUEST",
+  UPDATE_TRAINING_JOIN_STATUS: TAG + "UPDATE_TRAINING_JOIN_STATUS",
+  USER_WISE_TRAINING: TAG + "USER_WISE_TRAINING",
+  DASHBOARD_DATA: TAG + "DASHBOARD_DATA",
+};

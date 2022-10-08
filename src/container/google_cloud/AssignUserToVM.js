@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import AppBody from "../components/AppBody";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,7 +6,11 @@ import { Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import templte from "../../templete/template.xlsx";
-import { getCountOfVirtualMachine, importVMTrainingUser } from "../../actions/google_cloud/gc_action";
+import {
+  getCountOfVirtualMachine,
+  addVMTrainingUser,
+  importVMTrainingUser,
+} from "../../actions/google_cloud/gc_action";
 const AssignUserToVM = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,25 +21,26 @@ const AssignUserToVM = () => {
   } = useForm();
 
   useEffect(() => {
-    dispatch(getCountOfVirtualMachine());  
-   },[]); 
+    dispatch(getCountOfVirtualMachine());
+  }, []);
 
   const state = useSelector((state) => state.gcReducer);
   const [user, setUser] = useState({
     first_name: "",
     last_name: "",
     mobile_no: "",
-    email: "", 
+    email: "",
     file: [],
     is_file: false,
   });
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(importVMTrainingUser(user));
+    dispatch(addVMTrainingUser(user));
   };
 
   if (state.is_done) {
-    navigate("/vm-list");  
+    navigate("/vm-list");
   }
 
   const onSubmit = (data) => {
@@ -54,8 +59,6 @@ const AssignUserToVM = () => {
   if (state.errors.length > 0 && user.is_file && !show) {
     setShow(true);
   }
-
-   console.log("count" + state.vm_count);
 
   return (
     <AppBody
@@ -107,17 +110,18 @@ const AssignUserToVM = () => {
                 >
                   <div class="alert alert-warning">
                     <strong>
-                       {state.vm_count} Virtual Machines are available so you can Add only in Excel Sheet only {state.vm_count} Users. 
-                    </strong>                  
+                      {state.vm_count} Virtual Machines are available so you can
+                      Add only in Excel Sheet only {state.vm_count} Users.
+                    </strong>
                   </div>
 
                   <div class="alert alert-success">
-                  <strong>
-                    You can add singal user at time, Other wise you can upload
-                    excel sheet. First download template add user data. 
-                  </strong>
-                  (column name must be firstname,lastname,mobileno,email)
-                </div>
+                    <strong>
+                      You can add singal user at time, Other wise you can upload
+                      excel sheet. First download template add user data.
+                    </strong>
+                    (column name must be firstname,lastname,mobileno,email)
+                  </div>
 
                   <h1 className="text-white">Import Excel </h1>
                   <div className={"row"}>
@@ -148,6 +152,7 @@ const AssignUserToVM = () => {
                         type="submit"
                         name="submit"
                         value="Upload"
+                        readOnly={true}
                         className="btn-common px-5 mt-30"
                       />
                       <a
