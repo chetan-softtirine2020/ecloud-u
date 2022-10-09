@@ -59,7 +59,13 @@ const AllCoures = () => {
 
                           {/* <td>{li.description}</td>*/}
                           <td className="tblaction">
-                            <input
+                          <a className="line-height-36 custom-icon mr-2" title="Start" onClick={() => handelStartCourse(li.slug)}>
+                            <i className="feather-play-circle"></i>
+                          </a>
+                          <a className="line-height-36 custom-icon mr-2" title="Edit" onClick={() => handelClick(li.slug)}>
+                            <i className="feather-edit"></i>
+                          </a>
+                            {/* <input
                               type="button"
                               value="Start"
                               className="btn approve_btn btn-common"
@@ -70,7 +76,7 @@ const AllCoures = () => {
                               value="Edit"
                               className="btn approve_btn btn-common"
                               onClick={() => handelClick(li.slug)}
-                            />
+                            /> */}
                           </td>
                         </tr>
                       ))}

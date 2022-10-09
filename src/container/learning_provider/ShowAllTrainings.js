@@ -95,19 +95,39 @@ const ShowAllTrainings = () => {
                           </td>
                           {/* <td>{li.description}</td>*/}
                           <td className="tblaction">
-                            <input
+                            <a className="line-height-36 custom-icon mr-2" title="Add" onClick={() => handelClick(li.slug)}>
+                              <i className="feather-plus-circle"></i>
+                            </a>
+
+                            {/* <input
                               type="button"
                               value="Add User"
                               className="btn approve_btn btn-common"
                               onClick={() => handelClick(li.slug)}
-                            />
-                            <input
+                            /> */}
+                            		<a className="line-height-36 custom-icon mr-2" title="Users" onClick={() => handelUserClick(li.slug)}>
+                                  <i className="feather-users"></i>
+                                </a>
+                            {/* <input
                               type="button"
                               value="Users"
                               className="btn approve_btn mg-l  btn-common"
                               onClick={() => handelUserClick(li.slug)}
-                            />
-                            <input
+                            /> */}
+                            
+
+                            <a className="line-height-36 custom-icon mr-2" 
+                            title={
+                              li.is_public === 0
+                                ? "Make Public"
+                                : "Stop Public"
+                            }
+                            onClick={() => handelPublicClick(li.id)}>
+                                  <i className="feather-globe"></i>
+                                </a>
+
+
+                            {/* <input
                               type="button"
                               value={
                                 li.is_public === 0
@@ -116,23 +136,35 @@ const ShowAllTrainings = () => {
                               }
                               className="btn approve_btn mg-l btn-common"
                               onClick={() => handelPublicClick(li.id)}
-                            />
+                            /> */}
 
-                            <input
+                          <a className="line-height-36 custom-icon mr-2" value={"Start"}
+                              readOnly={li.status === 1 ? true : false}
+                              title="Start"
+                              onClick={() => checkCallFun(li.slug)}>
+                            <i className="feather-play-circle"></i>
+                          </a>
+
+                            {/* <input
                               type="button"
                               value={"Start"}
                               readOnly={li.status === 1 ? true : false}
                               className="btn approve_btn mg-l btn-common"
                               onClick={() => checkCallFun(li.slug)}
-                            />
+                            /> */}
 
+
+                            
                             {li.status === 1 && (
-                              <input
-                                type="button"
-                                value={"Delete"}
-                                className="btn approve_btn mg-l btn-common"
-                                onClick={() => getDeleteTraining(li.slug)}
-                              />
+                              <a className="line-height-36 custom-icon" title="Delete" onClick={() => getDeleteTraining(li.slug)}>
+                              <i className="feather-trash-2"></i>
+                            </a>
+                              // <input
+                              //   type="button"
+                              //   value={"Delete"}
+                              //   className="btn approve_btn mg-l btn-common"
+                              //   onClick={() => getDeleteTraining(li.slug)}
+                              // />
                             )}
 
                             {/* <input

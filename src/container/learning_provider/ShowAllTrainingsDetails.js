@@ -56,12 +56,15 @@ const ShowAllTrainingsDetails = () => {
                             </td>
                             {/* <td>{li.description}</td>*/}
                             <td>
-                              <input
+                            <a className="line-height-36 custom-icon" title="View"  onClick={() => handelUserClick(li.slug)}>
+                              <i className="feather-eye "></i>
+                            </a>
+                              {/* <input
                                 type="button"
                                 value="View"
                                 className="btn approve_btn btn-common mg-l"
                                 onClick={() => handelUserClick(li.slug)}
-                              />
+                              /> */}
                             </td>
                           </tr>
                         ))}
