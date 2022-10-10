@@ -44,6 +44,17 @@ const NavBar = () => {
                       Organization Register
                     </Link>
                   </li>
+                  <li className="nav-item dropdown"><a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Services</a>
+                            <ul className="dropdown-menu">
+                                <li className="nav-item"><a className="nav-link" href="#">Training</a></li>
+                                <li className="nav-item"><a className="nav-link" href="#">Cloud Labs</a></li>
+                                <li className="nav-item"><a className="nav-link" href="#">HR Solutions</a></li>
+                                <li className="nav-item"><a className="nav-link" href="#">Vendor Management</a></li>
+                                <li className="nav-item"><a className="nav-link" href="#">Project Management</a></li>
+                                <li className="nav-item"><a className="nav-link" href="#">GLocal Audit Compliance</a></li>
+                            </ul>
+                  </li>
+
                   <li className="d-block d-sm-none nav-item">
                   <Link to={"/login"} className="header-btn">
                     Login

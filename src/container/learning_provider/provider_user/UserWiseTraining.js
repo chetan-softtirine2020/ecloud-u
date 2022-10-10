@@ -46,13 +46,17 @@ const UserWiseTraining = () => {
                         <td>{li.date}</td>                      
                         <td>{li.join}</td>
                         <td>
-                          <input
+                          
+                          <a className="line-height-36 custom-icon" title="Start"  target="_blank" onClick={() => handelStartMeetingClick(li.slug)}>
+                            <i className="feather-users"></i>
+                          </a>
+                          {/* <input
                             type="button"
                             value="Start"                            
                             className="btn approve_btn btn-common mg-l"
                             target="_blank"                         
                             onClick={() => handelStartMeetingClick(li.slug)}
-                          />                       
+                          />                        */}
                         </td>
                       </tr>
                     ))}                    

@@ -60,7 +60,21 @@ const ShowVMList = () => {
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
                 Virtul Machines
               </h4>
+              <div className="col text-right pr-0">
+
               <Link to={"/create-vm"}>
+                <a className="line-height-36 custom-icon mr-2" title="Create VM">
+                <i className="feather-plus-circle"></i>
+                </a>
+              </Link>
+              <a className="line-height-36 custom-icon mr-2" title="Start">
+                  <i className="feather-play-circle"></i>
+                </a>
+              <a className="line-height-36 custom-icon mr" title="Stop">
+                  <i className="feather-stop-circle"></i>
+                </a>
+                
+              {/* <Link to={"/create-vm"}>
                 <input
                   type="submit"
                   name="submit"
@@ -85,7 +99,9 @@ const ShowVMList = () => {
                 readOnly={true}
                 className="approve_btn btn-common mg-l float-right"
                 onClick={() => startStopsVms("stop")}
-              />
+              /> */}
+              </div>
+              
             </div>
 
             {state.is_update && (
@@ -142,32 +158,45 @@ const ShowVMList = () => {
                           </td>
 
                           <td className="tblaction">
-                            <input
+                          <a className="line-height-36 custom-icon mr-2" title="Stop" value={li.status === 1 ? "Stop" : "Start"}
+                          onClick={() =>
+                            handelStartStopClick(li.vm_name, li.status)
+                          }
+                          >
+                            <i className="feather-stop-circle"></i>
+                          </a>
+                            {/* <input
                               type="button"
                               value={li.status === 1 ? "Stop" : "Start"}
                               className="btn approve_btn btn-common mg-l"
                               onClick={() =>
                                 handelStartStopClick(li.vm_name, li.status)
                               }
-                            />
-                            <input
+                            /> */}
+                            <a className="line-height-36 custom-icon mr-2" title="Delete" onClick={() => handelDeleteClick(li.vm_name)}>
+                              <i className="feather-trash-2"></i>
+                            </a>
+
+                            {/* <input
                               type="button"
                               value="Delete"
                               className="btn approve_btn btn-common mg-l"
                               onClick={() => handelDeleteClick(li.vm_name)}
-                            />
-                            <input
+                            /> */}
+
+                            <a className="line-height-36 custom-icon mr-2" title="Details" onClick={() => handelInfoClick(li.vm_name)}>
+                              <i className="feather-info"></i>
+                            </a>
+                            {/* <input
                               type="button"
                               value="Details"
                               className="btn approve_btn btn-common mg-l"
                               onClick={() => handelInfoClick(li.vm_name)}
-                            />
-                            <input
-                              type="button"
-                              value="Start"
-                              className="btn approve_btn btn-common mg-l"
-                              onClick={() => navigate("/vm/" + li.vm_name)}
-                            />
+                            /> */}
+
+                            <a className="line-height-36 custom-icon" title="Start" onClick={() => navigate("/vm/" + li.vm_name)}>
+                              <i className="feather-play-circle"></i>
+                            </a>
                           </td>
                         </tr>
                       ))}
