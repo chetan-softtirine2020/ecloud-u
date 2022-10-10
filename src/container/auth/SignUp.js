@@ -5,6 +5,7 @@ import {
   getAllOrganizationRegister,
   resetErorrs,
   getLineOfBusiness,
+  sendOtp,
 } from "../../actions/auth_action";
 import { Navigate, Link } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
@@ -22,6 +23,7 @@ const SignUp = () => {
     user_type: 2,
     org_id: "",
     lob_id: "",
+    otp: "",
   });
 
   useEffect(() => {
@@ -50,10 +52,10 @@ const SignUp = () => {
   //   return <Navigate to={redirectUser()} />;
   // }
 
-  if (auth.is_done) {   
-      return <Navigate to={"/login"} />;
-     }
- const handelClick = () => {
+  if (auth.is_done) {
+    return <Navigate to={"/login"} />;
+  }
+  const handelClick = () => {
     setPopupShow(true);
   };
 
@@ -65,6 +67,11 @@ const SignUp = () => {
     setPopupShow(true);
     dispatch(getLineOfBusiness());
   }
+
+  const handelSendOtp = () => {
+    let mobile_no = user.mobile_no;
+    dispatch(sendOtp({ mobile_no: mobile_no }));
+  };
 
   return (
     <LoadingOverlay active={auth.loading} spinner text="Loading...">
@@ -81,13 +88,18 @@ const SignUp = () => {
                   <h2 className="fw-700 font-xl display2-md-size login_heading">
                     Register Account <br />
                   </h2>
-                 
+
                   {auth.isRegister && (
                     <div
                       class="alert alert-success alert-dismissible fade show"
                       role="alert"
-                     >
-                      <strong> {user.user_type==2 ?"Your account successfully register!":"Wait for account approval you will get mail."}</strong>
+                    >
+                      <strong>
+                        {" "}
+                        {user.user_type == 2
+                          ? "Your account successfully register!"
+                          : "Wait for account approval you will get mail."}
+                      </strong>
                       <button
                         type="button"
                         class="close"
@@ -258,6 +270,24 @@ const SignUp = () => {
                           setUser({ ...user, mobile_no: e.target.value })
                         }
                       />
+                      <input
+                        type="text"
+                        className="style2-input pl-5 form-control  font-xsss fw-600"
+                        placeholder="OTP"
+                        value={user.opt}
+                        required
+                        onChange={(e) =>
+                          setUser({ ...user, opt: e.target.value })
+                        }
+                      />
+                      <input
+                        type="button"
+                        value="Send OTP"
+                        title="Verify mobile number"
+                        className="btn approve_btn btn-common"
+                        onClick={() => handelSendOtp()}
+                      />
+
                       <span className="error-msg">
                         {auth.errors && auth.errors.mobile_no
                           ? auth.errors.mobile_no

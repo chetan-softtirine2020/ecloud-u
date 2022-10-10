@@ -18,17 +18,15 @@ const ShowVm = () => {
     let mouse;
     let keyboard;
     var display = document.getElementById("displayyy");
-    dispatch(updateStartStopVm({ action: "start", name: name, is_user: true }));
     let guac = new Guacamole.Client(
-      // new Guacamole.WebSocketTunnel(
-      //   "ws://34.93.116.53/ws/chat/robert-tillis/1000/460"
-      // )
       new Guacamole.WebSocketTunnel(
         `ws://34.93.116.53/ws/chat/${name}/1200/460`
       )
     );
     if (guac) {
       setGua(guac);
+      dispatch(updateStartStopVm({ action: "start", name: name, is_user: true }));
+      localStorage.setItem('vmobj',guac);
     }
     display.appendChild(guac.getDisplay().getElement());
     if (!mouse) mouse = new Guacamole.Mouse(guac.getDisplay().getElement());
