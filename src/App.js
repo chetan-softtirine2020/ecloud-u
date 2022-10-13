@@ -54,6 +54,9 @@ import AssignUserToVM from "./container/google_cloud/AssignUserToVM";
 import ShowVm from "./container/google_cloud/ShowVm";
 import MainHomePage from "./container/home/MainHomePage";
 import ShowPricingChart from "./container/admin/ShowPricingChart";
+import TestComponent from "./container/TestComponent";
+import MakeVmBillings from "./container/google_cloud/MakeVmBillings";
+import VMPaymentHistory from "./container/google_cloud/VMPaymentHistory";
 
 function App() {
   if (localStorage.getItem("token")) {
@@ -71,6 +74,11 @@ function App() {
           path={"/main-page"}
           caseSensitive={false}
           element={<MainHomePage />}
+        />
+        <Route
+          path={"/payment"}
+          caseSensitive={false}
+          element={<TestComponent />}
         />
 
         <Route path={"/vm/:name"} caseSensitive={false} element={<ShowVm />} />
@@ -223,6 +231,17 @@ function App() {
             />
           }
         >
+          <Route
+            path={"/cloud-payment"}
+            caseSensitive={false}
+            element={<MakeVmBillings />}
+          />
+          <Route
+            path={"/vm-payments-history"}
+            caseSensitive={false}
+            element={<VMPaymentHistory />}
+          />
+
           <Route
             path={"/create-training"}
             caseSensitive={false}

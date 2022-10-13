@@ -12,7 +12,7 @@ const initState = {
   isRegister: false,
   lob: [],
   isAddLob: false,
-  current_opt: "",
+  otp: "",
 };
 
 const authReducer = (state = initState, { type, payload }) => {
@@ -143,7 +143,7 @@ const authReducer = (state = initState, { type, payload }) => {
         ...state,
         loading: false,
         errors: [],
-        current_opt: payload,
+        otp: payload.otp,
       };
 
     default:

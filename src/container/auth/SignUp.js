@@ -23,7 +23,7 @@ const SignUp = () => {
     user_type: 2,
     org_id: "",
     lob_id: "",
-    otp: "",
+    enterdOtp: "",
   });
 
   useEffect(() => {
@@ -32,10 +32,20 @@ const SignUp = () => {
     dispatch(resetErorrs());
   }, []);
   const [show, setPopupShow] = useState(false);
+  const [otp, setCurrentOtp] = useState("");
+  if (otp === "" && auth.otp) {
+    setCurrentOtp(auth.otp);
+  }
 
   const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (otp !== user.enterdOtp) {
+      alert("Incorrect OTP");
+      return false;
+    }
+
     dispatch(signUp(user));
     // setUser({
     //   first_name: "",
@@ -68,10 +78,37 @@ const SignUp = () => {
     dispatch(getLineOfBusiness());
   }
 
+  //const [currentOtp, setCurrentOtp] = useState('');
+
   const handelSendOtp = () => {
     let mobile_no = user.mobile_no;
     dispatch(sendOtp({ mobile_no: mobile_no }));
   };
+
+  const verifyMobileOtp = () => {
+    if (otp !== user.enterdOtp) {
+      alert("Incorrect OTP");
+    }
+  };
+
+  const [chartData, setChartData] = ({
+    options: {
+      chart: {
+        id: "apexchart-example",
+      },
+      xaxis: {
+        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+      },
+    },
+    series: [
+      {
+        name: "series-1",
+        data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+      },
+    ],
+  });
+
+ 
 
   return (
     <LoadingOverlay active={auth.loading} spinner text="Loading...">
@@ -277,17 +314,26 @@ const SignUp = () => {
                         value={user.opt}
                         required
                         onChange={(e) =>
-                          setUser({ ...user, opt: e.target.value })
+                          setUser({ ...user, enterdOtp: e.target.value })
                         }
                       />
-                      <input
-                        type="button"
-                        value="Send OTP"
-                        title="Verify mobile number"
-                        className="btn approve_btn btn-common"
-                        onClick={() => handelSendOtp()}
-                      />
-
+                      {!otp ? (
+                        <input
+                          type="button"
+                          value="Send OTP"
+                          title="Send mobile number"
+                          className="btn approve_btn btn-common"
+                          onClick={() => handelSendOtp()}
+                        />
+                      ) : (
+                        <input
+                          type="button"
+                          value="Verify OTP"
+                          title="Verify mobile number"
+                          className="btn approve_btn btn-common"
+                          onClick={() => verifyMobileOtp()}
+                        />
+                      )}
                       <span className="error-msg">
                         {auth.errors && auth.errors.mobile_no
                           ? auth.errors.mobile_no

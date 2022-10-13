@@ -44,6 +44,26 @@
    background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28) !important;
 }
 
+/* #displayyy > canvas{
+   z-index: 9 !important;
+   width: 100% !important;
+} */
+
+/* #displayyy > canvas ~ canvas{
+  z-index: inherit !important;
+  width: 100% !important;
+} */
+#displayyy > div > div > div > canvas:first-child{
+  z-index: 1 !important;
+  width: 100% !important;
+}
+
+#displayyy > div > div > div > canvas:first-child + div{
+  z-index: 1 !important;
+  width: 100% !important;
+}
+
+
 
 .PdfReader_pageInfo__z06UU button{
  

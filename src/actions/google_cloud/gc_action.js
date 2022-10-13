@@ -320,6 +320,73 @@ export const updateVMPricing = () => {
   };
 };
 
+export const vmPaymentData = () => {
+  return (dispatch) => {
+    dispatch({
+      type: GOOGLECLOUD.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/vm-payment-data`,
+      })
+      .then((res) => {
+        dispatch({
+          type: GOOGLECLOUD.VM_PAYMENT_DATA,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, GOOGLECLOUD.ERROR));
+      });
+  };
+};
+
+export const saveVMPaymentData = (cred) => {
+  return (dispatch) => {
+    dispatch({
+      type: GOOGLECLOUD.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/save-vm-payment-data`,
+        data: cred,
+      })
+      .then((res) => {
+        dispatch({
+          type: GOOGLECLOUD.SAVE_VM_PAYMENT_DATA,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, GOOGLECLOUD.ERROR));
+      });
+  };
+};
+
+export const vmPaymentHirstory = () => {
+  return (dispatch) => {
+    dispatch({
+      type: GOOGLECLOUD.REQUEST,
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/vm-payments-history`,
+      })
+      .then((res) => {
+        dispatch({
+          type: GOOGLECLOUD.VM_PAYMENT_HOSTROY,
+          payload: res.data.list,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, GOOGLECLOUD.ERROR));
+      });
+  };
+};
+
 export const resetStatus = () => {
   return (dispatch) => {
     dispatch({
@@ -347,4 +414,7 @@ export const GOOGLECLOUD = {
   VM_PRICING: TAG + "VM_PRICING",
   UPDATE_VM_PRICING: TAG + "UPDATE_VM_PRICING",
   VM_ASSING_USER: TAG + "VM_ASSING_USER",
+  VM_PAYMENT_DATA: TAG + "VM_PAYMENT_DATA",
+  SAVE_VM_PAYMENT_DATA: TAG + "SAVE_VM_PAYMENT_DATA",
+  VM_PAYMENT_HOSTROY: TAG + "VM_PAYMENT_HOSTROY",
 };

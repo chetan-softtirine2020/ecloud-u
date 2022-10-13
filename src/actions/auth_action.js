@@ -300,6 +300,7 @@ export const sendOtp = (cred) => {
         data: cred,
       })
       .then((res) => {
+        console.log(res.data);
         dispatch({
           type: "SEND_OTP",
           payload: res.data,
@@ -310,3 +311,48 @@ export const sendOtp = (cred) => {
       });
   };
 };
+export const verifyMobileOtp = (cred) => {
+  return (dispatch) => {
+    dispatch({
+      type: "AUTH_REQUEST",
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/otp`,
+        data: cred,
+      })
+      .then((res) => {
+        dispatch({
+          type: "VERIFY_MOBILE_OTP",
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error));
+      });
+  };
+};
+
+// export const verifyMobileOtp = (cred) => {
+//   return (dispatch) => {
+//     dispatch({
+//       type: "AUTH_REQUEST",
+//     });
+//     axios
+//       .request({
+//         method: "post",
+//         url: `${APP_URL}/otp`,
+//         data: cred,
+//       })
+//       .then((res) => {
+//         dispatch({
+//           type: "VERIFY_MOBILE_OTP",
+//           payload: res.data,
+//         });
+//       })
+//       .catch((error) => {
+//         dispatch(errorMessage(error));
+//       });
+//   };
+// };
