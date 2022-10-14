@@ -33,8 +33,18 @@ const AllCoures = () => {
                 <i className="ti-arrow-left font-sm text-white"></i>
               </Link>
               <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                All Courese
+                All Courese  
               </h4>
+              <div className="col text-right pr-0">
+              <Link to={"/create-course"}>
+                <a
+                  className="line-height-36 custom-icon mr-2"
+                  title="Add Topic/Modules"
+                >
+                  <i className="feather-plus-circle"></i>
+                </a>
+              </Link>
+            </div>
             </div>
             <div className="card-body p-4 w-100 border-0 ">
               <div className="table-responsive">

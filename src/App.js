@@ -57,12 +57,11 @@ import ShowPricingChart from "./container/admin/ShowPricingChart";
 import TestComponent from "./container/TestComponent";
 import MakeVmBillings from "./container/google_cloud/MakeVmBillings";
 import VMPaymentHistory from "./container/google_cloud/VMPaymentHistory";
+import CoursesForUser from "./container/courses/CoursesForUser";
 
 function App() {
   if (localStorage.getItem("token")) {
     const token = getToken();
-    console.log("Totk" + token);
-    //.substring(1, getToken().length - 1);
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   }
   return (
@@ -71,14 +70,15 @@ function App() {
         {/*Normal User */}
 
         <Route
-          path={"/main-page"}
-          caseSensitive={false}
-          element={<MainHomePage />}
-        />
-        <Route
           path={"/payment"}
           caseSensitive={false}
           element={<TestComponent />}
+        />
+        
+        <Route
+          path={"/course-list"}
+          caseSensitive={false}
+          element={<CoursesForUser />}
         />
 
         <Route path={"/vm/:name"} caseSensitive={false} element={<ShowVm />} />
@@ -353,7 +353,12 @@ function App() {
         />
 
         {/*Public Routes */}
-        <Route path="/" caseSensitive={false} element={<LandingPage />} />
+        <Route
+          path="/training-home"
+          caseSensitive={false}
+          element={<LandingPage />}
+        />
+        <Route path={"/"} caseSensitive={false} element={<MainHomePage />} />
         <Route path={"/login"} caseSensitive={false} element={<Login />} />
         <Route path={"/register"} caseSensitive={false} element={<SignUp />} />
         <Route

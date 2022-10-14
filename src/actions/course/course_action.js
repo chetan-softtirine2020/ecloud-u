@@ -135,9 +135,6 @@ export const updateAllCourse = (prm) => {
   };
 };
 
-
-
-
 export const getPlayCourseData = (prm) => {
   return (dispatch) => {
     dispatch({
@@ -204,6 +201,45 @@ export const getCureseModuleTopicWiseList = (prm) => {
   };
 };
 
+export const deleteTopicData = (prm) => {
+  return (dispatch) => {
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/delete-topic`,
+        data: prm,
+      })
+      .then((res) => {
+        dispatch({
+          type: COURSE.DELETE_TOPIC,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, COURSE.ERROR));
+      });
+  };
+};
+
+export const getCourseForUser = () => {
+  return (dispatch) => {
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/course-list`,
+      })
+      .then((res) => {
+        dispatch({
+          type: COURSE.GET_COURSE_MODULE_TOPIC_LIST_USER,
+          payload: res.data.list,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error, COURSE.ERROR));
+      });
+  };
+};
+
 const TAG = "COURSE_";
 
 export const COURSE = {
@@ -218,4 +254,6 @@ export const COURSE = {
   LIST_MODULE: TAG + "LIST_MODULE",
   PLAY_COURSE: TAG + "PLAY_DATA",
   GET_COURSE_MODULE_TOPIC_LIST: TAG + "GET_COURSE_MODULE_TOPIC_LIST",
+  DELETE_TOPIC: TAG + "DELETE_TOPIC",
+  GET_COURSE_MODULE_TOPIC_LIST_USER: TAG + "GET_COURSE_MODULE_TOPIC_LIST_USER",
 };

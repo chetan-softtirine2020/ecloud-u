@@ -24,6 +24,7 @@ const SignUp = () => {
     org_id: "",
     lob_id: "",
     enterdOtp: "",
+    isVerified: false,
   });
 
   useEffect(() => {
@@ -34,19 +35,19 @@ const SignUp = () => {
   const [show, setPopupShow] = useState(false);
   const [otp, setCurrentOtp] = useState("");
   if (otp === "" && auth.otp) {
-    setCurrentOtp(auth.otp);
+    setCurrentOtp(window.atob(auth.otp));
   }
 
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (otp !== user.enterdOtp) {
-      alert("Incorrect OTP");
+    if (user.isVerified===false) {
+      alert("Verify OTP");
       return false;
+    } else {
+      dispatch(signUp(user));
     }
-
-    dispatch(signUp(user));
     // setUser({
     //   first_name: "",
     //   last_name: "",
@@ -78,37 +79,18 @@ const SignUp = () => {
     dispatch(getLineOfBusiness());
   }
 
-  //const [currentOtp, setCurrentOtp] = useState('');
-
   const handelSendOtp = () => {
     let mobile_no = user.mobile_no;
     dispatch(sendOtp({ mobile_no: mobile_no }));
   };
 
   const verifyMobileOtp = () => {
-    if (otp !== user.enterdOtp) {
+    if (otp != user.enterdOtp) {
       alert("Incorrect OTP");
+    } else {
+      setUser({ ...user, isVerified: true });
     }
   };
-
-  const [chartData, setChartData] = ({
-    options: {
-      chart: {
-        id: "apexchart-example",
-      },
-      xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
-      },
-    },
-    series: [
-      {
-        name: "series-1",
-        data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
-      },
-    ],
-  });
-
- 
 
   return (
     <LoadingOverlay active={auth.loading} spinner text="Loading...">
@@ -145,6 +127,12 @@ const SignUp = () => {
                       >
                         <span aria-hidden="true">&times;</span>
                       </button>
+                    </div>
+                  )}
+
+                  {user.isVerified && (
+                    <div className="alert alert-success" role="alert">
+                      opt Verify successfully!
                     </div>
                   )}
 
@@ -312,6 +300,7 @@ const SignUp = () => {
                         className="style2-input pl-5 form-control  font-xsss fw-600"
                         placeholder="OTP"
                         value={user.opt}
+                        readOnly={user.isVerified ? true : false}
                         required
                         onChange={(e) =>
                           setUser({ ...user, enterdOtp: e.target.value })

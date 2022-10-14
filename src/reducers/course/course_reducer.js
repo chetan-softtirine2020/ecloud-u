@@ -12,6 +12,7 @@ export const initState = {
   playCourseData: {},
   list: [],
   isAllCourseUpdated: false,
+  userCourseList: [],
 };
 
 const courseReducer = (state = initState, { type, payload }) => {
@@ -114,6 +115,23 @@ const courseReducer = (state = initState, { type, payload }) => {
         errors: [],
         list: payload,
       };
+
+    case COURSE.DELETE_TOPIC:
+      return {
+        ...state,
+        loading: false,
+        is_done: true,
+        errors: [],
+      };
+    case COURSE.GET_COURSE_MODULE_TOPIC_LIST_USER:
+      return {
+        ...state,
+        loading: false,
+        is_done: false,
+        errors: [],
+        userCourseList: payload,
+      };
+
     default:
       return state;
   }
