@@ -58,12 +58,15 @@ import TestComponent from "./container/TestComponent";
 import MakeVmBillings from "./container/google_cloud/MakeVmBillings";
 import VMPaymentHistory from "./container/google_cloud/VMPaymentHistory";
 import CoursesForUser from "./container/courses/CoursesForUser";
+import { disableInspectElement } from "./config/disableInsepct";
 
 function App() {
   if (localStorage.getItem("token")) {
     const token = getToken();
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   }
+   //disableInspectElement();
+
   return (
     <Router>
       <Routes>
