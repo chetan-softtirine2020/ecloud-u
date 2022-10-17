@@ -54,23 +54,34 @@ import AssignUserToVM from "./container/google_cloud/AssignUserToVM";
 import ShowVm from "./container/google_cloud/ShowVm";
 import MainHomePage from "./container/home/MainHomePage";
 import ShowPricingChart from "./container/admin/ShowPricingChart";
+import TestComponent from "./container/TestComponent";
+import MakeVmBillings from "./container/google_cloud/MakeVmBillings";
+import VMPaymentHistory from "./container/google_cloud/VMPaymentHistory";
+import CoursesForUser from "./container/courses/CoursesForUser";
+import { disableInspectElement } from "./config/disableInsepct";
 
 function App() {
   if (localStorage.getItem("token")) {
     const token = getToken();
-    console.log("Totk" + token);
-    //.substring(1, getToken().length - 1);
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   }
+   //disableInspectElement();
+
   return (
     <Router>
       <Routes>
         {/*Normal User */}
 
         <Route
-          path={"/main-page"}
+          path={"/payment"}
           caseSensitive={false}
-          element={<MainHomePage />}
+          element={<TestComponent />}
+        />
+        
+        <Route
+          path={"/course-list"}
+          caseSensitive={false}
+          element={<CoursesForUser />}
         />
 
         <Route path={"/vm/:name"} caseSensitive={false} element={<ShowVm />} />
@@ -224,6 +235,17 @@ function App() {
           }
         >
           <Route
+            path={"/cloud-payment"}
+            caseSensitive={false}
+            element={<MakeVmBillings />}
+          />
+          <Route
+            path={"/vm-payments-history"}
+            caseSensitive={false}
+            element={<VMPaymentHistory />}
+          />
+
+          <Route
             path={"/create-training"}
             caseSensitive={false}
             element={<CreateTrainingPage />}
@@ -334,7 +356,12 @@ function App() {
         />
 
         {/*Public Routes */}
-        <Route path="/" caseSensitive={false} element={<LandingPage />} />
+        <Route
+          path="/training-home"
+          caseSensitive={false}
+          element={<LandingPage />}
+        />
+        <Route path={"/"} caseSensitive={false} element={<MainHomePage />} />
         <Route path={"/login"} caseSensitive={false} element={<Login />} />
         <Route path={"/register"} caseSensitive={false} element={<SignUp />} />
         <Route

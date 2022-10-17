@@ -32,8 +32,7 @@ const CreateTrainingPage = (fn) => {
  
 
   return (
-  
-      <AppBody
+     <AppBody
         loading={state.loading}
         content={
           <div className="middle-sidebar-left">
@@ -115,11 +114,12 @@ const CreateTrainingPage = (fn) => {
 
                       <div className="col-lg-12 my-3">
                         <input
-                          type="submit"
+                          type="button"
                           name="submit"
                           value="Submit"
                           className="btn-common px-5"
                         />
+                       
                       </div>
                     </div>
                   </form>
@@ -128,7 +128,8 @@ const CreateTrainingPage = (fn) => {
             </div>
           </div>
         }
-      />  
+      /> 
+      
   );
 };
 

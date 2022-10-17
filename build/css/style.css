@@ -44,6 +44,26 @@
    background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28) !important;
 }
 
+/* #displayyy > canvas{
+   z-index: 9 !important;
+   width: 100% !important;
+} */
+
+/* #displayyy > canvas ~ canvas{
+  z-index: inherit !important;
+  width: 100% !important;
+} */
+#displayyy > div > div > div > canvas:first-child{
+  z-index: 1 !important;
+  width: 100% !important;
+}
+
+#displayyy > div > div > div > canvas:first-child + div{
+  z-index: 1 !important;
+  width: 100% !important;
+}
+
+
 
 .PdfReader_pageInfo__z06UU button{
  
@@ -14019,6 +14039,23 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
   display: inline-block;
   float: left;
 }
+
+.main-home-page .header-wrapper .nav-menu li ul li {
+  padding: 0 15px;
+  display: block;
+  float: none;
+}
+
+
+.main-home-page .header-wrapper .nav-menu li ul li a {
+color:#000;
+}
+
+.main-home-page .header-wrapper .nav-menu li .dropdown-menu a {
+  padding: 5px 0px !important;
+  font-size: 14px;
+}
+
 @media only screen and (max-width: 992px) {
   .header-wrapper .nav-menu li {
     padding: 15px 0;
@@ -14034,8 +14071,8 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
 .header-wrapper .nav-menu li .dropdown-menu {
   position: absolute;
   display: block;
-  left: 20px;
-  top: 148%;
+  left: 15px;
+  top: 100%;
   border: 0;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08) !important;
   min-width: 13rem;
@@ -17315,6 +17352,264 @@ width: 100%;
   background-color: #373737;
   border: 1px solid #eee;
 }
+
+
+/* css for landng main page */
+.middel-container{
+  margin-top: 126px;
+}
+.middel-container .carousel {
+  height: 500px;
+  width: 100%;
+}
+.middel-container .carousel img {
+  width: 100%;
+  height: 500px;
+}
+.middel-container .carousel .carousel-caption {
+  top: 23%;
+}
+.middel-container .carousel .carousel-caption h3 {
+  font-size: 56px;
+  color: #fff;
+  font-weight: 700;
+}
+.middel-container .carousel .carousel-caption p{
+  padding: 10px;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.middel-container .carousel .carousel-indicators button {
+     padding: 2px 10px; 
+     margin: 6px;
+     background-color: #fff; 
+     border-radius: 3px; 
+     color: #fff; 
+     border: none; 
+     outline: none;
+}
+.middel-container .carousel .carousel-control-prev .visually-hidden,
+.middel-container .carousel .carousel-control-next .visually-hidden{
+  display: none;
+}
+.middel-container .carousel .carousel-caption .slide-btn{
+  padding: 10px 25px;
+  color: #fff;
+  border-radius: 20px;
+  background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28);
+    background-size: 300% 100%;
+}
+.middel-container .visiontxt{
+  color:#fff;
+  text-align: center;
+  padding: 40px;
+}
+.middel-container .visiontxt h3{
+  padding: 10px;
+  font-size: 24px;
+  color: #fe444f;
+  font-weight: 700;
+}
+.middel-container .visiontxt p{
+  padding: 10px 20%;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 400;
+}
+.middel-container .txt-practice h4{
+  padding: 20px;
+  font-size: 18px;
+  color: #fe444f;
+  font-weight: 700;
+}
+
+.middel-container .carousel-control-prev-icon, 
+.middel-container .carousel-control-next-icon {
+  width: 30px;
+  height: 30px;
+}
+
+
+.vision-container .visionheadTxt{
+  padding: 0px;
+  font-size: 32px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.vision-container .visionheadImg{
+  padding: 20px;
+  width:100px;
+}
+.vision-container .visionsubheadTxt{
+  padding: 0px 20px 40px;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 700;
+}
+.vision-container{
+  position: relative;
+}
+.vision-container .visionSkinImg{
+position: absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+width: 100%;
+}
+.vision-container .visionSkinImg img{
+  width: 100%;
+  height: 100%;
+  }
+
+  .main-home-page .rec-pagination{
+    display: none;
+  }
+
+  .main-home-page .titlepage {
+    text-align: center;
+    padding: 0px 0px 0px;
+}
+.main-home-page .titlepage h2 {
+  padding: 0;
+  font-weight: bold;
+  color: #ff413f;
+  line-height: 55px;
+  font-size: 32px;
+}
+
+
+.main-home-page .about-us h3{
+  padding: 0;
+  font-weight: bold;
+  color: #ff413f;
+  line-height: 55px;
+  font-size: 32px;
+}
+.main-home-page .about-us{
+  padding: 80px 40px;
+  background-color: #fff;
+}
+.main-home-page .about-us p{
+  padding: 0;
+  color: #000;
+  font-size: 22px;
+}
+.main-home-page .cource-section{
+  margin-bottom: 60px;
+}
+
+/* secure-section  */
+.secure-section{
+  background-color: #fff;
+  padding: 60px 40px;
+}
+
+.secure-section h3{
+  font-weight: bold;
+  color: #ff413f;
+  line-height: 55px;
+  font-size: 24px;
+}
+
+.secure-section h4{
+  font-weight: bold;
+  color: #ff413f;
+  line-height: 35px;
+  font-size: 20px;
+}
+.secure-section p{
+  color: #000;
+  font-size: 14px;
+}
+
+.main-carousal .rec-arrow-left,
+.main-carousal .rec-arrow-right{
+  position: absolute;
+  z-index: 999;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font-size: 42px;
+}
+
+.secure-section .icon{
+  font-size: 80px;
+}
+
+.main-carousal .rec-slider-container{
+  margin: 0;
+}
+
+.main-carousal .rec-arrow-left:hover,
+.main-carousal .rec-arrow-left:focus,
+.main-carousal .rec-arrow-right:hover,
+.main-carousal .rec-arrow-right:focus{
+  background: transparent;
+  border: none;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+.main-carousal .rec-arrow-left{
+  left: 20px;
+}
+
+.main-carousal .rec-arrow-right{
+  right: 20px;
+}
+
+.line-height-36{
+  line-height: 36px;
+}
+
+.custom-icon{
+  padding: 3px 5px;
+  background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28);
+  background-size: 300% 100%;
+  transition: all .6s ease-in-out;
+  border-radius: 4px;
+}
+
+.custom-icon i{
+  color: #fff;
+  font-size: 18px;
+  vertical-align: text-bottom;
+  display: inline-block;
+}
+
+.msl-input{
+  margin: 10px !important;
+}
+
+.msl-active-up{
+  background: #373737  !important;
+}
+.msl-active-up~.msl-options{
+  background: #4e4e4e !important;
+}
+
+.msl-option:focus, .msl-options .msl-option:hover {
+  background: #6a6a6a !important;
+}
+
+.msl-chip {
+  background: #7c7c7c!important;
+  margin-top: 12px !important;
+}
+
+.msl-option-active {
+  background: #8b8b8b !important;
+  color: #f6f6f7!important;
+}
+.msl-wrp {
+  width: 100% !important;
+}
+
+
 
 /* width */
 ::-webkit-scrollbar {

@@ -12,6 +12,7 @@ const initState = {
   isRegister: false,
   lob: [],
   isAddLob: false,
+  otp: "",
 };
 
 const authReducer = (state = initState, { type, payload }) => {
@@ -136,6 +137,13 @@ const authReducer = (state = initState, { type, payload }) => {
         errors: [],
         lob: payload,
         isAddLob: false,
+      };
+    case "SEND_OTP":
+      return {
+        ...state,
+        loading: false,
+        errors: [],
+        otp: payload.otp,
       };
 
     default:

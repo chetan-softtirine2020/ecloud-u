@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import AppBody from "../components/AppBody";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate,useParams } from "react-router-dom";
-import { getCureseModuleTopicWiseList } from "../../actions/course/course_action";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  deleteTopicData,
+  getCureseModuleTopicWiseList,
+} from "../../actions/course/course_action";
 
 const ViewCourseByModulesAndTopic = () => {
   const state = useSelector((state) => state.courseReducer);
@@ -17,6 +20,15 @@ const ViewCourseByModulesAndTopic = () => {
   const handelClick = (slug) => {
     navigate("/edit-course/" + slug);
   };
+
+  const deleteCourseTopic = (tslug) => {
+    alert(tslug);
+    dispatch(deleteTopicData({ slug: tslug }));
+  };
+  
+  if (state.is_done) {
+    navigate("/all-courses");
+  }
 
   return (
     <AppBody
@@ -55,18 +67,24 @@ const ViewCourseByModulesAndTopic = () => {
 
                           {/* <td>{li.description}</td>*/}
                           <td className="tblaction">
-                            <input
+                            <button
                               type="button"
-                              value="Edit"
-                              className="btn approve_btn btn-common"
+                              title="Edit"
+                              className="line-height-23 custom-icon mr-2"
                               onClick={() => handelClick(li.tslug)}
-                            />
-                            <input
+                            >
+                              {" "}
+                              <i className="feather-edit"></i>
+                            </button>
+
+                            <button
                               type="button"
-                              value="Delete"
-                              className="btn approve_btn btn-common"
-                              onClick={() => handelClick()}
-                            />
+                              title="Delete"
+                              className="line-height-23 custom-icon mr-2"
+                              onClick={() => deleteCourseTopic(li.tslug)}
+                            >
+                              <i className="feather-delete"></i>{" "}
+                            </button>
                           </td>
                         </tr>
                       ))}

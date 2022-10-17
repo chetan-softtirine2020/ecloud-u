@@ -52,13 +52,12 @@ const EditCourse = () => {
 
   const [course, setCourse] = useState("");
   const onSubmit = (data) => {
-      alert("Hiii");
     const formData = new FormData();
-    // formData.append("course_url", data.file[0]);
-    // formData.append("module_id", topic.module_id);
-    // formData.append("name", topic.name);
-    // formData.append("description", topic.description);
-    // formData.append("topic_id", topic.topic_id);
+    formData.append("course_url", data.file[0] ? data.file[0] : "");
+    formData.append("module_id", topic.module_id);
+    formData.append("name", topic.name);
+    formData.append("description", topic.description);
+    formData.append("topic_id", topic.topic_id);
     dispatch(updateAllCourse(formData));
   };
 
@@ -75,9 +74,10 @@ const EditCourse = () => {
     setShow(false);
   };
   // console.log("Modi"+state.moduleList);
-  // if (state.isAllCourseCreated) {
-  //   navigate("/all-courses");
-  // }
+  if (state.isAllCourseUpdated) {
+    navigate("/all-courses");
+  }
+
   if (details && details.name && !topic.isSet) {
     setAddTopic({
       name: details.name,
@@ -87,11 +87,12 @@ const EditCourse = () => {
       url: details.url,
       isSet: true,
     });
-    var vi = document.getElementById("video");
-    vi.src = details.url;
-    vi.load();
+    if (details.url) {
+      var vi = document.getElementById("video");
+      vi.src = details.url;
+      vi.load();
+    }
   }
-
   return (
     <AppBody
       loading={state.loading}
@@ -250,7 +251,7 @@ const EditCourse = () => {
                           type="file"
                           class="custom-file-input"
                           accept="video/mp4,video/x-m4v,video/*"
-                          {...register("file", { required: true })}
+                          {...register("file", { required: false })}
                         />
                         <label class="custom-file-label" htmlFor="customFile">
                           Chosose Course Video

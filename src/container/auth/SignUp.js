@@ -5,6 +5,7 @@ import {
   getAllOrganizationRegister,
   resetErorrs,
   getLineOfBusiness,
+  sendOtp,
 } from "../../actions/auth_action";
 import { Navigate, Link } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
@@ -22,6 +23,8 @@ const SignUp = () => {
     user_type: 2,
     org_id: "",
     lob_id: "",
+    enterdOtp: "",
+    isVerified: false,
   });
 
   useEffect(() => {
@@ -30,11 +33,21 @@ const SignUp = () => {
     dispatch(resetErorrs());
   }, []);
   const [show, setPopupShow] = useState(false);
+  const [otp, setCurrentOtp] = useState("");
+  if (otp === "" && auth.otp) {
+    setCurrentOtp(window.atob(auth.otp));
+  }
 
   const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signUp(user));
+    if (user.isVerified===false) {
+      alert("Verify OTP");
+      return false;
+    } else {
+      dispatch(signUp(user));
+    }
     // setUser({
     //   first_name: "",
     //   last_name: "",
@@ -50,10 +63,10 @@ const SignUp = () => {
   //   return <Navigate to={redirectUser()} />;
   // }
 
-  if (auth.is_done) {   
-      return <Navigate to={"/login"} />;
-     }
- const handelClick = () => {
+  if (auth.is_done) {
+    return <Navigate to={"/login"} />;
+  }
+  const handelClick = () => {
     setPopupShow(true);
   };
 
@@ -65,6 +78,19 @@ const SignUp = () => {
     setPopupShow(true);
     dispatch(getLineOfBusiness());
   }
+
+  const handelSendOtp = () => {
+    let mobile_no = user.mobile_no;
+    dispatch(sendOtp({ mobile_no: mobile_no }));
+  };
+
+  const verifyMobileOtp = () => {
+    if (otp != user.enterdOtp) {
+      alert("Incorrect OTP");
+    } else {
+      setUser({ ...user, isVerified: true });
+    }
+  };
 
   return (
     <LoadingOverlay active={auth.loading} spinner text="Loading...">
@@ -81,13 +107,18 @@ const SignUp = () => {
                   <h2 className="fw-700 font-xl display2-md-size login_heading">
                     Register Account <br />
                   </h2>
-                 
+
                   {auth.isRegister && (
                     <div
                       class="alert alert-success alert-dismissible fade show"
                       role="alert"
-                     >
-                      <strong> {user.user_type==2 ?"Your account successfully register!":"Wait for account approval you will get mail."}</strong>
+                    >
+                      <strong>
+                        {" "}
+                        {user.user_type == 2
+                          ? "Your account successfully register!"
+                          : "Wait for account approval you will get mail."}
+                      </strong>
                       <button
                         type="button"
                         class="close"
@@ -96,6 +127,12 @@ const SignUp = () => {
                       >
                         <span aria-hidden="true">&times;</span>
                       </button>
+                    </div>
+                  )}
+
+                  {user.isVerified && (
+                    <div className="alert alert-success" role="alert">
+                      opt Verify successfully!
                     </div>
                   )}
 
@@ -258,6 +295,34 @@ const SignUp = () => {
                           setUser({ ...user, mobile_no: e.target.value })
                         }
                       />
+                      <input
+                        type="text"
+                        className="style2-input pl-5 form-control  font-xsss fw-600"
+                        placeholder="OTP"
+                        value={user.opt}
+                        readOnly={user.isVerified ? true : false}
+                        required
+                        onChange={(e) =>
+                          setUser({ ...user, enterdOtp: e.target.value })
+                        }
+                      />
+                      {!otp ? (
+                        <input
+                          type="button"
+                          value="Send OTP"
+                          title="Send mobile number"
+                          className="btn approve_btn btn-common"
+                          onClick={() => handelSendOtp()}
+                        />
+                      ) : (
+                        <input
+                          type="button"
+                          value="Verify OTP"
+                          title="Verify mobile number"
+                          className="btn approve_btn btn-common"
+                          onClick={() => verifyMobileOtp()}
+                        />
+                      )}
                       <span className="error-msg">
                         {auth.errors && auth.errors.mobile_no
                           ? auth.errors.mobile_no

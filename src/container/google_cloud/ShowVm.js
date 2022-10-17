@@ -13,23 +13,28 @@ const ShowVm = () => {
   const [vmLoading, setVmLoadig] = useState(false);
   const userData = JSON.parse(localStorage.getItem("data"));
   const dispatch = useDispatch();
+
+  
   const startVm = () => {
     // setVmLoadig(true);
+    const protocolPrefix =
+      window.location.protocol === "https:" ? "wss:" : "ws:";
     let mouse;
     let keyboard;
     var display = document.getElementById("displayyy");
-    dispatch(updateStartStopVm({ action: "start", name: name, is_user: true }));
     let guac = new Guacamole.Client(
-      // new Guacamole.WebSocketTunnel(
-      //   "ws://34.93.116.53/ws/chat/robert-tillis/1000/460"
-      // )
       new Guacamole.WebSocketTunnel(
-        `ws://34.93.116.53/ws/chat/${name}/1200/460`
+        `${protocolPrefix}//35.200.161.241/ws/chat/${name}/1200/460`
       )
     );
     if (guac) {
       setGua(guac);
+      dispatch(
+        updateStartStopVm({ action: "start", name: name, is_user: true })
+      );
+      localStorage.setItem("vmobj", guac);
     }
+
     display.appendChild(guac.getDisplay().getElement());
     if (!mouse) mouse = new Guacamole.Mouse(guac.getDisplay().getElement());
     if (!keyboard) keyboard = new Guacamole.Keyboard(document);
@@ -61,9 +66,9 @@ const ShowVm = () => {
   const stopVm = () => {
     if (gua) {
       gua.disconnect();
-      dispatch(
-        updateStartStopVm({ action: "stop", name: name, is_user: true })
-      );
+      // dispatch(
+      //   updateStartStopVm({ action: "stop", name: name, is_user: true })
+      // );
       if (
         userData.roles.includes("provider") ||
         userData.roles.includes("organization")

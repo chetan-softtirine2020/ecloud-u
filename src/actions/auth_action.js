@@ -128,7 +128,7 @@ export const singOut = () => {
       .request({
         method: "post",
         url: `${APP_URL}/logout`,
-        data: { token: getToken()},
+        data: { token: getToken() },
       })
       .then((token) => {
         dispatch({
@@ -243,7 +243,6 @@ export const getCurrentToken = (pram) => {
   };
 };
 
-
 export const addLineOfBusiness = (pram) => {
   return (dispatch) => {
     dispatch({
@@ -267,7 +266,6 @@ export const addLineOfBusiness = (pram) => {
   };
 };
 
-
 export const getLineOfBusiness = () => {
   return (dispatch) => {
     dispatch({
@@ -276,7 +274,7 @@ export const getLineOfBusiness = () => {
     axios
       .request({
         method: "post",
-        url: `${APP_URL}/get-line-of-business`,        
+        url: `${APP_URL}/get-line-of-business`,
       })
       .then((res) => {
         dispatch({
@@ -289,3 +287,72 @@ export const getLineOfBusiness = () => {
       });
   };
 };
+
+export const sendOtp = (cred) => {
+  return (dispatch) => {
+    dispatch({
+      type: "AUTH_REQUEST",
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/otp`,
+        data: cred,
+      })
+      .then((res) => {
+        console.log(res.data);
+        dispatch({
+          type: "SEND_OTP",
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error));
+      });
+  };
+};
+export const verifyMobileOtp = (cred) => {
+  return (dispatch) => {
+    dispatch({
+      type: "AUTH_REQUEST",
+    });
+    axios
+      .request({
+        method: "post",
+        url: `${APP_URL}/otp`,
+        data: cred,
+      })
+      .then((res) => {
+        dispatch({
+          type: "VERIFY_MOBILE_OTP",
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        dispatch(errorMessage(error));
+      });
+  };
+};
+
+// export const verifyMobileOtp = (cred) => {
+//   return (dispatch) => {
+//     dispatch({
+//       type: "AUTH_REQUEST",
+//     });
+//     axios
+//       .request({
+//         method: "post",
+//         url: `${APP_URL}/otp`,
+//         data: cred,
+//       })
+//       .then((res) => {
+//         dispatch({
+//           type: "VERIFY_MOBILE_OTP",
+//           payload: res.data,
+//         });
+//       })
+//       .catch((error) => {
+//         dispatch(errorMessage(error));
+//       });
+//   };
+// };

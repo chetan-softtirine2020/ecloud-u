@@ -32,8 +32,6 @@ const CreateCourse = () => {
 
   // Course on  change  call module list
 
- 
-
   const courseOnChnage = (id) => {
     dispatch(getCoureseWiseModuleList({ course_id: id }));
   };
@@ -85,10 +83,9 @@ const CreateCourse = () => {
                   <i className="ti-arrow-left font-sm text-white"></i>
                 </Link>
                 <h4 className="font-xs text-white fw-600 ml-4 mb-0 mt-2">
-                  Create Course
-                </h4>
+                  Create Course/Add  
+                </h4>             
               </div>
-
               {show ? (
                 popupTitile === 1 ? (
                   <CourseCreateModel
