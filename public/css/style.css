@@ -17589,6 +17589,27 @@ width: 100%;
   width: 100% !important;
 }
 
+.custom-sidebar .navigation .nav-content ul li{
+  margin: 0;
+} 
+.custom-sidebar ul.dropdown-menu{
+  background: transparent;
+  position: relative;
+  transition: all 0.7s ease;
+  display: none;
+}
+.custom-sidebar:hover ul.dropdown-menu{
+  display: block;
+  top:0;
+}
+
+.site_ul{
+overflow: auto;
+height: calc(100vh - 90px);
+}
+.site_ul .custom-sidebar ul.dropdown-menu li span{
+  font-size: 14px;
+}
 
 
 /* width */

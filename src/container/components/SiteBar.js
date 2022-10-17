@@ -54,7 +54,11 @@ const SiteBar = () => {
                     <span>Home</span>
                   </Link>
                 </li>
-                <li>
+                <li className="nav-item dropdown custom-sidebar"><a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i class="feather-play-circle mr-3"></i>
+                  Training</a>
+                            <ul className="dropdown-menu">
+                            <li className="nav-item">
                   <Link
                     to={"/create-training"}
                     class={`nav-content-bttn open-font ${
@@ -67,7 +71,7 @@ const SiteBar = () => {
                   </Link>
                 </li>
 
-                <li class="flex-lg-brackets">
+                <li class="flex-lg-brackets nav-item">
                   <Link
                     to={"/all-trainings"}
                     data-tab="archived"
@@ -79,7 +83,7 @@ const SiteBar = () => {
                     <span>Upcoming Trainings</span>
                   </Link>
                 </li>
-                <li class="flex-lg-brackets">
+                <li class="flex-lg-brackets nav-item">
                   <Link
                     to={"/completed-trainings"}
                     data-tab="archived"
@@ -93,8 +97,11 @@ const SiteBar = () => {
                     <span>Completed Trainings</span>
                   </Link>
                 </li>
+                            </ul>
+                  </li>
 
-                <li class="flex-lg-brackets">
+
+                <li class="">
                   <Link
                     to={"/create-course"}
                     data-tab="archived"
@@ -107,7 +114,7 @@ const SiteBar = () => {
                   </Link>
                 </li>
 
-                <li class="flex-lg-brackets">
+                <li class="">
                   <Link
                     to={"/all-courses"}
                     data-tab="archived"
@@ -120,7 +127,7 @@ const SiteBar = () => {
                   </Link>
                 </li>
 
-                <li class="flex-lg-brackets">
+                <li class="">
                   <Link
                     to={"/register-cloud-account"}
                     data-tab="archived"
@@ -135,7 +142,7 @@ const SiteBar = () => {
                   </Link>
                 </li>
 
-                <li class="flex-lg-brackets">
+                <li class="">
                   <Link
                     to={"/authorize-cloud-account"}
                     data-tab="archived"
@@ -150,7 +157,7 @@ const SiteBar = () => {
                   </Link>
                 </li>
 
-                <li class="flex-lg-brackets">
+                <li class="">
                   <Link
                     to={"/vm-list"}
                     data-tab="archived"
@@ -163,7 +170,7 @@ const SiteBar = () => {
                   </Link>
                 </li>
 
-                <li class="flex-lg-brackets">
+                <li class="">
                   <Link
                     to={"/assign-vm-to-user"}
                     data-tab="archived"
