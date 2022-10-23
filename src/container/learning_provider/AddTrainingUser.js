@@ -49,6 +49,7 @@ const AddTrainingUser = () => {
   }
 
   const onSubmit = (data) => {
+        alert("dsdsd");
     setUser({ is_file: true });
     const formData = new FormData();
     formData.append("file", data.file[0]);
@@ -131,7 +132,7 @@ const AddTrainingUser = () => {
                         <input
                           type="file"
                           class="custom-file-input"
-                          //accept=".xls, .xlsx"
+                          accept=".xls, .xlsx"
                           {...register("file", { required: true })}
                         />
                         <label class="custom-file-label" htmlFor="customFile">

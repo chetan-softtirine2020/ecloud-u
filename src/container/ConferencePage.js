@@ -50,13 +50,13 @@ function ConferencePage(props) {
     display: loading ? "none" : "block",
     width: "auto",
     height: "auto",
-  };
+  };  
 
   let isModerator = state.isModerator;
 
   function startConference() {
     try {
-      const domain = "educloud-meet.com";
+      const domain = "educloudmet.com";
       let options = {
         moderator: false,
         userInfo: {
@@ -74,7 +74,7 @@ function ConferencePage(props) {
         interfaceConfigOverwrite: {
           filmStripOnly: false,
           SHOW_JITSI_WATERMARK: false,
-          TOOLBAR_BUTTONS: ["camera"],
+          TOOLBAR_BUTTONS: [""],
           SETTINGS_SECTIONS: [
             "devices",
             "language",
@@ -90,6 +90,7 @@ function ConferencePage(props) {
           startWithVideoMuted: false,
           startWithAudioMuted: false,
           disableRemoteMute: true,
+          disableDeepLinking: true,
           disableDeepLinking: true,
           remoteVideoMenu: {
             disableKick: true,

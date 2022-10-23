@@ -114,7 +114,7 @@ const CreateTrainingPage = (fn) => {
 
                       <div className="col-lg-12 my-3">
                         <input
-                          type="button"
+                          type="submit"
                           name="submit"
                           value="Submit"
                           className="btn-common px-5"
