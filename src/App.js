@@ -52,7 +52,7 @@ import ShowVMList from "./container/google_cloud/ShowVMList";
 import ShowVMDetails from "./container/google_cloud/ShowVMDetails";
 import AssignUserToVM from "./container/google_cloud/AssignUserToVM";
 import ShowVm from "./container/google_cloud/ShowVm";
-import MainHomePage from "./container/home/MainHomePage";
+import MainHomePage2 from "./container/home/MainHomePage2";
 import ShowPricingChart from "./container/admin/ShowPricingChart";
 import TestComponent from "./container/TestComponent";
 import MakeVmBillings from "./container/google_cloud/MakeVmBillings";
@@ -361,7 +361,7 @@ function App() {
           caseSensitive={false}
           element={<LandingPage />}
         />
-        <Route path={"/"} caseSensitive={false} element={<MainHomePage />} />
+        <Route path={"/"} caseSensitive={false} element={<MainHomePage2/>} />
         <Route path={"/login"} caseSensitive={false} element={<Login />} />
         <Route path={"/register"} caseSensitive={false} element={<SignUp />} />
         <Route
