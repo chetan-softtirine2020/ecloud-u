@@ -32,7 +32,7 @@ function MainHomePage2() {
       <LoadingOverlay active={state.loading} spinner text="Loading...">
         <div className="main-landing-page landing-container">
           {/* navbar */}
-          <Navbar>
+          <Navbar expand="lg">
             <Container fluid>
               <Navbar.Brand href="#">
                 <img
@@ -41,16 +41,14 @@ function MainHomePage2() {
                   alt="logo"
                 />
               </Navbar.Brand>
-              <Navbar.Toggle aria-controls="navbarScroll" />
-              <Navbar.Collapse id="navbarScroll">
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav
                   className="me-auto my-2 my-lg-0 mr-5"
-                  style={{ maxHeight: '100px' }}
                   navbarScroll
                 >
                   <Nav.Link href="#action1">Home</Nav.Link>
                   <NavDropdown title="Services" id="navbarScrollingDropdown">
-                    <i className="ti-angle-down"></i>
                     <NavDropdown.Item to={"/training-home"}>
                       {" "}
                       Training
@@ -192,11 +190,11 @@ function MainHomePage2() {
                 <div className="col-xs-12 col-sm-6">
                   <div className="vision-box">
                     <div className="row">
-                      <div className="col-xs-6 col-sm-8">
+                      <div className="col-xs-12 col-sm-8">
                         <h3>Vision</h3>
                         <p>We raise the individual IQ bar through world-class IT solutions, building trust-worthy customer-centric global companies, while enabling successful business strategies and creating long-term partnerships which deliver value and constant innovation.</p>
                       </div>
-                      <div className="col-xs-6 col-sm-4">
+                      <div className="col-xs-12 col-sm-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="200.19" height="150.448" viewBox="0 0 270.19 187.448">
                           <g id="Group_163" data-name="Group 163" transform="translate(-0.079)">
                             <rect id="Rectangle_106" data-name="Rectangle 106" width="32.299" height="9.764" rx="4.882" transform="translate(38.323 75.237)" fill="#ff5e5e" opacity="0.1" />
@@ -266,11 +264,11 @@ function MainHomePage2() {
                 <div className="col-xs-12 col-sm-6">
                   <div className="vision-box">
                     <div className="row">
-                      <div className="col-xs-6 col-sm-8">
+                      <div className="col-xs-12 col-sm-8">
                         <h3>Mission</h3>
                         <p>Through our hereditary core strengths of integrity, commitment, consistency and reliability, our clients and consultants are empowered to produce simple yet elegant boutique business</p>
                       </div>
-                      <div className="col-xs-6 col-sm-4">
+                      <div className="col-xs-12 col-sm-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="200.49" height="150.707" viewBox="0 0 260.49 183.707">
                           <g id="To_the_stars-rafiki" data-name="To the stars-rafiki" transform="translate(0 -70.239)">
                             <g id="freepik--background-complete--inject-3" transform="translate(0 70.239)">

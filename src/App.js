@@ -4,6 +4,7 @@ import SignUp from "./container/auth/SignUp";
 import Login from "./container/auth/Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./container/home/LandingPage";
+import TraningLandingPage from "./container/home/TraningLandingPage";
 import OrganizationDashboard from "./container/home/OrganizationDashboard";
 import UserDashboard from "./container/home/UserDashboard";
 import LearningProviderDashboard from "./container/home/LearningProviderDashboard";
@@ -52,7 +53,7 @@ import ShowVMList from "./container/google_cloud/ShowVMList";
 import ShowVMDetails from "./container/google_cloud/ShowVMDetails";
 import AssignUserToVM from "./container/google_cloud/AssignUserToVM";
 import ShowVm from "./container/google_cloud/ShowVm";
-import MainHomePage from "./container/home/MainHomePage";
+import MainHomePage2 from "./container/home/MainHomePage2";
 import ShowPricingChart from "./container/admin/ShowPricingChart";
 import TestComponent from "./container/TestComponent";
 import MakeVmBillings from "./container/google_cloud/MakeVmBillings";
@@ -359,9 +360,9 @@ function App() {
         <Route
           path="/training-home"
           caseSensitive={false}
-          element={<LandingPage />}
+          element={<TraningLandingPage />}
         />
-        <Route path={"/"} caseSensitive={false} element={<MainHomePage />} />
+        <Route path={"/"} caseSensitive={false} element={<MainHomePage2 />} />
         <Route path={"/login"} caseSensitive={false} element={<Login />} />
         <Route path={"/register"} caseSensitive={false} element={<SignUp />} />
         <Route
