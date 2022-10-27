@@ -362,7 +362,7 @@ function App() {
           caseSensitive={false}
           element={<TraningLandingPage />}
         />
-        <Route path={"/"} caseSensitive={false} element={<MainHomePage2 />} />
+        <Route path={"/"} caseSensitive={false} element={<MainHomePage2/>} />
         <Route path={"/login"} caseSensitive={false} element={<Login />} />
         <Route path={"/register"} caseSensitive={false} element={<SignUp />} />
         <Route
