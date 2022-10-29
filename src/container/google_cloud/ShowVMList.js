@@ -44,7 +44,7 @@ const ShowVMList = () => {
   };
 
   const startStopsVms = (action) => {
-     dispatch(startStopMultipleVm({ action: action, names: checkedVMNames }));
+    dispatch(startStopMultipleVm({ action: action, names: checkedVMNames }));
   };
 
   return (
@@ -61,20 +61,22 @@ const ShowVMList = () => {
                 Virtul Machines
               </h4>
               <div className="col text-right pr-0">
-
-              <Link to={"/create-vm"}>
-                <a className="line-height-36 custom-icon mr-2" title="Create VM">
-                <i className="feather-plus-circle"></i>
-                </a>
-              </Link>
-              <a className="line-height-36 custom-icon mr-2" title="Start">
+                <Link to={"/create-vm"}>
+                  <a
+                    className="line-height-36 custom-icon mr-2"
+                    title="Create VM"
+                  >
+                    <i className="feather-plus-circle"></i>
+                  </a>
+                </Link>
+                <a className="line-height-36 custom-icon mr-2" title="Start">
                   <i className="feather-play-circle"></i>
                 </a>
-              <a className="line-height-36 custom-icon mr" title="Stop">
+                <a className="line-height-36 custom-icon mr" title="Stop">
                   <i className="feather-stop-circle"></i>
                 </a>
-                
-              {/* <Link to={"/create-vm"}>
+
+                {/* <Link to={"/create-vm"}>
                 <input
                   type="submit"
                   name="submit"
@@ -101,7 +103,6 @@ const ShowVMList = () => {
                 onClick={() => startStopsVms("stop")}
               /> */}
               </div>
-              
             </div>
 
             {state.is_update && (
@@ -122,7 +123,7 @@ const ShowVMList = () => {
                   <thead>
                     <tr>
                       <th>Sr.No</th>
-                      <th>Check</th>
+                      {/* <th>Check</th>*/}
                       <th>VM Name</th>
                       <th>Image</th>
                       <th>Zone</th>
@@ -138,13 +139,14 @@ const ShowVMList = () => {
                       state.list.map((li, i) => (
                         <tr key={i}>
                           <td>{i + 1}</td>
-                          <td>
+                          {/*  <td>
                             <input
                               type="checkbox"
                               value={li.vm_name}
                               onChange={(e) => handelCheckedValue(e)}
                             />
-                          </td>
+                          </td>*/}
+
                           <td>{li.vm_name}</td>
                           <td>{li.image}</td>
                           <td>{li.zone}</td>
@@ -158,13 +160,16 @@ const ShowVMList = () => {
                           </td>
 
                           <td className="tblaction">
-                          <a className="line-height-36 custom-icon mr-2" title="Stop" value={li.status === 1 ? "Stop" : "Start"}
-                          onClick={() =>
-                            handelStartStopClick(li.vm_name, li.status)
-                          }
-                          >
-                            <i className="feather-stop-circle"></i>
-                          </a>
+                            <a
+                              className="line-height-36 custom-icon mr-2"
+                              title="Stop"
+                              value={li.status === 1 ? "Stop" : "Start"}
+                              onClick={() =>
+                                handelStartStopClick(li.vm_name, li.status)
+                              }
+                            >
+                              <i className="feather-stop-circle"></i>
+                            </a>
                             {/* <input
                               type="button"
                               value={li.status === 1 ? "Stop" : "Start"}
@@ -173,7 +178,11 @@ const ShowVMList = () => {
                                 handelStartStopClick(li.vm_name, li.status)
                               }
                             /> */}
-                            <a className="line-height-36 custom-icon mr-2" title="Delete" onClick={() => handelDeleteClick(li.vm_name)}>
+                            <a
+                              className="line-height-36 custom-icon mr-2"
+                              title="Delete"
+                              onClick={() => handelDeleteClick(li.vm_name)}
+                            >
                               <i className="feather-trash-2"></i>
                             </a>
 
@@ -184,7 +193,11 @@ const ShowVMList = () => {
                               onClick={() => handelDeleteClick(li.vm_name)}
                             /> */}
 
-                            <a className="line-height-36 custom-icon mr-2" title="Details" onClick={() => handelInfoClick(li.vm_name)}>
+                            <a
+                              className="line-height-36 custom-icon mr-2"
+                              title="Details"
+                              onClick={() => handelInfoClick(li.vm_name)}
+                            >
                               <i className="feather-info"></i>
                             </a>
                             {/* <input
@@ -194,7 +207,11 @@ const ShowVMList = () => {
                               onClick={() => handelInfoClick(li.vm_name)}
                             /> */}
 
-                            <a className="line-height-36 custom-icon" title="Start" onClick={() => navigate("/vm/" + li.vm_name)}>
+                            <a
+                              className="line-height-36 custom-icon"
+                              title="Start"
+                              onClick={() => navigate("/vm/" + li.vm_name)}
+                            >
                               <i className="feather-play-circle"></i>
                             </a>
                           </td>
