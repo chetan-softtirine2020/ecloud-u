@@ -4,6 +4,7 @@ import SignUp from "./container/auth/SignUp";
 import Login from "./container/auth/Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./container/home/LandingPage";
+import TraningLandingPage from "./container/home/TraningLandingPage";
 import OrganizationDashboard from "./container/home/OrganizationDashboard";
 import UserDashboard from "./container/home/UserDashboard";
 import LearningProviderDashboard from "./container/home/LearningProviderDashboard";
@@ -359,7 +360,7 @@ function App() {
         <Route
           path="/training-home"
           caseSensitive={false}
-          element={<LandingPage />}
+          element={<TraningLandingPage />}
         />
         <Route path={"/"} caseSensitive={false} element={<MainHomePage2/>} />
         <Route path={"/login"} caseSensitive={false} element={<Login />} />
