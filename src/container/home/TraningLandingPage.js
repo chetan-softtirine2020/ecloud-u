@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import fogg from "../../images/landingPage/4.svg";
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Container from 'react-bootstrap/Container';
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Container from "react-bootstrap/Container";
 import logo from "../../images/logo/logo.svg";
 import trainer from "../../images/landingPage/fogg-clip.svg";
 import java from "../../images/landingPage/java.svg";
@@ -19,6 +19,7 @@ import { redirectUser } from "../../config/redirect";
 import Carousel from "react-elastic-carousel";
 import { useRef } from "react";
 import Footer from "../components/Footer";
+import HomeNavBar from "../components/HomeNavBar";
 const TraningLandingPage = () => {
   const state = useSelector((state) => state.homeReducer);
   const dispatch = useDispatch();
@@ -58,68 +59,8 @@ const TraningLandingPage = () => {
   return (
     <LoadingOverlay active={state.loading} spinner text="Loading...">
       <div className="main-landing-page traning-landing-page landing-container">
-          {/* navbar */}
-          <Navbar expand="lg">
-            <Container fluid>
-              <Navbar.Brand href="#">
-                <img
-                  className=""
-                  src={logo}
-                  alt="logo"
-                />
-              </Navbar.Brand>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav
-                  className="me-auto my-2 my-lg-0 mr-5"
-                  navbarScroll
-                >
-                  <Nav.Link href="#action1">Home</Nav.Link>
-                  <NavDropdown title="Services" id="navbarScrollingDropdown">
-                    <NavDropdown.Item to={"/training-home"}>
-                      {" "}
-                      Training
-                    </NavDropdown.Item>
-                    <NavDropdown.Item >
-                      Cloud Labs
-                    </NavDropdown.Item>
-                    <NavDropdown.Item >
-                      HR Solutions
-                    </NavDropdown.Item>
-                    <NavDropdown.Item >
-                      Vendor Management
-                    </NavDropdown.Item>
-                    <NavDropdown.Item >
-                      Project Management
-                    </NavDropdown.Item>
-                    <NavDropdown.Item >
-                      GLocal Audit Compliance
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                  <Nav.Link href="#" disabled>
-                    About
-                  </Nav.Link>
-                  <Nav.Link href="#" disabled>
-                    pricing
-                  </Nav.Link>
-                  <Nav.Link href="#" disabled>
-                    Contact
-                  </Nav.Link>
-                </Nav>
-                <Nav className="d-flex">
-                  <Nav.Link href="#." className="btn-common mr-3 br-30">
-                    Organization Register
-                  </Nav.Link>
-                  <Nav.Link href="#deets" className="btn-main-common mr-3">Login</Nav.Link>
-                  <Nav.Link eventKey={2} href="#memes" className="btn-main-common">
-                    Register
-                  </Nav.Link>
-                </Nav>
-
-              </Navbar.Collapse>
-            </Container>
-          </Navbar>
-
+        {/* navbar */}
+        <HomeNavBar />
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-12 col-lg-6">
@@ -131,8 +72,8 @@ const TraningLandingPage = () => {
                   to learn with us
                 </p>
                 <p className="banner-des">
-                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <a href="#." className="banner-btn">
                   Get Started for Free
@@ -328,11 +269,7 @@ const TraningLandingPage = () => {
                         <p className="course-count">10+ Courses</p>
                       </div>
                       <div className="col-xs-12 col-4">
-                      <img
-                      className=""
-                      src={java}
-                      alt="First slide"
-                    />
+                        <img className="" src={java} alt="First slide" />
                       </div>
                       <div className="col-12">
                         <a
@@ -355,11 +292,7 @@ const TraningLandingPage = () => {
                         <p className="course-count">10+ Courses</p>
                       </div>
                       <div className="col-xs-12 col-4">
-                      <img
-                      className=""
-                      src={online}
-                      alt="First slide"
-                    />
+                        <img className="" src={online} alt="First slide" />
                       </div>
                       <div className="col-12">
                         <a
@@ -376,16 +309,13 @@ const TraningLandingPage = () => {
                   <div className="box">
                     <div className="row">
                       <div className="col-xs-12 col-8">
-                        <h4 className="title"><span className="course-nm">C#</span>
+                        <h4 className="title">
+                          <span className="course-nm">C#</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
                       </div>
                       <div className="col-xs-12 col-4">
-                      <img
-                      className=""
-                      src={online}
-                      alt="First slide"
-                    />
+                        <img className="" src={online} alt="First slide" />
                       </div>
                       <div className="col-12">
                         <a
@@ -402,16 +332,13 @@ const TraningLandingPage = () => {
                   <div className="box">
                     <div className="row">
                       <div className="col-xs-12 col-8">
-                        <h4 className="title"><span className="course-nm">CSS</span>
+                        <h4 className="title">
+                          <span className="course-nm">CSS</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
                       </div>
                       <div className="col-xs-12 col-4">
-                      <img
-                      className=""
-                      src={online}
-                      alt="First slide"
-                    />
+                        <img className="" src={online} alt="First slide" />
                       </div>
                       <div className="col-12">
                         <a
@@ -434,11 +361,7 @@ const TraningLandingPage = () => {
                         <p className="course-count">10+ Courses</p>
                       </div>
                       <div className="col-xs-12   col-4">
-                      <img
-                      className=""
-                      src={online}
-                      alt="First slide"
-                    />
+                        <img className="" src={online} alt="First slide" />
                       </div>
                       <div className="col-12">
                         <a
@@ -455,8 +378,7 @@ const TraningLandingPage = () => {
             </div>
           </div>
 
-
-            {/* recent cource */}
+          {/* recent cource */}
           <div className="row cource-section">
             <div className="col-12">
               <div className="titlepage">
@@ -488,11 +410,7 @@ const TraningLandingPage = () => {
                         <p className="course-count">10+ Courses</p>
                       </div>
                       <div className="col-xs-12 col-4">
-                      <img
-                      className=""
-                      src={java}
-                      alt="First slide"
-                    />
+                        <img className="" src={java} alt="First slide" />
                       </div>
                       <div className="col-12">
                         <a
@@ -515,11 +433,7 @@ const TraningLandingPage = () => {
                         <p className="course-count">10+ Courses</p>
                       </div>
                       <div className="col-xs-12 col-4">
-                      <img
-                      className=""
-                      src={online}
-                      alt="First slide"
-                    />
+                        <img className="" src={online} alt="First slide" />
                       </div>
                       <div className="col-12">
                         <a
@@ -536,16 +450,13 @@ const TraningLandingPage = () => {
                   <div className="box">
                     <div className="row">
                       <div className="col-xs-12 col-8">
-                        <h4 className="title"><span className="course-nm">C#</span>
+                        <h4 className="title">
+                          <span className="course-nm">C#</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
                       </div>
                       <div className="col-xs-12 col-4">
-                      <img
-                      className=""
-                      src={online}
-                      alt="First slide"
-                    />
+                        <img className="" src={online} alt="First slide" />
                       </div>
                       <div className="col-12">
                         <a
@@ -562,16 +473,13 @@ const TraningLandingPage = () => {
                   <div className="box">
                     <div className="row">
                       <div className="col-xs-12 col-8">
-                        <h4 className="title"><span className="course-nm">CSS</span>
+                        <h4 className="title">
+                          <span className="course-nm">CSS</span>
                         </h4>
                         <p className="course-count">10+ Courses</p>
                       </div>
                       <div className="col-xs-12 col-4">
-                      <img
-                      className=""
-                      src={online}
-                      alt="First slide"
-                    />
+                        <img className="" src={online} alt="First slide" />
                       </div>
                       <div className="col-12">
                         <a
@@ -594,11 +502,7 @@ const TraningLandingPage = () => {
                         <p className="course-count">10+ Courses</p>
                       </div>
                       <div className="col-xs-12   col-4">
-                      <img
-                      className=""
-                      src={online}
-                      alt="First slide"
-                    />
+                        <img className="" src={online} alt="First slide" />
                       </div>
                       <div className="col-12">
                         <a
@@ -614,7 +518,7 @@ const TraningLandingPage = () => {
               </Carousel>
             </div>
           </div>
-
+          {/* 
           <div className="row trainer-secton">
             <div className="col-sm-12 col-lg-6">
               <div className="top-banner pt-4">
@@ -630,8 +534,8 @@ const TraningLandingPage = () => {
                   in Live Action
                 </p>
                 <p className="banner-des">
-                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <a href="#." className="banner-btn">
                   Let's Join Us
@@ -639,62 +543,10 @@ const TraningLandingPage = () => {
               </div>
             </div>
           </div>
+          */}
         </div>
-                  {/* footer */}
-                  <div className="main-footer">
-            <div className="col-12">
-              <div className="row">
-                <div className="col-xs-12 col-sm-3">
-                  <h4 className="fredoka-font logo-txt">Educloudlabs</h4>
-                </div>
-                <div className="col-xs-12 col-sm-6">
-                  <ul className="navbar">
-                    <li className="nav-item">Home</li>
-                    <li className="nav-item">About</li>
-                    <li className="nav-item">FAQ</li>
-                    <li className="nav-item">Feedback</li>
-                    <li className="nav-item">Careers</li>
-                  </ul>
-                  <div className="social-media">
-                    <ul class="d-flex align-items-center mt-3">
-                      <li class="mr-2">
-                        <a href="#" class="facebook">
-                          <i class="ti-facebook "></i>
-                        </a>
-                      </li>
-                      <li class="mr-2">
-                        <a href="#" class="twitter">
-                          <i class="ti-twitter-alt "></i>
-                        </a>
-                      </li>
-                      <li class="mr-2">
-                        <a href="#" class="linkedin">
-                          <i class="ti-linkedin"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="col-xs-12 col-sm-3">
-                  <div className="address">
-                    <p>7, Dotivala Estate, 2nd Victoria X Lane, Opp Masina Hospital, Byculla, Mumbai 400027.</p>
-                    <h4>support@educloulabas.com</h4>
-                  </div>
-                </div>
-              </div>
-              <div className="row privacy">
-                <div className="col-xs-12 col-sm-2">
-                    <a href="#.">Privacy & Policy</a>
-                </div>
-                <div className="col-xs-12 col-sm-2">
-                    <a href="#.">Terms Condition</a>
-                </div>
-                <div className="col-xs-12 col-sm-8 copy-right">
-                    <h4>Copyright Educloudlabs © 2022. All rights reserved</h4>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* footer */}
+        <Footer />
       </div>
 
       <Modal

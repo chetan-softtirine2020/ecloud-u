@@ -1,27 +1,15 @@
 import React from "react";
 import LoadingOverlay from "react-loading-overlay";
 import Footer from "../components/Footer";
-import NavBar from "../components/NavBar";
 import { useSelector } from "react-redux";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Carousel from "react-elastic-carousel";
-
-import logo from "../../images/logo/logo.svg";
 // import logo from "../../images/new-main-landng-page/Logo.png";
 import frstSliderImg from "../../images/new-main-landng-page/Online learning-amico (1).svg";
 import scndSliderImg from "../../images/new-main-landng-page/Study abroad-pana.svg";
 import thrdSliderImg from "../../images/new-main-landng-page/Group 101.svg";
 import forthSliderImg from "../../images/new-main-landng-page/Interview-amico.svg";
-import visionImg from "../../images/homeMainLandingPage/vision.jpg";
-import startupImg from "../../images/homeMainLandingPage/startup.png";
-import targetImg from "../../images/homeMainLandingPage/target.png";
-import visionSkinImg from "../../images/homeMainLandingPage/visionSkin.jpg";
 import { Link } from "react-router-dom";
+import HomeNavBar from "../components/HomeNavBar";
 
 function MainHomePage2() {
   const state = useSelector((state) => state.homeReducer);
@@ -29,60 +17,10 @@ function MainHomePage2() {
     <div>
       <LoadingOverlay active={state.loading} spinner text="Loading...">
         <div className="main-landing-page landing-container">
-          {/* navbar */}
-          <Navbar expand="lg">
-            <Container fluid>
-              <Navbar.Brand>
-                <Link to={"/"}>
-                  {" "}
-                  <img className="" src={logo} alt="logo" />{" "}
-                </Link>
-              </Navbar.Brand>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="me-auto my-2 my-lg-0 mr-5" navbarScroll>
-                  <Nav.Link href="#action1">Home</Nav.Link>
-                  <NavDropdown title="Services" id="navbarScrollingDropdown">
-                    <i className="ti-angle-down"></i>
-                    <NavDropdown.Item>
-                      <Link to={"/training-home"}>Training</Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item>Cloud Labs</NavDropdown.Item>
-                    <NavDropdown.Item>HR Solutions</NavDropdown.Item>
-                    <NavDropdown.Item>Vendor Management</NavDropdown.Item>
-                    <NavDropdown.Item>Project Management</NavDropdown.Item>
-                    <NavDropdown.Item>GLocal Audit Compliance</NavDropdown.Item>
-                  </NavDropdown>
-                  <Nav.Link href="#" disabled>
-                    About
-                  </Nav.Link>
-                  <Nav.Link href="#" disabled>
-                    pricing
-                  </Nav.Link>
-                  <Nav.Link href="#" disabled>
-                    Contact
-                  </Nav.Link>
-                </Nav>
-                <Nav className="d-flex">
-                  <Nav.Link href="#deets" className="btn-main-common mr-3">
-                    Login
-                  </Nav.Link>
-                  <Nav.Link
-                    eventKey={2}
-                    href="#memes"
-                    className="btn-main-common"
-                  >
-                    Register
-                  </Nav.Link>
-                </Nav>
-              </Navbar.Collapse>
-            </Container>
-          </Navbar>
-
-          
-          {/* Carousel  */}
+          <HomeNavBar/>  
+        {/* Carousel  */}
           <div className="main-carousal">
-            <Carousel enableAutoPlay autoPlaySpeed={1500}>
+            <Carousel enableAutoPlay autoPlaySpeed={5500}>
               <div className="carousel">
                 <div className="row">
                   <div className="col-xs-12 col-sm-6">
@@ -1532,63 +1470,7 @@ function MainHomePage2() {
           </div>
 
           {/* footer */}
-          <div className="main-footer">
-            <div className="col-12">
-              <div className="row">
-                <div className="col-xs-12 col-sm-3">
-                  <h4 className="fredoka-font logo-txt">Educloudlabs</h4>
-                </div>
-                <div className="col-xs-12 col-sm-6">
-                  <ul className="navbar">
-                    <li className="nav-item">Home</li>
-                    <li className="nav-item">About</li>
-                    <li className="nav-item">FAQ</li>
-                    <li className="nav-item">Feedback</li>
-                    <li className="nav-item">Careers</li>
-                  </ul>
-                  <div className="social-media">
-                    <ul class="d-flex align-items-center mt-3">
-                      <li class="mr-2">
-                        <a href="#" class="facebook">
-                          <i class="ti-facebook "></i>
-                        </a>
-                      </li>
-                      <li class="mr-2">
-                        <a href="#" class="twitter">
-                          <i class="ti-twitter-alt "></i>
-                        </a>
-                      </li>
-                      <li class="mr-2">
-                        <a href="#" class="linkedin">
-                          <i class="ti-linkedin"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="col-xs-12 col-sm-3">
-                  <div className="address">
-                    <p>
-                      7, Dotivala Estate, 2nd Victoria X Lane, Opp Masina
-                      Hospital, Byculla, Mumbai 400027.
-                    </p>
-                    <h4>support@educloulabas.com</h4>
-                  </div>
-                </div>
-              </div>
-              <div className="row privacy">
-                <div className="col-xs-12 col-sm-2">
-                  <a href="#.">Privacy & Policy</a>
-                </div>
-                <div className="col-xs-12 col-sm-2">
-                  <a href="#.">Terms Condition</a>
-                </div>
-                <div className="col-xs-12 col-sm-8 copy-right">
-                  <h4>Copyright Educloudlabs © 2022. All rights reserved</h4>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Footer/>
         </div>
       </LoadingOverlay>
     </div>

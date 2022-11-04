@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../components/NavBar";
 import fogg from "../../images/landingPage/4.webp";
 import trainer from "../../images/fogg-clip.png";
 import { Link, Navigate } from "react-router-dom";
@@ -12,6 +11,7 @@ import { redirectUser } from "../../config/redirect";
 import Carousel from "react-elastic-carousel";
 import { useRef } from "react";
 import Footer from "../components/Footer";
+import HomeNavBar from "../components/HomeNavBar";
 const LandingPage = () => {
   const state = useSelector((state) => state.homeReducer);
   const dispatch = useDispatch();
@@ -51,13 +51,13 @@ const LandingPage = () => {
   return (
     <LoadingOverlay active={state.loading} spinner text="Loading...">
       <div className="landing-container">
-        <NavBar />
+         <HomeNavBar />
         <div className="container-fluid top-margin">
           <div className="row">
             <div className="col-sm-12 col-lg-6">
               <div className="top-hedtxt-section">
                 <p className="first-title">
-                  Take the first step
+                  Take the first steps
                   <br></br>
                   to learn with us
                 </p>
