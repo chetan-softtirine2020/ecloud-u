@@ -60,6 +60,7 @@ import MakeVmBillings from "./container/google_cloud/MakeVmBillings";
 import VMPaymentHistory from "./container/google_cloud/VMPaymentHistory";
 import CoursesForUser from "./container/courses/CoursesForUser";
 import { disableInspectElement } from "./config/disableInsepct";
+import CommingSoon from "./container/components/CommingSoon";
 
 function App() {
   if (localStorage.getItem("token")) {
@@ -381,6 +382,7 @@ function App() {
           element={<RegisterOrganization />}
         />
         <Route path="/not-authorized" element={<NotAuthorisedPage />} />
+        <Route path="/comming-soon" element={<CommingSoon />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </Router>

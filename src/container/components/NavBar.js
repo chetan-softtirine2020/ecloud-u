@@ -7,7 +7,7 @@ const NavBar = () => {
   //   redirectUser();
   // }
   let location = useLocation();
-  console.log(location.pathname);
+
   return (
     <div>
       <div className="header-wrapper shadow-xss pos-fixed p-2 pt-2">
@@ -20,7 +20,7 @@ const NavBar = () => {
                   Online Learning
                 </span>
               </h1> */}
-              <Link to={"/"}>
+              <Link to={"/training-home"}>
                 <img src={logo1} className="header_logo" />
               </Link>
               <button
@@ -37,7 +37,7 @@ const NavBar = () => {
               <div className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className="navbar-nav nav-menu float-none text-center">
                   <li className="nav-item">
-                    <Link className="nav-link active" to={"/"}>
+                    <Link className="nav-link active" to={"/training-home"}>
                       Home
                     </Link>
                   </li>
@@ -120,6 +120,7 @@ const NavBar = () => {
                 <Link to={"/login"} className="header-btn">
                   Login
                 </Link>
+                
                 <Link to={"/register"} className="header-btn">
                   Register
                 </Link>
