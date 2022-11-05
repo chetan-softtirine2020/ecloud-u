@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import logo from "../../images/logo/logo.svg";
+import logo from "../../images/logo/logo.png";
 //import {redirectUser} from "../../config/redirect";
 const HomeNavBar = () => {
   // if (localStorage.getItem("token")) {
@@ -30,7 +30,6 @@ const HomeNavBar = () => {
 
             {location.pathname === "/" && (
               <NavDropdown title="Services" id="navbarScrollingDropdown">
-                <i className="ti-angle-down"></i>
                 <NavDropdown.Item>
                   <Link to={"/training-home"}>Training</Link>
                 </NavDropdown.Item>

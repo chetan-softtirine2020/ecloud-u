@@ -15424,6 +15424,7 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
 
 .main-landing-page a {
   cursor: pointer;
+  color:#fff;
 }
 
 
@@ -15434,9 +15435,13 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
 }
 
 
+.main-landing-page .navbar-brand {
+padding: 0;
+}
+
 .main-landing-page .navbar-brand img {
-  width: 146px;
-  height: 100px;
+  width: 150px;
+  height: 110px;
 }
 
 .main-landing-page .btn-main-common {
@@ -15545,7 +15550,7 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
 }
 
 .main-landing-page .our-vision {
-  padding-bottom: 40px;
+  padding: 20px 70px;
 }
 
 .main-landing-page .our-vision h4 {
@@ -15572,7 +15577,7 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
   background-color: #1a1b28;
   padding: 30px;
   margin: 40px 0px;
-  min-height: 230px;
+  min-height: 250px;
 }
 
 .main-landing-page .our-vision .vision-box h3 {
@@ -15598,7 +15603,7 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
 }
 
 .main-landing-page .principal {
-  padding: 0px 15px;
+  padding: 0px 65px;
 }
 
 .main-landing-page .principal .vision-box {
@@ -15613,7 +15618,7 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
 
 .main-landing-page .principal .principal-img {
   position: absolute;
-  right: 50px;
+  right: 80px;
 }
 
 .main-landing-page .principal .vision-box h3{
@@ -15686,7 +15691,7 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
   justify-content: center;
 }
 .main-footer .social-media ul li{
-  padding: 10px 10px 10px;
+  padding: 0px 10px 0px;
 }
 .main-footer .address p{
   font-size: 14px;
@@ -19702,6 +19707,12 @@ select.sort {
 
 
 @media only screen and (max-width: 768px) {
+  .main-landing-page .our-vision {
+    padding: 10px 20px;
+  }
+  .main-landing-page .principal {
+    padding: 10px 20px;
+  }
   .traning-landing-page .carousel-section .rec-arrow-right{
     top: 80px;
     right: 25px;
@@ -19760,7 +19771,7 @@ select.sort {
   border-radius: 20px;
   padding: 20px;
   margin: 10px 0px;
-  min-height: 230px;
+  min-height: 250px;
   text-align: center;
 }
 
