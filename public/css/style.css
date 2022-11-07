@@ -28,6 +28,10 @@
 @import "./../vendor/owl-carousel/css/owl.carousel.min.css";
 @import "./../vendor/owl-carousel/css/owl.theme.default.css";
 
+
+body{
+  background: #0f0d1e;
+}
 #navbarTraning {
   display: none !important;
 }
@@ -2118,7 +2122,7 @@ pre code {
 
 .login-reg .loginbg {
   width: 500px;
-  height: 636px;
+  height: 720px;
   padding: 25px;
 }
 
@@ -2132,7 +2136,7 @@ body {
 }
 
 .main-content {
-  background: #000;
+  background: #0f0d1e;
 }
 
 .navigation .nav-content ul li a.active {
@@ -2472,6 +2476,7 @@ body {
 
 .middle-sidebar-left .card .table {
   min-width: 700px;
+  margin-bottom: 0;
 }
 
 .middle-sidebar-left .card .card-header {
@@ -14394,6 +14399,14 @@ strong,
   transition: all 0.2s ease;
 }
 
+.navigation .nav-content ul li:not(.logo) a svg {
+  color: #fff;
+  fill: #fff;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
 .navigation .nav-content ul li:not(.logo) a span {
   font-size: 15px;
   font-weight: 600;
@@ -14994,7 +15007,8 @@ strong,
 }
 
 .main-content .middle-sidebar-bottom .middle-sidebar-left {
-  width: calc(100% - 320px);
+  /* width: calc(100% - 320px); */
+  width: 100%;
 }
 
 .main-content .middle-sidebar-bottom .middle-sidebar-right {
@@ -15387,6 +15401,18 @@ body:not(.theme-full) .main-content .middle-sidebar-bottom.header-padding {
 
 
 /* css for main-landing-page */
+.coming-box{
+  text-align: center;
+  padding: 40px;
+  color: #fff;
+}
+
+.coming-box h1{
+  padding: 40px;
+  color: #ef4340;
+  font-size: 70px;
+  font-weight: 600;
+}
 .main-landing-page {
   background-color: #0f0d1e;
   height: 100%;
@@ -19633,7 +19659,7 @@ select.sort {
 }
 
 .custom-icon {
-  padding: 3px 5px;
+  padding: 0px 5px 5px;
   background-image: linear-gradient(to right, #F05A28, #EC008C, #F05A28);
   background-size: 300% 100%;
   transition: all .6s ease-in-out;
@@ -19692,6 +19718,15 @@ select.sort {
 .custom-sidebar:hover ul.dropdown-menu {
   display: block;
   top: 0;
+  transform: none !important;
+  position: relative !important;
+}
+
+.custom-sidebar.show ul.dropdown-menu {
+  display: block;
+  top: 0;
+  transform: none !important;
+  position: relative !important;
 }
 
 .site_ul {

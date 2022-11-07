@@ -12,6 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* font-family: 'Montserrat', sans-serif; */
   font-family: 'Poppins', sans-serif;
+  background: #0f0d1e;
 }
 
 code {

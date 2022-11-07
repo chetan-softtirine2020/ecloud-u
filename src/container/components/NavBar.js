@@ -1,5 +1,5 @@
 import React from "react";
-import logo1 from "../../images/logo/logo.svg";
+import logo1 from "../../images/logo/logo.png";
 import { Link, useLocation } from "react-router-dom";
 //import {redirectUser} from "../../config/redirect";
 const NavBar = () => {

@@ -54,52 +54,50 @@ const SiteBar = () => {
                     <span>Home</span>
                   </Link>
                 </li>
+                
                 <li className="nav-item dropdown custom-sidebar"><a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">
-                <i class="feather-play-circle mr-3"></i>
+                  <i class="feather-play-circle mr-3"></i>
                   Training</a>
-                            <ul className="dropdown-menu">
-                            <li className="nav-item">
-                  <Link
-                    to={"/create-training"}
-                    class={`nav-content-bttn open-font ${
-                      location.pathname === "/create-training" ? "active" : ""
-                    }`}
-                    data-tab="favorites"
-                  >
-                    {/* <i class="feather-play-circle mr-3"></i> */}
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M543.9 96c-6.2 0-12.5 1.8-18.2 5.7L416 170.1v-58.3c0-26.4-23.2-47.8-51.8-47.8H51.8C23.2 64 0 85.4 0 111.8v288.4C0 426.6 23.2 448 51.8 448h312.4c28.6 0 51.8-21.4 51.8-47.8v-58.3l109.7 68.3c5.7 4 12.1 5.7 18.2 5.7 16.6 0 32.1-13 32.1-31.5V127.5C576 109 560.5 96 543.9 96zM368 398.9c-.6.4-1.8 1.1-3.8 1.1H51.8c-2 0-3.2-.6-3.8-1.1V113.1c.6-.4 1.8-1.1 3.8-1.1h312.4c2 0 3.2.6 3.8 1.1v285.8zm160-43.7l-112-69.8v-58.7l112-69.8v198.3zM288 232h-56v-56c0-8.8-7.2-16-16-16h-16c-8.8 0-16 7.2-16 16v56h-56c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h56v56c0 8.8 7.2 16 16 16h16c8.8 0 16-7.2 16-16v-56h56c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16z"/></svg>
-                    <span>Create Training</span>
-                  </Link>
-                </li>
+                  <ul className="dropdown-menu">
+                    <li className="nav-item">
+                      <Link
+                        to={"/create-training"}
+                        class={`nav-content-bttn open-font ${location.pathname === "/create-training" ? "active" : ""
+                          }`}
+                        data-tab="favorites"
+                      >
+                        {/* <i class="feather-play-circle mr-3"></i> */}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M543.9 96c-6.2 0-12.5 1.8-18.2 5.7L416 170.1v-58.3c0-26.4-23.2-47.8-51.8-47.8H51.8C23.2 64 0 85.4 0 111.8v288.4C0 426.6 23.2 448 51.8 448h312.4c28.6 0 51.8-21.4 51.8-47.8v-58.3l109.7 68.3c5.7 4 12.1 5.7 18.2 5.7 16.6 0 32.1-13 32.1-31.5V127.5C576 109 560.5 96 543.9 96zM368 398.9c-.6.4-1.8 1.1-3.8 1.1H51.8c-2 0-3.2-.6-3.8-1.1V113.1c.6-.4 1.8-1.1 3.8-1.1h312.4c2 0 3.2.6 3.8 1.1v285.8zm160-43.7l-112-69.8v-58.7l112-69.8v198.3zM288 232h-56v-56c0-8.8-7.2-16-16-16h-16c-8.8 0-16 7.2-16 16v56h-56c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h56v56c0 8.8 7.2 16 16 16h16c8.8 0 16-7.2 16-16v-56h56c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16z" /></svg>
+                        <span>Create Training</span>
+                      </Link>
+                    </li>
 
-                <li class="flex-lg-brackets nav-item">
-                  <Link
-                    to={"/all-trainings"}
-                    data-tab="archived"
-                    class={`nav-content-bttn open-font ${
-                      location.pathname === "/all-trainings" ? "active" : ""
-                    }`}
-                  >
-                    <i class="feather-video mr-3"></i>
-                    <span>Upcoming Trainings</span>
-                  </Link>
+                    <li class="flex-lg-brackets nav-item">
+                      <Link
+                        to={"/all-trainings"}
+                        data-tab="archived"
+                        class={`nav-content-bttn open-font ${location.pathname === "/all-trainings" ? "active" : ""
+                          }`}
+                      >
+                        <i class="feather-video mr-3"></i>
+                        <span>Upcoming Trainings</span>
+                      </Link>
+                    </li>
+                    <li class="flex-lg-brackets nav-item">
+                      <Link
+                        to={"/completed-trainings"}
+                        data-tab="archived"
+                        class={`nav-content-bttn open-font ${location.pathname === "/completed-trainings"
+                            ? "active"
+                            : ""
+                          }`}
+                      >
+                        <i class="feather-video mr-3"></i>
+                        <span>Completed Trainings</span>
+                      </Link>
+                    </li>
+                  </ul>
                 </li>
-                <li class="flex-lg-brackets nav-item">
-                  <Link
-                    to={"/completed-trainings"}
-                    data-tab="archived"
-                    class={`nav-content-bttn open-font ${
-                      location.pathname === "/completed-trainings"
-                        ? "active"
-                        : ""
-                    }`}
-                  >
-                    <i class="feather-video mr-3"></i>
-                    <span>Completed Trainings</span>
-                  </Link>
-                </li>
-                            </ul>
-                  </li>
 
 
                 <li class="">
@@ -155,8 +153,8 @@ const SiteBar = () => {
                         : ""
                     }`}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path fill-rule="evenodd" d="M25 4a6.994 6.994 0 0 0-5.895 3.242c-2.754.293-5.102 2.127-6.128 4.744-.283-.042-.564-.094-.85-.095a.5.5 0 0 0-.002 0c-2.876 0-5.238 2.12-5.752 4.921-.403-.102-.804-.219-1.22-.22a.5.5 0 0 0-.003 0C2.31 16.594 0 18.935 0 21.799s2.309 5.2 5.15 5.201c.116 0 .203-.012.274-.016-.06 0-.043.016.113.016h20.926c.448 0 .86-.1 1.236-.236 2.543-.733 4.299-3.08 4.301-5.748a5.993 5.993 0 0 0-2.377-4.774A6.98 6.98 0 0 0 32 11c0-3.86-3.14-7-7-7zm0 1c3.32 0 6 2.68 6 6s-2.68 6-6 6-6-2.68-6-6 2.68-6 6-6zm-.018 1.4c-1.121 0-2.029.934-2.029 2.06v1.214a3.344 3.344 0 0 0-1.238 2.588c0 1.833 1.471 3.34 3.285 3.34s3.285-1.507 3.285-3.34c0-1.794-1.411-3.264-3.172-3.326A.5.5 0 0 0 25 8.924c-.368 0-.716.075-1.047.19V8.46c0-.6.455-1.06 1.03-1.06h.035c.574 0 1.029.46 1.029 1.06a.5.5 0 1 0 1 0c0-1.127-.908-2.06-2.03-2.06h-.035zm-6.455 1.942A6.96 6.96 0 0 0 18 11c0 3.86 3.14 7 7 7 1.4 0 2.702-.417 3.797-1.127A4.995 4.995 0 0 1 31 21.018c-.003 2.234-1.468 4.187-3.588 4.793a.5.5 0 0 0-.035.011c-.306.113-.606.18-.914.18H5.537c.086 0 .046-.016-.123-.016a.5.5 0 0 0-.035 0A2.48 2.48 0 0 1 5.15 26C2.856 26 1 24.129 1 21.799c0-2.33 1.854-4.202 4.148-4.203.48 0 .953.088 1.403.254a.5.5 0 0 0 .672-.424c.232-2.573 2.354-4.53 4.9-4.531.347 0 .694.039 1.033.113a.5.5 0 0 0 .582-.332 6.497 6.497 0 0 1 4.79-4.334zM25 9.924c1.263 0 2.285 1.035 2.285 2.338 0 1.302-1.022 2.34-2.285 2.34-1.263 0-2.285-1.038-2.285-2.34 0-.806.394-1.51.992-1.93a.5.5 0 0 0 .027-.016c.05-.033.102-.058.153-.087.055-.032.11-.065.168-.092.053-.025.109-.044.164-.065a2.235 2.235 0 0 1 .379-.107c.13-.024.264-.041.402-.041zm0 .68v.001c-.543 0-1.004.449-1.004.997 0 .273.114.526.295.705a.5.5 0 0 0 .002 0c.06.058.135.095.207.136v.647a.5.5 0 1 0 1 0v-.647c.072-.042.148-.079.207-.136a.996.996 0 0 0 .297-.707c0-.548-.461-.996-1.004-.996z" color="#000" font-family="sans-serif" font-weight="400" overflow="visible" style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;white-space:normal;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1"/></svg>
-                    <span>Authorize Cloud A/C</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path fill="none" d="M0 0h32v32H0z"/><path d="M23 31H9v-3c0-3.86 3.141-7 7-7s7 3.14 7 7v3zm-12-2h10v-1c0-2.757-2.243-5-5-5s-5 2.243-5 5v1z"/><path d="M16 23a5.004 5.004 0 0 1-5-5c0-2.757 2.243-5 5-5s5 2.243 5 5a5.013 5.013 0 0 1-5 5zm0-8c-1.654 0-3 1.346-3 3 0 .528.137 1.033.406 1.501A3 3 0 0 0 16 21a2.997 2.997 0 0 0 2.593-1.499A2.97 2.97 0 0 0 19 18c0-1.654-1.346-3-3-3z"/><path d="M24.5 21h-6.771l.864-1.499A2.97 2.97 0 0 0 19 18c0-1.654-1.346-3-3-3s-3 1.346-3 3c0 .528.137 1.033.406 1.501L14.271 21H7.5A6.508 6.508 0 0 1 1 14.5a6.51 6.51 0 0 1 6.229-6.495C8.142 3.956 11.768 1 16 1s7.858 2.956 8.771 7.005A6.51 6.51 0 0 1 31 14.5c0 3.584-2.916 6.5-6.5 6.5zm-3.603-2H24.5c2.481 0 4.5-2.019 4.5-4.5S26.981 10 24.5 10h-1.454l-.108-.877C22.505 5.632 19.522 3 16 3S9.495 5.632 9.062 9.123L8.954 10H7.5C5.019 10 3 12.019 3 14.5S5.019 19 7.5 19h3.603A4.94 4.94 0 0 1 11 18c0-2.757 2.243-5 5-5s5 2.243 5 5c0 .336-.035.671-.103 1z"/></svg>
+                     <span>Authorize Cloud A/C</span>
                   </Link>
                 </li>
 
@@ -363,7 +361,7 @@ const SiteBar = () => {
                     }`}
                     data-tab="favorites"
                   >
-                    <i class="feather-globe mr-3"></i>
+                    <i class="feather-briefcase mr-3"></i>
                     <span>Approve Organizations</span>
                   </Link>
                 </li>
@@ -378,7 +376,7 @@ const SiteBar = () => {
                     }`}
                     data-tab="favorites"
                   >
-                    <i class="feather-globe mr-3"></i>
+                    <i class="feather-users mr-3"></i>
                     <span>Org SubAdmin Requests</span>
                   </Link>
                 </li>
@@ -408,7 +406,7 @@ const SiteBar = () => {
                     }`}
                     data-tab="favorites"
                   >
-                    <i class="feather-globe mr-3"></i>
+                    <i class="feather-git-pull-request mr-3"></i>
                     <span>Learning Provider Requests</span>
                   </Link>
                 </li>
@@ -423,7 +421,7 @@ const SiteBar = () => {
                     }`}
                     data-tab="favorites"
                   >
-                    <i class="feather-globe mr-3"></i>
+                    <i class="feather-user-check mr-3"></i>
                     <span>Learning Providers</span>
                   </Link>
                 </li>
@@ -437,7 +435,8 @@ const SiteBar = () => {
                   }`}
                   data-tab="favorites"
                 >
-                  <i class="feather-globe mr-3"></i>
+                  {/* <i class="feather-globe mr-3"></i> */}
+                  <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 512 512"><path d="M453,110a8,8,0,0,0-8-8H67a8,8,0,0,0-8,8V352a8,8,0,0,0,8,8H445a8,8,0,0,0,8-8ZM437,344H75V118H437Z"/><path d="M498.115,372H484V117.863C484,90.531,461.919,68,434.587,68H77.413C50.081,68,28,90.531,28,117.863V372H13.885A8.054,8.054,0,0,0,6,380.175v13.962C6,421.469,28.121,444,55.452,444h401.1C483.879,444,506,421.469,506,394.137V380.175A8.054,8.054,0,0,0,498.115,372ZM44,117.863C44,99.354,58.9,84,77.413,84H434.587C453.1,84,468,99.354,468,117.863V372H316.98a8.081,8.081,0,0,0-5.882,2.666L302.661,384a33.839,33.839,0,0,1-24.682,11H234.021a33.8,33.8,0,0,1-24.682-10.955l-8.437-9.31A8.152,8.152,0,0,0,195.02,372H44ZM490,394.137C490,412.646,475.057,428,456.548,428H55.452C36.943,428,22,412.646,22,394.137V388H191.514l6.06,6.8A49.923,49.923,0,0,0,234.021,411h43.958a49.919,49.919,0,0,0,36.446-16.2l6.061-6.8H490Z"/><path d="M163.986,332.306a20.721,20.721,0,0,0,12.178-3.943h0a20.855,20.855,0,0,0,7.989-21.927l11.359-8.213,56.819,26.144a8.006,8.006,0,0,0,6.689,0l57.214-26.326,11.611,8.395a20.855,20.855,0,0,0,7.989,21.927h0a20.819,20.819,0,1,0,1.525-34.776L325,284.665V215.587a7.98,7.98,0,0,0-4.635-7.267L264,182.375V168.74a20.841,20.841,0,1,0-16,.126v13.211L190.811,208.32A8.145,8.145,0,0,0,186,215.587v69.546l-11.538,8.454a20.408,20.408,0,0,0-7.275-2.671,20.816,20.816,0,0,0-20.119,32.772A20.836,20.836,0,0,0,163.986,332.306ZM202,228.11l46,21.013v55.489l-46-20.875Zm53.676,7.085L213.4,215.612l42.28-19.455,42.28,19.455ZM264,304.612V249.123l45-21.013v55.627Zm80.127,4.04a4.83,4.83,0,1,1,1.083,6.745A4.795,4.795,0,0,1,344.127,308.652Zm-88.289-163.9a4.831,4.831,0,1,1-4.831,4.831A4.836,4.836,0,0,1,255.838,144.747ZM159.189,310.716a4.835,4.835,0,0,1,4.759-4.066,4.856,4.856,0,0,1,.777.063,4.831,4.831,0,1,1-5.536,4Z"/></svg>
                   <span>VM Pricing Chart</span>
                 </Link>
               </li>   
