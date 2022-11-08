@@ -139,7 +139,7 @@ function MainHomePage2() {
 
           {/* our vison  */}
 
-          <div className="our-vision">
+          <div className="our-vision px-5">
             <div className="col-xs-12 col-sm-12 text-center">
               <h4>Lorem Ipsum</h4>
               <h1>Our Vision, Mission & Principles</h1>
@@ -162,7 +162,7 @@ function MainHomePage2() {
                       <div className="col-xs-12 col-sm-4">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          width="200.19"
+                          width="190.19"
                           height="150.448"
                           viewBox="0 0 270.19 187.448"
                         >
@@ -678,7 +678,7 @@ function MainHomePage2() {
                       <div className="col-xs-12 col-sm-4">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          width="200.49"
+                          width="190.49"
                           height="150.707"
                           viewBox="0 0 260.49 183.707"
                         >

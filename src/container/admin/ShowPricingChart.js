@@ -27,7 +27,7 @@ const ShowPricingChart = () => {
                 VM Pricing Chart
               </h4>
             </div>
-            <div className="card-body p-4 w-100 border-0 ">
+            <div className="card-body p-0 w-100 border-0 ">
               <div className="table-responsive">
                 <table class="table table-bordered">
                   <thead>

@@ -8,10 +8,14 @@ function CommingSoon() {
   return (
     <div className="main-landing-page landing-container">
       <HomeNavBar />
-      <h1 style={{ color: "white" }}>Comming Soon</h1>
+
+      <div className="coming-box">
+      <h1 className="error-hedtxt">Comming Soon</h1>
+      <p className="error-info">You seem to be trying to find his way home</p>
       <button onClick={() => navigate(-1)} className="btn-common">
         Go Back
       </button>
+    </div>
        <Footer/>
     </div>
   );

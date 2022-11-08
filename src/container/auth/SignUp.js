@@ -288,7 +288,7 @@ const SignUp = () => {
                       <i className="font-sm ti-headphone-alt text-grey-500 pr-0"></i>
                       <input
                         type="text"
-                        className="style2-input pl-5 form-control  font-xsss fw-600"
+                        className="style2-input pl-5 form-control mb-2 font-xsss fw-600"
                         placeholder="Mobile Number"
                         value={user.mobile_no}
                         required
