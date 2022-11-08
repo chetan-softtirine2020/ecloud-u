@@ -42,12 +42,14 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (user.isVerified===false) {
-      alert("Verify OTP");
-      return false;
-    } else {
-      dispatch(signUp(user));
-    }
+    dispatch(signUp(user));
+  
+    // if (user.isVerified===false) {
+    //   alert("Verify OTP");
+    //   return false;
+    // } else {
+    //   dispatch(signUp(user));
+    // }
     // setUser({
     //   first_name: "",
     //   last_name: "",
@@ -107,7 +109,6 @@ const SignUp = () => {
                   <h2 className="fw-700 font-xl display2-md-size login_heading">
                     Register Account <br />
                   </h2>
-
                   {auth.isRegister && (
                     <div
                       class="alert alert-success alert-dismissible fade show"
@@ -301,7 +302,7 @@ const SignUp = () => {
                         placeholder="OTP"
                         value={user.opt}
                         readOnly={user.isVerified ? true : false}
-                        required
+                        //required
                         onChange={(e) =>
                           setUser({ ...user, enterdOtp: e.target.value })
                         }
