@@ -11,7 +11,7 @@ const HomeNavBar = () => {
   //   redirectUser();
   // }
   let location = useLocation();
-  console.log(location.pathname);
+
   return (
     <Navbar expand="lg">
       <Container fluid>

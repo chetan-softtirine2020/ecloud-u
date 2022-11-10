@@ -460,6 +460,7 @@ const SiteBar = () => {
                 </li>
               )}
               <li class="logo d-none d-xl-block d-lg-block"></li>
+              
               <li>
                 <Link
                   to={"/change-password"}
@@ -480,6 +481,7 @@ const SiteBar = () => {
                   <span>Logout</span>
                 </a>
               </li>
+
             </ul>
           </div>
         </div>

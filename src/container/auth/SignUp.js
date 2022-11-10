@@ -42,23 +42,22 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signUp(user));
-  
-    // if (user.isVerified===false) {
-    //   alert("Verify OTP");
-    //   return false;
-    // } else {
-    //   dispatch(signUp(user));
-    // }
-    // setUser({
-    //   first_name: "",
-    //   last_name: "",
-    //   mobile_no: "",
-    //   password: "",
-    //   email: "",
-    //   user_type: 2,
-    //   org_id: "",
-    // });
+    //dispatch(signUp(user));
+    if (user.isVerified === false) {
+      alert("Verify OTP");
+      return false;
+    } else {
+      dispatch(signUp(user));
+    }
+    setUser({
+      first_name: "",
+      last_name: "",
+      mobile_no: "",
+      password: "",
+      email: "",
+      user_type: 2,
+      org_id: "",
+    });
   };
 
   // if (localStorage.getItem("token")) {
@@ -302,7 +301,7 @@ const SignUp = () => {
                         placeholder="OTP"
                         value={user.opt}
                         readOnly={user.isVerified ? true : false}
-                        //required
+                        required
                         onChange={(e) =>
                           setUser({ ...user, enterdOtp: e.target.value })
                         }
