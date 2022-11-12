@@ -8,11 +8,15 @@ import frstSliderImg from "../../images/new-main-landng-page/Online learning-ami
 import scndSliderImg from "../../images/new-main-landng-page/Study abroad-pana.svg";
 import thrdSliderImg from "../../images/new-main-landng-page/Group 101.svg";
 import forthSliderImg from "../../images/new-main-landng-page/Interview-amico.svg";
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import HomeNavBar from "../components/HomeNavBar";
-
+import { redirectUser } from "../../config/redirect";
 function MainHomePage2() {
   const state = useSelector((state) => state.homeReducer);
+  if (localStorage.getItem("token")) {
+    return <Navigate to={redirectUser()} />;
+  }
+  
   return (
     <div>
       <LoadingOverlay active={state.loading} spinner text="Loading...">

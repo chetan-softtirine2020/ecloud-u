@@ -69,12 +69,12 @@ const ShowVMList = () => {
                     <i className="feather-plus-circle"></i>
                   </a>
                 </Link>
-                <a className="line-height-36 custom-icon mr-2" title="Start">
+                {/* <a className="line-height-36 custom-icon mr-2" title="Start">
                   <i className="feather-play-circle"></i>
                 </a>
                 <a className="line-height-36 custom-icon mr" title="Stop">
                   <i className="feather-stop-circle"></i>
-                </a>
+               </a>*/}
 
                 {/* <Link to={"/create-vm"}>
                 <input
@@ -147,7 +147,7 @@ const ShowVMList = () => {
                             />
                           </td>*/}
 
-                          <td>{li.vm_name}</td>
+                          <td>{li.name}</td>
                           <td>{li.image}</td>
                           <td>{li.zone}</td>
                           <td>{li.ram}</td>
@@ -157,6 +157,7 @@ const ShowVMList = () => {
                             {li.status === 0 && "Create"}
                             {li.status === 1 && "Start"}
                             {li.status === 2 && "Stop"}
+                            {li.status === 3 && "Deleted"}
                           </td>
 
                           <td className="tblaction">

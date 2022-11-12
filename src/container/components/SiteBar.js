@@ -6,8 +6,11 @@ const SiteBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handelClick = () => {
+    localStorage.removeItem('data');
+    localStorage.removeItem('token');
     dispatch(singOut());
     navigate("/");
+
   };
   const location = useLocation();
   const userData = JSON.parse(localStorage.getItem("data"));
@@ -121,13 +124,13 @@ const SiteBar = () => {
                       location.pathname === "/all-courses" ? "active" : ""
                     }`}
                   >
-                    {/* <i class="feather-video mr-3"></i> */}
+                 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M224 280.593C224 267.01 212.989 256 199.407 256H88.593C75.011 256 64 267.01 64 280.593v110.815C64 404.99 75.011 416 88.593 416h110.814C212.989 416 224 404.99 224 391.407V381l27.971 27.971a23.998 23.998 0 0 0 16.97 7.029H296c13.255 0 24-10.745 24-24V280c0-13.255-10.745-24-24-24h-27.059a24.003 24.003 0 0 0-16.97 7.029L224 291v-10.407zM192 384H96v-96h96v96zm80.255-96H288v96h-15.745L224 342.826v-13.652L272.255 288zm97.686-190.059l-83.883-83.882A47.996 47.996 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v416c0 26.51 21.49 48 48 48h288c26.51 0 48-21.49 48-48V131.882a48 48 0 0 0-14.059-33.941zM256 32.491a15.888 15.888 0 0 1 7.432 4.195l83.882 83.882a15.882 15.882 0 0 1 4.195 7.431H256V32.491zM352 464c0 8.837-7.164 16-16 16H48c-8.836 0-16-7.163-16-16V48c0-8.837 7.164-16 16-16h176v104c0 13.255 10.745 24 24 24h104v304z"/></svg>
                     <span>All Courses</span>
                   </Link>
                 </li>
 
-                <li class="">
+               <li class="">
                   <Link
                     to={"/register-cloud-account"}
                     data-tab="archived"
@@ -136,8 +139,7 @@ const SiteBar = () => {
                         ? "active"
                         : ""
                     }`}
-                  >
-                    {/* <i class="feather-video mr-3"></i> */}
+                  >                   
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path fill="none" d="M0 0h32v32H0z"/><path d="M23 31H9v-3c0-3.86 3.141-7 7-7s7 3.14 7 7v3zm-12-2h10v-1c0-2.757-2.243-5-5-5s-5 2.243-5 5v1z"/><path d="M16 23a5.004 5.004 0 0 1-5-5c0-2.757 2.243-5 5-5s5 2.243 5 5a5.013 5.013 0 0 1-5 5zm0-8c-1.654 0-3 1.346-3 3 0 .528.137 1.033.406 1.501A3 3 0 0 0 16 21a2.997 2.997 0 0 0 2.593-1.499A2.97 2.97 0 0 0 19 18c0-1.654-1.346-3-3-3z"/><path d="M24.5 21h-6.771l.864-1.499A2.97 2.97 0 0 0 19 18c0-1.654-1.346-3-3-3s-3 1.346-3 3c0 .528.137 1.033.406 1.501L14.271 21H7.5A6.508 6.508 0 0 1 1 14.5a6.51 6.51 0 0 1 6.229-6.495C8.142 3.956 11.768 1 16 1s7.858 2.956 8.771 7.005A6.51 6.51 0 0 1 31 14.5c0 3.584-2.916 6.5-6.5 6.5zm-3.603-2H24.5c2.481 0 4.5-2.019 4.5-4.5S26.981 10 24.5 10h-1.454l-.108-.877C22.505 5.632 19.522 3 16 3S9.495 5.632 9.062 9.123L8.954 10H7.5C5.019 10 3 12.019 3 14.5S5.019 19 7.5 19h3.603A4.94 4.94 0 0 1 11 18c0-2.757 2.243-5 5-5s5 2.243 5 5c0 .336-.035.671-.103 1z"/></svg>
                     <span>Register Cloud A/C</span>
                   </Link>
@@ -178,12 +180,12 @@ const SiteBar = () => {
                     class={`nav-content-bttn open-font ${
                       location.pathname === "/assign-vm-to-user" ? "active" : ""
                     }`}
-                  >
-                    {/* <i class="feather-video mr-3"></i> */}
+                  >                
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g data-name="meeting, discussion, brainstorming, online, virtual"><path d="M32 29a6 6 0 10-6-6A6 6 0 0032 29zm0-10a4 4 0 11-4 4A4 4 0 0132 19zM42 35V34a3 3 0 00-3-3H25a3 3 0 00-3 3v1a1 1 0 002 0V34a1 1 0 011-1H39a1 1 0 011 1v1a1 1 0 002 0z"/><path d="M57,39V16a5,5,0,0,0-5-5H12a5,5,0,0,0-5,5V38.1A5,5,0,0,0,3,43V56a5,5,0,0,0,5,5H21a5,5,0,0,0,5-5V53h9v3a5,5,0,0,0,5,5H54a5,5,0,0,0,5-5V43A5,5,0,0,0,57,39Zm0,17a3,3,0,0,1-3,3H40a3,3,0,0,1-3-3V43a1,1,0,0,0-.2-.6L35,40h3a1,1,0,0,0,0-2H33a1,1,0,0,0-.89.55,1,1,0,0,0,.09,1.05L35,43.33V51H26V43.33l2.8-3.73a1,1,0,0,0,.09-1.05A1,1,0,0,0,28,38H23a1,1,0,0,0,0,2h3l-1.8,2.4a1,1,0,0,0-.2.6V56a3,3,0,0,1-3,3H8a3,3,0,0,1-3-3V43a3,3,0,0,1,2-2.82A2.77,2.77,0,0,1,8,40h7a1,1,0,0,0,0-2H9V16a3,3,0,0,1,3-3H52a3,3,0,0,1,3,3V38.1a4.71,4.71,0,0,0-1-.1H46a1,1,0,0,0,0,2h8a2.77,2.77,0,0,1,1,.18A3,3,0,0,1,57,43Z"/><path d="M47 50a4 4 0 10-4-4A4 4 0 0047 50zm0-6a2 2 0 11-2 2A2 2 0 0147 44zM50 52H44a3 3 0 00-3 3v1a1 1 0 002 0V55a1 1 0 011-1h6a1 1 0 011 1v1a1 1 0 002 0V55A3 3 0 0050 52zM14.1 50a4 4 0 10-4-4A4 4 0 0014.1 50zm0-6a2 2 0 11-2 2A2 2 0 0114.1 44zM17.1 52h-6a3 3 0 00-3 3v1a1 1 0 002 0V55a1 1 0 011-1h6a1 1 0 011 1v1a1 1 0 002 0V55A3 3 0 0017.1 52z"/><circle cx="12" cy="16" r="1"/><circle cx="16" cy="16" r="1"/><circle cx="20" cy="16" r="1"/><circle cx="19" cy="39" r="1"/><circle cx="42" cy="39" r="1"/></g></svg>
                     <span>Assign VMs</span>
                   </Link>
                 </li>
+
               </ul>
             )}
 
@@ -443,7 +445,7 @@ const SiteBar = () => {
             </ul>
             )}
 
-            <ul>
+            <ul class="site_ul">
               {userData && !userData.roles.includes("admin") && (
                 <li>
                   <Link
@@ -458,9 +460,8 @@ const SiteBar = () => {
                     <span>My Trainings</span>
                   </Link>
                 </li>
-              )}
-              <li class="logo d-none d-xl-block d-lg-block"></li>
-              
+              )}      
+                           
               <li>
                 <Link
                   to={"/change-password"}
@@ -472,6 +473,7 @@ const SiteBar = () => {
                   <span>Change Password</span>
                 </Link>
               </li>
+
               <li>
                 <a
                   onClick={() => handelClick()}
