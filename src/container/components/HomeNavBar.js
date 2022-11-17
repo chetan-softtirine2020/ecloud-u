@@ -61,15 +61,15 @@ const HomeNavBar = () => {
 
           {location.pathname === "/training-home" && (
             <Nav className="d-flex">
-              <Nav.Link href="/login" className="btn-main-common mr-3">
-                <Link to={"/login"}>Login</Link>
-              </Nav.Link>
               <Nav.Link
                 eventKey={2}
                 href="/register"
                 className="btn-main-common"
               >
-                <Link to={"/register"}> Register </Link>
+               <Link to={"/register"}> Register </Link>
+              </Nav.Link>
+              <Nav.Link href="/login" className="btn-main-common mr-3">
+                <Link to={"/login"}>Login</Link>
               </Nav.Link>
             </Nav>
           )}

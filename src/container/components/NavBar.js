@@ -96,13 +96,13 @@ const NavBar = () => {
                   )}
 
                   <li className="d-block d-sm-none nav-item">
-                    <Link to={"/login"} className="header-btn">
-                      Loging
+                    <Link to={"/register"} className="header-btn">
+                      Register
                     </Link>
                   </li>
                   <li className="d-block d-sm-none nav-item">
-                    <Link to={"/register"} className="header-btn">
-                      Register
+                    <Link to={"/login"} className="header-btn">
+                      Loging
                     </Link>
                   </li>
 
@@ -117,12 +117,11 @@ const NavBar = () => {
             </div>
             {location.pathname !== "/" && (
               <div className="col-lg-3 d-none d-lg-block text-right header-btn ">
-                <Link to={"/login"} className="header-btn">
-                  Login
-                </Link>
-                
                 <Link to={"/register"} className="header-btn">
                   Register
+                </Link>
+                <Link to={"/login"} className="header-btn">
+                  Login
                 </Link>
               </div>
             )}

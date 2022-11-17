@@ -16,13 +16,13 @@ function MainHomePage2() {
   if (localStorage.getItem("token")) {
     return <Navigate to={redirectUser()} />;
   }
-  
+
   return (
     <div>
       <LoadingOverlay active={state.loading} spinner text="Loading...">
         <div className="main-landing-page landing-container">
-          <HomeNavBar/>  
-        {/* Carousel  */}
+          <HomeNavBar />
+          {/* Carousel  */}
           <div className="main-carousal">
             <Carousel enableAutoPlay autoPlaySpeed={5500}>
               <div className="carousel">
@@ -32,14 +32,25 @@ function MainHomePage2() {
                       <h3>Training Solutions</h3>
                       <h4>Upgrade your skills with our Training Solutions</h4>
                       <p>
-                        Nulla vitae elit libero, a pharetra augue mollis
-                        interdum.Nulla vitae elit libero, a pharetra augue
-                        mollis interdum.Nulla vitae elit libero, a pharetra
-                        augue mollis interdum.Nulla vitae elit libero, a
-                        pharetra augue mollis interdum.
+                        With our thoughtfully designed end to end training
+                        platform, our customers can reimagine corporate
+                        trainings and undertaking education. Our learning
+                        partners can schedule trainings and allocate
+                        infrastructure like cloud labs on click of a button. We
+                        help organization to arm their workforce with
+                        certifications to make them battle ready for mission
+                        critical projects. Our unique training platform comes
+                        with a blended learning module that enables teams to
+                        integrate instructor-led training and e-Learning on a
+                        single platform. Integrated with communications features
+                        include messaging, event calendar, web conferencing, and
+                        email confirmations. With the analytics functionality,
+                        teams can access, upload, manage eLearning resources and
+                        visualize learner progress and prepare detailed course
+                        reports.
                       </p>
                       <a class="slide-btn btn-common" href="">
-                        let's Join Us
+                        Learn More
                       </a>
                     </div>
                   </div>
@@ -57,12 +68,13 @@ function MainHomePage2() {
                         Innovative study program <br></br>Re-invent Education
                       </h4>
                       <p>
-                        Nulla vitae elit libero, a pharetra augue mollis
-                        interdum.Nulla vitae elit libero, a pharetra augue
-                        mollis interdum.
+                        We are pioneering innovative study abroad programs for
+                        Students, Working Professionals or any anyone who wants
+                        to pursue Masters or Doctorate education. Reach out to
+                        our counsellors to get started.
                       </p>
                       <a class="slide-btn btn-common" href="">
-                        let's Join Us
+                        Learn More
                       </a>
                     </div>
                   </div>
@@ -78,14 +90,12 @@ function MainHomePage2() {
                       <h3>Cloud Office</h3>
                       <h4>Create a virtual Cloud Office</h4>
                       <p>
-                        Nulla vitae elit libero, a pharetra augue mollis
-                        interdum.Nulla vitae elit libero, a pharetra augue
-                        mollis interdum.Nulla vitae elit libero, a pharetra
-                        augue mollis interdum.Nulla vitae elit libero, a
-                        pharetra augue mollis interdum.
+                        Create a virtual cloud office with multiple business
+                        tools for your team. Manage documents, projects, emails,
+                        timetables, and more in one cloud-based solutions.
                       </p>
                       <a class="slide-btn btn-common" href="">
-                        let's Join Us
+                        Learn More
                       </a>
                     </div>
                   </div>
@@ -101,14 +111,12 @@ function MainHomePage2() {
                       <h3>Human Resource</h3>
                       <h4>Skilled Human Resources Managment</h4>
                       <p>
-                        Nulla vitae elit libero, a pharetra augue mollis
-                        interdum.Nulla vitae elit libero, a pharetra augue
-                        mollis interdum.Nulla vitae elit libero, a pharetra
-                        augue mollis interdum.Nulla vitae elit libero, a
-                        pharetra augue mollis interdum.
+                        We provide services for recruitment, selection, training
+                        of your human resource to develop synergies between
+                        individuals and companies for a long-term partnership.
                       </p>
                       <a class="slide-btn btn-common" href="">
-                        let's Join Us
+                        Learn More
                       </a>
                     </div>
                   </div>
@@ -124,17 +132,14 @@ function MainHomePage2() {
             <h4>About Us</h4>
             <h1>Let's learn together</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Bibendum est ultricies integer quis. Iaculis urna id volutpat
-              lacus laoreet. Mauris vitae ultricies leo integer malesuada. Ac
-              odio tempor orci dapibus ultrices in. Egestas diam in arcu cursus
-              euismod. Dictum fusce ut placerat orci nulla. Tincidunt ornare
-              massa eget egestas purus viverra accumsan in nisl. Tempor id eu
-              nisl nunc mi ipsum faucibus. Fusce id velit ut tortor pretium.
-              Massa ultricies mi quis hendrerit dolor magna eget. Nullam eget
-              felis eget nunc lobortis. Faucibus ornare suspendisse sed nisi.
-              Sagittis eu volutpat odio facilisis mauris sit amet massa.
+              The founders of the company are rooted into the education field
+              over 43 years and share a vision to create a marketplace of live
+              interactive learning where curious minds and talented teachers
+              share throbbing need to excel. EduCloudLabs is a fast-growing
+              'Education' company that keeps culture and creativity at the heart
+              of everything we do. Our mission is to provide optimum quality
+              services to our customers and in the process help them scale up
+              new heights using our uniquely powerful training platform.
             </p>
             <a class="px-4 btn-common" href="">
               Know More
@@ -1474,7 +1479,7 @@ function MainHomePage2() {
           </div>
 
           {/* footer */}
-          <Footer/>
+          <Footer />
         </div>
       </LoadingOverlay>
     </div>

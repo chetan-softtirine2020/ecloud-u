@@ -360,12 +360,7 @@ const SignUp = () => {
                       >
                         Remember me
                      </label>*/}
-                      <Link
-                        to="/forgot-password"
-                        className="forget-pwd fw-600 font-xsss  mt-1 float-right"
-                      >
-                        Forgot your Password?
-                      </Link>
+                  
                     </div>
                     <div className="col-sm-12 p-0 text-left">
                       <div className="form-group mb-1">

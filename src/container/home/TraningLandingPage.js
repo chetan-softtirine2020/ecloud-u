@@ -72,11 +72,15 @@ const TraningLandingPage = () => {
                   to learn with us
                 </p>
                 <p className="banner-des">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  We are the one stop shop for all your training needs. We as
+                  your IT training and consulting partner can support both older
+                  and newer technology, and also assist you to figure out how to
+                  integrate them. With our battery of trainers, we support all
+                  your endeavours and infuse confidence in your workforces’
+                  human assets so that they can soar HIGH.
                 </p>
                 <a href="#." className="banner-btn">
-                  Get Started for Free
+                  Enroll for Free
                 </a>
               </div>
             </div>
@@ -169,7 +173,7 @@ const TraningLandingPage = () => {
                           onClick={() => handleShow(li)}
                           className="banner-btn posts-btn btn-common"
                         >
-                          Get Started
+                          Enroll
                         </a>
                       </div>
                     </div>
@@ -188,7 +192,7 @@ const TraningLandingPage = () => {
                     <p className="course-count">10+ Courses</p>
                     <div className="">
                       <a href="#." className="banner-btn posts-btn btn-common">
-                        Get Started
+                        Enroll
                       </a>
                     </div>
                   </div>
@@ -210,7 +214,7 @@ const TraningLandingPage = () => {
                     <p className="course-count">10+ Courses</p>
                     <div className="">
                       <a href="#." className="banner-btn posts-btn btn-common">
-                        Get Started
+                        Enroll
                       </a>
                     </div>
                   </div>
@@ -232,7 +236,7 @@ const TraningLandingPage = () => {
                     <p className="course-count">10+ Courses</p>
                     <div className="">
                       <a href="#." className="banner-btn posts-btn btn-common">
-                        Get Started
+                        Enroll
                       </a>
                     </div>
                   </div>
@@ -276,7 +280,7 @@ const TraningLandingPage = () => {
                           href="#."
                           className="banner-btn posts-btn btn-common"
                         >
-                          Get Started
+                          Enroll
                         </a>
                       </div>
                     </div>
@@ -299,7 +303,7 @@ const TraningLandingPage = () => {
                           href="#."
                           className="banner-btn posts-btn btn-common"
                         >
-                          Get Started
+                          Enroll
                         </a>
                       </div>
                     </div>
@@ -322,7 +326,7 @@ const TraningLandingPage = () => {
                           href="#."
                           className="banner-btn posts-btn btn-common"
                         >
-                          Get Started
+                          Enroll
                         </a>
                       </div>
                     </div>
@@ -345,7 +349,7 @@ const TraningLandingPage = () => {
                           href="#."
                           className="banner-btn posts-btn btn-common"
                         >
-                          Get Started
+                          Enroll
                         </a>
                       </div>
                     </div>
@@ -368,7 +372,7 @@ const TraningLandingPage = () => {
                           href="#."
                           className="banner-btn posts-btn btn-common"
                         >
-                          Get Started
+                          Enroll
                         </a>
                       </div>
                     </div>
@@ -417,7 +421,7 @@ const TraningLandingPage = () => {
                           href="#."
                           className="banner-btn posts-btn btn-common"
                         >
-                          Get Started
+                          Enroll
                         </a>
                       </div>
                     </div>
@@ -440,7 +444,7 @@ const TraningLandingPage = () => {
                           href="#."
                           className="banner-btn posts-btn btn-common"
                         >
-                          Get Started
+                          Enroll
                         </a>
                       </div>
                     </div>
@@ -463,7 +467,7 @@ const TraningLandingPage = () => {
                           href="#."
                           className="banner-btn posts-btn btn-common"
                         >
-                          Get Started
+                          Enroll
                         </a>
                       </div>
                     </div>
@@ -486,7 +490,7 @@ const TraningLandingPage = () => {
                           href="#."
                           className="banner-btn posts-btn btn-common"
                         >
-                          Get Started
+                          Enroll
                         </a>
                       </div>
                     </div>
@@ -509,7 +513,7 @@ const TraningLandingPage = () => {
                           href="#."
                           className="banner-btn posts-btn btn-common"
                         >
-                          Get Started
+                          Enroll
                         </a>
                       </div>
                     </div>
@@ -606,7 +610,7 @@ const TraningLandingPage = () => {
                 to={"/training/" + show.data.slug}
                 className="banner-btn posts-btn btn-common"
               >
-                Get Started
+                Enroll
               </Link>
             </div>
             <div className="col-6 text-right">

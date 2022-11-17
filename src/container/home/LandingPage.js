@@ -57,7 +57,7 @@ const LandingPage = () => {
             <div className="col-sm-12 col-lg-6">
               <div className="top-hedtxt-section">
                 <p className="first-title">
-                  Take the first steps
+                  Takeee the first steps
                   <br></br>
                   to learn with us
                 </p>

@@ -24,7 +24,7 @@ const Login = () => {
   const [user, setUser] = useState({
     password: "",
     email: "",
-    is_previous: false,
+    is_previous: true,
   });
 
   const handleSubmit = (e) => {
@@ -125,6 +125,7 @@ const Login = () => {
                         type="checkbox"
                         className="form-check-input mt-2"
                         id="exampleCheck1"
+                        checked={true}
                         onChange={(e) =>
                           setUser({ ...user, is_previous: e.target.checked })
                         }
