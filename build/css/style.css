@@ -39,12 +39,24 @@ body{
   width: 50%;
  } 
   
-
+.training-silder-1{
+  overflow: scroll;
+}
 .Whiteboard_whiteboard__3nm0m {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: aliceblue !important;
+}
+
+.pd-12{
+  padding: 12px !important;
+}
+.img-h-r{
+ height:641px ;
+}
+.img-h-a{
+  height:720px ; 
 }
 
 .Whiteboard_toolbar__1V-kQ button {
@@ -2126,7 +2138,6 @@ pre code {
 
 .login-reg .loginbg {
   width: 500px;
-  height: 720px;
   padding: 25px;
 }
 
@@ -15519,7 +15530,8 @@ padding: 0;
 .main-landing-page .carousel-caption p {
   font-size: 16px;
   font-weight: 300;
-  padding-bottom: 20px;
+ /* padding-bottom: 20px;*/
+ 
 }
 
 

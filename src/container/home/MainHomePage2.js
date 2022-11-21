@@ -24,7 +24,7 @@ function MainHomePage2() {
           <HomeNavBar />
           {/* Carousel  */}
           <div className="main-carousal">
-            <Carousel enableAutoPlay autoPlaySpeed={5500}>
+            <Carousel enableAutoPlay={false} autoPlaySpeed={5500}>
               <div className="carousel">
                 <div className="row">
                   <div className="col-xs-12 col-sm-6">
@@ -39,15 +39,7 @@ function MainHomePage2() {
                         infrastructure like cloud labs on click of a button. We
                         help organization to arm their workforce with
                         certifications to make them battle ready for mission
-                        critical projects. Our unique training platform comes
-                        with a blended learning module that enables teams to
-                        integrate instructor-led training and e-Learning on a
-                        single platform. Integrated with communications features
-                        include messaging, event calendar, web conferencing, and
-                        email confirmations. With the analytics functionality,
-                        teams can access, upload, manage eLearning resources and
-                        visualize learner progress and prepare detailed course
-                        reports.
+                        critical projects.
                       </p>
                       <a class="slide-btn btn-common" href="">
                         Learn More
@@ -130,7 +122,6 @@ function MainHomePage2() {
           {/* About us */}
           <div className="about-us">
             <h4>About Us</h4>
-            <h1>Let's learn together</h1>
             <p>
               The founders of the company are rooted into the education field
               over 43 years and share a vision to create a marketplace of live
@@ -141,16 +132,12 @@ function MainHomePage2() {
               services to our customers and in the process help them scale up
               new heights using our uniquely powerful training platform.
             </p>
-            <a class="px-4 btn-common" href="">
-              Know More
-            </a>
           </div>
 
           {/* our vison  */}
 
           <div className="our-vision px-5">
             <div className="col-xs-12 col-sm-12 text-center">
-              <h4>Lorem Ipsum</h4>
               <h1>Our Vision, Mission & Principles</h1>
             </div>
             <div className="col-xs-12 col-sm-12">

@@ -64,11 +64,11 @@ const HomeNavBar = () => {
               <Nav.Link
                 eventKey={2}
                 href="/register"
-                className="btn-main-common"
+                className="btn-main-common  mr-3"
               >
                <Link to={"/register"}> Register </Link>
               </Nav.Link>
-              <Nav.Link href="/login" className="btn-main-common mr-3">
+              <Nav.Link href="/login" className="btn-main-common">
                 <Link to={"/login"}>Login</Link>
               </Nav.Link>
             </Nav>

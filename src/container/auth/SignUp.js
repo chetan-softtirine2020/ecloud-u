@@ -20,7 +20,7 @@ const SignUp = () => {
     password: "",
     mobile_no: "",
     email: "",
-    user_type: 2,
+    user_type: "",
     org_id: "",
     lob_id: "",
     enterdOtp: "",
@@ -94,13 +94,29 @@ const SignUp = () => {
   };
 
   return (
-    <LoadingOverlay active={auth.loading} spinner text="Loading...">
+     <LoadingOverlay active={auth.loading} spinner text="Loading...">
       <div className="main-wrap">
         <NavBar />
         <div className="container login-reg top-margin">
           <div className="row">
             <div className="d-none d-lg-block col-lg-6 text-right pr-0">
-              <img className="loginbg pr-0" src={lognbg} />
+              {user && user.user_type === 6 ? (
+                <img
+                  className={`loginbg pr-0`}
+                  src={lognbg}
+                  style={{
+                    height: "768px",
+                  }}
+                />
+              ) : (
+                <img
+                  className={`loginbg pr-0`}
+                  src={lognbg}
+                  style={{
+                    height: "641px",
+                  }}
+                />
+              )}
             </div>
             <div className="col-sm-12 col-lg-6 align-items-left my-4 rounded-lg pl-0">
               <div className="card shadow-none border-0">
@@ -147,6 +163,7 @@ const SignUp = () => {
                       ? auth.errors.other_error
                       : ""}{" "}
                   </span>
+
                   <form onSubmit={handleSubmit}>
                     <div className="form-group icon-input mb-3">
                       <select
@@ -197,34 +214,44 @@ const SignUp = () => {
                         </div>
 
                         <div className="form-group icon-input mb-1">
-                          <select
-                            name="org_id"
-                            className="style2-input pl-5 form-control  font-xss ls-3"
-                            onChange={(e) =>
-                              setUser({ ...user, lob_id: e.target.value })
-                            }
-                          >
-                            <option value="" key={0}>
-                              Select Line Of Business
-                            </option>
-                            {auth.lob &&
-                              auth.lob.map((li, i) => (
-                                <Fragment>
-                                  <option value={li.id} key={li.id + 1}>
-                                    {li.name}
+                          <div className="row">
+                            <div className="col-10">
+                              <div className="form-group icon-input mb-3">
+                                <select
+                                  name="org_id"
+                                  className="style2-input pl-5 form-control  font-xss ls-3"
+                                  onChange={(e) =>
+                                    setUser({ ...user, lob_id: e.target.value })
+                                  }
+                                >
+                                  <option value="" key={0}>
+                                    Select Line Of Business
                                   </option>
-                                </Fragment>
-                              ))}
-                          </select>
-                          <i className="font-sm ti-lock text-grey-500 pr-0"></i>
+                                  {auth.lob &&
+                                    auth.lob.map((li, i) => (
+                                      <Fragment>
+                                        <option value={li.id} key={li.id + 1}>
+                                          {li.name}
+                                        </option>
+                                      </Fragment>
+                                    ))}
+                                </select>
+                                <i className="font-sm ti-lock text-grey-500 pr-0"></i>
+                              </div>
+                            </div>
+                            <div className="col-2">
+                              <div className="form-group icon-input mb-3">
+                                <input
+                                  type="button"
+                                  value="Add"
+                                  title="Add new line of business"
+                                  className="btn approve_btn btn-common pd-12"
+                                  onClick={() => handelClick()}
+                                />
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <input
-                          type="button"
-                          value="Add"
-                          title="Add new line of business"
-                          className="btn approve_btn btn-common"
-                          onClick={() => handelClick()}
-                        />
                       </Fragment>
                     )}
                     <div className="form-group icon-input mb-3">
@@ -264,6 +291,7 @@ const SignUp = () => {
                           : ""}{" "}
                       </span>
                     </div>
+
                     <div className="form-group icon-input mb-3">
                       <i className="font-sm ti-email text-grey-500 pr-0"></i>
                       <input
@@ -283,54 +311,7 @@ const SignUp = () => {
                       </span>
                     </div>
 
-                    <div className="form-group icon-input mb-3">
-                      <i className="font-sm ti-headphone-alt text-grey-500 pr-0"></i>
-                      <input
-                        type="text"
-                        className="style2-input pl-5 form-control mb-2 font-xsss fw-600"
-                        placeholder="Mobile Number"
-                        value={user.mobile_no}
-                        required
-                        onChange={(e) =>
-                          setUser({ ...user, mobile_no: e.target.value })
-                        }
-                      />
-                      <input
-                        type="text"
-                        className="style2-input pl-5 form-control  font-xsss fw-600"
-                        placeholder="OTP"
-                        value={user.opt}
-                        readOnly={user.isVerified ? true : false}
-                        required
-                        onChange={(e) =>
-                          setUser({ ...user, enterdOtp: e.target.value })
-                        }
-                      />
-                      {!otp ? (
-                        <input
-                          type="button"
-                          value="Send OTP"
-                          title="Send mobile number"
-                          className="btn approve_btn btn-common"
-                          onClick={() => handelSendOtp()}
-                        />
-                      ) : (
-                        <input
-                          type="button"
-                          value="Verify OTP"
-                          title="Verify mobile number"
-                          className="btn approve_btn btn-common"
-                          onClick={() => verifyMobileOtp()}
-                        />
-                      )}
-                      <span className="error-msg">
-                        {auth.errors && auth.errors.mobile_no
-                          ? auth.errors.mobile_no
-                          : ""}{" "}
-                      </span>
-                    </div>
-
-                    <div className="form-group icon-input mb-1">
+                    <div className="form-group icon-input ">
                       <input
                         type="Password"
                         className="style2-input pl-5 form-control  font-xss ls-3"
@@ -348,6 +329,64 @@ const SignUp = () => {
                       </span>
                       <i className="font-sm ti-lock text-grey-500 pr-0"></i>
                     </div>
+
+                    <div className="form-group icon-input mb-3">
+                      <i className="font-sm ti-headphone-alt text-grey-500 pr-0"></i>
+                      <div className="row">
+                        <div className="col-lg-5 mb-3">
+                          <input
+                            type="text"
+                            className="style2-input pl-5 form-control mb-2 font-xsss fw-600"
+                            placeholder="Mobile Number"
+                            value={user.mobile_no}
+                            required
+                            onChange={(e) =>
+                              setUser({ ...user, mobile_no: e.target.value })
+                            }
+                          />
+                        </div>
+
+                        <div className="col-lg-4 mb-3">
+                          <input
+                            type="text"
+                            className="style2-input pl-5 form-control  font-xsss fw-600"
+                            placeholder="OTP"
+                            value={user.opt}
+                            readOnly={user.isVerified ? true : false}
+                            required
+                            onChange={(e) =>
+                              setUser({ ...user, enterdOtp: e.target.value })
+                            }
+                          />
+                        </div>
+
+                        <div className="col-lg-2">
+                          {!otp ? (
+                            <input
+                              type="button"
+                              value="Send OTP"
+                              title="Send mobile number"
+                              className="btn approve_btn btn-common pd-12"
+                              onClick={() => handelSendOtp()}
+                            />
+                          ) : (
+                            <input
+                              type="button"
+                              value="Verify OTP"
+                              title="Verify mobile number"
+                              className="btn approve_btn btn-common pd-12"
+                              onClick={() => verifyMobileOtp()}
+                            />
+                          )}
+                          <span className="error-msg">
+                            {auth.errors && auth.errors.mobile_no
+                              ? auth.errors.mobile_no
+                              : ""}{" "}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="form-check text-left mb-3">
                       {/* <input
                         type="checkbox"
@@ -360,7 +399,6 @@ const SignUp = () => {
                       >
                         Remember me
                      </label>*/}
-                  
                     </div>
                     <div className="col-sm-12 p-0 text-left">
                       <div className="form-group mb-1">
