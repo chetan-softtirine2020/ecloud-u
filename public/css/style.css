@@ -15533,7 +15533,9 @@ padding: 0;
  /* padding-bottom: 20px;*/
  
 }
-
+.fs-16{
+  font-size: 16px !important;
+}
 
 .main-landing-page .slide-btn {
   padding: 10px 30px;
@@ -18999,18 +19001,18 @@ select.sort {
 
 .header-btn {
   vertical-align: middle;
-  top: 1.3em;
+  top: 2.5em;
 }
 
 .header-btn a {
-  border: 2px solid #fff;
-  margin: 0.3em;
-  padding: 0.6em 2em;
-  font-size: 0.9em;
-  color: #fff;
-  font-weight: 500;
-  border-radius: 0.3em;
-  text-transform: uppercase;
+  padding: 4px 28px !important;
+  background-color: #1a1b28;
+  border-radius: 31px;
+  box-shadow: none;
+  border: 2px solid #f00;
+  min-width: 130px;
+  text-align: center;
+  color: #ffff;
 }
 
 .header-btn a:hover {

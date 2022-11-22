@@ -270,7 +270,7 @@ const TraningLandingPage = () => {
                         <h4 className="title">
                           <span className="course-nm">Angular</span>
                         </h4>
-                        <p className="course-count">10+ Courses</p>
+                        {/*<p className="course-count">10+ Courses</p>*/}
                       </div>
                       <div className="col-xs-12 col-4">
                         <img className="" src={java} alt="First slide" />
@@ -293,7 +293,7 @@ const TraningLandingPage = () => {
                         <h4 className="title">
                           <span className="course-nm">JAVA</span>
                         </h4>
-                        <p className="course-count">10+ Courses</p>
+                         {/*<p className="course-count">10+ Courses</p>*/}
                       </div>
                       <div className="col-xs-12 col-4">
                         <img className="" src={online} alt="First slide" />
@@ -316,7 +316,7 @@ const TraningLandingPage = () => {
                         <h4 className="title">
                           <span className="course-nm">C#</span>
                         </h4>
-                        <p className="course-count">10+ Courses</p>
+                        {/*<p className="course-count">10+ Courses</p>*/}
                       </div>
                       <div className="col-xs-12 col-4">
                         <img className="" src={online} alt="First slide" />
@@ -339,7 +339,7 @@ const TraningLandingPage = () => {
                         <h4 className="title">
                           <span className="course-nm">CSS</span>
                         </h4>
-                        <p className="course-count">10+ Courses</p>
+                      {/*<p className="course-count">10+ Courses</p>*/}
                       </div>
                       <div className="col-xs-12 col-4">
                         <img className="" src={online} alt="First slide" />
@@ -362,7 +362,7 @@ const TraningLandingPage = () => {
                         <h4 className="title">
                           <span className="course-nm">HTML</span>
                         </h4>
-                        <p className="course-count">10+ Courses</p>
+                         {/*<p className="course-count">10+ Courses</p>*/}
                       </div>
                       <div className="col-xs-12   col-4">
                         <img className="" src={online} alt="First slide" />
@@ -411,7 +411,7 @@ const TraningLandingPage = () => {
                         <h4 className="title">
                           <span className="course-nm">Angular</span>
                         </h4>
-                        <p className="course-count">10+ Courses</p>
+                    {/*<p className="course-count">10+ Courses</p>*/}
                       </div>
                       <div className="col-xs-12 col-4">
                         <img className="" src={java} alt="First slide" />
@@ -434,7 +434,7 @@ const TraningLandingPage = () => {
                         <h4 className="title">
                           <span className="course-nm">JAVA</span>
                         </h4>
-                        <p className="course-count">10+ Courses</p>
+                       {/*<p className="course-count">10+ Courses</p>*/}
                       </div>
                       <div className="col-xs-12 col-4">
                         <img className="" src={online} alt="First slide" />
@@ -457,7 +457,7 @@ const TraningLandingPage = () => {
                         <h4 className="title">
                           <span className="course-nm">C#</span>
                         </h4>
-                        <p className="course-count">10+ Courses</p>
+                       {/*<p className="course-count">10+ Courses</p>*/}
                       </div>
                       <div className="col-xs-12 col-4">
                         <img className="" src={online} alt="First slide" />
@@ -480,7 +480,7 @@ const TraningLandingPage = () => {
                         <h4 className="title">
                           <span className="course-nm">CSS</span>
                         </h4>
-                        <p className="course-count">10+ Courses</p>
+                      
                       </div>
                       <div className="col-xs-12 col-4">
                         <img className="" src={online} alt="First slide" />
@@ -503,7 +503,7 @@ const TraningLandingPage = () => {
                         <h4 className="title">
                           <span className="course-nm">HTML</span>
                         </h4>
-                        <p className="course-count">10+ Courses</p>
+                        {/*<p className="course-count">10+ Courses</p>*/}
                       </div>
                       <div className="col-xs-12   col-4">
                         <img className="" src={online} alt="First slide" />

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import LoadingOverlay from "react-loading-overlay";
 import Footer from "../components/Footer";
 import { useSelector } from "react-redux";
@@ -13,9 +13,17 @@ import HomeNavBar from "../components/HomeNavBar";
 import { redirectUser } from "../../config/redirect";
 function MainHomePage2() {
   const state = useSelector((state) => state.homeReducer);
+  const [first, setFirst] = useState(true);
   if (localStorage.getItem("token")) {
     return <Navigate to={redirectUser()} />;
   }
+
+  const onNextStart = (prevItemObject, nextItemObject) => {
+    console.log(nextItemObject);
+    if (nextItemObject?.index !== 0) {
+      setFirst(false);
+    }
+  };
 
   return (
     <div>
@@ -24,7 +32,11 @@ function MainHomePage2() {
           <HomeNavBar />
           {/* Carousel  */}
           <div className="main-carousal">
-            <Carousel enableAutoPlay={false} autoPlaySpeed={5500}>
+            <Carousel
+              enableAutoPlay={true}
+              autoPlaySpeed={5500}
+              onNextStart={onNextStart}
+            >
               <div className="carousel">
                 <div className="row">
                   <div className="col-xs-12 col-sm-6">
@@ -75,6 +87,7 @@ function MainHomePage2() {
                   </div>
                 </div>
               </div>
+
               <div className="carousel">
                 <div className="row">
                   <div className="col-xs-12 col-sm-6">
@@ -96,6 +109,7 @@ function MainHomePage2() {
                   </div>
                 </div>
               </div>
+
               <div className="carousel">
                 <div className="row">
                   <div className="col-xs-12 col-sm-6">

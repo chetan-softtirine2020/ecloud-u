@@ -30,15 +30,18 @@ const HomeNavBar = () => {
 
             {location.pathname === "/" && (
               <NavDropdown title="Services" id="navbarScrollingDropdown">
-                <NavDropdown.Item>
-                  <Link to={"/training-home"}>Training</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to={"/comming-soon"}>Cloud Labs</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to={"/comming-soon"}>HR Solutions</Link>
-                </NavDropdown.Item>
+                <Link to={"/training-home"} className={"dropdown-item"}>
+                  Training
+                </Link>
+                <Link to={"/comming-soon"} className={"dropdown-item"}>
+                  Cloud Labs
+                </Link>
+                <Link to={"/comming-soon"} className={"dropdown-item"}>
+                  Re-invent Education
+                </Link>
+                <Link to={"/comming-soon"} className={"dropdown-item"}>
+                  HR Solutions
+                </Link>
 
                 {/*
               <NavDropdown.Item>Vendor Management</NavDropdown.Item>
@@ -48,7 +51,7 @@ const HomeNavBar = () => {
               </NavDropdown>
             )}
 
-            {location.pathname !== "/" && (
+            {location.pathname !== "/" && location.pathname !== "/comming-soon" && (
               <Nav.Link>
                 <Link to={"/register-organization"}>Register Organization</Link>
               </Nav.Link>
@@ -61,16 +64,8 @@ const HomeNavBar = () => {
 
           {location.pathname === "/training-home" && (
             <Nav className="d-flex">
-              <Nav.Link
-                eventKey={2}
-                href="/register"
-                className="btn-main-common  mr-3"
-              >
-               <Link to={"/register"}> Register </Link>
-              </Nav.Link>
-              <Nav.Link href="/login" className="btn-main-common">
-                <Link to={"/login"}>Login</Link>
-              </Nav.Link>
+             <Link to={"/register"} className="btn-main-common mr-3 fs-16">Register</Link>
+            <Link to={"/login"} className="btn-main-common fs-16">Login</Link>                      
             </Nav>
           )}
         </Navbar.Collapse>
